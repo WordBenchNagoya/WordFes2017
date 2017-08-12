@@ -22,7 +22,7 @@
 		endif;?>
 
 		<div class="copyright-wrapper">
-			<p class="copyright">Copyright &copy; WordFes Nagoya 2016 All Rights Reserved.</p>
+			<p class="copyright">Copyright &copy; WordFes Nagoya 2017 All Rights Reserved.</p>
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->

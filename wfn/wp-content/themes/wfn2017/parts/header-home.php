@@ -2,11 +2,11 @@
 			
 			
 			<h1 class="site-title">
-				<img src="<?php echo get_template_directory_uri(); ?>/images/common/img-sitetitle.png" alt="WordPressの森に集おう WordFes Nagoya 2016">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/common/img-sitetitle.png" alt="WordPressの森に集おう WordFes Nagoya 2017">
 			</h1>
 			
 			<p class="date">
-				<img src="<?php echo get_template_directory_uri(); ?>/images/top/img-date.png" alt="2016.8.27(sat) 10:00-17:00 名古屋工業大学">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/top/img-date.png" alt="2017.8.27(sat) 10:00-17:00 名古屋工業大学">
 			</p>
 			
 			<div id="signboard">

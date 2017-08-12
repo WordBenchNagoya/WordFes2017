@@ -4,23 +4,23 @@
  * Custom Taxonomy Settings
  * =====================================================
  * @package    WordPress
- * @subpackage wordfes2016
+ * @subpackage wordfes2017
  * @author     WordBench Nagoya
  * @license    GPLv2 or Later
- * @link       http://2016.wordfes.org
- * @copyright  2016 WordBench Nagoya
+ * @link       http://2017.wordfes.org
+ * @copyright  2017 WordBench Nagoya
  * =====================================================
  */
 
 // Hook into the 'init' action
-add_action( 'init', 'wordfes2016_taxonomy', 0 );
+add_action( 'init', 'wordfes2017_taxonomy', 0 );
 
 /**
- * WordFes 2016 All Register taxonomy
+ * WordFes 2017 All Register taxonomy
  *
  * @return void : register taxonomy
  */
-function wordfes2016_taxonomy() {
+function wordfes2017_taxonomy() {
 
 	/**
 	 * suporter category labels

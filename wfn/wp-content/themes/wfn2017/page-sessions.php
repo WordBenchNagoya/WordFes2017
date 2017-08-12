@@ -11,7 +11,7 @@ Template Name: セッション
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package WordFes Nagoya 2016
+ * @package WordFes Nagoya 2017
  */
 
 get_header(); ?>

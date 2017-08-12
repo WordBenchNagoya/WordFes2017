@@ -6,7 +6,7 @@ Template Name: スタッフブログ
 /**
  * The template for displaying front-page.
  * 
- * @package WordFes Nagoya 2016
+ * @package WordFes Nagoya 2017
  */
 
 get_header(); ?>

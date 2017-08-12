@@ -104,7 +104,7 @@
 			</th>
 			<?php
 			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2016_timetable_meta( 'tz-03', $stage );
+				wordfes2017_timetable_meta( 'tz-03', $stage );
 			}
 			?>
 		</tr>
@@ -128,7 +128,7 @@
 			</th>
 			<?php
 			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2016_timetable_meta( 'tz-05', $stage );
+				wordfes2017_timetable_meta( 'tz-05', $stage );
 			}
 			?>
 		</tr>
@@ -151,7 +151,7 @@
 			</th>
 			<?php
 			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2016_timetable_meta( 'tz-07', $stage );
+				wordfes2017_timetable_meta( 'tz-07', $stage );
 			}
 			?>
 		</tr>
@@ -172,7 +172,7 @@
 			</th>
 			<?php
 			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2016_timetable_meta( 'tz-09', $stage );
+				wordfes2017_timetable_meta( 'tz-09', $stage );
 			} ?>
 		</tr>
 
@@ -227,7 +227,7 @@
 <?php
 
 
-function wordfes2016_timetable_meta( $timezone, $stage ){
+function wordfes2017_timetable_meta( $timezone, $stage ){
 
 	if ( ! $timezone || ! $stage ) {
 		return;
@@ -298,7 +298,7 @@ function wordfes2016_timetable_meta( $timezone, $stage ){
 				}
 			?>
 					</p>
-					<?php //wordfes2016_entry_footer(); ?>
+					<?php //wordfes2017_entry_footer(); ?>
 				</dd>
 			<?php
 			}
@@ -339,7 +339,7 @@ function wordfes2016_timetable_meta( $timezone, $stage ){
 					<i class="glyphicon glyphicon-user"></i> <?php echo esc_html( get_field( 'session_speaker_name', $session->ID ) ) ?><br>
 					<span class="visible-xs visible-sm grenn"><?php echo esc_html( $stage->name ); ?></span>
 <!-- 					<i class="level_<?php wordfes2014_the_term( $session->ID, 'target', 'slug' );?> level_icon"><?php wordfes2014_the_term( $session->ID, 'target' );?></i> -->
-					<?php wordfes2016_post_edit_link( $session->ID ); ?>
+					<?php wordfes2017_post_edit_link( $session->ID ); ?>
 				</dd>
 			<?php
 			}
@@ -377,8 +377,8 @@ function wordfes2016_timetable_meta( $timezone, $stage ){
 				<dd>
 					<i class="glyphicon glyphicon-user"></i> <?php echo esc_html( get_field( 'session_speaker_name', $session->ID ) ) ?><br>
 					<span class="visible-xs visible-sm grenn"><?php echo esc_html( $stage->name ); ?>(<?php echo esc_html( $stage->description ); ?>）</span>
-					<i class="level_<?php wordfes2014_the_term( $session->ID, 'target', 'slug' );?> level_icon"><?php wordfes2016_the_term( $session->ID, 'target' );?></i>
-					<?php wordfes2016_post_edit_link( $session->ID ); ?>
+					<i class="level_<?php wordfes2014_the_term( $session->ID, 'target', 'slug' );?> level_icon"><?php wordfes2017_the_term( $session->ID, 'target' );?></i>
+					<?php wordfes2017_post_edit_link( $session->ID ); ?>
 				</dd>
 			<?php
 			}

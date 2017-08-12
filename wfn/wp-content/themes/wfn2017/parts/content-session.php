@@ -244,7 +244,7 @@ $slide_data   = get_field( 'session_slide' );
 
 <?php if ( is_user_logged_in() ) { ?>
 	<footer class="entry-footer">
-		<?php edit_post_link( __( '編集', 'wordfes2016' ), '<span class="edit-link btn btn-default">', '</span>' ); ?>
+		<?php edit_post_link( __( '編集', 'wordfes2017' ), '<span class="edit-link btn btn-default">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 <?php
 } ?>

@@ -8,11 +8,11 @@
  *
  * =====================================================
  * @package    WordPress
- * @subpackage WordFes 2016
+ * @subpackage WordFes 2017
  * @author     Grow Group
  * @license    GPLv2 or later
- * @link       http://2016.wordfes.org
- * @copyright  2016 WordBench Nagoya
+ * @link       http://2017.wordfes.org
+ * @copyright  2017 WordBench Nagoya
  * =====================================================
  */
 ?>

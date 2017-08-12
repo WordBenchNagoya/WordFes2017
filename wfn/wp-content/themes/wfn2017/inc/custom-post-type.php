@@ -4,17 +4,17 @@
  * Custom Post Type Settings
  * =====================================================
  * @package    WordPress
- * @subpackage wordfes2016
+ * @subpackage wordfes2017
  * @author     WordBench Nagoya
  * @license    GPLv2 or Later
- * @link       http://2016.wordfes.org
- * @copyright  2016 WordBench Nagoya
+ * @link       http://2017.wordfes.org
+ * @copyright  2017 WordBench Nagoya
  * =====================================================
  */
 
-add_action( 'init', 'wordfes2016_post_type_init' );
+add_action( 'init', 'wordfes2017_post_type_init' );
 
-function wordfes2016_post_type_init() {
+function wordfes2017_post_type_init() {
 
 	/*
 	 * カスタム投稿タイプ「お知らせ」を追加

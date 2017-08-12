@@ -2,7 +2,7 @@
 /**
  * social.php
  *
- * @package WordFes Nagoya 2016
+ * @package WordFes Nagoya 2017
  */
  
  $link = home_url() . $_SERVER["REQUEST_URI"];
