@@ -1,0 +1,26 @@
+@charset 'utf-8';
+
+body {
+	position: relative;
+}
+
+#wp-admin-bar-extend-toolbar {
+	z-index: 9998 !important;
+}
+#wp-admin-bar-extend-toolbar-title {
+	position: absolute !important;
+	top: 32px;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px dotted #CCC;
+}
+#wp-admin-bar-extend-toolbar-description {
+	position: absolute !important;
+	top: 64px;
+	left: 0;
+}
+#wp-admin-bar-extend-toolbar-title .ab-item,
+#wp-admin-bar-extend-toolbar-description .ab-item {
+	height: auto !important;
+}

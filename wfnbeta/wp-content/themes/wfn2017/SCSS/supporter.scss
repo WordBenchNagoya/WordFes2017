@@ -1,0 +1,54 @@
+@charset 'utf-8';
+
+@import 'variables';
+
+.supporter-section {
+	text-align: center;
+	
+	.section-inner {
+		width: 100%;
+		max-width: $contentWidth;
+		margin: auto;
+	}
+	
+	.supporter-contents {
+		margin-bottom: 50px;
+		
+		.supporter-title {
+			
+			img {
+				width: 100%;
+			}
+		}
+		
+		.column {
+			padding-top: 0;
+			padding-bottom: 20px;
+			
+			a {
+				margin: auto;
+			}
+		}
+		
+		.column-person {
+			padding-left: 30px;
+		}
+		
+		.no-image {
+			display: table;
+			width: 305px;
+			height: 150px;
+			background: #f0f0f0;
+			
+			.title {
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+			}
+		}
+		
+		.anonym {
+			margin-top: 1em;
+		}
+	} // .supporter-contents
+}
