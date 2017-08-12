@@ -1,5 +1,5 @@
 AddHandler x-httpd-php5527 .php
-suPHP_ConfigPath /home/ae163jnh5u/html/wfn
+suPHP_ConfigPath /home/ae163jnh5u/html/wp
 
 <FilesMatch "^(\.htaccess|\.htpasswd|php\.ini|.*\.sql|.*\.log|.*\.cron|.*\.inc|.*\.phps|.*\.yml)$">
   Deny from all
