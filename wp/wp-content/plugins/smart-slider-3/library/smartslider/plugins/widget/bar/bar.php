@@ -7,7 +7,7 @@ class N2SSPluginWidgetBar extends N2PluginBase
 
     function onWidgetList(&$list) {
         $list[self::$group] = array(
-            n2_('Bar'),
+            n2_('Text Bar'),
             $this->getPath(),
             5
         );

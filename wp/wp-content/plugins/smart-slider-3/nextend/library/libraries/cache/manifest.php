@@ -1,9 +1,10 @@
 <?php
 
-class N2CacheManifest extends N2Cache
-{
+class N2CacheManifest extends N2Cache {
 
     private $isRaw = false;
+
+    private $manifestData;
 
     public function __construct($group, $isAccessible = false, $isRaw = false) {
         parent::__construct($group, $isAccessible);
@@ -28,9 +29,9 @@ class N2CacheManifest extends N2Cache
     private function isCached($fileName, $hash) {
 
         if (N2Filesystem::existsFile($this->getManifestFilePath($fileName))) {
-            $manifestData = json_decode(N2Filesystem::readFile($this->getManifestFilePath($fileName)), true);
+            $this->manifestData = json_decode(N2Filesystem::readFile($this->getManifestFilePath($fileName)), true);
 
-            if (!$this->isCacheValid($manifestData) || $manifestData['hash'] != $hash) {
+            if (!$this->isCacheValid($this->manifestData) || $this->manifestData['hash'] != $hash) {
                 $this->clean($fileName);
                 return false;
             }
@@ -41,11 +42,11 @@ class N2CacheManifest extends N2Cache
 
     private function createCacheFile($fileName, $hash, $content) {
 
-        $manifestData = array();
+        $this->manifestData = array();
 
-        $manifestData['hash'] = $hash;
-        $this->addManifestData($manifestData);
-        N2Filesystem::createFile($this->getManifestFilePath($fileName), json_encode($manifestData));
+        $this->manifestData['hash'] = $hash;
+        $this->addManifestData($this->manifestData);
+        N2Filesystem::createFile($this->getManifestFilePath($fileName), json_encode($this->manifestData));
 
         N2Filesystem::createFile($this->getStorageFilePath($fileName), $this->isRaw ? $content : json_encode($content));
         if ($this->isAccessible) {
@@ -73,5 +74,9 @@ class N2CacheManifest extends N2Cache
 
     protected function getManifestFilePath($fileName) {
         return $this->getStorageFilePath($fileName) . '.manifest';
+    }
+
+    public function getData($key, $default = 0) {
+        return isset($this->manifestData[$key]) ? $this->manifestData[$key] : $default;
     }
 }

@@ -1,5 +1,4 @@
-;
-(function ($, window, document, undefined) {
+(function ($, undefined) {
     function useragentIsIphone() {
         return (navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null);
     }
@@ -44,6 +43,8 @@
         };
 
     function liteBox(element, options) {
+        this.timeout = false;
+        this.clickTimeout = false;
         this.element = element;
         this.$element = $(this.element);
 
@@ -73,17 +74,18 @@
     liteBox.prototype = {
         init: function () {
             // Variables
-            var $this = this,
-                timeout = false;
+            var $this = this;
 
             // Element click
             this.$element.on('click n2click', function (e) {
-                if (timeout === false) {
-                    e.preventDefault();
-                    $this.openLitebox();
-                    timeout = setTimeout(function () {
-                        timeout = false;
-                    }, 300);
+                if (!nextend.shouldPreventClick) {
+                    if ($this.clickTimeout === false) {
+                        e.preventDefault();
+                        $this.openLitebox();
+                        $this.clickTimeout = setTimeout(function () {
+                            $this.clickTimeout = false;
+                        }, 300);
+                    }
                 }
             });
 
@@ -108,12 +110,16 @@
             // Interactions
             if ($this.options.overlayClose)
                 $litebox.on('click', function (e) {
-                    if (e.target === this || $(e.target).hasClass('litebox-container') || $(e.target).hasClass('litebox-error'))
-                        $this.closeLitebox();
+                    if ($this.clickTimeout === false) {
+                        if (e.target === this || $(e.target).hasClass('litebox-container') || $(e.target).hasClass('litebox-error'))
+                            $this.closeLitebox();
+                    }
                 });
 
             $close.on('click', function () {
-                $this.closeLitebox();
+                if ($this.clickTimeout === false) {
+                    $this.closeLitebox();
+                }
             });
 
             // Groups
@@ -286,10 +292,10 @@
                 var src = '';
 
                 if (videoURL[1] == 'youtube')
-                    src = 'https://www.youtube.com/embed/' + videoURL[5] + '?fs=1&amp;wmode=opaque&amp;autoplay=1';
+                    src = 'https://www.youtube.com/embed/' + videoURL[5] + '?fs=1&amp;wmode=opaque&amp;autoplay=1;rel=0';
 
                 if (videoURL[1] == 'youtu')
-                    src = 'https://www.youtube.com/embed/' + videoURL[3] + '?fs=1&amp;wmode=opaque&amp;autoplay=1';
+                    src = 'https://www.youtube.com/embed/' + videoURL[3] + '?fs=1&amp;wmode=opaque&amp;autoplay=1;rel=0';
 
                 if (videoURL[1] == 'vimeo')
                     src = 'https://player.vimeo.com/video/' + videoURL[3] + '?autoplay=1';
@@ -338,7 +344,7 @@
                     'frameborder': '0',
                     'vspace': '0',
                     'hspace': '0',
-                    'scrolling': 'auto',
+                    'scrolling': n2const.isIOS ? 'no' : 'auto',
                     'class': 'litebox-content',
                     'allowfullscreen': ''
                 });
@@ -431,4 +437,4 @@
         });
     };
 
-})(n2, window, document);
+})(n2);

@@ -47,13 +47,13 @@ class N2ElementSubform extends N2ElementList
             });
         ");
         */
-        return '<a id="' . $this->_id . '_button" class="n2-button n2-button-small n2-button-grey n2-uc" href="#">' . n2_('Configure') . '</a>';
+        return '<a id="' . $this->_id . '_button" class="n2-button n2-button-normal n2-button-s n2-radius-s n2-button-grey n2-uc" href="#">' . n2_('Configure') . '</a>';
     }
 
     function renderContainer() {
         ob_start();
         N2JS::addInline('
-        new NextendElementSubform(
+        new N2Classes.FormElementSubform(
               "' . $this->_id . '",
               "nextend-' . $this->_name . '-panel",
               "' . $this->_tab->_name . '",

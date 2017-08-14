@@ -8,34 +8,52 @@
  * @package Custom_Post_Type_Permalinks
  * @since 0.9.4
  * */
-
-
 class CPTP_Module_Setting extends CPTP_Module {
 
 	public function add_hook() {
+		$this->update_version();
 		add_action( 'init', array( $this, 'load_textdomain' ) );
-		add_action( 'plugins_loaded', array( $this, 'check_version' ) );
+		add_action( 'upgrader_process_complete', array( $this, 'upgrader_process_complete' ), 10, 2 );
 	}
 
 	/**
-	 *
 	 * check_version
 	 *
 	 * @since 0.8.6
 	 */
 
-	public function check_version() {
-		$version = get_option( 'cptp_version', 0 );
-		if ( false === $version ) {
-			add_option( 'cptp_version', CPTP_VERSION );
-		} else if ( CPTP_VERSION != $version ) {
-			update_option( 'cptp_version', CPTP_VERSION );
+	public function update_version() {
+		update_option( 'cptp_version', CPTP_VERSION );
+	}
+
+	/**
+	 * After update complete.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param object $wp_upgrader WP_Upgrader instance.
+	 * @param array $options Extra information about performed upgrade.
+	 */
+	public function upgrader_process_complete( $wp_upgrader, $options ) {
+
+		if ( empty( $options['plugins'] ) ) {
+			return;
+		}
+
+		if ( ! is_array( $options['plugins'] ) ) {
+			return;
+		}
+
+		if ( 'update' == $options['action'] && 'plugin' == $options['type'] ) {
+			$plugin_path = plugin_basename( CPTP_PLUGIN_FILE );
+			if ( in_array( $plugin_path, $options['plugins'] ) ) {
+				//for update code.
+				add_option( 'no_taxonomy_structure', false );
+			}
 		}
 	}
 
-
 	/**
-	 *
 	 * load textdomain
 	 *
 	 * @since 0.6.2

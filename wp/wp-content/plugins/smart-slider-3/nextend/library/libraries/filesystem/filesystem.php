@@ -44,10 +44,10 @@ abstract class N2FilesystemAbstract {
                 if (self::is_writable($base)) {
                     self::createFolder($cacheFolder);
                 } else {
-                    die('<div style="position:fixed;background:#fff;width:100%;height:100%;top:0;left:0;z-index:100000;">' . sprintf('<h2><b>%s</b> is not writable.</h2>', $base) . '<br><br><iframe style="width:100%;max-width:760px;height:100%;" src="http://doc.smartslider3.com/article/482-cache-folder-is-not-writable"></iframe></div>');
+                    die('<div style="position:fixed;background:#fff;width:100%;height:100%;top:0;left:0;z-index:100000;">' . sprintf('<h2><b>%s</b> is not writable.</h2>', $base) . '<br><br><iframe style="width:100%;max-width:760px;height:100%;" src="https://smartslider3.helpscoutdocs.com/article/482-cache-folder-is-not-writable"></iframe></div>');
                 }
             } else if (!self::is_writable($cacheFolder)) {
-                die('<div style="position:fixed;background:#fff;width:100%;height:100%;top:0;left:0;z-index:100000;">' . sprintf('<h2><b>%s</b> is not writable.</h2>', $cacheFolder) . '<br><br><iframe style="width:100%;max-width:760px;height:100%;" src="http://doc.smartslider3.com/article/482-cache-folder-is-not-writable"></iframe></div>');
+                die('<div style="position:fixed;background:#fff;width:100%;height:100%;top:0;left:0;z-index:100000;">' . sprintf('<h2><b>%s</b> is not writable.</h2>', $cacheFolder) . '<br><br><iframe style="width:100%;max-width:760px;height:100%;" src="https://smartslider3.helpscoutdocs.com/article/482-cache-folder-is-not-writable"></iframe></div>');
             }
             $checked[$base . '/' . $folder] = true;
         }
@@ -132,7 +132,7 @@ abstract class N2FilesystemAbstract {
      */
     public static function pathToRelativePath($path) {
         $i = N2Filesystem::getInstance();
-        return str_replace($i->_basepath, '', str_replace('/', DIRECTORY_SEPARATOR, $path));
+        return preg_replace('/^' . preg_quote($i->_basepath, '/') . '/', '', str_replace('/', DIRECTORY_SEPARATOR, $path));
     }
 
     /**
@@ -246,7 +246,9 @@ abstract class N2FilesystemAbstract {
         if (is_dir($path)) {
             if ($dh = opendir($path)) {
                 while (($file = readdir($dh)) !== false) {
-                    $files[] = $file;
+                    if ($file[0] != ".") {
+                        $files[] = $file;
+                    }
                 }
                 closedir($dh);
             }

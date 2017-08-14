@@ -4,10 +4,10 @@ define('N2JOOMLA', 0);
 define('N2MAGENTO', 0);
 define('N2NATIVE', 0);
 
-class N2Wordpress
-{
+class N2Wordpress {
 
-    public static $nextend_head = '', $nextend_wp_head = false, $nextend_wp_footer = false;
+    private static $outputStarted = false;
+    public static $nextend_js = '', $nextend_css = '', $nextend_wp_head = false, $nextend_wp_footer = false;
 
     public static function init() {
 
@@ -30,8 +30,20 @@ class N2Wordpress
         } else if (class_exists('WPSEO_Frontend')) {
             // Fix for an issue with Yoast SEO
             add_action('template_redirect', 'N2Wordpress::outputStart');
+        } else if (class_exists('EDD_SL_Plugin_Updater')) {
+            //fix for Divi/Extra Layout Injector
+            add_action('template_redirect', 'N2Wordpress::outputStart');
+        } else if (class_exists('Gantry5\\Loader')) {
+            // Fix for Gantry 5 themes
+            add_action('template_redirect', 'N2Wordpress::outputStart');
         } else {
-            add_action('wp_head', 'N2Wordpress::outputStart');
+            $pri = 10;
+            if (class_exists('\\WPaaS\\Plugin', false)) {
+                //Godaddy plugin conflict
+                $pri = 1;
+            }
+            add_action('wp_enqueue_scripts', 'N2Wordpress::outputStart', $pri);
+            add_action('wp_head', 'N2Wordpress::outputStart', $pri);
         }
     }
 
@@ -39,12 +51,14 @@ class N2Wordpress
         if (class_exists('HeadwayDisplay', false)) {
             add_action('headway_html_close', 'N2Wordpress::afterOutputEnd');
         } else {
-            add_action('wp_footer', 'N2Wordpress::afterOutputEnd');
+            add_action('wp_footer', 'N2Wordpress::afterOutputEnd', 11);
         }
         add_action('admin_footer', 'N2Wordpress::afterOutputEnd');
     }
 
     public static function outputStart() {
+        if (self::$outputStarted) return;
+        self::$outputStarted = true;
         if (class_exists('The_Neverending_Home_Page', false) && The_Neverending_Home_Page::got_infinity()) {
             add_filter('infinite_scroll_results', "N2Wordpress::infiniteScrollRenderEnd", 1, 3);
         } else {
@@ -53,6 +67,13 @@ class N2Wordpress
             if (N2Settings::get('safemode') != 1) {
                 ob_start("N2Wordpress::platformRenderEnd");
                 ob_start();
+                if (class_exists('\\Warp\\Warp', false)) {
+                    ob_start();
+                }
+                if (class_exists('Roots\\Sage\\Container', false)) {
+                    ob_start();
+                    ob_start();
+                }
             }
         }
     }
@@ -70,6 +91,7 @@ class N2Wordpress
             }
             $results['html'] = ob_get_clean() . $results['html'];
         }
+
         return $results;
     }
 
@@ -78,24 +100,37 @@ class N2Wordpress
 
         if (defined('N2LIBRARY')) {
             ob_start();
-
             do_action('nextend_css');
-            do_action('nextend_js');
             if (class_exists('N2AssetsManager')) {
                 echo N2AssetsManager::getCSS();
+            }
+            self::$nextend_css = ob_get_clean();
+
+            ob_start();
+            do_action('nextend_js');
+            if (class_exists('N2AssetsManager')) {
                 echo N2AssetsManager::getJs();
             }
-            self::$nextend_head = ob_get_clean();
+            self::$nextend_js = ob_get_clean();
 
         }
-        if (N2Settings::get('safemode') == 1) echo self::$nextend_head;
+        if (N2Settings::get('safemode') == 1) echo self::$nextend_js;
+
         return true;
     }
 
     public static function platformRenderEnd($buffer) {
-        if (self::$nextend_head != '') {
-            return preg_replace('/<\/head>/', self::$nextend_head . '</head>', $buffer, 1);
+        if (self::$nextend_css != '' && strpos($buffer, '<!--n2css-->') !== false) {
+            $buffer            = str_replace('<!--n2css-->', self::$nextend_css, $buffer);
+            self::$nextend_css = '';
         }
+
+        if (self::$nextend_css != '' || self::$nextend_js != '') {
+            $parts = preg_split('/<\/head>/', $buffer, 2);
+
+            return implode(self::$nextend_css . self::$nextend_js . '</head>', $parts);
+        }
+
         return $buffer;
     }
 }
@@ -103,3 +138,9 @@ class N2Wordpress
 N2Wordpress::init();
 
 do_action('nextend_loaded');
+
+function nextend_comment_for_css() {
+    echo "<!--n2css-->";
+}
+
+add_action('wp_print_scripts', 'nextend_comment_for_css');

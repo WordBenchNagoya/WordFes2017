@@ -1,23 +1,22 @@
 <?php
 
-class N2
-{
+class N2 {
 
     public static $version = '2.0.21';
-    public static $api = 'http://secure.nextendweb.com/api/api.php';
+    public static $api = 'https://secure.nextendweb.com/api/api.php';
 
     public static function api($posts, $returnUrl = false) {
 
-        if($returnUrl){
+        if ($returnUrl) {
             $posts_default = array(
                 'platform' => N2Platform::getPlatform()
             );
 
-            return self::$api.'?'.http_build_query($posts + $posts_default);
+            return self::$api . '?' . http_build_query($posts + $posts_default);
         }
 
         if (!isset($data)) {
-            if (function_exists('curl_init') && N2Settings::get('curl', 1)) {
+            if (function_exists('curl_init') && function_exists('curl_exec') && N2Settings::get('curl', 1)) {
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, self::$api);
 
@@ -32,7 +31,7 @@ class N2
                 if (N2Settings::get('curl-clean-proxy', 0)) {
                     curl_setopt($ch, CURLOPT_PROXY, '');
                 }
-                $data            = curl_exec($ch);
+                $data = curl_exec($ch);
                 if (curl_errno($ch) == 60) {
                     curl_setopt($ch, CURLOPT_CAINFO, N2LIBRARY . '/cacert.pem');
                     $data = curl_exec($ch);
@@ -44,6 +43,7 @@ class N2
 
                 if ($curlErrorNumber) {
                     N2Message::error($curlErrorNumber . $error);
+
                     return array(
                         'status' => 'ERROR_HANDLED'
                     );
@@ -64,6 +64,7 @@ class N2
                 $data    = file_get_contents(self::$api, false, $context);
                 if ($data === false) {
                     N2Message::error(n2_('CURL disabled in your php.ini configuration. Please enable it!'));
+
                     return array(
                         'status' => 'ERROR_HANDLED'
                     );
@@ -71,6 +72,7 @@ class N2
                 $headers = self::parseHeaders($http_response_header);
                 if ($headers['status'] != '200') {
                     N2Message::error(n2_('Unable to contact with the licensing server, please try again later!'));
+
                     return array(
                         'status' => 'ERROR_HANDLED'
                     );
@@ -85,6 +87,7 @@ class N2
             case 'application/json':
                 return json_decode($data, true);
         }
+
         return $data;
     }
 
@@ -104,8 +107,10 @@ class N2
             if (isset($output[strtolower($header)])) {
                 return $output[strtolower($header)];
             }
+
             return;
         }
+
         return $output;
     }
 }

@@ -1,5 +1,41 @@
 <?php
 
+function N2ZipRead($file) {
+    if (!function_exists('zip_open')) {
+        N2Message::error(n2_('The zip_open function is missing from your server. ZipArchive has to be enabled on your server to use this functionality! Ask your server host to enable it.'));
+        return null;
+    } else {
+        $zip = zip_open($file);
+        if (!is_resource($zip)) {
+            return array();
+        }
+        $data = array();
+        while ($entry = zip_read($zip)) {
+
+            zip_entry_open($zip, $entry, "r");
+
+            N2ZipReadExtractFile($data, explode('/', zip_entry_name($entry)), zip_entry_read($entry, zip_entry_filesize($entry)));
+
+            zip_entry_close($entry);
+        }
+
+        zip_close($zip);
+
+        return $data;
+    }
+}
+
+function N2ZipReadExtractFile(&$data, $parts, $content) {
+    if (count($parts) == 1) {
+        $data[$parts[0]] = $content;
+    } else {
+        if (!isset($data[$parts[0]])) {
+            $data[$parts[0]] = array();
+        }
+        N2ZipReadExtractFile($data[array_shift($parts)], $parts, $content);
+    }
+}
+
 class N2ZipRead
 {
 
@@ -220,9 +256,6 @@ class N2ZipRead
                         $data = gzinflate($data);
                         break;
                     case 12: // BZIP2
-                        if (!extension_loaded("bz2")) {
-                            @dl((strtolower(substr(PHP_OS, 0, 3)) == "win") ? "php_bz2.dll" : "bz2.so");
-                        }
 
                         if (extension_loaded("bz2")) {
                             $data = bzdecompress($data);

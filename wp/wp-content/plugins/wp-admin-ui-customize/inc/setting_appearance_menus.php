@@ -11,7 +11,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 <div class="wrap">
 
 	<?php echo $this->Msg; ?>
-	<h2><?php _e( 'Appearance Menus Screen Setting' , 'wp-admin-ui-customize' ); ?></h2>
+	<h2><?php _e( 'Appearance Menus' , 'wp-admin-ui-customize' ); ?></h2>
 	<p>&nbsp;</p>
 
 	<h3 id="wauc-apply-user-roles"><?php echo $this->get_apply_roles(); ?></h3>
@@ -42,7 +42,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'This is useful when you want to use only the menus have been created.' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'This is useful when you want to use only the menus that have already been created.' , 'wp-admin-ui-customize' ); ?></p>
 												<p><img src="<?php echo $this->Url; ?>images/appearance_menus_add_new_menu.png" /></p>
 												<p><img src="<?php echo $this->Url; ?>images/appearance_menus_add_new_menu_of_location.png" /></p>
 											</td>
@@ -56,7 +56,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'This is useful when you want to use only the menus have been created.' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'This is useful when you want to use only the menus that have already been created.' , 'wp-admin-ui-customize' ); ?></p>
 												<p><img src="<?php echo $this->Url; ?>images/appearance_menus_delete_menu.png" /></p>
 											</td>
 										</tr>
@@ -78,7 +78,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 		</p>
 
 		<p class="submit reset">
-			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Appearance Menus Screen Setting' , 'wp-admin-ui-customize' ) ); ?></span>
+			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Appearance Menus' , 'wp-admin-ui-customize' ) ); ?></span>
 			<input type="submit" class="button-secondary" name="reset" value="<?php _e( 'Reset settings' , 'wp-admin-ui-customize' ); ?>" />
 		</p>
 

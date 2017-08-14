@@ -2,8 +2,7 @@
 N2Loader::import('libraries.form.element.hidden');
 N2Loader::import('libraries.stylemanager.stylemanager');
 
-class N2ElementStyle extends N2ElementHidden
-{
+class N2ElementStyle extends N2ElementHidden {
 
     public $_tooltip = true;
 
@@ -11,13 +10,14 @@ class N2ElementStyle extends N2ElementHidden
 
         $preview = preg_replace_callback('/url\(\'(.*?)\'\)/', 'N2ElementStyle::fixPreviewImages', (string)$this->_xml);
 
-        N2JS::addInline('new NextendElementStyle("' . $this->_id . '", {
+        N2JS::addInline('new N2Classes.FormElementStyle("' . $this->_id . '", {
             previewmode: "' . N2XmlHelper::getAttribute($this->_xml, 'previewmode') . '",
             font: "' . N2XmlHelper::getAttribute($this->_xml, 'font') . '",
             font2: "' . N2XmlHelper::getAttribute($this->_xml, 'font2') . '",
             style2: "' . N2XmlHelper::getAttribute($this->_xml, 'style2') . '",
             preview: ' . json_encode($preview) . ',
-            set: "' . N2XmlHelper::getAttribute($this->_xml, 'set') . '"
+            set: "' . N2XmlHelper::getAttribute($this->_xml, 'set') . '",
+            label: "' . $this->_label . '"
         });');
 
         return N2Html::tag('div', array(

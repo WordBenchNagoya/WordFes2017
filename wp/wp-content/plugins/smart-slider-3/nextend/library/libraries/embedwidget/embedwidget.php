@@ -3,8 +3,7 @@ N2Loader::import(array(
     'libraries.embedwidget.interface'
 ));
 
-class N2EmbedWidget
-{
+class N2EmbedWidget {
 
     /**
      * @var N2View
@@ -19,10 +18,11 @@ class N2EmbedWidget
         $widgetName           = strtolower($widgetName);
         $params["widgetPath"] = ($path ? $path : self::getEmbedWidgetPath()) . $widgetName . NDS;
 
-        require_once $params["widgetPath"] . ucfirst($widgetName) . ".php";
-
         $class = 'N2' . ucfirst($widgetName);
-
+        
+        if (!class_exists($class, false)) {
+            require_once $params["widgetPath"] . ucfirst($widgetName) . ".php";
+        }
 
         call_user_func(array(
             new $class($this->viewObject),

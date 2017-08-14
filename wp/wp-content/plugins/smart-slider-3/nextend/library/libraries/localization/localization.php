@@ -23,7 +23,11 @@ class N2LocalizationAbstract
     }
 
     static function load_plugin_textdomain($path, $domain = 'nextend') {
-        $locale = N2Localization::getLocale();
+        if (N2Settings::get('force-english-backend')) {
+            $locale = 'en_EN';
+        } else {
+            $locale = N2Localization::getLocale();
+        }
         $mofile = $locale . '.mo';
         if ($loaded = N2Localization::load_textdomain($domain, $path . '/languages/' . $mofile)) {
             return $loaded;

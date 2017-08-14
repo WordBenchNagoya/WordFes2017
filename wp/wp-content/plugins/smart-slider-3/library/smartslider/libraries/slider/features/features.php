@@ -7,6 +7,8 @@ class N2SmartSliderFeatures {
 
     private $slider;
 
+    public $allowBGImageAttachmentFixed = true;
+
     /**
      * @var N2SmartSliderFeatureFadeOnLoad
      */
@@ -56,7 +58,6 @@ class N2SmartSliderFeatures {
      */
     public $slideBackground;
 
-    public $slideBackgroundVideo;
 
     /**
      * @var N2SmartSliderFeaturePostBackgroundAnimation
@@ -93,15 +94,26 @@ class N2SmartSliderFeatures {
 
     public function generateJSProperties() {
 
-        $return = array(
+        $return         = array(
             'admin'          => $this->slider->isAdmin,
             'isStaticEdited' => intval($this->slider->isStaticEdited),
             'translate3d'    => intval(N2SmartSliderSettings::get('hardware-acceleration', 1)),
-            'randomize'      => intval(!$this->slider->isAdmin && $this->slider->params->get('randomize', 0)),
             'callbacks'      => $this->slider->params->get('callbacks', '')
         );
+        $randomizeCache = $this->slider->params->get('randomize-cache', 0);
+        if (!$this->slider->isAdmin && $randomizeCache) {
+            $return['randomize'] = array(
+                'randomize'      => intval($this->slider->params->get('randomize', 0)),
+                'randomizeFirst' => intval($this->slider->params->get('randomizeFirst', 0))
+            );
+        }
 
         $this->makeJavaScriptProperties($return);
+
+        if (count($this->slider->slides) > 1) {
+            $this->allowBGImageAttachmentFixed = false;
+        }
+        $return['allowBGImageAttachmentFixed'] = $this->allowBGImageAttachmentFixed;
 
         return $return;
     }
@@ -116,6 +128,7 @@ class N2SmartSliderFeatures {
         $this->maintainSession->makeJavaScriptProperties($properties);
         $this->autoplay->makeJavaScriptProperties($properties);
         $this->layerMode->makeJavaScriptProperties($properties);
+        $this->slideBackground->makeJavaScriptProperties($properties);
         $properties['initCallbacks'] = $this->initCallbacks;
     }
 
@@ -132,41 +145,7 @@ class N2SmartSliderFeatures {
      */
     public function makeBackground($slide) {
 
-        $background = $this->slideBackground->make($slide);
-
-        return $background;
-    }
-
-    protected function setDevices() {
-
-        if (intval($this->_data->get('showmobile', 1)) == 0) {
-            if (!$this->device->isTablet() && $this->device->isMobile()) {
-                $this->norender = true;
-                return;
-            }
-        }
-
-        $custommobile = N2Parse::parse($this->_data->get('showcustommobile', '0|*|'));
-        if ($custommobile[0] == 1) {
-            if (!$this->device->isTablet() && $this->device->isMobile()) {
-                $this->_data->set('slider', $custommobile[1]);
-            }
-        }
-
-        if (intval($this->_data->get('showtablet', 1)) == 0) {
-            if ($this->device->isTablet()) {
-                $this->norender = true;
-                return;
-            }
-        }
-
-        $customtablet = N2Parse::parse($this->_data->get('showcustomtablet', '0|*|'));
-        if ($customtablet[0] == 1) {
-            if ($this->device->isTablet()) {
-                $this->_data->set('slider', $customtablet[1]);
-            }
-        }
-
+        return $this->slideBackground->make($slide);
     }
 
     public function addInitCallback($callback) {

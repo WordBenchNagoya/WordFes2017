@@ -39,7 +39,7 @@ class CPTP_Module_GetArchives extends CPTP_Module {
 
 		if ( isset( $r['taxonomy'] ) && is_array( $r['taxonomy'] ) ) {
 			global $wpdb;
-			$where = $where . " AND $wpdb->term_taxonomy.taxonomy = '".$r['taxonomy']['name']."' AND $wpdb->term_taxonomy.term_id = '".$r['taxonomy']['termid']."'";
+			$where = $where . " AND $wpdb->term_taxonomy.taxonomy = '" . $r['taxonomy']['name'] . "' AND $wpdb->term_taxonomy.term_id = '" . $r['taxonomy']['termid'] . "'";
 		}
 
 		return $where;
@@ -57,7 +57,7 @@ class CPTP_Module_GetArchives extends CPTP_Module {
 	 * @version 1.0
 	 *
 	 * @param string $join
-	 * @param array $r
+	 * @param array  $r
 	 *
 	 * @return string
 	 */
@@ -78,19 +78,19 @@ class CPTP_Module_GetArchives extends CPTP_Module {
 	 *
 	 * @version 2.2 03/27/14
 	 *
-	 * @param string $link
+	 * @param string $html archive <li> html.
 	 *
 	 * @return string
 	 */
-	public function get_archives_link( $link ) {
+	public function get_archives_link( $html ) {
 		global $wp_rewrite;
 
 		if ( ! isset( $this->get_archives_where_r['post_type'] ) ) {
-			return $link;
+			return $html;
 		}
 
 		if ( 'post' == $this->get_archives_where_r['post_type'] ) {
-			return $link;
+			return $html;
 		}
 
 		$c = isset( $this->get_archives_where_r['taxonomy'] ) && is_array( $this->get_archives_where_r['taxonomy'] ) ? $this->get_archives_where_r['taxonomy'] : '';  // [steve]
@@ -103,10 +103,10 @@ class CPTP_Module_GetArchives extends CPTP_Module {
 
 			// remove front
 			$front = substr( $wp_rewrite->front, 1 );
-			$link = str_replace( $front, '', $link );
+			$html = str_replace( $front, '', $html );
 
 			$blog_url = preg_replace( '/https?:\/\//', '', $blog_url );
-			$ret_link = str_replace( $blog_url, $blog_url.'/%link_dir%', $link );
+			$ret_link = str_replace( $blog_url, $blog_url . '/%link_dir%', $html );
 
 			$post_type = get_post_type_object( $this->get_archives_where_r['post_type'] );
 			if ( empty( $c ) ) {    // [steve]
@@ -117,23 +117,22 @@ class CPTP_Module_GetArchives extends CPTP_Module {
 				}
 			} else {   // [steve]
 				$c['name'] = ( 'category' == $c['name']  && get_option( 'category_base' ) ) ? get_option( 'category_base' ) : $c['name'];
-				$link_dir = $post_type->rewrite['slug'].'/'.$c['name'].'/'.$c['termslug'];
+				$link_dir = $post_type->rewrite['slug'] . '/' . $c['name'] . '/' . $c['termslug'];
 			}
 
-			if ( ! strstr( $link, '/date/' ) ) {
+			if ( ! strstr( $html, '/date/' ) ) {
 				$link_dir = $link_dir . CPTP_Util::get_date_front( $post_type );
 			}
 
 			if ( $post_type->rewrite['with_front'] ) {
-				$link_dir = $front.$link_dir;
+				$link_dir = $front . $link_dir;
 			}
 
 			$ret_link = str_replace( '%link_dir%', $link_dir, $ret_link );
 		} else {
-			$ret_link = $link;
+			$ret_link = $html;
 		}
 		$this->get_archives_where_r['post_type'] = $t;	// [steve] reverting post_type to previous value
-
 		return $ret_link;
 	}
 }

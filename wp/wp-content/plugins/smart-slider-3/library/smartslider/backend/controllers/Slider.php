@@ -3,6 +3,7 @@
 class N2SmartsliderBackendSliderController extends N2SmartSliderController {
 
     public $sliderId = 0;
+    public $layoutName = 'default1c';
 
     public function initialize() {
         parent::initialize();
@@ -59,12 +60,42 @@ class N2SmartsliderBackendSliderController extends N2SmartSliderController {
                 $this->redirectToSliders();
             }
 
+            $xref   = new N2SmartsliderSlidersXrefModel();
+            $groups = $xref->getGroups($this->sliderId);
+            if (!empty($groups)) {
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => $this->appType->router->createUrl(array(
+                        "slider/edit",
+                        array('sliderid' => $groups[0]['group_id'])
+                    )),
+                    'class' => 'n2-h4'
+                ), $groups[0]['title']));
+            }
+
+
+            $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                'href'  => $this->appType->router->createUrl(array(
+                    "slider/edit",
+                    array('sliderid' => $this->sliderId)
+                )),
+                'class' => 'n2-h4 n2-active'
+            ), $slider['title']));
+
             N2Loader::import('libraries.fonts.fontmanager');
             N2Loader::import('libraries.stylemanager.stylemanager');
 
-            $this->addView("edit", array(
-                'slider' => $slider
-            ));
+            switch ($slider['type']) {
+                case 'group':
+                    $this->loadSliderManager();
+                    $this->addView("group", array(
+                        'slider' => $slider
+                    ));
+                    break;
+                default:
+                    $this->addView("edit", array(
+                        'slider' => $slider
+                    ));
+            }
 
             $this->render();
 

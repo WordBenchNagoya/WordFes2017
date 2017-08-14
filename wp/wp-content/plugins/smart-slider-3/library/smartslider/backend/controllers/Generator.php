@@ -1,9 +1,8 @@
 <?php
 
-class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
-{
+class N2SmartsliderBackendGeneratorController extends N2SmartSliderController {
 
-    public $layoutName = 'default';
+    public $layoutName = 'default1c';
 
     public function initialize() {
         parent::initialize();
@@ -22,6 +21,32 @@ class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
             $slidersModel = new N2SmartsliderSlidersModel();
             $slider       = $slidersModel->get($sliderID);
             if ($this->validateDatabase($slider)) {
+
+                $xref   = new N2SmartsliderSlidersXrefModel();
+                $groups = $xref->getGroups($slider['id']);
+                if (!empty($groups)) {
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "slider/edit",
+                            array('sliderid' => $groups[0]['group_id'])
+                        )),
+                        'class' => 'n2-h4'
+                    ), $groups[0]['title']));
+                }
+
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => $this->appType->router->createUrl(array(
+                        "slider/edit",
+                        array('sliderid' => $slider['id'])
+                    )),
+                    'class' => 'n2-h4'
+                ), $slider['title']));
+
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => '#',
+                    'class' => 'n2-h4 n2-active'
+                ), n2_('Add dynamic slides')));
+
                 $this->addView("create", array(
                     "slider" => $slider
                 ));
@@ -38,6 +63,9 @@ class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
             $generatorModel = new N2SmartsliderGeneratorModel();
             $generator      = $generatorModel->get($generatorId);
             if ($this->validateDatabase($generator)) {
+    
+                N2Request::set('group', $generator['group']);
+                N2Request::set('type', $generator['type']);
 
                 $slidesModel = new N2SmartsliderSlidesModel();
                 $slides      = $slidesModel->getAll(-1, 'OR generator_id = ' . $generator['id'] . '');
@@ -68,13 +96,56 @@ class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
 
                     N2Request::set('sliderid', $slide['slider']);
 
-                    $this->addView("../../inline/_sliders", array(
-                        "appObj" => $this
-                    ), "sidebar");
+                    $slidersModel = new N2SmartsliderSlidersModel();
+                    $slider       = $slidersModel->get($slide['slider']);
+
+                    $xref   = new N2SmartsliderSlidersXrefModel();
+                    $groups = $xref->getGroups($slider['id']);
+                    if (!empty($groups)) {
+                        $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                            'href'  => $this->appType->router->createUrl(array(
+                                "slider/edit",
+                                array('sliderid' => $groups[0]['group_id'])
+                            )),
+                            'class' => 'n2-h4'
+                        ), $groups[0]['title']));
+                    }
+
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "slider/edit",
+                            array('sliderid' => $slider['id'])
+                        )),
+                        'class' => 'n2-h4'
+                    ), $slider['title']));
+
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "slides/edit",
+                            array(
+                                'sliderid' => $slider['id'],
+                                'slideid'  => $slide['id']
+                            )
+                        )),
+                        'class' => 'n2-h4'
+                    ), $slide['title']));
+
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "generator/edit",
+                            array(
+                                'generator_id' => $generatorId
+                            )
+                        )),
+                        'class' => 'n2-h4 n2-active'
+                    ), n2_('Edit generator')));
+
                     $this->addView("edit", array(
                         "generatorModel" => $generatorModel,
                         "generator"      => $generator,
-                        "slide"          => $slide
+                        "slide"          => $slide,
+                        'sliderid'       => $slider['id'],
+                        'slideid'        => $slide['id']
                     ));
                     $this->render();
                 } else {
@@ -114,6 +185,19 @@ class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
                 ), 302, true);
             }
 
+            $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                'href'  => $this->appType->router->createUrl(array(
+                    "slider/edit",
+                    array('sliderid' => $slider['id'])
+                )),
+                'class' => 'n2-h4'
+            ), $slider['title']));
+
+            $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                'href'  => '#',
+                'class' => 'n2-h4 n2-active'
+            ), n2_('Add dynamic slides')));
+
             $this->addView("create_settings", array(
                 'slider' => $slider
             ));
@@ -130,7 +214,8 @@ class N2SmartsliderBackendGeneratorController extends N2SmartSliderController
     public function actionConfigure($create = false) {
         if ($this->validatePermission('smartslider_config')) {
 
-            $generatorModel = new N2SmartsliderGeneratorModel();
+            $this->layoutName = 'default';
+            $generatorModel   = new N2SmartsliderGeneratorModel();
 
             $group = N2Request::getVar('group');
             $type  = N2Request::getVar('type');

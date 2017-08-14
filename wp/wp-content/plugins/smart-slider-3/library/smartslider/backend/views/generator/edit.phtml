@@ -1,26 +1,26 @@
 <?php
 $this->widget->init('topbar', array(
-    "menu"    => array(
-        N2Html::tag('a', array(
-            'id'    => 'n2-ss-preview',
-            'href'  => '#',
-            'class' => 'n2-h3 n2-uc n2-has-underline n2-button n2-button-blue n2-button-big',
-            'style' => 'font-size: 12px;'
-        ), n2_('Preview'))
-    ),
+    'back'    => N2Html::tag('a', array(
+        'id'    => 'n2-ss-preview',
+        'href'  => $this->appType->router->createUrl(array(
+            "preview/index",
+            array('sliderid' => $sliderid) + N2Form::tokenizeUrl()
+        )),
+        'class' => 'n2-h4 n2-uc'
+    ), n2_('Preview')),
     "actions" => array(
         N2Html::tag('a', array(
             'href'  => $this->appType->router->createUrl(array(
                 "slider/edit",
                 array(
-                    "sliderid" => N2Request::getInt('sliderid')
+                    "sliderid" => $sliderid
                 )
             )),
-            'class' => 'n2-button n2-button-red n2-button-big n2-h4 n2-b n2-uc'
+            'class' => 'n2-button n2-button-normal n2-button-l n2-radius-s n2-button-red n2-h4 n2-b n2-uc'
         ), n2_('Cancel')),
         N2Html::tag('a', array(
             'href'    => '#',
-            'class'   => 'n2-button n2-button-green n2-button-big n2-h4 n2-b n2-uc',
+            'class'   => 'n2-button n2-button-normal n2-button-l n2-radius-s n2-button-green n2-h4 n2-b n2-uc',
             'onclick' => 'return NextendForm.submit("#smartslider-form");'
         ), n2_('Save'))
     )
@@ -64,7 +64,7 @@ $this->widget->init('topbar', array(
 </style>
 <?php
 
-N2JS::addInline('new NextendSmartSliderGeneratorRecords("' . $this->appType->router->createAjaxUrl(array(
+N2JS::addInline('new N2Classes.SmartSliderGeneratorRecords("' . $this->appType->router->createAjaxUrl(array(
         'generator/recordstable',
         array('generator_id' => $generator['id'])
     )) . '");');
@@ -98,7 +98,10 @@ N2JS::addInline('new NextendSmartSliderGeneratorRecords("' . $this->appType->rou
                     NextendNewFullWindow('', 'n2-tab-preview');
                 }
                 form.attr({
-                    action: '<?php echo $this->appType->router->createUrl(array("preview/generator", N2Form::tokenizeUrl() + array('generator_id' => $generator['id'])))?>',
+                    action: '<?php echo $this->appType->router->createUrl(array(
+                        "preview/generator",
+                        N2Form::tokenizeUrl() + array('generator_id' => $generator['id'])
+                    ))?>',
                     target: 'n2-tab-preview'
                 }).submit().attr({
                     action: formAction,

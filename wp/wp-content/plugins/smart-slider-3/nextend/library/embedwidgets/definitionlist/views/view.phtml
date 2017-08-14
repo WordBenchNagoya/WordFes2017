@@ -7,7 +7,7 @@ if (isset($dl) && count($dl)) {
 
         //BEGIN <DT>
         if (!isset($dlRow['options'])) $dlRow['options'] = array();
-        echo N2Html::openTag('dt', $dlRow['options'] + array('class' => $dlRow['class']));
+        echo N2Html::openTag('dt', $dlRow['options'] + (empty($dlRow['class']) ? array() : array('class' => $dlRow['class'])));
         if (isset($dlRow["linkOptions"])) {
             echo N2Html::tag('a', (isset($dlRow['linkOptions']) ? $dlRow['linkOptions'] : array()), $dlRow['title']);
         } elseif (isset($dlRow["link"])) {
@@ -23,7 +23,7 @@ if (isset($dl) && count($dl)) {
         if (!empty($dlRow['after'])) echo $dlRow['after'];
         echo N2Html::closeTag('dt');
 
-        echo N2Html::openTag('dd', array('class' => $dlRow['class']));
+        echo N2Html::openTag('dd', (empty($dlRow['class']) ? array() : array('class' => $dlRow['class'])));
 
         if (!empty($dlRow["preUl"])) {
             echo $dlRow["preUl"];

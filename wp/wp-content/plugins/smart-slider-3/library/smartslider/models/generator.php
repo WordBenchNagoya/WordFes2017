@@ -5,10 +5,10 @@ class N2SmartsliderGeneratorModel extends N2Model
 {
 
     private static $layouts = array(
-        'image'          => '{"title":"{title}","description":"","thumbnail":"{thumbnail}","backgroundColor":"ffffff00","backgroundImage":"{image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoWebm":"","backgroundVideoOgg":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
-        'image_extended' => '{"title":"{title}","description":"{description}","thumbnail":"{image}","backgroundColor":"ffffff00","backgroundImage":"{image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoWebm":"","backgroundVideoOgg":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
-        'article'        => '{"title":"{title}","description":"{description}","thumbnail":"{thumbnail}","backgroundColor":"ffffff00","backgroundImage":"{featured_image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoWebm":"","backgroundVideoOgg":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"{url}|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
-        'youtube'        => '{"title":"{title/1}","description":"{removehtml(description/1)}","thumbnail":"{thumbnail_medium/1}","backgroundColor":"ffffff00","backgroundImage":"","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoWebm":"","backgroundVideoOgg":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","simplebganimation":"","kenburns":"50|*|50|*|","slide":[{"style":"position: absolute; z-index: 1;left:0%;top:0%;width:100%;height:100%;","animations":{},"name":"youtube","crop":"visible","align":"left","desktopportrait":1,"desktoplandscape":1,"tabletportrait":1,"tabletlandscape":1,"mobileportrait":1,"mobilelandscape":1,"desktopportraitleft":0,"desktopportraittop":0,"desktopportraitwidth":100,"desktopportraitheight":100,"items":[{"type":"youtube","values":{"youtubeurl":"{video_id/1}","volume":"-1","autoplay":"1","center":"0","loop":"0","theme":"dark","related":"0","vq":"default"}}]}]}'
+        'image'          => '{"title":"{title}","description":"","thumbnail":"{thumbnail}","backgroundColor":"ffffff00","backgroundImage":"{image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
+        'image_extended' => '{"title":"{title}","description":"{description}","thumbnail":"{image}","backgroundColor":"ffffff00","backgroundImage":"{image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
+        'article'        => '{"title":"{title}","description":"{description}","thumbnail":"{thumbnail}","backgroundColor":"ffffff00","backgroundImage":"{featured_image}","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"{url}|*|_self","slidedurationin":"0","slidedurationout":"0","slide":[]}',
+        'youtube'        => '{"title":"{title/1}","description":"{removehtml(description/1)}","thumbnail":"{thumbnail_medium/1}","backgroundColor":"ffffff00","backgroundImage":"","backgroundAlt":"","backgroundtitle":"","backgroundMode":"default","backgroundVideoMp4":"","backgroundVideoMuted":"1","backgroundVideoLoop":"1","backgroundVideoMode":"fill","link":"|*|_self","slidedurationin":"0","slidedurationout":"0","simplebganimation":"","kenburns":"50|*|50|*|","slide":[{"style":"position: absolute; z-index: 1;left:0%;top:0%;width:100%;height:100%;","animations":{},"name":"youtube","crop":"visible","align":"left","desktopportrait":1,"desktoplandscape":1,"tabletportrait":1,"tabletlandscape":1,"mobileportrait":1,"mobilelandscape":1,"desktopportraitleft":0,"desktopportraittop":0,"desktopportraitwidth":100,"desktopportraitheight":100,"items":[{"type":"youtube","values":{"youtubeurl":"{video_id/1}","volume":"-1","autoplay":"1","center":"0","loop":"0","theme":"dark","related":"0","vq":"default"}}]}]}'
     );
 
     private static function getLayout($type) {
@@ -299,7 +299,7 @@ class N2SmartsliderGeneratorModel extends N2Model
     }
 
     public function get($id) {
-        return $this->db->queryRow("SELECT * FROM " . $this->db->tableName . " WHERE id = :id", array(
+        return $this->db->queryRow("SELECT * FROM " . $this->getTable() . " WHERE id = :id", array(
             ":id" => $id
         ));
     }
@@ -348,7 +348,7 @@ class N2SmartsliderGeneratorModel extends N2Model
     public function getSliderId($generatorId) {
 
         $slidesModal = new N2SmartsliderSlidesModel();
-        $slideData   = $this->db->queryRow("SELECT slider FROM " . $slidesModal->db->tableName . " WHERE generator_id = :id", array(
+        $slideData   = $this->db->queryRow("SELECT slider FROM " . $slidesModal->getTable() . " WHERE generator_id = :id", array(
             ":id" => $generatorId
         ));
 

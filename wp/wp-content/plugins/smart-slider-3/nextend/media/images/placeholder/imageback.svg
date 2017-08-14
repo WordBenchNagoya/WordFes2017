@@ -89,7 +89,7 @@
             <g id="flag" mask="url(#mask-2)">
                 <g transform="translate(112.416544, 146.932868) rotate(-35.000000) translate(-112.416544, -146.932868) translate(104.596232, 131.970368)">
                     <rect id="rect-1" fill="#919191" sketch:type="MSShapeGroup" x="13.234375" y="-1.5750364e-14" width="1.203125" height="19.95"></rect>
-                    <path d="M-8.8817842e-15,27.7083333 C-8.8817842e-15,27.7083333 10.2265625,27.9167 14.4375,29.925 L14.4375,19.95 C8.57226562,18.0104167 -8.8817842e-15,17.7333333 -8.8817842e-15,17.7333333 L-8.8817842e-15,27.7083333 L-8.8817842e-15,27.7083333 Z" id="path-1" fill="#1999E3" sketch:type="MSShapeGroup"></path>
+                    <path d="M-8.8817842e-15,27.7083333 C-8.8817842e-15,27.7083333 10.2265625,27.9167 14.4375,29.925 L14.4375,19.95 C8.57226562,18.0104167 -8.8817842e-15,17.7333333 -8.8817842e-15,17.7333333 L-8.8817842e-15,27.7083333 L-8.8817842e-15,27.7083333 Z" id="path-1" fill="#0c92df" sketch:type="MSShapeGroup"></path>
                     <text id="S" fill="#FFFFFF" sketch:type="MSTextLayer" font-family="Helvetica" font-size="8.8" font-weight="normal">
                         <tspan x="3.609375" y="26.7333333">S</tspan>
                     </text>

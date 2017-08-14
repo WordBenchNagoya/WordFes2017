@@ -7,6 +7,8 @@
  */
 class N2SmartsliderSlidesModel extends N2Model {
 
+    private $currentData, $slider;
+
     public function __construct() {
         parent::__construct("nextend2_smartslider3_slides");
     }
@@ -16,7 +18,7 @@ class N2SmartsliderSlidesModel extends N2Model {
     }
 
     public function getAll($sliderid = 0, $where = '') {
-        return $this->db->queryAll('SELECT * FROM ' . $this->db->tableName . ' WHERE slider = ' . $sliderid . ' ' . $where . ' ORDER BY ordering', false, "assoc", null);
+        return $this->db->queryAll('SELECT * FROM ' . $this->getTable() . ' WHERE slider = ' . $sliderid . ' ' . $where . ' ORDER BY ordering', false, "assoc", null);
     }
 
     public function getRowFromPost($sliderId, $slide, $base64 = true) {
@@ -37,6 +39,8 @@ class N2SmartsliderSlidesModel extends N2Model {
 
         $generator_id = isset($slide['generator_id']) ? intval($slide['generator_id']) : 0;
 
+        $slide['version'] = N2SS3::$version;
+
         $params = $slide;
         unset($params['title']);
         unset($params['slide']);
@@ -45,10 +49,7 @@ class N2SmartsliderSlidesModel extends N2Model {
         unset($params['published']);
         unset($params['first']);
         unset($params['publishdates']);
-
-        if (isset($params['generator_id'])) {
-            unset($params['generator_id']);
-        }
+        unset($params['generator_id']);
 
         return array(
             'title'        => $slide['title'],
@@ -86,32 +87,46 @@ class N2SmartsliderSlidesModel extends N2Model {
 
     protected function getMaximalOrderValue($sliderid = 0) {
 
-        $query  = "SELECT MAX(ordering) AS ordering FROM " . $this->db->tableName . " WHERE slider = :id";
+        $query  = "SELECT MAX(ordering) AS ordering FROM " . $this->getTable() . " WHERE slider = :id";
         $result = $this->db->queryRow($query, array(
             ":id" => $sliderid
         ));
 
         if (isset($result['ordering'])) return $result['ordering'] + 1;
+
         return 0;
     }
 
-    public function renderEditForm($slide) {
+    public function renderEditForm($slider, $slide) {
+        $this->slider = $slider;
         if ($slide) {
-
-            $data = json_decode($slide['params'], true);
-            if ($data == null) $data = array();
-            $data += $slide;
-            $data['sliderid'] = $slide['slider'];
+            $params = json_decode($slide['params'], true);
+            if ($params == null) $params = array();
+            $params += $slide;
+            $params['sliderid']     = $slide['slider'];
+            $params['generator_id'] = $slide['generator_id'];
             echo '<input name="slide[generator_id]" value="' . $slide['generator_id'] . '" type="hidden" />';
         } else {
-            $data = array(
+            $params = array(
                 'static-slide' => N2Request::getInt('static')
             );
         }
 
-        $data['first'] = isset($slide['first']) ? $slide['first'] : 0;
-        $this->editForm($data);
-        return new N2Data($data);
+        $data = new N2Data($params);
+
+        if ($data->get('background-type') == '') {
+            $params['background-type'] = 'color';
+            if ($data->get('backgroundVideoMp4')) {
+                $params['background-type'] = 'video';
+            } else if ($data->get('backgroundImage')) {
+                $params['background-type'] = 'image';
+            }
+        }
+
+        $params['first'] = isset($slide['first']) ? $slide['first'] : 0;
+        $this->editForm($params);
+
+        return $data;
     }
 
     public function simpleEditForm($data = array()) {
@@ -141,37 +156,63 @@ class N2SmartsliderSlidesModel extends N2Model {
         $slidersModel = new N2SmartsliderSlidersModel();
         $slider       = $slidersModel->get(N2Request::getInt('sliderid', 0));
 
-        $slidersSliderXml = call_user_func(array(
+        $slideXML = call_user_func(array(
                 'N2SSPluginType' . $slider['type'],
                 "getPath"
             )) . '/slide.xml';
-        if (N2Filesystem::existsFile($slidersSliderXml)) {
-            $tab->addTabXML($slidersSliderXml);
+        if (N2Filesystem::existsFile($slideXML)) {
+            $tab->addTabXML($slideXML, 1);
+        }
+
+        if ($tab->_form->get('generator_id') > 0) {
+            $tab->addTabXML(dirname(__FILE__) . '/forms/slide_generator.xml', 10);
+
+            $button = $tab->_tabs['generator']->_xml->params[0]->addChild('param');
+            $button->addAttribute('type', 'button');
+            $button->addAttribute('name', 'button');
+            $button->addAttribute('label', '');
+            $button->addAttribute('url', N2Base::getApplication('smartslider')
+                                               ->getApplicationType('backend')->router->createUrl(array(
+                    "generator/edit",
+                    array(
+                        'generator_id' => $this->currentData['generator_id']
+                    )
+                )));
+            $button->addAttribute('target', '_self');
+            $button->addAttribute('default', n2_('Edit generator'));
         }
 
     }
+
+    /**
+     * @param $tab N2TabTabbedWithHide
+     */
+    public function removeSlideSettingsBackground($tab) {
+
+        $tab->removeTab('background');
+
+    }
+
 
     /**
      * @param array $data
      */
     private function editForm($data = array()) {
 
-        if ((!isset($data['static-slide']) || $data['static-slide'] != 1)) {
+        $this->currentData = $data;
+        if (!$this->slider->isStaticEdited || (!isset($data['static-slide']) || $data['static-slide'] != 1)) {
             N2Pluggable::addAction('N2TabTabbedslide-settings', array(
                 $this,
                 'extendSlideSettings'
             ));
+        } else {
+            N2Pluggable::addAction('N2TabTabbedslide-settings', array(
+                $this,
+                'removeSlideSettingsBackground'
+            ));
         }
 
         $this->simpleEditForm($data);
-
-        if (isset($data['generator_id']) && $data['generator_id'] > 0) {
-            $form = new N2Form();
-            $form->loadArray($data);
-
-            $form->loadXMLFile(dirname(__FILE__) . '/forms/slide_generator.xml');
-            echo $form->render('slide');
-        }
 
         N2JS::addFirstCode("new NextendForm('smartslider-form','', {});");
     }
@@ -187,7 +228,6 @@ class N2SmartsliderSlidesModel extends N2Model {
         if (!isset($slide['title']) || $id <= 0) return false;
         if ($slide['title'] == '') $slide['title'] = n2_('New slide');
 
-
         if (isset($slide['publishdates'])) {
             $date = explode('|*|', $slide['publishdates']);
         } else {
@@ -199,6 +239,8 @@ class N2SmartsliderSlidesModel extends N2Model {
         $up   = strtotime(isset($date[0]) ? $date[0] : '');
         $down = strtotime(isset($date[1]) ? $date[1] : '');
 
+        $slide['version'] = N2SS3::$version;
+
         $tmpslide = $slide;
         unset($tmpslide['title']);
         unset($tmpslide['slide']);
@@ -206,6 +248,7 @@ class N2SmartsliderSlidesModel extends N2Model {
         unset($tmpslide['thumbnail']);
         unset($tmpslide['published']);
         unset($tmpslide['publishdates']);
+        unset($tmpslide['generator_id']);
 
         $this->db->update(array(
             'title'        => $slide['title'],
@@ -278,6 +321,8 @@ class N2SmartsliderSlidesModel extends N2Model {
             $parameters['backgroundAlt'] = $image['alt'];
         }
 
+        $parameters['version'] = N2SS3::$version;
+
         return $this->_create($image['title'], json_encode(array()), $image['description'], $image['image'], 1, $publish_up, $publish_down, 0, json_encode($parameters), $sliderId, $this->getMaximalOrderValue($sliderId), '');
     }
 
@@ -321,6 +366,8 @@ class N2SmartsliderSlidesModel extends N2Model {
         }
         $layers = $slide->data['slide'];
 
+        $parameters['version'] = N2SS3::$version;
+
         return $this->_create($video['title'], json_encode($layers), $video['description'], $video['image'], 1, $publish_up, $publish_down, 0, json_encode($parameters), $sliderId, $this->getMaximalOrderValue($sliderId), '');
     }
 
@@ -338,12 +385,16 @@ class N2SmartsliderSlidesModel extends N2Model {
         $title       = $data->get('title');
         $description = $data->get('description');
 
+
+        $parameters['version'] = N2SS3::$version;
+
         return $this->_create($title, json_encode($this->getSlideLayers($title, $description)), $description, $data->get('image'), 1, $publish_up, $publish_down, 0, json_encode($parameters), $sliderId, $this->getMaximalOrderValue($sliderId), '');
     }
 
     private function getSlideLayers($hasTitle = false, $hasDescription = false) {
         $slide = new N2SmartSliderSlideHelper();
         if ($hasTitle && $hasDescription) {
+
             new N2SmartSliderItemHelper($slide, 'heading', array(
                 'desktopportraitleft'   => 30,
                 'desktopportraittop'    => 12,
@@ -352,6 +403,7 @@ class N2SmartsliderSlidesModel extends N2Model {
             ), array(
                 'heading' => '{name/slide}'
             ));
+
             new N2SmartSliderItemHelper($slide, 'text', array(
                 'desktopportraitleft'   => 30,
                 'desktopportraittop'    => 70,
@@ -360,6 +412,7 @@ class N2SmartsliderSlidesModel extends N2Model {
             ), array(
                 'content' => '{description/slide}'
             ));
+
             return $slide->data['slide'];
         } else if ($hasTitle) {
 
@@ -371,8 +424,10 @@ class N2SmartsliderSlidesModel extends N2Model {
             ), array(
                 'heading' => '{name/slide}'
             ));
+
             return $slide->data['slide'];
         }
+
         return array();
     }
 
@@ -403,7 +458,7 @@ class N2SmartsliderSlidesModel extends N2Model {
         $slide = $this->get($id);
 
         // Shift the afterwards slides ++
-        $this->db->query("UPDATE {$this->db->tableName} SET ordering = ordering + 1 WHERE slider = :sliderid AND ordering > :ordering", array(
+        $this->db->query("UPDATE {$this->getTable()} SET ordering = ordering + 1 WHERE slider = :sliderid AND ordering > :ordering", array(
             ":sliderid" => intval($slide['slider']),
             ":ordering" => intval($slide['ordering'])
         ), '');
@@ -413,11 +468,12 @@ class N2SmartsliderSlidesModel extends N2Model {
             $slide['generator_id'] = $generatorModel->duplicate($slide['generator_id']);
         }
 
-        $slide['slide'] = N2Data::json_encode(N2SmartSliderLayer::translateIds(json_decode($slide['slide'], true)));
+        $slide['slide'] = N2Data::json_encode(N2SSSlideComponentLayer::translateIds(json_decode($slide['slide'], true)));
 
         $slideId = $this->_create($slide['title'] . n2_(' - copy'), $slide['slide'], $slide['description'], $slide['thumbnail'], $slide['published'], $slide['publish_up'], $slide['publish_down'], 0, $slide['params'], $slide['slider'], $slide['ordering'] + 1, $slide['generator_id']);
 
         self::markChanged($slide['slider']);
+
         return $slideId;
     }
 
@@ -426,13 +482,14 @@ class N2SmartsliderSlidesModel extends N2Model {
         $slide = $this->get($id);
         if ($slide['generator_id'] > 0) {
             $generatorModel        = new N2SmartSliderGeneratorModel();
-            $slide['generator_id'] = $generatorModel->duplicate($slide['generator_id'], $targetSliderId);
+            $slide['generator_id'] = $generatorModel->duplicate($slide['generator_id']);
         }
 
-        $slide['slide'] = N2Data::json_encode(N2SmartSliderLayer::translateIds(json_decode($slide['slide'], true)));
+        $slide['slide'] = N2Data::json_encode(N2SSSlideComponentLayer::translateIds(json_decode($slide['slide'], true)));
 
-        $slideId = $this->_create($slide['title'] . n2_(' - copy'), $slide['slide'], $slide['description'], $slide['thumbnail'], $slide['published'], $slide['publish_up'], $slide['publish_down'], 0, $slide['params'], $targetSliderId, $slide['ordering'], $slide['generator_id']);
+        $slideId = $this->_create($slide['title'], $slide['slide'], $slide['description'], $slide['thumbnail'], $slide['published'], $slide['publish_up'], $slide['publish_down'], 0, $slide['params'], $targetSliderId, $this->getMaximalOrderValue($targetSliderId), $slide['generator_id']);
         self::markChanged($slide['slider']);
+
         return $slideId;
     }
 
@@ -508,6 +565,7 @@ class N2SmartsliderSlidesModel extends N2Model {
 
             return $i;
         }
+
         return false;
     }
 
@@ -525,7 +583,7 @@ class N2SmartsliderSlidesModel extends N2Model {
             $slides = $rootSlide->expandSlide();
 
             // Shift the afterwards slides with the slides count
-            $this->db->query("UPDATE {$this->db->tableName} SET ordering = ordering + " . count($slides) . " WHERE slider = :sliderid AND ordering > :ordering", array(
+            $this->db->query("UPDATE {$this->getTable()} SET ordering = ordering + " . count($slides) . " WHERE slider = :sliderid AND ordering > :ordering", array(
                 ":sliderid" => intval($slideData['slider']),
                 ":ordering" => intval($slideData['ordering'])
             ), '');
@@ -548,7 +606,7 @@ class N2SmartsliderSlidesModel extends N2Model {
                 $i++;
             }
 
-            $this->db->query("UPDATE {$this->db->tableName} SET published = 0, first = 0 WHERE id = :id", array(
+            $this->db->query("UPDATE {$this->getTable()} SET published = 0, first = 0 WHERE id = :id", array(
                 ":id" => $slideData['id']
             ), '');
 
@@ -567,75 +625,18 @@ class N2SmartsliderSlidesModel extends N2Model {
      * @throws Exception
      */
     public static function box($slide, $slider, $widget, $appType, $optimize) {
-        $lt = array();
-
-        if ($slide->isStatic()) {
-            $lt[] = N2Html::tag('div', array(
-                'class' => 'n2-button-tag n2-button n2-button-x-small n2-sidebar-list-bg n2-uc n2-h5',
-            ), n2_('Static slide'));
-        } else {
-
-            $lt[] = N2Html::tag('div', array(
-                'class' => 'n2-button-tag n2-button n2-button-x-small n2-button-green n2-uc n2-h5 n2-slide-is-first',
-            ), n2_('First'));
-
-            $lt[] = N2Html::tag('a', array(
-                'class' => 'n2-button n2-button-x-small n2-sidebar-list-bg n2-uc n2-h5 n2-slide-first',
-                'href'  => $appType->router->createUrl(array(
-                    'slides/first',
-                    array(
-                        'sliderid' => $slider->sliderId,
-                        'slideid'  => $slide->id
-                    ) + N2Form::tokenizeUrl()
-                ))
-            ), n2_('Set First'));
-        }
+        $lt   = array();
+        $lt[] = N2Html::tag('div', array(
+            'class' => 'n2-ss-box-select',
+        ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-tick2'), ''));
 
         $rt = array();
 
-        $rt[] = N2Html::tag('a', array(
-            'class' => 'n2-button n2-button-small n2-sidebar-list-bg n2-sidebar-list-bg n2-slide-duplicate',
-            'href'  => $appType->router->createUrl(array(
-                'slides/duplicate',
-                array(
-                    'sliderid' => $slider->sliderId,
-                    'slideid'  => $slide->id
-                ) + N2Form::tokenizeUrl()
-            ))
-        ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-duplicate'), ''));
-
-        $rt[] = N2Html::tag('a', array(
-            'class' => 'n2-button n2-button-small n2-sidebar-list-bg n2-slide-delete',
-            'href'  => $appType->router->createUrl(array(
-                'slides/delete',
-                array(
-                    'sliderid' => $slider->sliderId,
-                    'slideid'  => $slide->id
-                ) + N2Form::tokenizeUrl()
-            ))
-        ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-delete'), ''));
-
-        $rt[] = N2Html::tag('div', array(
-            'class' => 'n2-button n2-button-small n2-button-blue n2-slide-selected',
-        ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-tick'), ''));
-
         $rb = array();
-
-        if ($slide->hasGenerator()) {
-            $rb[] = N2Html::tag('a', array(
-                'class' => 'n2-button n2-button-x-small n2-sidebar-list-bg n2-uc n2-h5 n2-slide-generator' . (N2Request::getVar('generator_id') == $slide->generator_id ? ' n2-button-blue' : ''),
-                'href'  => $appType->router->createUrl(array(
-                    'generator/edit',
-                    array(
-                        'generator_id' => $slide->generator_id
-                    )
-                ))
-            ), 'Edit generator');
-        }
 
         $image = $slide->getThumbnail();
         if (empty($image)) {
-            $image = '$system$/images/placeholder/image.png';
+            $image = N2ImageHelper::fixed('$system$/images/placeholder/image.png');
         }
 
         $editUrl = $appType->router->createUrl(array(
@@ -648,39 +649,91 @@ class N2SmartsliderSlidesModel extends N2Model {
 
         $lb = array();
 
-        $lb[] = N2Html::tag('div', array(
-            'class' => 'n2-button-tag n2-button n2-button-x-small n2-sidebar-list-bg n2-uc n2-h5',
-            'style' => 'cursor:pointer;'
-        ), '#' . $slide->id);
+        if ($slide->parameters->get('static-slide', 0)) {
+            $lb[] = '<div class="n2-button n2-button-normal n2-button-xs n2-radius-s n2-button-grey n2-h5 n2-uc">' . n2_('Static slide') . '</div>';
+        }
 
+        if ($slide->generator_id > 0) {
+            $lb[] = '<div class="n2-button n2-button-normal n2-button-xs n2-radius-s n2-button-grey n2-h5 n2-uc">' . n2_('Dynamic slide') . '</div>';
+        }
+
+        $class = 'n2-box-small n2-box-selectable n2-box-slide ';
+        $class .= ($slide->isFirst() ? ' n2-slide-state-first' : '');
+        $class .= ($slide->published ? ' n2-slide-state-published' : '');
+        $class .= ($slide->hasGenerator() ? ' n2-slide-state-has-generator' : '');
+        $class .= ($slide->isCurrentlyEdited() ? ' n2-ss-slide-active' : '');
+
+        $attributes = array(
+            'style'            => 'background-image: url("' . $optimize->optimizeThumbnail($image) . '");',
+            'class'            => $class,
+            'data-slideid'     => $slide->id,
+            'data-title'       => $slide->getRawTitle(),
+            'data-description' => $slide->getRawDescription(),
+            'data-link'        => $slide->getRawLink(),
+            'data-image'       => N2ImageHelper::fixed($image),
+            'data-editUrl'     => $editUrl
+        );
+
+        if ($slide->hasGenerator()) {
+            $attributes['data-generator'] = $appType->router->createUrl(array(
+                'generator/edit',
+                array(
+                    'generator_id' => $slide->generator_id
+                )
+            ));
+        }
         $widget->init("box", array(
-            'attributes'         => array(
-                'class'            => 'n2-box-slide n2-box-overflow' . ($slide->isFirst() ? ' n2-first-slide' : '') . ($slide->isCurrentlyEdited() ? ' n2-ss-slide-active' : ''),
-                'data-slideid'     => $slide->id,
-                'data-title'       => $slide->getRawTitle(),
-                'data-description' => $slide->getRawDescription(),
-                'data-link'        => $slide->getRawLink(),
-                'data-image'       => N2ImageHelper::fixed($image),
-                'data-editUrl'     => $editUrl
-            ),
-            'image'              => $optimize->optimizeThumbnail($image),
-            'firstCol'           => N2Html::link($slide->getTitle() . ($slide->hasGenerator() ? ' [' . $slide->getSlideStat() . ']' : ''), $editUrl, array('class' => 'n2-h4')),
+            'attributes'         => $attributes,
             'lt'                 => implode('', $lt),
             'lb'                 => implode('', $lb),
-            'lbAttributes'       => array('class' => 'n2-on-hover'),
             'rt'                 => implode('', $rt),
             'rtAttributes'       => array('class' => 'n2-on-hover'),
             'rb'                 => implode('', $rb),
-            'placeholderContent' => N2Html::tag('a', array(
-                'class' => 'n2-slide-published' . ($slide->published ? ' n2-active' : ''),
-                'href'  => $appType->router->createUrl(array(
-                    'slides/publish',
-                    array(
-                        'sliderid' => $slider->sliderId,
-                        'slideid'  => $slide->id
-                    ) + N2Form::tokenizeUrl()
-                ))
-            ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-unpublished'), ''))
+            'overlay'            => N2Html::tag('div', array(
+                'class' => 'n2-box-overlay n2-on-hover'
+            ), N2Html::tag('div', array('class' => 'n2-button n2-button-normal n2-button-s n2-button-green n2-radius-s n2-uc n2-h5'), n2_('Edit'))),
+            'placeholderContent' => N2Html::tag('div', array(
+                    'class' => 'n2-box-placeholder-title n2-h4'
+                ), N2Html::link($slide->getTitle() . ($slide->hasGenerator() ? ' [' . $slide->getSlideStat() . ']' : ''), $editUrl, array('class' => 'n2-h4'))) . N2Html::tag('div', array(
+                    'class' => 'n2-box-placeholder-buttons'
+                ), N2Html::tag('i', array('class' => 'n2-slide-first n2-i n2-it n2-i-star'), '') . N2Html::tag('a', array(
+                        'class'      => 'n2-slide-published',
+                        'data-n2tip' => 'Publish - Unpublish',
+                        'href'       => $appType->router->createUrl(array(
+                            'slides/publish',
+                            array(
+                                'sliderid' => $slider->sliderId,
+                                'slideid'  => $slide->id
+                            ) + N2Form::tokenizeUrl()
+                        ))
+                    ), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-unpublished'), '')))
+
         ));
+    }
+
+    public static function prepareSample(&$layers) {
+        for ($i = 0; $i < count($layers); $i++) {
+
+            if (isset($layers[$i]['type'])) {
+                switch ($layers[$i]['type']) {
+                    case 'content':
+                        N2SSSlideComponentContent::prepareSample($layers[$i]);
+                        break;
+                    case 'row':
+                        N2SSSlideComponentRow::prepareSample($layers[$i]);
+                        break;
+                    case 'col':
+                        N2SSSlideComponentCol::prepareSample($layers[$i]);
+                        break;
+                    case 'group':
+                        N2SSSlideComponentGroup::prepareSample($layers[$i]);
+                        break;
+                    default:
+                        N2SSSlideComponentLayer::prepareSample($layers[$i]);
+                }
+            } else {
+                N2SSSlideComponentLayer::prepareSample($layers[$i]);
+            }
+        }
     }
 } 

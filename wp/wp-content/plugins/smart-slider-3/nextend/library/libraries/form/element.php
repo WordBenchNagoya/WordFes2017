@@ -1,7 +1,6 @@
 <?php
 
-class N2Element
-{
+class N2Element {
 
     /**
      * @var N2Form
@@ -12,11 +11,13 @@ class N2Element
     var $_xml;
     var $_default;
     var $_name;
-    var $_label;
+    public $_label = '';
     var $_description;
     var $_id;
     var $_inputname;
     var $_editableName = false;
+
+    public $hasLabel = true;
 
     function __construct(&$form, &$tab, &$xml) {
 
@@ -32,7 +33,7 @@ class N2Element
         $this->_id          = $this->generateId($control_name . $this->_name);
         $this->_inputname   = (N2XmlHelper::getAttribute($this->_xml, 'hidename') ? '' : $control_name . '[' . $this->_name . ']');
         $this->_label       = N2XmlHelper::getAttribute($this->_xml, 'label');
-        if ($this->_label == '') $this->_label = $this->_name;
+        if (empty($this->_label)) $this->hasLabel = false;
         return array(
             $tooltip ? $this->fetchTooltip() : '',
             $this->fetchElement()
@@ -45,9 +46,14 @@ class N2Element
         } else {
             $this->_label = n2_($this->_label);
         }
-        $html = N2Html::tag('label', array(
+        $attrs = array(
             'for' => $this->_id
-        ), $this->_label);
+        );
+        $tip   = N2XmlHelper::getAttribute($this->_xml, 'tip');
+        if (!empty($tip)) {
+            $attrs['data-n2tip'] = n2_($tip);
+        }
+        $html = N2Html::tag('label', $attrs, $this->_label);
         return $html;
     }
 

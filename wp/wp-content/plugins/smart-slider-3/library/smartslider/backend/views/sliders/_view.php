@@ -1,25 +1,26 @@
 <?php
 
 
-class N2SmartsliderBackendSlidersView extends N2ViewBase
-{
+class N2SmartsliderBackendSlidersView extends N2ViewBase {
 
-    public function renderImportByUploadForm() {
+    public function getDashboardButtons() {
 
-        N2SmartsliderSlidersModel::renderImportByUploadForm();
-    }
+        $app        = N2Base::getApplication('smartslider');
+        $accessEdit = N2Acl::canDo('smartslider_edit', $app->info);
 
-    public function renderRestoreByUploadForm() {
+        $buttons = '';
+        if ($accessEdit) {
 
-        N2SmartsliderSlidersModel::renderRestoreByUploadForm();
-    }
+            $buttons .= N2Html::tag('a', array(
+                'data-label' => n2_('Import slider'),
+                'href'       => $app->router->createUrl(array('sliders/import')),
+                'id'         => 'n2-ss-import-slider'
+            ), N2Html::tag('i', array('class' => 'n2-i n2-i-a-import')));
 
-    public function renderImportFromServerForm() {
+        }
+    
 
-        N2SmartsliderSlidersModel::renderImportFromServerForm();
-    }
 
-    public function renderRestoreFromServerForm(){
-        N2SmartsliderSlidersModel::renderRestoreFromServerForm();
+        return $buttons;
     }
 } 

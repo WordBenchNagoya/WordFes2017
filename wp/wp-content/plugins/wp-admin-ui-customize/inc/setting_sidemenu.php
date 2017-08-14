@@ -14,10 +14,10 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 <div class="wrap">
 
 	<?php echo $this->Msg; ?>
-	<h2><?php _e( 'Side Menu' , 'wp-admin-ui-customize' ); ?></h2>
-	<p><?php _e( 'Please change the menu by drag and drop.' , 'wp-admin-ui-customize' ); ?></p>
-	<p class="description"><?php echo sprintf( __( 'New plugin menus will be added to the <strong>%s</strong>.' , 'wp-admin-ui-customize' ) , __( 'Menu items that can be added' , 'wp-admin-ui-customize' ) ); ?>
-	<p><strong><?php _e( 'Notice: Please do not place the same multiple menu slug.' , 'wp-admin-ui-customize' ); ?></strong></p>
+	<h2><?php _e( 'Sidebar' , 'wp-admin-ui-customize' ); ?></h2>
+	<p><?php _e( 'Drag menu items to edit and reorder menus.' , 'wp-admin-ui-customize' ); ?></p>
+	<p class="description"><?php echo sprintf( __( 'New plugin menus will be added to the <strong>%s</strong>.' , 'wp-admin-ui-customize' ) , __( 'Available menu items' , 'wp-admin-ui-customize' ) ); ?>
+	<p><strong><?php _e( 'Note: Using the same menu item multiple times could cause unexpected behavior.' , 'wp-admin-ui-customize' ); ?></strong></p>
 
 	<h3 id="wauc-apply-user-roles"><?php echo $this->get_apply_roles(); ?></h3>
 
@@ -37,7 +37,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 					<div id="can_menus">
 
 						<div class="postbox">
-							<h3 class="hndle"><span><?php _e( 'Menu items that can be added' , 'wp-admin-ui-customize' ); ?></span></h3>
+							<h3 class="hndle"><span><?php _e( 'Available menu items' , 'wp-admin-ui-customize' ); ?></span></h3>
 							<div class="inside">
 		
 								<p class="description"><?php _e( 'Sepalator' , 'wp-admin-ui-customize' ); ?></p>
@@ -218,7 +218,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 						</div>
 		
-						<p class="sidebar_setting_delete"><a href="#"><?php _e( 'Delete all the Current menu' , 'wp-admin-ui-customize' ); ?></a></p>
+						<p class="sidebar_setting_delete"><a href="#"><?php _e( 'Remove all items from the current menu' , 'wp-admin-ui-customize' ); ?></a></p>
 
 					</div>
 				</div>
@@ -234,7 +234,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 		</p>
 
 		<p class="submit reset">
-			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Side Menu' , 'wp-admin-ui-customize' ) . __( 'Settings' ) ); ?></span>
+			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Sidebar' , 'wp-admin-ui-customize' ) . __( 'Settings' ) ); ?></span>
 			<input type="submit" class="button-secondary" name="reset" value="<?php _e( 'Reset settings' , 'wp-admin-ui-customize' ); ?>" />
 		</p>
 

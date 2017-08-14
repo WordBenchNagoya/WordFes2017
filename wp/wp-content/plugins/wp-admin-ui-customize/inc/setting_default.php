@@ -13,10 +13,11 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 	<?php echo $this->Msg; ?>
 	<h2><?php echo $this->Name; ?></h2>
-	<p><?php _e( 'Customize the UI of the management screen for all users.' , 'wp-admin-ui-customize' ); ?></p>
-	<p><?php _e ( 'Please select the user roles that all settings will apply to.' , 'wp-admin-ui-customize' ); ?></p>
+	<p><?php _e( '
+WP Admin UI Customize allows the management UI for different user roles to be customized.' , 'wp-admin-ui-customize' ); ?></p>
+	<p><?php _e ( 'Select the user roles to customize below.' , 'wp-admin-ui-customize' ); ?></p>
 	<p>
-		<span class="description"><?php _e( 'Please use the Multiple Add-on if you want per role customization.' , 'wp-admin-ui-customize' ); ?></span>
+		<span class="description"><?php _e( 'The Multiple Add-on is needed to create unique customizations for different user roles.' , 'wp-admin-ui-customize' ); ?></span>
 		<strong><a href="<?php echo $this->Site; ?>multiple_about/?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank">WP Admin UI Customize Multiple Add-on</a></strong>
 	</p>
 
@@ -27,38 +28,13 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 				<div id="about_plugin">
 
-					<div class="stuffbox" id="donationbox">
-						<div class="inside">
-							<p style="color: #FFFFFF; font-size: 20px;"><?php _e( 'Donate' , 'wp-admin-ui-customize' ); ?></p>
-							<p style="color: #FFFFFF;"><?php _e( 'Are you happy with this plugin?<br />Japanese law prohibits PayPal donations. <br />Please consider purchasing the Line Break First and End plugin in lieu of a donation.' , 'wp-admin-ui-customize' ); ?></p>
-							<p>&nbsp;</p>
-							<p style="text-align: center;">
-								<a href="<?php echo $this->AuthorUrl; ?>line-break-first-and-end/?utm_source=use_plugin&utm_medium=donate&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" class="button-primary" target="_blank">Line Break First and End</a>
-							</p>
-							<p>&nbsp;</p>
-							<div class="donation_memo">
-								<p><strong><?php _e( 'Features' , 'wp-admin-ui-customize' ); ?></strong></p>
-								<p><?php _e( 'Line Break First and End plugin allows for line breaks when using the visual editor TinyMCE.' , 'wp-admin-ui-customize' ); ?></p>
-							</div>
-							<div class="donation_memo">
-								<p><strong><?php _e( 'The primary use of donations' , 'wp-admin-ui-customize' ); ?></strong></p>
-								<ul>
-									<li>- <?php _e( 'Liquidation of time and value' , 'wp-admin-ui-customize' ); ?></li>
-									<li>- <?php _e( 'Additional suggestions feature' , 'wp-admin-ui-customize' ); ?></li>
-									<li>- <?php _e( 'Maintain motivation' , 'wp-admin-ui-customize' ); ?></li>
-									<li>- <?php _e( 'Ensure time as the father of Sunday' , 'wp-admin-ui-customize' ); ?></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-		
 					<div class="stuffbox" id="aboutbox">
 						<h3><span class="hndle"><?php _e( 'About plugin' , 'wp-admin-ui-customize' ); ?></span></h3>
 						<div class="inside">
-							<p><?php _e( 'Version checked' , 'wp-admin-ui-customize' ); ?> : 3.8 - 4.5</p>
+							<p><?php _e( 'Tested with WordPress versions' , 'wp-admin-ui-customize' ); ?> : 4.2 - 4.6</p>
 							<ul>
-								<li><a href="<?php echo $this->Site; ?>?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank"><?php _e( 'Plugin\'s site' , 'wp-admin-ui-customize' ); ?></a></li>
-								<li><a href="<?php echo $this->AuthorUrl; ?>?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank"><?php _e( 'Developer\'s site' , 'wp-admin-ui-customize' ); ?></a></li>
+								<li><a href="<?php echo $this->Site; ?>?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank"><?php _e( 'Plugin site' , 'wp-admin-ui-customize' ); ?></a></li>
+								<li><a href="<?php echo $this->AuthorUrl; ?>?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank"><?php _e( 'Developer site' , 'wp-admin-ui-customize' ); ?></a></li>
 								<li><a href="http://wordpress.org/support/plugin/<?php echo $this->PluginSlug; ?>" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>
 								<li><a href="http://wordpress.org/support/view/plugin-reviews/<?php echo $this->PluginSlug; ?>" target="_blank"><?php _e( 'Reviews' , 'wp-admin-ui-customize' ); ?></a></li>
 								<li><a href="https://twitter.com/gqevu6bsiz" target="_blank">twitter</a></li>
@@ -70,8 +46,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 					<div class="stuffbox" id="usefulbox">
 						<h3><span class="hndle"><?php _e( 'Useful plugins' , 'wp-admin-ui-customize' ); ?></span></h3>
 						<div class="inside">
-							<p><strong><span style="color: orange;">new</span> <a href="<?php echo $this->Site; ?>multiple_about/?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank">WP Admin UI Customize Multiple Add-on</a></strong></p>
-							<p class="description"><?php _e( 'Apply setting on a per-role basis.' , 'wp-admin-ui-customize' ); ?></p>
+							<p><strong><a href="<?php echo $this->Site; ?>multiple_about/?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank">WP Admin UI Customize Multiple Add-on</a></strong></p>
+							<p class="description"><?php _e( 'Create unique customizations for different user roles' , 'wp-admin-ui-customize' ); ?></p>
 							<p><strong><a href="<?php echo $this->Site; ?>import_export_about/?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank">WP Admin UI Customize Import &amp; Export Add-on</a></strong></p>
 							<p class="description"><?php _e( 'Easily import/export setting between installations.' , 'wp-admin-ui-customize' ); ?></p>
 							<p><strong><a href="<?php echo $this->Site; ?>multisite_about/?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank">WP Admin UI Customize for Multisite</a></strong></p>
@@ -129,16 +105,6 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 						
 					</form>
 
-					<form id="donation_form" class="wauc_form" method="post" action="<?php echo esc_url( remove_query_arg( 'wauc_msg' , add_query_arg( array( 'page' => $this->PageSlug ) ) ) ); ?>">
-						<h3><?php _e( 'If you have already donated to.' , 'wp-admin-ui-customize' ); ?></h3>
-						<p><?php _e( 'Please enter the \'Donation Delete Key\' that was provided on the Line Break First and End download page.' , 'wp-admin-ui-customize' ); ?></p>
-						<input type="hidden" name="<?php echo $this->UPFN; ?>" value="Y" />
-						<?php wp_nonce_field( $this->Nonces["value"] , $this->Nonces["field"] ); ?>
-						<label for="donate_key"><?php _e( 'Donation Delete Key:' , 'wp-admin-ui-customize' ); ?></label>
-						<input type="text" name="donate_key" id="donate_key" value="" class="regular-text" />
-						<input type="submit" class="button-primary" name="update" value="<?php _e( 'Submit' ); ?>" />
-					</form>
-					
 					<p>&nbsp;</p>
 
 					<div class="stuffbox" style="border-color: #FFC426; border-width: 3px;">
@@ -168,33 +134,3 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 </div>
 
-<style>
-#donationbox {
-	background: #87BCE4;
-	border: 3px solid #227499;
-}
-#donationbox .inside {
-	padding: 6px 10px 10px 10px;
-}
-#donationbox .inside .donation_memo {
-	background: #FFF8D9;
-	padding: 2px 10px;
-}
-</style>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	
-	var $RDonated = '<?php echo get_option( $this->Record["donate"] ); ?>';
-	var $TDonated = '<?php echo $this->DonateKey; ?>';
-
-	if( $RDonated == $TDonated ) {
-		$("#donationbox").hide();
-		if( $TDonated != "" ) {
-			$("#donation_form").html( '<p>&nbsp;</p><p>&nbsp;</p><span class="description"><?php _e( 'Thank you for your donation.' , 'wp-admin-ui-customize' ); ?></span>' );
-		} else {
-			$("#donation_form").html( '' );
-		}
-	}
-		
-});
-</script>

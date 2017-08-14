@@ -8,11 +8,11 @@ $this->widget->init('topbar', array(
                     "sliderid" => $slider['id']
                 )
             )),
-            'class' => 'n2-button n2-button-red n2-button-big n2-h4 n2-b n2-uc'
+            'class' => 'n2-button n2-button-normal n2-button-l n2-radius-s n2-button-red n2-h4 n2-b n2-uc'
         ), n2_('Cancel')),
         N2Html::tag('a', array(
             'href'    => '#',
-            'class'   => 'n2-button n2-button-green n2-button-big n2-h4 n2-b n2-uc',
+            'class'   => 'n2-button n2-button-normal n2-button-l n2-radius-s n2-button-green n2-h4 n2-b n2-uc',
             'onclick' => 'return NextendForm.submit("#smartslider-form");'
         ), n2_('Save'))
     )
@@ -56,6 +56,6 @@ $this->widget->init('topbar', array(
 
 <?php
 
-N2JS::addInline('new NextendSmartSliderGeneratorRecords("' . $this->appType->router->createAjaxUrl(array(
+N2JS::addInline('new N2Classes.SmartSliderGeneratorRecords("' . $this->appType->router->createAjaxUrl(array(
         'generator/recordstable'
     )) . '");');

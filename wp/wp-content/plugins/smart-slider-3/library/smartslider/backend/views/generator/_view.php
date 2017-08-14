@@ -1,7 +1,6 @@
 <?php
 
-class N2SmartsliderBackendGeneratorView extends N2ViewBase
-{
+class N2SmartsliderBackendGeneratorView extends N2ViewBase {
 
     public static $sources;
 
@@ -70,7 +69,7 @@ class N2SmartsliderBackendGeneratorView extends N2ViewBase
             } elseif (!$info->installed) {
                 $button = N2Html::link(n2_("Visit site"), $info->readMore, array(
                     "target" => "_blank",
-                    "class"  => "n2-button n2-button-big n2-button-grey"
+                    "class"  => "n2-button n2-button-normal n2-button-s n2-radius-s n2-button-grey"
                 ));
                 break;
             } else {
@@ -89,7 +88,7 @@ class N2SmartsliderBackendGeneratorView extends N2ViewBase
                 reset($buttons);
                 $key    = key($buttons);
                 $button = N2Html::link($buttons[$key], $key, array(
-                    "class" => "n2-button n2-button-small n2-button-blue n2-h5"
+                    "class" => "n2-button n2-button-normal n2-button-s n2-button-blue n2-radius-s n2-h5"
                 ));
             } else {
                 $keys    = array_keys($buttons);
@@ -108,7 +107,7 @@ class N2SmartsliderBackendGeneratorView extends N2ViewBase
                     ), implode('', $actions)))
                 ));
                 $buttonMenu = ob_get_clean();
-                $button     = N2Html::tag('div', array('class' => 'n2-button n2-button-with-menu n2-button-small n2-h5 n2-button-blue'), N2Html::link($buttons[$keys[0]], $keys[0], array(
+                $button     = N2Html::tag('div', array('class' => 'n2-button n2-button-with-actions n2-button-s n2-button-blue n2-radius-s n2-h5'), N2Html::link($buttons[$keys[0]], $keys[0], array(
                         'class' => 'n2-button-inner'
                     )) . $buttonMenu);
             }
@@ -117,64 +116,13 @@ class N2SmartsliderBackendGeneratorView extends N2ViewBase
 
         $this->widget->init("box", array(
             'attributes' => array(
-                'class' => 'n2-box-generator'
+                'class' => 'n2-box-generator',
+                'style' => 'background-image: url(' . N2ImageHelper::fixed(N2Uri::pathToUri(N2Filesystem::translate($info->path . '/../dynamic.png'))) . ');',
+
             ),
-            'image'      => N2ImageHelper::fixed(N2Uri::pathToUri(N2Filesystem::translate($info->path . '/../dynamic.png'))),
-            'firstCol'   => $button
+            'placeholderContent' => N2Html::tag('div', array(
+                'class' => 'n2-box-placeholder-button'
+            ), $button)
         ));
-    }
-
-    public function _renderGroupOption($group, $sources) {
-        $options = array();
-        foreach ($sources AS $type => $info) {
-            /**
-             * @var $info N2GeneratorInfo
-             */
-            $options[$type] = $info->title;
-
-            if ($info->hasConfiguration) {
-                $button = N2Html::link("Next", $this->appType->router->createUrl(array(
-                    "generator/checkConfiguration",
-                    array(
-                        "sliderid" => N2Request::getInt('sliderid'),
-                        "group"    => $group
-                    )
-                )), array(
-                    "onclick" => "var el = n2(this); el.attr('href', el.attr('href') + '&type='+el.parents('.n2-box-placeholder').find('select').val());",
-                    "class"   => "n2-button n2-button-small n2-button-blue"
-                ));
-
-            } elseif (!$info->installed) {
-                $button = N2Html::link("Check extension", $info->readMore, array(
-                    "target" => "_blank",
-                    "class"  => "n2-button n2-button-small n2-button-grey"
-                ));
-            } else {
-                $button = N2Html::link("Next", $this->appType->router->createUrl(array(
-                    "generator/createSettings",
-                    array(
-                        "sliderid" => N2Request::getInt('sliderid'),
-                        "group"    => $group
-                    )
-                )), array(
-                    "onclick" => "var el = n2(this); el.attr('href', el.attr('href') + '&type='+el.parents('.n2-box-placeholder').find('select').val());",
-                    "class"   => "n2-button n2-button-small n2-button-blue"
-                ));
-            }
-        }
-        $optionsHTML = '';
-        foreach ($options AS $k => $v) {
-            $optionsHTML .= N2Html::tag('option', array('value' => $k), $v);
-        }
-
-        echo N2Html::tag('div', array('class' => 'n2-box'), N2Html::image(N2Uri::pathToUri(N2Filesystem::translate($info->path . '/../dynamic.png'))) . N2Html::tag("div", array(
-                'class' => 'n2-box-placeholder'
-            ), N2Html::tag("table", array(), N2Html::tag("tr", array(), N2Html::tag("td", array(
-                    'class' => 'n2-box-label'
-                ), N2Html::tag('select', array(
-                    'name' => 'generator-type'
-                ), $optionsHTML)) . N2Html::tag("td", array(
-                    'class' => 'n2-box-button'
-                ), $button)))));
     }
 } 

@@ -1,7 +1,6 @@
 <?php
 
-class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAjax
-{
+class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAjax {
 
     public function initialize() {
         parent::initialize();
@@ -23,6 +22,11 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
         $this->validateDatabase($slider);
 
         if (N2Request::getInt('save')) {
+
+            if (N2SmartSliderSettings::get('slide-as-file', 0) && isset($_FILES['slide']) && N2Request::getVar('slide')) {
+                N2Request::$storage['slide']['slide'] = N2Filesystem::readFile($_FILES['slide']['tmp_name']);
+            }
+
             $slidesModel = new N2SmartsliderSlidesModel();
             $slideId     = $slidesModel->create($sliderId, N2Request::getVar('slide'));
             $this->validateDatabase($slideId);
@@ -54,7 +58,7 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
 
         if (N2Request::getInt('save')) {
 
-            if (N2SmartSliderSettings::get('slide-as-file', 0) && isset($_FILES['slide']) && isset(N2Request::$storage['slide'])) {
+            if (N2SmartSliderSettings::get('slide-as-file', 0) && isset($_FILES['slide']) && N2Request::getVar('slide')) {
                 N2Request::$storage['slide']['slide'] = N2Filesystem::readFile($_FILES['slide']['tmp_name']);
             }
 
@@ -147,6 +151,59 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
         $this->response->respond();
     }
 
+    public function actionCopy() {
+        $this->validateToken();
+
+        $this->validatePermission('smartslider_edit');
+
+        $slideId = N2Request::getInt('slideid');
+        $this->validateVariable($slideId > 0, 'Slide');
+
+        $sliderID = N2Request::getInt('targetSliderID');
+        $this->validateVariable($sliderID > 0, 'Slider ID');
+
+        $slidesModel = new N2SmartsliderSlidesModel();
+        $newSlideId  = $slidesModel->copy($slideId, $sliderID);
+        $slide       = $slidesModel->get($newSlideId);
+
+        $this->validateDatabase($slide);
+
+        N2Message::success(n2_('Slide(s) copied.'));
+
+
+        $this->response->redirect(array(
+            "slider/edit",
+            array(
+                "sliderid" => $sliderID
+            )
+        ));
+    }
+
+    public function actionCopySlides() {
+        $this->validateToken();
+
+        $this->validatePermission('smartslider_edit');
+
+        $ids = array_map('intval', array_filter((array)N2Request::getVar('slides'), 'is_numeric'));
+
+        $this->validateVariable(count($ids), 'Slides');
+
+        $sliderID = N2Request::getInt('targetSliderID');
+        $this->validateVariable($sliderID > 0, 'Slider ID');
+
+        $slidesModel = new N2SmartsliderSlidesModel();
+        foreach ($ids AS $id) {
+            $slidesModel->copy($id, $sliderID);
+        }
+        N2Message::success(n2_('Slide(s) copied.'));
+
+        $this->response->redirect(array(
+            "slider/edit",
+            array(
+                "sliderid" => $sliderID
+            )
+        ));
+    }
 
     public function actionDuplicate() {
         $this->validateToken();
@@ -166,15 +223,15 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
 
         $sliderObj = new N2SmartSlider($slide['slider'], array());
         $sliderObj->loadSliderParams();
-        $optimize          = new N2SmartSliderFeatureOptimize($sliderObj);
+        $optimize = new N2SmartSliderFeatureOptimize($sliderObj);
 
-        $slideObj  = new N2SmartSliderSlide($sliderObj, $slide);
+        $slideObj = new N2SmartSliderSlide($sliderObj, $slide);
         $slideObj->initGenerator();
         $slideObj->fillSample();
 
         $this->addView('slidebox', array(
-            'slider' => $sliderObj,
-            'slide'  => $slideObj,
+            'slider'   => $sliderObj,
+            'slide'    => $slideObj,
             'optimize' => $optimize
         ));
         ob_start();
@@ -214,9 +271,9 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
         $images = json_decode(base64_decode(N2Request::getVar('images')), true);
         $this->validateVariable(count($images), 'Images');
 
-        $sliderObj   = new N2SmartSlider($sliderId, array());
+        $sliderObj = new N2SmartSlider($sliderId, array());
         $sliderObj->loadSliderParams();
-        $optimize          = new N2SmartSliderFeatureOptimize($sliderObj);
+        $optimize = new N2SmartSliderFeatureOptimize($sliderObj);
 
         $slidesModel = new N2SmartsliderSlidesModel();
         foreach ($images AS $image) {
@@ -228,8 +285,8 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
             $slideObj->fillSample();
 
             $this->addView('slidebox', array(
-                'slider' => $sliderObj,
-                'slide'  => $slideObj,
+                'slider'   => $sliderObj,
+                'slide'    => $slideObj,
                 'optimize' => $optimize
             ));
         }
@@ -250,7 +307,9 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
         $this->validateVariable($sliderId > 0, 'Slider');
 
         $slidesModel = new N2SmartsliderSlidesModel();
-        $video       = json_decode(base64_decode(N2Request::getVar('video')), true);
+
+        $s     = urldecode(base64_decode(N2Request::getVar('video')));
+        $video = json_decode($s, true);
         $this->validateVariable($video, 'Video');
 
         $newSlideId = $slidesModel->createQuickVideo($video, $sliderId);
@@ -259,15 +318,15 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
 
         $sliderObj = new N2SmartSlider($slide['slider'], array());
         $sliderObj->loadSliderParams();
-        $optimize          = new N2SmartSliderFeatureOptimize($sliderObj);
+        $optimize = new N2SmartSliderFeatureOptimize($sliderObj);
 
-        $slideObj  = new N2SmartSliderSlide($sliderObj, $slide);
+        $slideObj = new N2SmartSliderSlide($sliderObj, $slide);
         $slideObj->initGenerator();
         $slideObj->fillSample();
 
         $this->addView('slidebox', array(
-            'slider' => $sliderObj,
-            'slide'  => $slideObj,
+            'slider'   => $sliderObj,
+            'slide'    => $slideObj,
             'optimize' => $optimize
         ));
 
@@ -296,15 +355,15 @@ class N2SmartsliderBackendSlidesControllerAjax extends N2SmartSliderControllerAj
 
         $sliderObj = new N2SmartSlider($slide['slider'], array());
         $sliderObj->loadSliderParams();
-        $optimize          = new N2SmartSliderFeatureOptimize($sliderObj);
+        $optimize = new N2SmartSliderFeatureOptimize($sliderObj);
 
-        $slideObj  = new N2SmartSliderSlide($sliderObj, $slide);
+        $slideObj = new N2SmartSliderSlide($sliderObj, $slide);
         $slideObj->initGenerator();
         $slideObj->fillSample();
 
         $this->addView('slidebox', array(
-            'slider' => $sliderObj,
-            'slide'  => $slideObj,
+            'slider'   => $sliderObj,
+            'slide'    => $slideObj,
             'optimize' => $optimize
         ));
 

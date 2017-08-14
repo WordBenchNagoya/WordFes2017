@@ -10,6 +10,8 @@ class N2Layout extends N2View {
 
     private $viewObject = null;
 
+    protected $breadcrumbs = array();
+
     public function addView($fileName, $position, $viewParameters = array(), $path = null) {
         if (is_null($path)) {
             $controller = strtolower($this->appType->controllerName);
@@ -49,8 +51,26 @@ class N2Layout extends N2View {
 
         extract($params);
 
+        ob_start();
         /** @noinspection PhpIncludeInspection */
         include $path . $fileName . ".phtml";
+
+        $content = ob_get_clean();
+
+        if (!empty($this->breadcrumbs)) {
+            $html = '';
+            foreach ($this->breadcrumbs AS $i => $breadcrumb) {
+                if ($i) {
+                    $html .= N2Html::tag('span', array(), N2Html::tag('i', array('class' => 'n2-i n2-it n2-i-breadcrumbarrow'), ''));
+                }
+                $html .= $breadcrumb;
+            }
+            $content = str_replace('<!--breadcrumb-->', N2Html::tag('div', array(
+                'class' => 'n2-header-breadcrumbs n2-header-right'
+            ), $html), $content);
+        }
+
+        echo $content;
     }
 
     public function render($params = array(), $layoutName = false) {
@@ -90,6 +110,10 @@ class N2Layout extends N2View {
             return $this->layoutFragments[$key];
         }
         return $default;
+    }
+
+    public function addBreadcrumb($html) {
+        $this->breadcrumbs[] = $html;
     }
 
 }

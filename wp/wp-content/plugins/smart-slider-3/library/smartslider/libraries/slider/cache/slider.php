@@ -48,14 +48,14 @@ class N2CacheManifestSlider extends N2CacheManifest {
 
     protected function addManifestData(&$manifestData) {
 
-        $manifestData['nextCacheRefresh'] = N2Pluggable::applyFilters('SSNextCacheRefresh', $this->parameters['slider']->slidesBuilder->getNextCacheRefresh(), array($this->parameters['slider']));
+        $manifestData['nextCacheRefresh'] = N2Pluggable::applyFilters('SSNextCacheRefresh', $this->parameters['slider']->getNextCacheRefresh(), array($this->parameters['slider']));
         $manifestData['currentPath']      = md5($this->currentPath);
         $manifestData['version']          = N2SS3::$version;
 
         $variations = 1;
 
         $params = $this->parameters['slider']->params;
-        if ($params->get('randomize', 0) || $params->get('randomizeFirst', 0)) {
+        if (!$params->get('randomize-cache', 0) && ($params->get('randomize', 0) || $params->get('randomizeFirst', 0))) {
             $variations = intval($params->get('variations', 5));
             if ($variations < 1) {
                 $variations = 1;

@@ -1,8 +1,7 @@
 <?php
 N2Loader::import('libraries.form.element.text');
 
-class N2ElementNumber extends N2ElementText
-{
+class N2ElementNumber extends N2ElementText {
 
     function fetchElement() {
 
@@ -16,7 +15,16 @@ class N2ElementNumber extends N2ElementText
             $max = 'Number.MAX_VALUE';
         }
 
-        N2JS::addInline('new NextendElementNumber("' . $this->_id . '", ' . $min . ', ' . $max . ');');
+        $units = false;
+        if ($this->_xml->multiunit) {
+            $units = array();
+            foreach ($this->_xml->multiunit AS $unit) {
+                $units[N2XmlHelper::getAttribute($unit, 'value') . 'min'] = floatval(N2XmlHelper::getAttribute($unit, 'min'));
+                $units[N2XmlHelper::getAttribute($unit, 'value') . 'max'] = floatval(N2XmlHelper::getAttribute($unit, 'max'));
+            }
+        }
+
+        N2JS::addInline('new N2Classes.FormElementNumber("' . $this->_id . '", ' . $min . ', ' . $max . ', ' . json_encode($units) . ');');
 
         $html = N2Html::openTag('div', array(
             'class' => 'n2-form-element-text ' . $this->getClass() . ($this->_xml->unit ? 'n2-text-has-unit ' : '') . 'n2-border-radius',

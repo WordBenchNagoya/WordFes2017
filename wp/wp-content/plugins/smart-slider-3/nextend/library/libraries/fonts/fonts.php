@@ -1,7 +1,6 @@
 <?php
 
-class N2Fonts
-{
+class N2Fonts {
 
     private static $config;
 
@@ -10,8 +9,55 @@ class N2Fonts
         if (!$inited) {
             $inited       = true;
             self::$config = array(
-                'default-family'  => n2_x('Montserrat,Arial', 'Default font'),
-                'preset-families' => n2_x("'Montserrat',Arial\n'Pacifico',Arial\n'Open Sans',Arial\n'Lato',Arial\n'Bevan',Arial\n'Oxygen',Arial\n'Pt Sans',Arial\n'Average',Arial\n'Roboto',Arial\n'Roboto Slab',Arial\n'Oswald',Arial\n'Droid Sans',Arial\n'Raleway',Arial\n'Lobster',Arial\n'Titillium Web',Arial\n'Cabin',Arial\n'Varela Round',Arial\n'Vollkorn',Arial\n'Quicksand',Arial\n'Source Sans Pro',Arial\n'Asap',Arial\n'Merriweather',Arial", 'Default font family list'),
+                'default-family'  => n2_x('Roboto,Arial', 'Default font'),
+                'preset-families' => n2_x(implode("\n", array(
+                    "Abel",
+                    "Arial",
+                    "Arimo",
+                    "Average",
+                    "Bevan",
+                    "Bitter",
+                    "'Bree Serif'",
+                    "Cabin",
+                    "Calligraffitti",
+                    "Chewy",
+                    "Comfortaa",
+                    "'Covered By Your Grace'",
+                    "'Crafty Girls'",
+                    "'Dancing Script'",
+                    "'Droid Sans'",
+                    "'Droid Serif'",
+                    "'Francois One'",
+                    "'Fredoka One'",
+                    "'Gloria Hallelujah'",
+                    "'Happy Monkey'",
+                    "'Josefin Slab'",
+                    "Lato",
+                    "Lobster",
+                    "'Luckiest Guy'",
+                    "Montserrat",
+                    "'Nova Square'",
+                    "Nunito",
+                    "'Open Sans'",
+                    "Oswald",
+                    "Oxygen",
+                    "Pacifico",
+                    "'Permanent Marker'",
+                    "'Playfair Display'",
+                    "'PT Sans'",
+                    "'Poiret One'",
+                    "Raleway",
+                    "Roboto",
+                    "'Rock Salt'",
+                    "Quicksand",
+                    "Satisfy",
+                    "'Squada One'",
+                    "'The Girl Next Door'",
+                    "'Titillium Web'",
+                    "'Varela Round'",
+                    "Vollkorn",
+                    "'Walter Turncoat'"
+                )), 'Default font family list'),
                 'plugins'         => array()
             );
             foreach (N2StorageSectionAdmin::getAll('system', 'fonts') AS $data) {

@@ -23,6 +23,7 @@ class N2LinkParser {
         } else {
             $url = N2ImageHelper::fixed($url);
         }
+
         return $url;
     }
 }
@@ -111,8 +112,9 @@ class N2LinkScrollTo {
                     $onclick = 'n2Scroll.element("' . $argument . '");';
                     break;
             }
-            $attributes['onclick'] = N2Html::encode($onclick . "return false;");
+            $attributes['onclick'] = $onclick . "return false;";
         }
+
         return '#';
     }
 }

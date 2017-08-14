@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP Admin UI Customize
-Description: An excellent plugin to customize the management screens.
-Plugin URI: http://wpadminuicustomize.com/?utm_source=use_plugin&utm_medium=list&utm_content=wauc&utm_campaign=1_5_9
-Version: 1.5.9
+Description: An excellent plugin to customize the Wordpress management UI.
+Plugin URI: http://wpadminuicustomize.com/?utm_source=use_plugin&utm_medium=list&utm_content=wauc&utm_campaign=1_5_10
+Version: 1.5.10
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=wauc&utm_campaign=1_5_9
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=wauc&utm_campaign=1_5_10
 Text Domain: wp-admin-ui-customize
 Domain Path: /languages
 */
@@ -47,7 +47,6 @@ class WP_Admin_UI_Customize
 		$Nonces,
 		$Schema,
 		$UPFN,
-		$DonateKey,
 		$Menu,
 		$SubMenu,
 		$Admin_bar,
@@ -58,7 +57,7 @@ class WP_Admin_UI_Customize
 
 
 	function __construct() {
-		$this->Ver = '1.5.9';
+		$this->Ver = '1.5.10';
 		$this->Name = 'WP Admin UI Customize';
 		$this->Dir = plugin_dir_path( __FILE__ );
 		$this->Url = plugin_dir_url( __FILE__ );
@@ -79,7 +78,6 @@ class WP_Admin_UI_Customize
 			"appearance_menus" => $this->ltd . '_appearance_menus_setting',
 			"loginscreen" => $this->ltd . '_loginscreen_setting',
 			"plugin_cap" => $this->ltd . '_plugin_cap',
-			"donate" => $this->ltd . '_donated',
 		);
 		$this->PageSlug = 'wp_admin_ui_customize';
 		$this->PluginSlug = dirname( plugin_basename( __FILE__ ) );
@@ -88,7 +86,6 @@ class WP_Admin_UI_Customize
 		$this->ActivatedPlugin = array();
 		$this->OtherPluginMenu = array();
 		$this->UPFN = 'Y';
-		$this->DonateKey = 'd77aec9bc89d445fd54b4c988d090f03';
 		$this->MsgQ = $this->ltd . '_msg';
 		
 		$this->PluginSetup();
@@ -178,17 +175,17 @@ class WP_Admin_UI_Customize
 		$capability = $this->get_plugin_cap();
 
 		add_menu_page( $this->Name , $this->Name , $capability, $this->PageSlug , array( $this , 'setting_default') );
-		add_submenu_page( $this->PageSlug , __( 'Site Settings' , 'wp-admin-ui-customize' ) , __( 'Site Settings' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_setting_site' , array( $this , 'setting_site' ) );
-		add_submenu_page( $this->PageSlug , sprintf( __( '%1$s %2$s' , 'wp-admin-ui-customize' ) , __( 'General' ) , __( 'Settings' ) ) , sprintf( __( '%1$s %2$s' , 'wp-admin-ui-customize' ) , __( 'General' ) , __( 'Settings' ) ) , $capability , $this->PageSlug . '_admin_general_setting' , array( $this , 'setting_admin_general' ) );
+		add_submenu_page( $this->PageSlug , __( 'Frontend' , 'wp-admin-ui-customize' ) , __( 'Frontend' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_setting_site' , array( $this , 'setting_site' ) );
+		add_submenu_page( $this->PageSlug , __( 'General' ) , __( 'General' ) , $capability , $this->PageSlug . '_admin_general_setting' , array( $this , 'setting_admin_general' ) );
 		add_submenu_page( $this->PageSlug , __( 'Dashboard' ) , __( 'Dashboard' ) , $capability , $this->PageSlug . '_dashboard' , array( $this , 'setting_dashboard' ) );
-		add_submenu_page( $this->PageSlug , __( 'Admin Bar Menu' , 'wp-admin-ui-customize' ) , __( 'Admin Bar Menu' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_admin_bar' , array( $this , 'setting_admin_bar_menu' ) );
-		add_submenu_page( $this->PageSlug , __( 'Side Menu' , 'wp-admin-ui-customize' ) , __( 'Side Menu' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_sidemenu' , array( $this , 'setting_sidemenu' ) );
-		add_submenu_page( $this->PageSlug , __( 'Manage meta box' , 'wp-admin-ui-customize' ) , __( 'Manage meta box' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_manage_metabox' , array( $this , 'setting_manage_metabox' ) );
-		add_submenu_page( $this->PageSlug , __( 'Add New Post and Edit Post Screen Setting' , 'wp-admin-ui-customize' ) , __( 'Add New Post and Edit Post Screen Setting' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_post_add_edit_screen' , array( $this , 'setting_post_add_edit' ) );
-		add_submenu_page( $this->PageSlug , __( 'Appearance Menus Screen Setting' , 'wp-admin-ui-customize' ) , __( 'Appearance Menus Screen Setting' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_appearance_menus' , array( $this , 'setting_appearance_menus' ) );
-		add_submenu_page( $this->PageSlug , __( 'Login Screen' , 'wp-admin-ui-customize' ) , __( 'Login Screen' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_loginscreen' , array( $this , 'setting_loginscreen' ) );
+		add_submenu_page( $this->PageSlug , __( 'Admin bar' , 'wp-admin-ui-customize' ) , __( 'Admin bar' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_admin_bar' , array( $this , 'setting_admin_bar_menu' ) );
+		add_submenu_page( $this->PageSlug , __( 'Sidebar' , 'wp-admin-ui-customize' ) , __( 'Sidebar' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_sidemenu' , array( $this , 'setting_sidemenu' ) );
+		add_submenu_page( $this->PageSlug , __( 'Management of Meta boxes' , 'wp-admin-ui-customize' ) , __( 'Meta boxes' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_manage_metabox' , array( $this , 'setting_manage_metabox' ) );
+		add_submenu_page( $this->PageSlug , __( 'Posts and Pages' , 'wp-admin-ui-customize' ) , __( 'Posts and Pages' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_post_add_edit_screen' , array( $this , 'setting_post_add_edit' ) );
+		add_submenu_page( $this->PageSlug , __( 'Appearance Menus' , 'wp-admin-ui-customize' ) , __( 'Appearance Menus' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_appearance_menus' , array( $this , 'setting_appearance_menus' ) );
+		add_submenu_page( $this->PageSlug , __( 'Login Form' , 'wp-admin-ui-customize' ) , __( 'Login Form' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_loginscreen' , array( $this , 'setting_loginscreen' ) );
 		add_submenu_page( $this->PageSlug , sprintf( __( '%1$s of %2$s %3$s' , 'wp-admin-ui-customize' ) , __( 'Change' ) , __( 'Plugin' ) , __( 'Capabilities' ) ) , sprintf( __( '%1$s of %2$s %3$s' , 'wp-admin-ui-customize' ) , __( 'Change' ) , __( 'Plugin' ) , __( 'Capabilities' ) ) , $capability , $this->PageSlug . '_plugin_cap' , array( $this , 'setting_plugin_cap' ) );
-		add_submenu_page( $this->PageSlug , __( 'Reset User Roles' , 'wp-admin-ui-customize' ) , __( 'Reset User Roles' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_reset_userrole' , array( $this , 'reset_userrole' ) );
+		add_submenu_page( $this->PageSlug , __( 'Reset Settings' , 'wp-admin-ui-customize' ) , __( 'Reset Settings' , 'wp-admin-ui-customize' ) , $capability , $this->PageSlug . '_reset_userrole' , array( $this , 'reset_userrole' ) );
 	}
 
 	// PluginSetup
@@ -219,93 +216,72 @@ class WP_Admin_UI_Customize
 	// SettingPage
 	function setting_default() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
 		include_once 'inc/setting_default.php';
 	}
 
 	// SettingPage
 	function setting_site() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_site.php';
 	}
 
 	// SettingPage
 	function setting_admin_general() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_admin_general.php';
 	}
 
 	// SettingPage
 	function setting_dashboard() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_dashboard.php';
 	}
 
 	// SettingPage
 	function setting_admin_bar_menu() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_admin_bar_menu.php';
 	}
 
 	// SettingPage
 	function setting_sidemenu() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_sidemenu.php';
 	}
 
 	// SettingPage
 	function setting_manage_metabox() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_manage_metabox.php';
 	}
 
 	// SettingPage
 	function setting_post_add_edit() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_post_add_edit.php';
 	}
 
 	// SettingPage
 	function setting_appearance_menus() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_appearance_menus.php';
 	}
 
 	// SettingPage
 	function setting_loginscreen() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
-		$this->DisplayDonation();
 		include_once 'inc/setting_loginscreen.php';
 	}
 
 	// SettingPage
 	function reset_userrole() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
 		include_once 'inc/reset_userrole.php';
 	}
 
 	// SettingPage
 	function setting_plugin_cap() {
 		$this->display_msg();
-		add_filter( 'admin_footer_text' , array( $this , 'layout_footer' ) );
 		include_once 'inc/setting_plugin_cap.php';
 	}
 
@@ -351,7 +327,7 @@ class WP_Admin_UI_Customize
 		}
 		if( empty( $Data ) ) {
 			if( $current_screen->parent_base == $this->PageSlug && $current_screen->id != 'toplevel_page_' . $this->PageSlug ) {
-				echo '<div class="error"><p><strong>' . sprintf( __( 'Authority to apply the setting is not selected. <a href="%s">From here</a>, please select the permissions you want to set.' , 'wp-admin-ui-customize' ) , admin_url( 'admin.php?page=' . $this->PageSlug ) ) . '</strong></p></div>';
+				echo '<div class="error"><p><strong>' . sprintf( __( 'You must <a href="%s">select a user role</a> before settings can be applied.' , 'wp-admin-ui-customize' ) , admin_url( 'admin.php?page=' . $this->PageSlug ) ) . '</strong></p></div>';
 			}
 		}
 	}
@@ -376,7 +352,7 @@ class WP_Admin_UI_Customize
 		$apply_user_roles = $this->get_data( 'user_role' );
 		unset( $apply_user_roles["UPFN"] );
 		
-		$Contents =  __( 'Apply user roles' , 'wp-admin-ui-customize' ) . ' : ';
+		$Contents =  __( 'User Roles' ) . ' : ';
 		
 		if( !empty( $apply_user_roles ) ) {
 			$UserRoles = $this->get_user_role();
@@ -951,7 +927,7 @@ class WP_Admin_UI_Customize
 									<?php $checked = checked( $menu_widget["meta"]["target"] , '_blank' , 0 ); ?>
 								<?php endif; ?>
 								<input type="checkbox" class="meta_target" value="_blank" name="data[][meta][target]" <?php echo $checked; ?> />
-								<?php _e( 'Open link in a new window/tab' ); ?>
+								<?php _e( 'Open link in a new tab' ); ?>
 							<?php endif; ?>
 						</label>
 						<input type="hidden" class="meta_class" value="<?php echo $menu_widget["meta"]["class"]; ?>" name="data[][meta][class]" />
@@ -1213,7 +1189,7 @@ class WP_Admin_UI_Customize
 
 	// SetList
 	function admin_bar_places() {
-		return $Place_types = array( "left" => __( 'Left' ) , "right" => __( 'Right' ) , "front" => __( 'Front' , 'wp-admin-ui-customize' ) );
+		return $Place_types = array( "left" => __( 'Left' ) , "right" => __( 'Right' ) , "front" => __( 'Frontend' , 'wp-admin-ui-customize' ) );
 	}
 	
 	// SetList
@@ -1310,9 +1286,6 @@ class WP_Admin_UI_Customize
 				}
 			}
 	
-			if( !empty( $_POST["donate_key"] ) && !empty( $_POST["update"] ) ) {
-				$this->DonatingCheck();
-			}
 		}
 
 	}
@@ -1348,30 +1321,11 @@ class WP_Admin_UI_Customize
 		if( !empty( $Update ) && check_admin_referer( $this->Nonces["value"] , $this->Nonces["field"] ) ) {
 			
 			foreach( $this->Record as $key => $record ) {
-				if( $key != 'donate' ) {
-					delete_option( $record );
-				}
+				delete_option( $record );
 			}
 			wp_redirect( esc_url_raw( add_query_arg( $this->MsgQ , 'delete' , stripslashes( $_POST["_wp_http_referer"] ) ) ) );
 			exit;
 		}
-	}
-
-	// DataUpdate
-	function DonatingCheck() {
-		$Update = $this->update_validate();
-
-		if( !empty( $Update ) && check_admin_referer( $this->Nonces["value"] , $this->Nonces["field"] ) ) {
-			if( !empty( $_POST["donate_key"] ) ) {
-				$SubmitKey = md5( strip_tags( $_POST["donate_key"] ) );
-				if( $this->DonateKey == $SubmitKey ) {
-					update_option( $this->Record["donate"] , $SubmitKey );
-					wp_redirect( esc_url_raw( add_query_arg( $this->MsgQ , 'donated' ) ) );
-					exit;
-				}
-			}
-		}
-
 	}
 
 	// DataUpdate
@@ -2624,23 +2578,7 @@ class WP_Admin_UI_Customize
 			$msg = strip_tags(  $_GET[$this->MsgQ] );
 			if( $msg == 'update' or $msg == 'delete' ) {
 				$this->Msg .= '<div class="updated"><p><strong>' . __( 'Settings saved.' ) . '</strong></p></div>';
-			} elseif( $msg == 'donated' ) {
-				$this->Msg .= '<div class="updated"><p><strong>' . __( 'Thank you for your donation.' , 'wp-admin-ui-customize' ) . '</strong></p></div>';
 			}
-		}
-	}
-
-	// FilterStart
-	function layout_footer( $text ) {
-		$text = '<img src="' . $this->Schema . 'www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=18" width="18" /> Plugin developer : <a href="' . $this->AuthorUrl . '?utm_source=use_plugin&utm_medium=footer&utm_content=' . $this->ltd . '&utm_campaign=' . str_replace( '.' , '_' , $this->Ver ) . '" target="_blank">gqevu6bsiz</a>';
-		return $text;
-	}
-
-	// FilterStart
-	function DisplayDonation() {
-		$donation = get_option( $this->Record["donate"] );
-		if( $this->DonateKey != $donation ) {
-			$this->Msg .= '<div class="error"><p><strong>' . __( 'Please consider making a donation.' , 'wp-admin-ui-customize' ) . '</strong> <a href="' . self_admin_url( 'admin.php?page=' . $this->PageSlug ) . '">' . __( 'Donate' , 'wp-admin-ui-customize' ) . '</a></p></div>';
 		}
 	}
 

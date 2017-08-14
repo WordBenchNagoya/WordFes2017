@@ -13,7 +13,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 <div class="wrap">
 
 	<?php echo $this->Msg; ?>
-	<h2><?php _e( 'Login Screen Settings' , 'wp-admin-ui-customize' ); ?></h2>
+	<h2><?php _e( 'Login Form' , 'wp-admin-ui-customize' ); ?></h2>
 	<p>&nbsp;</p>
 
 	<form id="wauc_setting_loginscreen" class="wauc_form" method="post" action="<?php echo esc_url( remove_query_arg( 'wauc_msg' , add_query_arg( array( 'page' => $this->PageSlug ) ) ) ); ?>">
@@ -55,7 +55,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'login_headerurl'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'The link after clicking on the logo' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Logo URL' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $Val = ''; ?>
@@ -80,7 +80,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'login_headerlogo'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'Logo Image path' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Logo Image URL' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $Val = ''; ?>
@@ -88,9 +88,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<input type="text" name="data[<?php echo $field; ?>]" value="<?php echo $Val; ?>" class="regular-text" id="<?php echo $field; ?>">
 												<a href="#TB_inline?height=300&width=600&inlineId=list_variables&modal=false" title="<?php _e( 'Shortcodes' , 'wp-admin-ui-customize' ); ?>" class="thickbox"><?php _e( 'Available Shortcodes' , 'wp-admin-ui-customize' ); ?></a>
 												<?php if( !empty( $Val ) ) : ?>
-													<?php $img = str_replace( '[blog_url]' , get_bloginfo( 'url' ) , $Val ); ?>
-													<?php $img = str_replace( '[template_directory_uri]' , get_bloginfo( 'url' ) , $img ); ?>
-													<p><img src="<?php echo $img; ?>" alt="Login Logo" /></p>
+													<?php $img = $this->val_replace( $Val ); ?>
+													<p><img src="<?php echo $img; ?>" style="max-width: 100%;" alt="Login Logo" /></p>
 												<?php endif; ?>
 											</td>
 										</tr>
@@ -149,7 +148,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 		</p>
 
 		<p class="submit reset">
-			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Login Screen Settings' , 'wp-admin-ui-customize' ) ); ?></span>
+			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Login Form' , 'wp-admin-ui-customize' ) ); ?></span>
 			<input type="submit" class="button-secondary" name="reset" value="<?php _e( 'Reset settings' , 'wp-admin-ui-customize' ); ?>" />
 		</p>
 

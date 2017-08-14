@@ -31,7 +31,7 @@ class N2SystemHelper
         $setting = (string)$setting;
         if (!($len = strlen($setting))) return NULL;
         $last    = strtolower($setting[$len - 1]);
-        $numeric = 0 + $setting;
+        $numeric = intval($setting);
         $numeric *= isset($short[$last]) ? $short[$last] : 1;
 
         return $numeric;

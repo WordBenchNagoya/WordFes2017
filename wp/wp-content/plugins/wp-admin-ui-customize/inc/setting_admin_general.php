@@ -37,35 +37,35 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 									<tbody>
 										<tr>
 											<th>
-												<label><?php _e( 'WordPress core update notice' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'WordPress core updates' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $field = 'notice_update_core'; ?>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Not notified' , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide notifications' , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 										<tr>
 											<th>
-												<label><?php _e( 'Plugin update notice' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Plugin updates' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $field = 'notice_update_plugin'; ?>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Not notified' , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide notifications' , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 										<tr>
 											<th>
-												<label><?php _e( 'Theme update notice' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Theme updates' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $field = 'notice_update_theme'; ?>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Not notified' , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide notifications' , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 									</tbody>
@@ -108,7 +108,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 			
 						<div class="postbox">
 							<div class="handlediv" title="Click to toggle"><br></div>
-							<h3 class="hndle"><span><?php echo _e( 'Footer' ); ?></span></h3>
+							<h3 class="hndle"><span><?php echo _e( 'Footer' , 'wp-admin-ui-customize' ); ?></span></h3>
 							<div class="inside">
 								<table class="form-table">
 									<tbody>
@@ -121,7 +121,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Val = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Val = esc_html( stripslashes( $Data[$field] ) ); endif; ?>
 												<input type="text" name="data[<?php echo $field; ?>]" value="<?php echo $Val; ?>" class="large-text" />
-												<p class="description"><?php _e( 'Default' ); ?>: <?php _e( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a>.' ); ?></p>
+												<p class="description"><?php _e( 'Default' ); ?>: <?php _e( 'Thank you for creating with <a href="%s">WordPress</a>.' ); ?></p>
 												<a href="#TB_inline?height=300&width=600&inlineId=list_variables&modal=false" title="<?php _e( 'Shortcodes' , 'wp-admin-ui-customize' ); ?>" class="thickbox"><?php _e( 'Available Shortcodes' , 'wp-admin-ui-customize' ); ?></a>
 											</td>
 										</tr>
@@ -151,23 +151,23 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'title_tag'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'Title tag for Admin screen' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Admin screen' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Remove "Wordpress" from the title tag of the Admin screen' , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Remove "Wordpress" from title tag' , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 										<?php $field = 'resize_admin_bar'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'Resizing Admin bar' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Admin bar' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Don\'t resize' , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Disable resizing' , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 									</tbody>

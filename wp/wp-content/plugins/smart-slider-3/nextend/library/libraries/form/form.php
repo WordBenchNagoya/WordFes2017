@@ -1,8 +1,7 @@
 <?php
 N2Loader::import('libraries.xml.helper');
 
-class N2FormAbstract extends N2Data
-{
+class N2FormAbstract extends N2Data {
 
     public static $documentation = '';
 
@@ -71,9 +70,6 @@ class N2FormAbstract extends N2Data
 
     function decorateFormEnd() {
         echo N2Html::closeTag("div");
-        N2GoogleFonts::addFont('Open Sans');
-        N2GoogleFonts::addFont('Open Sans', 600);
-        N2GoogleFonts::addFont('Open Sans', 700);
     }
 
     function loadXMLFile($file) {
@@ -81,6 +77,11 @@ class N2FormAbstract extends N2Data
             echo "xml file not found ('{$file}')! <br /><strong>" . __FILE__ . ":" . __LINE__ . "</strong>";
             n2_exit(true);
             //throw new Exception("xml file not found ('{$file}')! <br /><strong>" . __FILE__ . ":" . __LINE__."</strong>");
+        }
+
+        if (!function_exists('simplexml_load_string')) {
+            n2_e("SimpleXML extension must be enabled in PHP!");
+            n2_exit(true);
         }
 
         // @fix Warning: simplexml_load_file(): I/O warning : failed to load external entity
@@ -124,7 +125,7 @@ class N2FormAbstract extends N2Data
 
     public static function importTab($type) {
         $class = 'N2Tab' . $type;
-        if (!class_exists($class)) {
+        if (!class_exists($class, false)) {
             for ($i = count(N2Form::$importPaths) - 1; $i >= 0; $i--) {
                 if (N2Loader::importPath(N2Form::$importPaths[$i] . '/tabs/' . $type)) {
                     break;

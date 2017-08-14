@@ -68,11 +68,19 @@ abstract class N2AssetsAbstract {
         }
     }
 
-    public function addInline($code, $global = false) {
-        if ($global) {
-            $this->globalInline[] = $code;
+    public function addInline($code, $global = false, $unshift = false) {
+        if ($unshift) {
+            if ($global) {
+                array_unshift($this->globalInline, $code);
+            } else {
+                array_unshift($this->inline, $code);
+            }
         } else {
-            $this->inline[] = $code;
+            if ($global) {
+                $this->globalInline[] = $code;
+            } else {
+                $this->inline[] = $code;
+            }
         }
     }
 
@@ -160,7 +168,7 @@ abstract class N2AssetsAbstract {
     }
 
     public function unSerialize($array) {
-        $this->staticGroup   = array_merge($this->staticGroup, $array['staticGroup']);
+        $this->staticGroup = array_merge($this->staticGroup, $array['staticGroup']);
 
         foreach ($array['files'] AS $group => $files) {
             if (!isset($this->files[$group])) {

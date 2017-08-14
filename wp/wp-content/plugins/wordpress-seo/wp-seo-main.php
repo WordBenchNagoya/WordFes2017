@@ -13,7 +13,7 @@ if ( ! function_exists( 'add_filter' ) ) {
  * @internal Nobody should be able to overrule the real version number as this can cause serious issues
  * with the options, so no if ( ! defined() )
  */
-define( 'WPSEO_VERSION', '3.3.4' );
+define( 'WPSEO_VERSION', '5.2' );
 
 if ( ! defined( 'WPSEO_PATH' ) ) {
 	define( 'WPSEO_PATH', plugin_dir_path( WPSEO_FILE ) );
@@ -137,13 +137,18 @@ function wpseo_network_activate_deactivate( $activate = true ) {
 	}
 }
 
+
 /**
  * Runs on activation of the plugin.
  */
 function _wpseo_activate() {
 	require_once( WPSEO_PATH . 'inc/wpseo-functions.php' );
+	require_once( WPSEO_PATH . 'inc/class-wpseo-installation.php' );
 
 	wpseo_load_textdomain(); // Make sure we have our translations available for the defaults.
+
+	new WPSEO_Installation();
+
 	WPSEO_Options::get_instance();
 	if ( ! is_multisite() ) {
 		WPSEO_Options::initialize();
@@ -166,9 +171,16 @@ function _wpseo_activate() {
 	// Clear cache so the changes are obvious.
 	WPSEO_Utils::clear_cache();
 
+	// Create the text link storage table.
+	$link_installer = new WPSEO_Link_Installer();
+	$link_installer->install();
+
+	// Trigger reindex notification.
+	$notifier = new WPSEO_Link_Notifier();
+	$notifier->manage_notification();
+
 	do_action( 'wpseo_activate' );
 }
-
 /**
  * On deactivation, flush the rewrite rules so XML sitemaps stop working.
  */
@@ -269,6 +281,21 @@ function wpseo_init() {
 }
 
 /**
+ * Loads the rest api endpoints.
+ */
+function wpseo_init_rest_api() {
+	// We can't do anything when requirements are not met.
+	if ( WPSEO_Utils::is_api_available() ) {
+		// Boot up REST API.
+		$configuration_service = new WPSEO_Configuration_Service();
+		$configuration_service->initialize();
+
+		$link_reindex_endpoint = new WPSEO_Link_Reindex_Post_Endpoint( new WPSEO_Link_Reindex_Post_Service() );
+		$link_reindex_endpoint->register();
+	}
+}
+
+/**
  * Used to load the required files on the plugins_loaded hook, instead of immediately.
  */
 function wpseo_frontend_init() {
@@ -337,6 +364,7 @@ if ( ! function_exists( 'wp_installing' ) ) {
 
 if ( ! wp_installing() && ( $spl_autoload_exists && $filter_exists ) ) {
 	add_action( 'plugins_loaded', 'wpseo_init', 14 );
+	add_action( 'rest_api_init', 'wpseo_init_rest_api' );
 
 	if ( is_admin() ) {
 
@@ -344,9 +372,6 @@ if ( ! wp_installing() && ( $spl_autoload_exists && $filter_exists ) ) {
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			require_once( WPSEO_PATH . 'admin/ajax.php' );
-
-			// Crawl Issue Manager AJAX hooks.
-			new WPSEO_GSC_Ajax();
 
 			// Plugin conflict ajax hooks.
 			new Yoast_Plugin_Conflict_Ajax();
@@ -372,8 +397,9 @@ register_deactivation_hook( WPSEO_FILE, 'wpseo_deactivate' );
 add_action( 'wpmu_new_blog', 'wpseo_on_activate_blog' );
 add_action( 'activate_blog', 'wpseo_on_activate_blog' );
 
-// Loading OnPage integration.
+// Loading Ryte integration.
 new WPSEO_OnPage();
+
 
 /**
  * Wraps for notifications center class.
@@ -476,5 +502,3 @@ function yoast_wpseo_self_deactivate() {
 		}
 	}
 }
-
-

@@ -45,7 +45,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $SiteSetting[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Tag to be output' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( get_the_generator( 'xhtml' ) ); ?></code></p>
+												<p class="description"><?php _e( 'Tag' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( get_the_generator( 'xhtml' ) ); ?></code></p>
 											</td>
 										</tr>
 										<?php $field = 'wlwmanifest_link'; ?>
@@ -57,8 +57,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $SiteSetting[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Please display when using the Windows Live Writer.' , 'wp-admin-ui-customize' ); ?></p>
-												<p class="description"><?php _e( 'Tag to be output' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="' . get_bloginfo('wpurl') . '/wp-includes/wlwmanifest.xml" />' ); ?></code></p>
+												<p class="description"><?php _e( 'Required if you are using Windows Live Writer.' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'Tag' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="' . get_bloginfo('wpurl') . '/wp-includes/wlwmanifest.xml" />' ); ?></code></p>
 											</td>
 										</tr>
 										<?php $field = 'rsd_link'; ?>
@@ -70,8 +70,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $SiteSetting[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Information of XML-rpc' , 'wp-admin-ui-customize' ); ?></p>
-												<p class="description"><?php _e( 'Tag to be output' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="EditURI" type="application/rsd+xml" title="RSD" href="' . get_bloginfo('wpurl') . '"/xmlrpc.php?rsd" />' ); ?></code></p>
+												<p class="description"><?php _e( 'Required if you are using pingbacks.' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'Tag' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="EditURI" type="application/rsd+xml" title="RSD" href="' . get_bloginfo('wpurl') . '"/xmlrpc.php?rsd" />' ); ?></code></p>
 											</td>
 										</tr>
 										<?php $field = 'feed_links'; ?>
@@ -83,8 +83,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $SiteSetting[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Sitewide feed' , 'wp-admin-ui-customize' ); ?></p>
-												<p class="description"><?php _e( 'Tag to be output' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( sprintf( __('%1$s %2$s Feed') , get_bloginfo('name') , '&amp;raquo&#059;' ) ) . '" href="' . get_feed_link( get_default_feed() ) . ' />' ); ?></code></p>
+												<p class="description"><?php _e( 'Adds RSS feed links to the HTML &lt;head&gt;' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'Tag' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( sprintf( __('%1$s %2$s Feed') , get_bloginfo('name') , '&amp;raquo&#059;' ) ) . '" href="' . get_feed_link( get_default_feed() ) . ' />' ); ?></code></p>
 											</td>
 										</tr>
 										<?php $field = 'feed_links_extra'; ?>
@@ -96,8 +96,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $SiteSetting[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Extra feed' , 'wp-admin-ui-customize' ); ?></p>
-												<p class="description"><?php _e( 'Tag to be output' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( sprintf( __('%1$s %2$s Comments Feed') , get_bloginfo('name') , '&amp;raquo&#059;' ) ) . '" href="' . get_feed_link( get_default_feed() . '&#038;p=***' ) . ' />' ); ?></code></p>
+												<p class="description"><?php _e( 'Adds RSS feed links for other feeds such as category feeds' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'Tag' , 'wp-admin-ui-customize' ); ?> : <code><?php echo esc_html( '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( sprintf( __('%1$s %2$s Comments Feed') , get_bloginfo('name') , '&amp;raquo&#059;' ) ) . '" href="' . get_feed_link( get_default_feed() . '&#038;p=***' ) . ' />' ); ?></code></p>
 											</td>
 										</tr>
 									</tbody>
@@ -121,10 +121,10 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'admin_bar'; ?>
 										<tr>
 											<th>
-												<?php _e( 'Admin Bar' , 'wp-admin-ui-customize' ); ?>
+												<?php _e( 'Admin bar' , 'wp-admin-ui-customize' ); ?>
 											</th>
 											<td>
-												<?php $arr = array( "hide" => __( 'Hide the Admin bar on the front end' , 'wp-admin-ui-customize' ) , "front" => __( 'Apply WP Admin UI Customize settings on the front end admin bar also' , 'wp-admin-ui-customize' ) ); ?>
+												<?php $arr = array( "hide" => __( 'Hide admin bar on the front end' , 'wp-admin-ui-customize' ) , "front" => __( 'Apply WP Admin UI Customize settings to the front end admin bar' , 'wp-admin-ui-customize' ) ); ?>
 												<select name="data[<?php echo $field; ?>]">
 													<option value="">-</option>
 													<?php foreach( $arr as $key => $label ) : ?>

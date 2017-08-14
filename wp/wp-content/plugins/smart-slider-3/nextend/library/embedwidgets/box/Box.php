@@ -5,9 +5,6 @@ class N2Box extends N2EmbedWidget implements N2EmbedWidgetInterface
 
     public static $params = array(
         'attributes'         => array(),
-        'image'              => '',
-        'firstCol'           => null,
-        'secondCol'          => null,
         'center'             => null,
         'centerAttributes'   => array(),
         'lt'                 => null,

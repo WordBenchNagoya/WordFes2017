@@ -1,7 +1,6 @@
 <?php
 
-class N2AssetsCss extends N2AssetsAbstract
-{
+class N2AssetsCss extends N2AssetsAbstract {
 
     public function __construct() {
         $this->cache = new N2AssetsCacheCSS();
@@ -20,15 +19,38 @@ class N2AssetsCss extends N2AssetsAbstract
                 )) . "\n";
         }
 
-        foreach ($this->getFiles() AS $file) {
-            $output .= N2Html::style(N2Uri::pathToUri($file) . '?' . filemtime($file), true, array(
-                    'media' => 'screen, print'
-                )) . "\n";
-        }
+        $mode = N2Settings::get('css-mode', 'normal');
+        if (N2Platform::$isAdmin || $mode == 'normal') {
 
-        $inline = implode("\n", $this->inline);
-        if (!empty($inline)) {
-            $output .= N2Html::style($inline);
+            foreach ($this->getFiles() AS $file) {
+                $output .= N2Html::style(N2Uri::pathToUri($file, false) . '?' . filemtime($file), true, array(
+                        'media' => 'screen, print'
+                    )) . "\n";
+            }
+
+            $inline = implode("\n", $this->inline);
+            if (!empty($inline)) {
+                $output .= N2Html::style($inline);
+            }
+        } else {
+            $cssCombine = new N2CacheCombine('css', 'N2AssetsCss::minify');
+            foreach ($this->getFiles() AS $file) {
+                $cssCombine->add($file);
+            }
+            $cssCombine->addInline(implode("\n", $this->inline));
+            $combinedFile = $cssCombine->make();
+
+            if ($mode == 'combine') {
+                $output .= N2Html::style(N2Uri::pathToUri($combinedFile, false), true, array(
+                        'media' => 'screen, print'
+                    )) . "\n";
+            } else if ($mode == 'async') {
+                N2JS::addInline('window.n2CSS = "' . N2Uri::pathToUri($combinedFile, false) . '";', true, true);
+            } else if ($mode == 'inline') {
+                $output .= N2Html::style(file_get_contents($combinedFile), false, array(
+                    'lazyload' => 1
+                ));
+            }
         }
 
         return $output;
@@ -60,5 +82,18 @@ class N2AssetsCss extends N2AssetsAbstract
         $output = implode("\n", $this->inline);
 
         return $output;
+    }
+
+    public static function minify($code) {
+        if (!class_exists('csstidy', false)) {
+            require_once(dirname(__FILE__) . '/csstidy/class.csstidy.php');
+        }
+
+        $csstidy = new csstidy();
+        $csstidy->load_template('high_compression');
+
+        $csstidy->parse($code);
+
+        return $csstidy->print->plain();
     }
 } 

@@ -6,6 +6,8 @@
 $sets = $model->getSets();
 
 N2AnimationRenderer::$sets[] = $sets[0]['id'];
+N2AnimationRenderer::$sets[] = $sets[1]['id'];
+N2AnimationRenderer::$sets[] = $sets[2]['id'];
 
 $animations = array();
 foreach (array_unique(N2AnimationRenderer::$sets) AS $setId) {
@@ -41,12 +43,12 @@ N2JS::addFirstCode("
                                    id="n2-animation-editor-tabs">
                         </div>
 
-                        <a id="n2-animation-editor-tab-add" href="#" class="n2-button n2-button-grey n2-button-medium">
+                        <a id="n2-animation-editor-tab-add" href="#" class="n2-button n2-button-icon n2-button-m n2-radius-s n2-button-grey">
                             <i class="n2-i n2-i-plus"></i>
                         </a>
 
                         <a id="n2-animation-editor-tab-delete" href="#"
-                           class="n2-button n2-button-grey n2-button-medium">
+                           class="n2-button n2-button-icon n2-button-m n2-radius-s n2-button-grey">
                             <i class="n2-i n2-i-delete"></i>
                         </a>
                     </div>

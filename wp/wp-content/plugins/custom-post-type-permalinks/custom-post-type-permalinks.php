@@ -1,33 +1,40 @@
 <?php
-/*
-Plugin Name: Custom Post Type Permalinks
-Plugin URI: https://github.com/torounit/custom-post-type-permalinks
-Description:  Add post archives of custom post type and customizable permalinks.
-Author: Toro_Unit
-Author URI: https://torounit.com/
-Version: 2.1.2
-Text Domain: custom-post-type-permalinks
-License: GPL2 or later
-Domain Path: /language/
-*/
-
-
 /**
- *
- * Custom Post Type Permalinks
+ * Plugin Name: Custom Post Type Permalinks
+ * Plugin URI: https://github.com/torounit/custom-post-type-permalinks
+ * Description:  Add post archives of custom post type and customizable permalinks.
+ * Author: Toro_Unit
+ * Author URI: https://torounit.com/
+ * Version: 3.1.3
+ * Text Domain: custom-post-type-permalinks
+ * License: GPL2 or later
+ * Domain Path: /language/
  *
  * @package Custom_Post_Type_Permalinks
- * @version 2.1.2
+ * @version 3.1.3
  */
 
 define( 'CPTP_PLUGIN_FILE', __FILE__ );
-$data = get_file_data( __FILE__, array( 'ver' => 'Version', 'lang_dir' => 'Domain Path' ) );
-define( 'CPTP_VERSION', $data['ver'] );
 define( 'CPTP_DEFAULT_PERMALINK', '/%postname%/' );
+
+$cptp_data = get_file_data( __FILE__, array(
+	'Name' => 'Plugin Name',
+	'PluginURI' => 'Plugin URI',
+	'Version' => 'Version',
+	'Description' => 'Description',
+	'Author' => 'Author',
+	'AuthorURI' => 'Author URI',
+	'TextDomain' => 'Text Domain',
+	'DomainPath' => 'Domain Path',
+	'Network' => 'Network',
+) );
+
+define( 'CPTP_VERSION', $cptp_data['Version'] );
+define( 'CPTP_DOMAIN_PATH', $cptp_data['DomainPath'] );
+define( 'CPTP_TEXT_DOMAIN', $cptp_data['TextDomain'] );
 
 
 /**
- *
  * Autoloader for CPTP.
  *
  * @since 1.0.0
@@ -42,12 +49,15 @@ function cptp_class_loader( $class_name ) {
 
 spl_autoload_register( 'cptp_class_loader' );
 
-
 /**
- * initialize Plugin
+ * CPTP init.
  */
-add_action( 'plugins_loaded', array( CPTP::get_instance(), 'init' ) );
+function cptp_init() {
+	$custom_post_type_permalinks = CPTP::get_instance();
+	$custom_post_type_permalinks->init();
+}
 
+cptp_init();
 
 /**
  * Activation hooks.

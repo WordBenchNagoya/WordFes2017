@@ -128,7 +128,7 @@ if( is_multisite() ) {
 					<th><strong>[post_type]</strong></th>
 					<td>
 						<code><?php _e( 'Posts' ); ?></code>
-						<span class="description"><?php _e( 'Current Post Type Name' , 'wp-admin-ui-customize' ); ?> ( <?php _e( 'Pages' ); ?>/<?php _e( 'Categories' ); ?>/<?php _e( 'Tags' ); ?>/<?php _e( 'Custom' ); ?>)</span>
+						<span class="description"><?php _e( 'Current Post Type Name' , 'wp-admin-ui-customize' ); ?> ( <?php _e( 'Pages' ); ?>/<?php _e( 'Categories' ); ?>/<?php _e( 'Tags' ); ?>/<?php _e( 'Custom Post Type' , 'wp-admin-ui-customize' ); ?>)</span>
 					</td>
 				</tr>
 				<?php if( !empty( $this->ActivatedPlugin ) ) : ?>

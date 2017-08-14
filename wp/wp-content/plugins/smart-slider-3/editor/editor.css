@@ -49,93 +49,15 @@
     cursor: pointer;
 }
 
-.n2-ss-editor-boxes {
-    height: 500px;
-    overflow: auto;
-}
-
-.n2-ss-editor-box {
-    position: relative;
-    width: 200px;
-    height: 135px;
-    float: left;
-    margin: 20px;
-    background-size: cover;
-    background-position: center center;
-    overflow: hidden;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.n2-ss-editor-box.n2-active {
-    box-shadow: 0 0 0 4px #1999e3;
-}
-
-.n2-ss-editor-box-actions {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    display: none;
-}
-
-:HOVER > .n2-ss-editor-box-actions {
-    display: block;
-}
-
-.n2-ss-editor-box-actions a {
-    display: inline-block;
-    height: 20px;
-    line-height: 20px;
-    padding: 0 5px;
-    background-color: #3c4958;
-    border-radius: 3px;
-    color: #ffffff;
-    text-decoration: none;
-    box-shadow: none;
-}
-
-.n2-ss-editor-box .n2-ss-editor-box-title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: rgba(43, 52, 63, 0.9);
-    line-height: 40px;
-    height: 40px;
-    color: #cedae2;
-    font-size: 12px;
-    overflow: hidden;
-    padding: 0 10px;
+.n2-ss-editor-inner > iframe {
     width: 100%;
-    box-sizing: border-box;
+    height: 500px;
 }
 
-.n2-ss-editor-buttons {
-    padding: 10px 20px;
-    text-align: center;
-    height: 36px;
-}
-
-.n2-ss-editor-buttons a {
-    display: inline-block;
-    height: 36px;
-    line-height: 36px;
-    min-width: 70px;
-    padding: 0 20px;
-    background: #5cba3c;
-    border-radius: 3px;
-    box-shadow: none;
+#elementor-panel .elementor-button-smartslider {
+    background-color: #a4afb7;
     color: #fff;
-    text-decoration: none;
-    font-size: 13px;
+    line-height: 26px;
+    padding: 0 15px;
     text-transform: uppercase;
-    font-weight: bold;
-}
-
-.n2-ss-editor-buttons a.n2-ss-editor-insert {
-    float: right;
-}
-
-.n2-ss-editor-buttons a.n2-ss-editor-create-slider {
-    float: left;
-    background-color: #6b7986;
 }

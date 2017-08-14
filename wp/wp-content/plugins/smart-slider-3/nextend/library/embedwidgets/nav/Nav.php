@@ -1,7 +1,6 @@
 <?php
 
-class N2Nav extends N2EmbedWidget implements N2EmbedWidgetInterface
-{
+class N2Nav extends N2EmbedWidget implements N2EmbedWidgetInterface {
 
     public static $params = array(
         'logoUrl'      => false,

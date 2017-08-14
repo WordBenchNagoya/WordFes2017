@@ -6,34 +6,73 @@ if (!class_exists('N2WP', false)) {
     require_once(dirname(NEXTEND_SMARTSLIDER_3__FILE__) . '/library/smartslider/smartslider3.php');
 }
 
-class N2_SMARTSLIDER_3 {
+class SmartSlider3 {
 
     public static function init() {
         if (class_exists('N2Wordpress')) {
-            N2_SMARTSLIDER_3::registerApplication();
+            SmartSlider3::registerApplication();
         } else {
-            add_action('nextend_loaded', 'N2_SMARTSLIDER_3::registerApplication');
+            add_action('nextend_loaded', 'SmartSlider3::registerApplication');
         }
 
-        add_action('init', 'N2_SMARTSLIDER_3::_init');
+        add_action('init', 'SmartSlider3::_init');
 
-        add_action('admin_menu', 'N2_SMARTSLIDER_3::nextendAdminInit');
+        add_action('init', 'SmartSlider3::preRender');
 
-        add_action('network_admin_menu', 'N2_SMARTSLIDER_3::nextendNetworkAdminInit');
+        add_action('admin_menu', 'SmartSlider3::nextendAdminInit');
 
-        register_activation_hook(NEXTEND_SMARTSLIDER_3__FILE__, 'N2_SMARTSLIDER_3::install');
-        add_action('upgrader_process_complete', 'N2_SMARTSLIDER_3::upgrade', 10, 2);
+        add_action('network_admin_menu', 'SmartSlider3::nextendNetworkAdminInit');
 
-        add_action('wpmu_new_blog', 'N2_SMARTSLIDER_3::install_new_blog');
-        add_action('delete_blog', 'N2_SMARTSLIDER_3::delete_blog', 10, 2);
+        register_activation_hook(NEXTEND_SMARTSLIDER_3__FILE__, 'SmartSlider3::install');
+
+        add_action('upgrader_process_complete', 'SmartSlider3::upgrade', 10, 2);
+
+        add_action('wpmu_new_blog', 'SmartSlider3::install_new_blog');
+        add_action('delete_blog', 'SmartSlider3::delete_blog', 10, 2);
 
         require_once dirname(NEXTEND_SMARTSLIDER_3__FILE__) . DIRECTORY_SEPARATOR . 'includes/shortcode.php';
         require_once dirname(NEXTEND_SMARTSLIDER_3__FILE__) . DIRECTORY_SEPARATOR . 'includes/widget.php';
         require_once dirname(NEXTEND_SMARTSLIDER_3__FILE__) . DIRECTORY_SEPARATOR . 'editor' . DIRECTORY_SEPARATOR . 'shortcode.php';
 
-        add_action('et_builder_ready', 'N2_SMARTSLIDER_3::Divi_load_module');
+        add_action('et_builder_ready', 'SmartSlider3::divi');
 
-        add_action('vc_after_set_mode', 'N2_SMARTSLIDER_3::initVisualComposer');
+        add_action('vc_after_set_mode', 'SmartSlider3::visualComposer');
+
+        if (class_exists('FLBuilderModel', false)) {
+            SmartSlider3::beaverBuilder();
+        }
+
+        add_action('elementor/init', 'SmartSlider3::elementor');
+
+        add_action('tailor_init', 'SmartSlider3::tailor');
+
+        add_filter('wpseo_xml_sitemap_post_url', 'SmartSlider3::wpseo_xml_sitemap_post_url', 10, 2);
+        add_filter('fw_extensions_locations', 'SmartSlider3::unyson_extension');
+
+        if (class_exists('MPCEShortcode', false)) {
+            SmartSlider3::motoPressCE();
+        }
+    }
+
+    public static function unyson_extension($locations) {
+        $path             = dirname(__FILE__) . '/integrations/unyson';
+        $locations[$path] = plugin_dir_url(__FILE__) . 'integrations/unyson';
+
+        return $locations;
+    }
+
+    public static function wpseo_xml_sitemap_post_url($permalink, $post) {
+        global $shortcode_tags;
+        $_shortcode_tags    = $shortcode_tags;
+        $shortcode_tags     = array("smartslider3" => "N2SS3Shortcode::doShortcode");
+        $post->post_content = do_shortcode($post->post_content);
+        $shortcode_tags     = $_shortcode_tags;
+
+        return $permalink;
+    }
+
+    public static function removeShortcode() {
+        remove_shortcode('smartslider3');
     }
 
     public static function registerApplication() {
@@ -42,9 +81,27 @@ class N2_SMARTSLIDER_3 {
     }
 
     public static function _init() {
-		N2Loader::import('libraries.settings.settings', 'smartslider');
+        N2Loader::import('libraries.settings.settings', 'smartslider');
         if (current_user_can('smartslider_edit') && intval(N2SmartSliderSettings::get('wp-adminbar', 1))) {
-            add_action('admin_bar_menu', 'N2_SMARTSLIDER_3::admin_bar_menu', 81);
+            add_action('admin_bar_menu', 'SmartSlider3::admin_bar_menu', 81);
+        }
+    }
+
+    public static function preRender() {
+        if (isset($_GET['n2prerender']) && isset($_GET['n2app']) && current_user_can('smartslider')) {
+            try {
+                N2Base::getApplication($_GET['n2app'])
+                      ->getApplicationType(N2Platform::$isAdmin ? 'backend' : 'frontend')
+                      ->setCurrent()
+                      ->render(array(
+                          "prerender"  => true,
+                          "controller" => $_GET['n2controller'],
+                          "action"     => $_GET['n2action']
+                      ));
+                n2_exit(true);
+            } catch (Exception $e) {
+                exit;
+            }
         }
     }
 
@@ -55,7 +112,7 @@ class N2_SMARTSLIDER_3 {
         }
 
 
-        add_menu_page('Smart Slider', 'Smart Slider', 'smartslider', NEXTEND_SMARTSLIDER_3_URL_PATH, 'N2_SMARTSLIDER_3::application', $icon);
+        add_menu_page('Smart Slider', 'Smart Slider', 'smartslider', NEXTEND_SMARTSLIDER_3_URL_PATH, 'SmartSlider3::application', $icon);
 
         function nextend_smart_slider_admin_menu() {
             echo '<style type="text/css">#adminmenu .toplevel_page_' . NEXTEND_SMARTSLIDER_3_URL_PATH . ' .wp-menu-image img{opacity: 1;}</style>';
@@ -66,7 +123,7 @@ class N2_SMARTSLIDER_3 {
 
     public static function nextendNetworkAdminInit() {
         $icon = NEXTEND_SMARTSLIDER_3_URL . '/icon.png';
-        add_menu_page('Smart Slider Update', 'Smart Slider Update', 'smartslider', NEXTEND_SMARTSLIDER_3_URL_PATH, 'N2_SMARTSLIDER_3::networkUpdate', $icon);
+        add_menu_page('Smart Slider Update', 'Smart Slider Update', 'smartslider', NEXTEND_SMARTSLIDER_3_URL_PATH, 'SmartSlider3::networkUpdate', $icon);
 
         function nextend_smart_slider_admin_menu() {
             echo '<style type="text/css">#adminmenu .toplevel_page_' . NEXTEND_SMARTSLIDER_3_URL_PATH . '{display: none;}</style>';
@@ -87,6 +144,11 @@ class N2_SMARTSLIDER_3 {
     }
 
     public static function application($dummy, $controller = 'sliders', $action = 'index') {
+
+        if (get_option("n2_ss3_version") != N2SS3::$version) {
+            self::install(true);
+        }
+
         N2Base::getApplication("smartslider")
               ->getApplicationType('backend')
               ->setCurrent()
@@ -118,20 +180,24 @@ class N2_SMARTSLIDER_3 {
             }
 
             $wpdb->prefix = $tmpPrefix;
-            return true;
+        } else {
+
+            N2Base::getApplication("smartslider")
+                  ->getApplicationType('backend')
+                  ->render(array(
+                      "controller" => "install",
+                      "action"     => "index",
+                      "useRequest" => false
+                  ), array(true));
         }
 
-        N2Base::getApplication("smartslider")
-              ->getApplicationType('backend')
-              ->render(array(
-                  "controller" => "install",
-                  "action"     => "index",
-                  "useRequest" => false
-              ), array(true));
+        update_option("n2_ss3_version", N2SS3::$version);
+
+        return true;
     }
 
     public static function upgrade($upgrader_object, $options) {
-        if ($options['action'] == 'update' && $options['type'] == 'plugin') {
+        if (isset($options['plugins']) && is_array($options['plugins']) && $options['action'] == 'update' && $options['type'] == 'plugin') {
             foreach ($options['plugins'] as $plugin) {
                 if ($plugin == NEXTEND_SMARTSLIDER_3_BASENAME) {
                     self::install(true);
@@ -164,17 +230,54 @@ class N2_SMARTSLIDER_3 {
 
             global $wpdb;
             $prefix = $wpdb->get_blog_prefix($blog_id);
-            $wpdb->query('DROP TABLE IF EXISTS ' . $prefix . 'nextend2_smartslider3_generators, ' . $prefix . 'nextend2_smartslider3_sliders,	' . $prefix . 'nextend2_smartslider3_slides;');
+            $wpdb->query('DROP TABLE IF EXISTS ' . $prefix . 'nextend2_smartslider3_generators, ' . $prefix . 'nextend2_smartslider3_sliders,	' . $prefix . 'nextend2_smartslider3_slides, ' . $prefix . 'nextend2_smartslider3_sliders_xref;');
 
         }
     }
 
-    public static function Divi_load_module() {
-        require_once dirname(__FILE__) . '/divi.php';
+    public static function import($file) {
+        N2Base::getApplication("smartslider")
+              ->getApplicationType('backend');
+
+        N2Loader::import(array(
+            'models.Sliders',
+            'models.Slides'
+        ), 'smartslider');
+
+        N2Loader::import('libraries.import', 'smartslider');
+
+        $import   = new N2SmartSliderImport();
+        $sliderId = $import->import($file);
+
+        if ($sliderId !== false) {
+            return $sliderId;
+        }
+
+        return false;
     }
 
-    public static function initVisualComposer() {
-        require_once dirname(__FILE__) . '/vc.php';
+    public static function divi() {
+        require_once dirname(__FILE__) . '/integrations/Divi.php';
+    }
+
+    public static function visualComposer() {
+        require_once dirname(__FILE__) . '/integrations/VisualComposer.php';
+    }
+
+    public static function elementor() {
+        require_once dirname(__FILE__) . '/integrations/Elementor.php';
+    }
+
+    public static function beaverBuilder() {
+        require_once dirname(__FILE__) . '/integrations/BeaverBuilder.php';
+    }
+
+    public static function tailor() {
+        require_once dirname(__FILE__) . '/integrations/tailor.php';
+    }
+
+    public static function motoPressCE() {
+        require_once dirname(__FILE__) . '/integrations/MotoPressCE.php';
     }
 
     /**
@@ -246,4 +349,4 @@ class N2_SMARTSLIDER_3 {
     }
 }
 
-N2_SMARTSLIDER_3::init();
+SmartSlider3::init();

@@ -66,7 +66,7 @@ class N2SmartsliderBackendSettingsController extends N2SmartSliderController
         if ($this->validatePermission('smartslider_config')) {
             if ($this->validateToken()) {
                 $slidersModel = new N2SmartsliderSlidersModel();
-                foreach ($slidersModel->getAll() AS $slider) {
+                foreach ($slidersModel->_getAll() AS $slider) {
                     $slidersModel->refreshCache($slider['id']);
                 }
                 N2Cache::clearGroup('n2-ss-0');

@@ -3,12 +3,12 @@
         <param name="content" type="richtextarea" label="Text" default=""
                style2="height: 120px; width: 230px;resize: vertical;"/>
         <param name="font" type="font" previewmode="paragraph" set="1000" style="item_textstyle" label="Font"
-               css="width: 140px;"><![CDATA[
+               class="n2-hidden"><![CDATA[
 <div style="width:{nextend.activeLayer.width()}px;"><p class="{styleClassName} {fontClassName}">{$('#item_textcontent').val();}</p></div>
 ]]>
         </param>
         <param name="style" type="style" previewmode="heading" set="1000" font="item_textfont" label="Style"
-               css="width: 140px;"><![CDATA[
+               class="n2-hidden"><![CDATA[
 <div style="width:{nextend.activeLayer.width()}px;"><p class="{styleClassName} {fontClassName}">{$('#item_textcontent').val();}</p></div>
 ]]>
         </param>

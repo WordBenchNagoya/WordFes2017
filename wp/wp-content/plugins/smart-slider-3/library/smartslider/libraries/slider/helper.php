@@ -1,7 +1,6 @@
 <?php
 
-class N2SmartSliderHelper
-{
+class N2SmartSliderHelper {
 
     /**
      * @var N2Application
@@ -29,5 +28,10 @@ class N2SmartSliderHelper
 
     public function setSliderChanged($sliderId, $value = 1) {
         $this->application->storage->set('sliderChanged', $sliderId, $value);
+
+        $xref = new N2SmartsliderSlidersXrefModel();
+        foreach ($xref->getGroups($sliderId) AS $row) {
+            $this->application->storage->set('sliderChanged', $row['group_id'], $value);
+        }
     }
 }

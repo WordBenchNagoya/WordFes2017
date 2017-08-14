@@ -1,11 +1,13 @@
 <?php
 
-class N2SmartsliderLayersModel extends N2Model
-{
+class N2SmartsliderLayersModel extends N2Model {
 
     function renderForm($data = array()) {
 
-        N2Loader::import('libraries.animations.manager');
+        N2Pluggable::addAction('N2TabTabbedSidebarslide-editor-settings', array(
+            $this,
+            'extendSlideEditorSettings'
+        ));
 
         $configurationXmlFile = dirname(__FILE__) . '/forms/layer.xml';
 
@@ -16,6 +18,18 @@ class N2SmartsliderLayersModel extends N2Model
         $form->loadXMLFile($configurationXmlFile);
 
         echo $form->render('layer');
+    }
+
+    /**
+     * @param $tab N2TabTabbedSidebar
+     */
+    public function extendSlideEditorSettings($tab) {
+
+        $xml = dirname(__FILE__) . '/forms/group.xml';
+        if (N2Filesystem::existsFile($xml)) {
+            $tab->addTabXML($xml);
+        }
+
     }
 
 } 

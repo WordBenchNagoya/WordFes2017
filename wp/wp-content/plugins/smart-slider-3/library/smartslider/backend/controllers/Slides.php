@@ -2,7 +2,7 @@
 
 class N2SmartsliderBackendSlidesController extends N2SmartSliderController {
 
-    public $layoutName = 'default';
+    public $layoutName = 'default1c';
 
     public function initialize() {
         parent::initialize();
@@ -31,24 +31,61 @@ class N2SmartsliderBackendSlidesController extends N2SmartSliderController {
 
     public function actionCreate() {
         if ($this->validatePermission('smartslider_edit')) {
+            $sliderId = N2Request::getInt('sliderid');
 
             $slidersModel = new N2SmartsliderSlidersModel();
-            $sliderId     = N2Request::getInt('sliderid');
             $slider       = $slidersModel->get($sliderId);
             if ($this->validateDatabase($slider)) {
                 $this->initAdminSlider();
 
-                $this->addView("../../inline/_sidebar_slide", array(
-                    "appObj" => $this,
-                    "slider" => $slider
-                ), "sidebar");
-                $this->addView("edit", array(
-                    "slidesModel" => new N2SmartsliderSlidesModel(),
-                    "sliderId"    => $sliderId,
-                    "slider"      => $slider
-                ));
-                $this->render();
+                $xref   = new N2SmartsliderSlidersXrefModel();
+                $groups = $xref->getGroups($sliderId);
+                if (!empty($groups)) {
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "slider/edit",
+                            array('sliderid' => $groups[0]['group_id'])
+                        )),
+                        'class' => 'n2-h4'
+                    ), $groups[0]['title']));
+                }
 
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => $this->appType->router->createUrl(array(
+                        "slider/edit",
+                        array('sliderid' => $sliderId)
+                    )),
+                    'class' => 'n2-h4'
+                ), $slider['title']));
+
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => '#',
+                    'class' => 'n2-h4 n2-active'
+                ), n2_('Add empty slide')));
+
+                if (N2Request::getCmd('mode') == 'sample') {
+
+                    $this->addView("edit", array(
+                        "slidesModel" => new N2SmartsliderSlidesModel(),
+                        "sliderId"    => $sliderId,
+                        "slider"      => $slider,
+                        "isAddSample" => true
+                    ));
+
+                    $this->render(array(
+                        'class' => 'n2-ss-add-slide-with-sample'
+                    ));
+                } else {
+
+                    $this->addView("edit", array(
+                        "slidesModel" => new N2SmartsliderSlidesModel(),
+                        "sliderId"    => $sliderId,
+                        "slider"      => $slider,
+                        "isAddSample" => false
+                    ));
+
+                    $this->render();
+                }
             }
         }
     }
@@ -60,33 +97,82 @@ class N2SmartsliderBackendSlidesController extends N2SmartSliderController {
             $slider       = $slidersModel->get($sliderId);
             if ($this->validateDatabase($slider)) {
                 $slidesModel = new N2SmartsliderSlidesModel();
-                if (!$slidesModel->get(N2Request::getInt('slideid'))) {
+                if (!($slide = $slidesModel->get(N2Request::getInt('slideid')))) {
                     $this->redirect("sliders/index");
+                }
+
+                $xref   = new N2SmartsliderSlidersXrefModel();
+                $groups = $xref->getGroups($sliderId);
+                if (!empty($groups)) {
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "slider/edit",
+                            array('sliderid' => $groups[0]['group_id'])
+                        )),
+                        'class' => 'n2-h4'
+                    ), $groups[0]['title']));
+                }
+
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => $this->appType->router->createUrl(array(
+                        "slider/edit",
+                        array('sliderid' => $sliderId)
+                    )),
+                    'class' => 'n2-h4'
+                ), $slider['title']));
+
+                $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                    'href'  => $this->appType->router->createUrl(array(
+                        "slides/edit",
+                        array(
+                            'sliderid' => $sliderId,
+                            'slideid'  => $slide['id']
+                        )
+                    )),
+                    'class' => 'n2-h4 n2-active'
+                ), $slide['title']));
+
+                if ($slide['generator_id'] > 0) {
+                    $this->layout->addBreadcrumb(N2Html::tag('a', array(
+                        'href'  => $this->appType->router->createUrl(array(
+                            "generator/edit",
+                            array(
+                                'generator_id' => $slide['generator_id']
+                            )
+                        )),
+                        'class' => 'n2-h4'
+                    ), n2_('Edit generator')));
                 }
 
                 $this->initAdminSlider();
 
-                $this->addView("../../inline/_sidebar_slide", array(
-                    "appObj" => $this,
-                    "slider" => $slider
-                ), "sidebar");
                 $this->addView("edit", array(
                     "slidesModel" => new N2SmartsliderSlidesModel(),
                     "sliderId"    => $sliderId,
-                    "slider"      => $slider
+                    "slider"      => $slider,
+                    "isAddSample" => false
                 ));
+
                 $this->render();
             }
         }
     }
-
 
     public function actionDelete() {
         if ($this->validateToken() && $this->validatePermission('smartslider_delete')) {
             if ($slideId = N2Request::getInt('slideid')) {
                 $slidesModel = new N2SmartsliderSlidesModel();
                 $slidesModel->delete($slideId);
-                $this->redirect(N2Request::getUrlReferrer());
+            }
+
+            $sliderId = N2Request::getInt("sliderid");
+            if ($sliderId) {
+                $this->redirect(array(
+                    "slider/edit",
+                    array(
+                        "sliderid" => $sliderId
+                    )
+                ));
             }
             $this->redirect(array("sliders/index"));
         }
@@ -145,4 +231,4 @@ class N2SmartsliderBackendSlidesController extends N2SmartSliderController {
         }
     }
 
-} 
+}

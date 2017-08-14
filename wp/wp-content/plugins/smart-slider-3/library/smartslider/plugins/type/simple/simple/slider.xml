@@ -1,13 +1,15 @@
 <root>
   <params name="simpledefaultslidertypeanimation" label="Animation settings">
-    <param name="animation" type="radio" label="Animation" default="horizontal" translateable="1">
+    <param name="animation" type="radio" label="Main animation" default="horizontal" translateable="1" tip="This animation moves the slides.">
       <option value="no">No animation</option>
-      <option value="horizontal">Horizontal</option>
-      <option value="vertical">Vertical</option>
       <option value="fade">Fade</option>
       <option value="crossfade">Crossfade</option>
+      <option value="horizontal">Horizontal</option>
+      <option value="vertical">Vertical</option>
+      <option value="horizontal-reversed">Horizontal - reversed</option>
+      <option value="vertical-reversed">Vertical - reversed</option>
     </param>
-    <param type="group" label="Properties">
+    <param type="group" label="Main animation properties">
       <param name="animation-duration" type="numberautocomplete" label="Duration" style="width:35px;" default="800" values="800,1500,2000">
         <unit>ms</unit>
       </param>

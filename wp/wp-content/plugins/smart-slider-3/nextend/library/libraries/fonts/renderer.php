@@ -4,8 +4,7 @@ N2Loader::import(array(
     'libraries.fonts.storage'
 ));
 
-class N2FontRenderer
-{
+class N2FontRenderer {
 
     public static $defaultFont = 'Montserrat';
 
@@ -36,7 +35,11 @@ class N2FontRenderer
             $font = N2StorageSectionAdmin::getById($font, 'font');
             if ($font) {
                 if (is_string($font['value'])) {
-                    $value = json_decode(base64_decode($font['value']), true);
+                    $decoded = $font['value'];
+                    if ($decoded[0] != '{') {
+                        $decoded = base64_decode($decoded);
+                    }
+                    $value = json_decode($decoded, true);
                 } else {
                     $value = $font['value'];
                 }
@@ -57,13 +60,21 @@ class N2FontRenderer
                 return $selector . ' ';
             }
         } else if ($font != '') {
-            $value = json_decode(base64_decode($font), true);
+            $decoded = $font;
+            if ($decoded[0] != '{') {
+                $decoded = base64_decode($decoded);
+            } else {
+                $font = base64_encode($decoded);
+            }
+            $value = json_decode($decoded, true);
             if ($value) {
                 $selector = 'n2-font-' . md5($font) . '-' . $mode;
                 N2CSS::addCode(self::renderFont($mode, $pre, $selector, $value['data'], $fontSize), $group);
+
                 return $selector . ' ';
             }
         }
+
         return '';
     }
 
@@ -109,6 +120,7 @@ class N2FontRenderer
             N2FontStyle::$fontSize = $fontSize;
             $replace[]             = self::$style->style($tab);
         }
+
         return str_replace($search, $replace, $template);
     }
 }
@@ -155,7 +167,7 @@ N2FontRenderer::$mode = array(
         ),
         'preview'       => '<div class="{fontClassName}">' . n2_('Button') . '</div>',
         'selectors'     => array(
-            '@pre@selector'       => '@tab0',
+            '@pre@selector'                                                  => '@tab0',
             '@pre@selector:HOVER, @pre@selector:ACTIVE, @pre@selector:FOCUS' => '@tab1'
         )
     ),
@@ -171,7 +183,7 @@ N2FontRenderer::$mode = array(
         ),
         'preview'       => '<div class="{fontClassName}">' . n2_('Button') . '</div>',
         'selectors'     => array(
-            '@pre@selector a'       => '@tab0',
+            '@pre@selector a'                                                      => '@tab0',
             '@pre@selector a:HOVER, @pre@selector a:ACTIVE, @pre@selector a:FOCUS' => '@tab1'
         )
     ),
@@ -204,8 +216,8 @@ N2FontRenderer::$mode = array(
         ),
         'preview'       => '<div class="{fontClassName}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <a href="#">test link</a> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in <a href="#">test link</a> velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat <a href="#">test link</a>, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>',
         'selectors'     => array(
-            '@pre@selector'         => '@tab0',
-            '@pre@selector a'       => '@tab1',
+            '@pre@selector'                                                        => '@tab0',
+            '@pre@selector a'                                                      => '@tab1',
             '@pre@selector a:HOVER, @pre@selector a:ACTIVE, @pre@selector a:FOCUS' => '@tab2'
         )
     ),
@@ -221,16 +233,33 @@ N2FontRenderer::$mode = array(
         ),
         'preview'       => '',
         'selectors'     => array(
-            '@pre@selector'                                => '@tab0',
+            '@pre@selector'                                                                           => '@tab0',
             '@pre@selector.n2-active, @pre@selector:HOVER, @pre@selector:ACTIVE, @pre@selector:FOCUS' => '@tab1'
+        )
+    ),
+    'list'                => array(
+        'id'            => 'list',
+        'label'         => n2_('List'),
+        'tabs'          => array(
+            n2_('Text'),
+            n2_('Link'),
+            n2_('Hover')
+        ),
+        'renderOptions' => array(
+            'combined' => false
+        ),
+        'preview'       => '',
+        'selectors'     => array(
+            '@pre@selector li'                                                              => '@tab0',
+            '@pre@selector li a'                                                            => '@tab1',
+            '@pre@selector li a:HOVER, @pre@selector li a:ACTIVE, @pre@selector li a:FOCUS' => '@tab2'
         )
     )
 );
 
 N2Loader::import('libraries.image.color');
 
-class N2FontStyle
-{
+class N2FontStyle {
 
     public static $fontSize = false;
 
@@ -250,6 +279,7 @@ class N2FontStyle
             $style .= $this->parse($k, $v);
         }
         $style .= $this->parse('extra', $extra);
+
         return $style;
     }
 
@@ -261,6 +291,7 @@ class N2FontStyle
      */
     public function parse($property, $value) {
         $fn = 'parse' . $property;
+
         return $this->$fn($value);
     }
 
@@ -276,6 +307,7 @@ class N2FontStyle
             $rgba = N2Color::hex2rgba($v);
             $style .= 'color: RGBA(' . $rgba[0] . ',' . $rgba[1] . ',' . $rgba[2] . ',' . round($rgba[3] / 127, 2) . ');';
         }
+
         return $style;
     }
 
@@ -291,6 +323,7 @@ class N2FontStyle
                 return 'font-size:' . ($fontSize[0] / self::$fontSize * 100) . '%;';
             }
         }
+
         return 'font-size:' . N2Parse::parse($v, '') . ';';
     }
 
@@ -303,6 +336,7 @@ class N2FontStyle
         $v    = N2Parse::parse($v);
         $rgba = N2Color::hex2rgba($v[3]);
         if ($v[0] == 0 && $v[1] == 0 && $v[2] == 0) return 'text-shadow: none;';
+
         return 'text-shadow: ' . $v[0] . 'px ' . $v[1] . 'px ' . $v[2] . 'px RGBA(' . $rgba[0] . ',' . $rgba[1] . ',' . $rgba[2] . ',' . round($rgba[3] / 127, 2) . ');';
     }
 
@@ -322,6 +356,7 @@ class N2FontStyle
      */
     public function parseLineheight($v) {
         if ($v == '') return '';
+
         return 'line-height: ' . $v . ';';
     }
 
@@ -331,7 +366,13 @@ class N2FontStyle
      * @return string
      */
     public function parseBold($v) {
+        return $this->parseWeight($v);
+    }
+
+    public function parseWeight($v) {
         if ($v == '1') return 'font-weight: bold;';
+        if ($v > 1) return 'font-weight: ' . intval($v) . ';';
+
         return 'font-weight: normal;';
     }
 
@@ -342,6 +383,7 @@ class N2FontStyle
      */
     public function parseItalic($v) {
         if ($v == '1') return 'font-style: italic;';
+
         return 'font-style: normal;';
     }
 
@@ -352,6 +394,7 @@ class N2FontStyle
      */
     public function parseUnderline($v) {
         if ($v == '1') return 'text-decoration: underline;';
+
         return 'text-decoration: none;';
     }
 
@@ -390,6 +433,7 @@ class N2FontStyle
         for ($i = 0; $i < count($families); $i++) {
             $families[$i] = $this->getFamily(trim(trim($families[$i]), '\'"'));
         }
+
         return implode(',', $families);
     }
 
@@ -399,6 +443,7 @@ class N2FontStyle
             N2Pluggable::doAction('fontFamily', array($family));
             $cache[$family] = '';
         }
+
         return "'" . $family . "'";
     }
 }

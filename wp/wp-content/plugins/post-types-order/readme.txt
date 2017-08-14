@@ -1,16 +1,16 @@
 === Post Types Order  ===
-Contributors: nsp-code
+Contributors: nsp-code, tdgu
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 4.5.2
-Stable tag: 1.8.9.2
+Tested up to: 4.8
+Stable tag: 1.9.3.3
 
 Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 
 
 == Description ==
 
-<strong>Over 1.700.000 DOWNLOADS and near PERFECT rating out of 150 REVIEWS</strong>. <br />
+<strong>Over 2.5 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability. 
 
 The order can be customized within **default WordPress post type archive list page** or **a separate Re-Order interface** which display all objects.
@@ -24,7 +24,7 @@ This was built considering for everyone to be able to use no matter the WordPres
 * A new setting page will be created within Settings > Post Types Order, you should check with that, and make a first options save. 
 * Using the AutoSort option as ON you don't need to worry about any code changes, the plugin will do the post order update on fly. 
 * Use the Re-Order interface which appear to every custom post type (non-hierarchical) to change the post order to a new one.
-
+* If prefer sort apply through the code, include 'orderby' =>'menu_order' within custom query arguments, more details at http://www.nsp-code.com/sample-code-on-how-to-apply-the-sort-for-post-types-order-plugin/
 
 = Example of Usage =
 [youtube http://www.youtube.com/watch?v=VEbNKFSfhCc] 
@@ -34,7 +34,7 @@ If for some reason the post order does not update on your front side, you either
 
 <br />Something is wrong with this plugin on your site? Just use the forum or get in touch with us at <a target="_blank" href="http://www.nsp-code.com">Contact</a> and we'll check it out.
 
-<br />Check out the advanced version of this plugin at <a target="_blank" href="http://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order/">Advanced Post Types Order</a>
+<br />Need More? Check out the advanced version of this plugin at <a target="_blank" href="http://www.nsp-code.com/premium-plugins/wordpress-plugins/advanced-post-types-order/">Advanced Post Types Order</a> which include Hierarchically post types order, Manual / Automatic Sorting, Individual Categories Order, Conditionals to apply, Paginations for large list, Mobile ready, Enhanced Interface, Plugins compatibility (MultiSite Network Support, WPML, Polylang, WooCommerce, WP E-Commerce, Platform Pro, Genesis etc), font side re-order interface,  ... and many more !!
 
 <br />
 <br />This plugin is developed by <a target="_blank" href="http://www.nsp-code.com">Nsp-Code</a>
@@ -50,6 +50,8 @@ If for some reason the post order does not update on your front side, you either
 == Screenshots ==
 
 1. The ReOrder interface through which the sort can be created.
+
+2. Sort can be managed within default WordPress post type interface.
 
 
 == Frequently Asked Questions  ==
@@ -91,6 +93,32 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
 
 == Change Log ==
 
+= 1.9.3.3 =
+  - Plugin option to include query argument ASC / DESC
+
+= 1.9.3.2 =
+  - Include ASC / DESC if there is a query order argument
+  - Avada fix 'product_orderby' ignore
+
+= 1.9.3.1 =
+  - WordPress 4.8 compatibility notice
+  - Slight code changes, remove unused activate / deactivate hooks
+  - Updated po translation file
+  - Updated assets
+
+= 1.9.3 =
+  - Fix for custom post type objects per page when using default archive interface drag & drop sort
+  - Plugin code redo and re-structure
+  - Improved compatibility with other plugins
+  - Security improvements for AJAX order updates
+
+= 1.9 =
+  - Remove translations from the package
+  - Remove link for donate
+  - Wp Hide plugin availability notification
+  - New Filter pto/get_options to allow to change default options; Custom capability can be set for 'capability'
+  - New Filter pto/admin/plugin_options/capability to allow custom capability option to be inserted within html
+
 = 1.8.9.2 =
   - WPDB Prepare argument fix
   - User preferance objects per page set to default if empty
@@ -118,7 +146,7 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
   - New query argument ignore_custom_sort , to be used with Autosort. Ignore any customised sort and return posts in default order.
 
 = 1.8.4.1 =
-  - Sortable interface styling improvments
+  - Sortable interface styling improvements
   - Portuguese translation update - Pedro Mendonca - http://www.pedromendonca.pt
   - Text doamin fix for few texts
   
@@ -164,7 +192,7 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
  - Edit Gallery - image order fix
  - "re-order" menu item allow translation 
  - Hungarian translation - Adam Laki - http://codeguide.hu/
- - Minor admin style improvments
+ - Minor admin style improvements
 
 = 1.6.5 = 
  - Updates/Fixes
@@ -211,7 +239,7 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
  - Get Previous / Next Posts Update
 
 = 1.4.3 = 
- - Small improvments
+ - Small improvements
 
 = 1.4.1 = 
  - Re-Order Menu Item Appearance fix for update versions

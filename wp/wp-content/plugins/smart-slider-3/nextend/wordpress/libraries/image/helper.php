@@ -12,13 +12,15 @@ class N2ImageHelper extends N2ImageHelperAbstract {
 
     public static function getLightboxFunction() {
         return 'function (callback) {
+        nextend.context.addWindow("imagechooser");
         var frame = new wp.media();
 
         frame.on("select", $.proxy(function () {
             var attachment = frame.state().get("selection").first().toJSON();
-            callback(this.make(attachment.url));
+            callback(this.make(attachment.url), {alt: attachment.alt});
         }, this));
         frame.on("close", function () {
+            nextend.context.removeWindow();
             setTimeout(function () {
                 NextendEsc.pop();
             }, 50)
@@ -32,6 +34,7 @@ class N2ImageHelper extends N2ImageHelperAbstract {
 
     public static function getLightboxMultipleFunction() {
         return 'function (callback) {
+        nextend.context.addWindow("imagechooser");
         var frame = new wp.media({
             multiple: "add"
         });
@@ -52,6 +55,7 @@ class N2ImageHelper extends N2ImageHelperAbstract {
             callback(images);
         }, this));
         frame.on("close", function () {
+            nextend.context.removeWindow();
             setTimeout(function () {
                 NextendEsc.pop();
             }, 50)

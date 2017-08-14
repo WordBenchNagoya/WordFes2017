@@ -44,7 +44,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 														<input type="checkbox" name="" class="check_all" />
 														<strong><?php _e( 'Select All' ); ?></strong>
 													</td>
-													<td><strong><?php _e( 'Change metabox title to' , 'wp-admin-ui-customize' ); ?></strong></td>
+													<td><strong><?php _e( 'Update meta box title' , 'wp-admin-ui-customize' ); ?></strong></td>
 												</tr>
 											</thead>
 											<tbody>
@@ -93,7 +93,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 									<p>
 										<a href="<?php echo $load_link; ?>" class="button button-primary column_load">
 											<span class="dashicons dashicons-update"></span>
-											<?php echo sprintf( __( 'Metaboxes loading for %s', 'wp-admin-ui-customize' ) , __( 'Dashboard' ) ); ?>
+											<?php echo sprintf( __( 'Refresh meta boxes for %s', 'wp-admin-ui-customize' ) , __( 'Dashboard' ) ); ?>
 										</a>
 									</p>
 									<p class="loading">
@@ -113,12 +113,12 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'metabox_move'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'Meta box movement restriction' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Meta box movement' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
-												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e( "Prevent selected roles from re-arranging metaboxes" , 'wp-admin-ui-customize' ); ?></label>
+												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e( "Prevent selected roles from re-arrange meta boxes" , 'wp-admin-ui-customize' ); ?></label>
 											</td>
 										</tr>
 									</tbody>

@@ -15,10 +15,10 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 <div class="wrap">
 
 	<?php echo $this->Msg; ?>
-	<h2><?php _e( 'Admin Bar Menu' , 'wp-admin-ui-customize' ); ?></h2>
-	<p><?php _e( 'Please change the menu by drag and drop.' , 'wp-admin-ui-customize' ); ?></p>
-	<p><strong><?php _e( 'Notice: Please do not place the same multiple menu slug.' , 'wp-admin-ui-customize' ); ?></strong></p>
-	<p class="description"><?php _e( 'Can be more than one custom menu.' , 'wp-admin-ui-customize' ); ?></p>
+	<h2><?php _e( 'Admin bar' , 'wp-admin-ui-customize' ); ?></h2>
+	<p><?php _e( 'Drag menu items to edit and reorder menus.' , 'wp-admin-ui-customize' ); ?></p>
+	<p><strong><?php _e( 'Note: Using the same menu item multiple times could cause unexpected behavior.' , 'wp-admin-ui-customize' ); ?></strong></p>
+	<p class="description"><?php _e( 'You can use multiple custom menus.' , 'wp-admin-ui-customize' ); ?></p>
 
 	<h3 id="wauc-apply-user-roles"><?php echo $this->get_apply_roles(); ?></h3>
 
@@ -30,8 +30,8 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 		<input type="hidden" name="record_field" value="admin_bar_menu" />
 
 		<p></p>
-		<p><?php _e( 'Sub-menu settings apply to maximum of four levels deep.' , 'wp-admin-ui-customize' ); ?></p>
-		<p><a href="<?php $this->get_document_link( 'admin_bar' ); ?>" target="_blank" class="button-secondary"><?php _e( 'Admin bar settings documentation page' , 'wp-admin-ui-customize' ); ?></a></p>
+		<p><?php _e( 'Sub menus can be a maximum of four levels deep.' , 'wp-admin-ui-customize' ); ?></p>
+		<p><a href="<?php $this->get_document_link( 'admin_bar' ); ?>" target="_blank" class="button-secondary"><?php _e( 'Additional documentation' , 'wp-admin-ui-customize' ); ?></a></p>
 
 		<div id="poststuff">
 
@@ -84,13 +84,13 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 		</p>
 
 		<p class="submit reset">
-			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Admin Bar Menu' , 'wp-admin-ui-customize' ) . __( 'Settings' ) ); ?></span>
+			<span class="description"><?php printf( __( 'Reset the %s?' , 'wp-admin-ui-customize' ) , __( 'Admin bar' , 'wp-admin-ui-customize' ) . __( 'Settings' ) ); ?></span>
 			<input type="submit" class="button-secondary" name="reset" value="<?php _e( 'Reset settings' , 'wp-admin-ui-customize' ); ?>" />
 		</p>
 
 	</form>
 
-	<h3><?php _e ( 'Menu items that can be added' , 'wp-admin-ui-customize' ); ?></h3>
+	<h3><?php _e ( 'Available menu items' , 'wp-admin-ui-customize' ); ?></h3>
 
 	<div id="can_menus" class="metabox-holder columns-1">
 
@@ -99,7 +99,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 				<div class="postbox">
 					<div class="handlediv" title="Click to toggle"><br></div>
-					<h3 class="hndle"><span><?php _e( 'Custom' ); ?> <?php _e( 'Menus' ); ?></span></h3>
+					<h3 class="hndle"><span><?php _e( 'Custom' , 'wp-admin-ui-customize' ); ?> <?php _e( 'Menus' ); ?></span></h3>
 					<div class="inside">
 
 						<?php $menu_widget = array( 'id' => "custom_node" , 'title' => "" , 'parent' => '' , 'href' => "" , 'group' => "" , 'meta' => array() , 'new' => true ); ?>

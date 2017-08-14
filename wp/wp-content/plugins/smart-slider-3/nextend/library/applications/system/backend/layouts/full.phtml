@@ -26,15 +26,6 @@
             ), n2_('Help'))
         );
 
-        if (class_exists('N2User')) {
-            if (N2User::isLoggedIn()) {
-                $views[] = N2Html::tag('a', array(
-                    'href'  => $this->appType->router->createUrl("login/logout"),
-                    'class' => 'n2-h4 n2-uc'
-                ), n2_('Log out'));
-            }
-        }
-
         echo $this->widget->init('nav', array(
             'logoUrl'      => $this->appType->router->createUrl("dashboard/index"),
             'logoImageUrl' => $logoUrl,

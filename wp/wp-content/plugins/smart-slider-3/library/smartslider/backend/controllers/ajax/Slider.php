@@ -7,7 +7,9 @@ class N2SmartsliderBackendSliderControllerAjax extends N2SmartSliderControllerAj
 
         N2Loader::import(array(
             'models.Ajax',
-            'models.Sliders'
+            'models.Sliders',
+            'models.Slides',
+            'models.generator'
         ), 'smartslider');
     }
 
@@ -76,7 +78,7 @@ class N2SmartsliderBackendSliderControllerAjax extends N2SmartSliderControllerAj
                 $slider['widgetarrow'] = 'imageEmpty';
         }
 
-        $sliderid = $slidersModel->create($slider);
+        $sliderid = $slidersModel->create($slider, N2Request::getVar('groupID', 0));
 
         N2Message::success(n2_('Slider created.'));
 
@@ -169,8 +171,9 @@ class N2SmartsliderBackendSliderControllerAjax extends N2SmartSliderControllerAj
     
 
         $posts  = array(
-            'action' => 'asset',
-            'asset'  => $key
+            'action'  => 'asset',
+            'asset'   => $key,
+            'version' => N2SS3::$version
         );
         $result = N2SS3::api($posts);
 
@@ -193,7 +196,7 @@ class N2SmartsliderBackendSliderControllerAjax extends N2SmartSliderControllerAj
             N2Loader::import('libraries.import', 'smartslider');
 
             $import   = new N2SmartSliderImport();
-            $sliderId = $import->import($result, 'clone', 1, false);
+            $sliderId = $import->import($result, N2Request::getVar('groupID', 0), 'clone', 1, false);
 
             if ($sliderId !== false) {
                 N2Message::success(n2_('Slider imported.'));
@@ -209,5 +212,40 @@ class N2SmartsliderBackendSliderControllerAjax extends N2SmartSliderControllerAj
         }
 
         $this->response->respond();
+    }
+
+
+    public function actionDuplicate() {
+        $this->validateToken();
+
+        $this->validatePermission('smartslider_edit');
+
+        $sliderId = N2Request::getInt('sliderid');
+        $this->validateVariable($sliderId > 0, 'Slider');
+
+        $slidersModel = new N2SmartsliderSlidersModel();
+        $newSliderId  = $slidersModel->duplicate($sliderId, true);
+        $slider       = $slidersModel->getWithThumbnail($newSliderId);
+
+        $this->validateDatabase($slider);
+
+        N2Message::success(n2_('Slide duplicated.'));
+
+        $this->addView('sliderbox', array(
+            'slider' => $slider
+        ));
+        ob_start();
+        $this->render();
+        $box = ob_get_clean();
+        $this->response->respond($box);
+    }
+
+    public function actionCreateGroup() {
+    }
+
+    public function actionRemoveFromGroup() {
+    }
+
+    public function actionAddToGroup() {
     }
 } 

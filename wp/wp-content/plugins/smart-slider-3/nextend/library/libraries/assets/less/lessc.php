@@ -2668,7 +2668,7 @@ class n2lessc_parser
         if ($this->unit($value)) return true;
         if ($this->color($value)) return true;
         if ($this->func($value)) return true;
-        if ($this->string($value)) return true;
+        if ($this->_string($value)) return true;
 
         if ($this->keyword($word)) {
             $value = array(
@@ -2688,7 +2688,7 @@ class n2lessc_parser
         }
 
         // unquote string (should this work on any type?
-        if ($this->literal("~") && $this->string($str)) {
+        if ($this->literal("~") && $this->_string($str)) {
             $value = array(
                 "escape",
                 $str
@@ -2838,7 +2838,7 @@ class n2lessc_parser
                 }
             }
 
-            if (($tok == "'" || $tok == '"') && $this->string($str)) {
+            if (($tok == "'" || $tok == '"') && $this->_string($str)) {
                 $content[] = $str;
                 continue;
             }
@@ -2874,7 +2874,7 @@ class n2lessc_parser
         return true;
     }
 
-    protected function string(&$out) {
+    protected function _string(&$out) {
         $s = $this->seek();
         if ($this->literal('"', false)) {
             $delim = '"';

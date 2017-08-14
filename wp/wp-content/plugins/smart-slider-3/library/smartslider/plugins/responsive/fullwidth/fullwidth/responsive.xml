@@ -8,28 +8,29 @@
                 <unit>px</unit>
             </param>
         </param>
-        <param type="onoff" name="responsiveSlideWidthConstrainHeight" label="Constrain slider height to slide width"
-               default="0"/>
+        <param type="onoff" name="responsiveForceFull" label="Force full width" default="1"
+               tip="The slider tries to fill the full width of the browser."/>
+		<param type="text" name="responsiveForceFullHorizontalSelector" label="Adjust slider width to parent selector"
+               default="" tip="When the jQuery selector of one of the slider's parent elements is specified, the slider tries to have the width and fill up that element instead of the window."/>
         <param type="radio" name="responsiveSliderOrientation" label="Portrait or Landscape algorithm"
                default="width_and_height">
             <option value="width_and_height">Screen width and height</option>
             <option value="width">Screen width only</option>
         </param>
-        <param type="group" label="Slide width - desktop">
+        <param type="group" label="Limit slide width - desktop">
             <param type="onoff" name="responsiveSlideWidth" label="Portrait" default="1"/>
             <param name="responsiveSlideWidthMax" type="numberautocomplete" label="Max" default="3000"
                    style="width:40px" values="3000,980">
                 <unit>px</unit>
             </param>
 
-            <param type="onoff" name="responsiveSlideWidthDesktopLandscape" label="Landscape" default="0"
-                   class="n2-expert"/>
+            <param type="onoff" name="responsiveSlideWidthDesktopLandscape" label="Landscape" default="0"/>
             <param name="responsiveSlideWidthMaxDesktopLandscape" type="numberautocomplete" label="Max" default="1600"
-                   style="width:40px" values="3000,1600" class="n2-expert">
+                   style="width:40px" values="3000,1600">
                 <unit>px</unit>
             </param>
         </param>
-        <param type="group" label="Slide width - Tablet">
+        <param type="group" label="Limit slide width - Tablet">
 
             <param type="onoff" name="responsiveSlideWidthTablet" label="Portrait" default="0"/>
             <param name="responsiveSlideWidthMaxTablet" type="numberautocomplete" label="Max" default="980"
@@ -37,27 +38,26 @@
                 <unit>px</unit>
             </param>
 
-            <param type="onoff" name="responsiveSlideWidthTabletLandscape" label="Landscape" default="0"
-                   class="n2-expert"/>
+            <param type="onoff" name="responsiveSlideWidthTabletLandscape" label="Landscape" default="0"/>
             <param name="responsiveSlideWidthMaxTabletLandscape" type="numberautocomplete" label="Max" default="1200"
-                   style="width:40px" values="3000,1200" class="n2-expert">
+                   style="width:40px" values="3000,1200">
                 <unit>px</unit>
             </param>
         </param>
-        <param type="group" label="Slide width - Mobile">
+        <param type="group" label="Limit slide width - Mobile">
 
             <param type="onoff" name="responsiveSlideWidthMobile" label="Portrait" default="0"/>
             <param name="responsiveSlideWidthMaxMobile" type="numberautocomplete" label="Max" default="480"
                    style="width:40px" values="3000,480">
                 <unit>px</unit>
             </param>
-            <param type="onoff" name="responsiveSlideWidthMobileLandscape" label="Landscape" default="0"
-                   class="n2-expert"/>
+            <param type="onoff" name="responsiveSlideWidthMobileLandscape" label="Landscape" default="0"/>
             <param name="responsiveSlideWidthMaxMobileLandscape" type="numberautocomplete" label="Max" default="740"
-                   style="width:40px" values="3000,740" class="n2-expert">
+                   style="width:40px" values="3000,740">
                 <unit>px</unit>
             </param>
         </param>
-        <param type="onoff" name="responsiveForceFull" label="Force full width" default="1"/>
+        <param type="onoff" name="responsiveSlideWidthConstrainHeight" label="Remove vertical margin"
+               default="0"/>
     </params>
 </root>

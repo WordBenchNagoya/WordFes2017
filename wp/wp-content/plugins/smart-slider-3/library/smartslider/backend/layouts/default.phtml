@@ -2,40 +2,10 @@
 /* @var $this N2Layout */
 ?>
 
-    <div id="n2-admin" class="n2 n2-border-radius">
+    <div id="n2-admin" class="n2">
 
         <?php
-        $cmd = N2Request::getVar("nextendcontroller", "sliders");
-        /**
-         * @see Nav
-         */
-        $views = array(
-            N2Html::tag('a', array(
-                'href'  => $this->appType->router->createUrl("sliders/index"),
-                'class' => 'n2-h4 n2-uc ' . ($cmd == "sliders" ? "n2-active" : "")
-            ), n2_('Sliders'))
-        );
-        $views[] = N2Html::tag('a', array(
-            'href'  => $this->appType->router->createUrl("settings/default"),
-            'class' => 'n2-h4 n2-uc ' . ($cmd == "settings" ? "n2-active" : "")
-        ), n2_('Settings'));
-    
-        $views[] = N2Html::tag('a', array(
-            'href'   => N2SS3::getProUrlPricing(array(
-                'utm_source'   => 'go-pro-button-top-menu',
-                'utm_medium'   => 'smartslider-' . N2Platform::getPlatform() . '-free',
-                'utm_campaign' => N2SS3::$campaign
-            )),
-            'target' => '_blank',
-            'class'  => 'n2-h4 n2-uc '
-        ), n2_('Go Pro!'));
-    
-        $this->widget->init('nav', array(
-            'logoUrl'      => $this->appType->router->createUrl("sliders/index"),
-            'logoImageUrl' => $this->appType->app->getLogo(),
-            'views'        => $views,
-            'actions'      => $this->getFragmentValue('actions')
-        ));
+        include(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_mainmenu.php');
         ?>
 
         <div class="n2-table n2-table-fixed n2-content">

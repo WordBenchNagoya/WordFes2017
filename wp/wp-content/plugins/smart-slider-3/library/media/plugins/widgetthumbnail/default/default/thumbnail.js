@@ -1,6 +1,7 @@
-(function ($, scope, undefined) {
+N2Require('SmartSliderWidgetThumbnailDefault', [], [], function ($, scope, undefined) {
     "use strict";
-    function NextendSmartSliderWidgetThumbnailDefault(id, parameters) {
+
+    function SmartSliderWidgetThumbnailDefault(id, parameters) {
 
         this.slider = window[id];
 
@@ -8,14 +9,14 @@
     };
 
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.start = function (id, parameters) {
+    SmartSliderWidgetThumbnailDefault.prototype.start = function (id, parameters) {
 
         if (this.slider.sliderElement.data('thumbnail')) {
             return false;
         }
         this.slider.sliderElement.data('thumbnail', this);
 
-        this.parameters = $.extend({captionSize: 0, minimumThumbnailCount: 1.5}, parameters);
+        this.parameters = $.extend({captionSize: 0, minimumThumbnailCount: 1.5, invertGroupDirection: 0}, parameters);
 
         this.ratio = 1;
         this.hidden = false;
@@ -52,7 +53,7 @@
         if (parameters.action == 'mouseenter') {
             event = 'mouseenter';
         }
-        this.dots = this.scroller.find('td > div').on(event, $.proxy(this.onDotClick, this));
+        this.dots = this.scroller.find('> div').on(event, $.proxy(this.onDotClick, this));
         this.images = this.dots.find('.n2-ss-thumb-image');
 
         if (!nextend.rtl.isRtl) {
@@ -63,15 +64,11 @@
             this.next = this.outerBar.find('.nextend-thumbnail-previous').on('click', $.proxy(this.nextPane, this));
         }
 
-        if (this.orientation == 'horizontal' && this.group > 1) {
-            var dots = [],
-                group = this.group;
-            this.scroller.find('tr').each(function (i, tr) {
-                $(tr).find('td > div').each(function (j, div) {
-                    dots[i + j * group] = div;
-                });
-            });
-            this.dots = $(dots);
+        if (typeof this.slider.shuffled !== 'undefined') {
+            for (var i = 0; i < this.slider.shuffled.length; i++) {
+                this.dots.eq(this.slider.shuffled[i]).appendTo(this.scroller);
+            }
+            this.dots = this.scroller.find('> div')
         }
 
 
@@ -107,6 +104,8 @@
             .on('BeforeVisible', $.proxy(this.onReady, this))
             .on('sliderSwitchTo', $.proxy(this.onSlideSwitch, this));
 
+        this.onSlideSwitch(null, this.slider.currentSlideIndex, this.slider.getRealIndex(this.slider.currentSlideIndex));
+
         if (parameters.overlay == 0) {
             var side = false;
             switch (parameters.area) {
@@ -130,13 +129,13 @@
         }
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.onReady = function () {
+    SmartSliderWidgetThumbnailDefault.prototype.onReady = function () {
         this.slider.sliderElement.on('SliderResize', $.proxy(this.onSliderResize, this));
         this.onSliderResize();
     };
 
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.onSliderResize = function () {
+    SmartSliderWidgetThumbnailDefault.prototype.onSliderResize = function () {
         if (this.forceHiddenCB !== null) {
             this.forceHiddenCB.call(this);
         }
@@ -145,7 +144,7 @@
         this.goToDot(this.dots.index(this.dots.filter('.n2-active')));
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.adjustScrollerSize = function () {
+    SmartSliderWidgetThumbnailDefault.prototype.adjustScrollerSize = function () {
         var prop = this[this.orientation].prop,
             size = Math.ceil(this.dots.length / this.group) * this.thumbnailDimension[prop] * this.ratio,
             diff = this.scroller['outer' + this[this.orientation].Prop]() - this.scroller[prop](),
@@ -156,13 +155,20 @@
             this.scroller[prop](size);
         }
 
+
+        if (this.orientation == 'horizontal') {
+            this.scroller.height(this.dots.outerHeight(true) * this.group);
+        } else {
+            this.scroller.width(this.dots.outerWidth(true) * this.group);
+        }
+
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.onDotClick = function (e) {
+    SmartSliderWidgetThumbnailDefault.prototype.onDotClick = function (e) {
         this.slider.directionalChangeToReal(this.dots.index(e.currentTarget));
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.onSlideSwitch = function (e, targetSlideIndex, realTargetSlideIndex) {
+    SmartSliderWidgetThumbnailDefault.prototype.onSlideSwitch = function (e, targetSlideIndex, realTargetSlideIndex) {
         this.dots.filter('.n2-active').removeClass('n2-active');
         this.dots.eq(realTargetSlideIndex).addClass('n2-active');
 
@@ -170,15 +176,15 @@
 
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.previousPane = function () {
-        this.goToDot(this.currentI - this.itemPerPane);
+    SmartSliderWidgetThumbnailDefault.prototype.previousPane = function () {
+        this.goToDot(this.currentI - this.itemPerPane * this.group);
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.nextPane = function () {
-        this.goToDot(this.currentI + this.itemPerPane);
+    SmartSliderWidgetThumbnailDefault.prototype.nextPane = function () {
+        this.goToDot(this.currentI + this.itemPerPane * this.group);
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.goToDot = function (i) {
+    SmartSliderWidgetThumbnailDefault.prototype.goToDot = function (i) {
 
         var variables = this[this.orientation],
             ratio = 1,
@@ -196,25 +202,30 @@
         if (this.ratio != ratio) {
             var css = {};
             css[variables.prop] = parseInt(this.thumbnailDimension[variables.prop] * ratio - this.thumbnailDimension[variables.prop + 'Margin']);
-            var scrollerDimension = css[variables.invProp] = parseInt((this.thumbnailDimension[variables.invProp] - this.parameters['captionSize']) * ratio + this.parameters['captionSize']);
+            var scrollerDimension = css[variables.invProp] = parseInt((this.thumbnailDimension[variables.invProp] - this.parameters['captionSize'] - this.thumbnailDimension[variables.prop + 'Margin']) * ratio + this.parameters['captionSize']);
             this.dots.css(css);
             css = {};
-            css[variables.prop] = parseInt(this.imageDimension[variables.prop] * ratio - this.thumbnailDimension[variables.prop + 'Margin']);
+            css[variables.prop] = parseInt(this.imageDimension[variables.prop] * ratio);
             css[variables.invProp] = parseInt(this.imageDimension[variables.invProp] * ratio);
             this.images.css(css);
 
-            this.scroller.css(variables.invProp, 'auto');
             this.bar.css(variables.invProp, 'auto');
             this.ratio = ratio;
             this.slider.responsive.doNormalizedResize();
-
             this.adjustScrollerSize();
         }
 
         itemPerPane = Math.floor(itemPerPane);
         i = Math.max(0, Math.min(this.dots.length - 1, i));
-        var currentPane = Math.floor(i / this.group / itemPerPane),
+        var currentPane,
             to = {};
+
+        if (this.parameters.invertGroupDirection) {
+            currentPane = Math.floor((i % Math.ceil(this.dots.length / this.group)) / itemPerPane);
+        } else {
+            currentPane = Math.floor(i / this.group / itemPerPane);
+        }
+
 
         var min = -(this.scroller['outer' + variables.Prop]() - barDimension);
 
@@ -247,7 +258,7 @@
 
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype._goToDot = function (i) {
+    SmartSliderWidgetThumbnailDefault.prototype._goToDot = function (i) {
         if (this.forceHidden) {
             return;
         }
@@ -288,8 +299,15 @@
         if (!this.hidden) {
             itemPerPane = Math.floor(itemPerPane);
             i = Math.max(0, Math.min(this.dots.length - 1, i));
-            var currentPane = Math.floor(i / this.group / itemPerPane),
+
+            var currentPane,
                 to = {};
+
+            if (this.parameters.invertGroupDirection) {
+                currentPane = Math.floor((i % Math.ceil(this.dots.length / this.group)) / itemPerPane);
+            } else {
+                currentPane = Math.floor(i / this.group / itemPerPane);
+            }
 
             var min = -(this.scroller['outer' + variables.Prop]() - barDimension);
 
@@ -322,17 +340,16 @@
         this.itemPerPane = itemPerPane;
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.isVisible = function () {
+    SmartSliderWidgetThumbnailDefault.prototype.isVisible = function () {
         return this.outerBar.is(':visible');
     };
 
-    NextendSmartSliderWidgetThumbnailDefault.prototype.getSize = function () {
+    SmartSliderWidgetThumbnailDefault.prototype.getSize = function () {
         if (this.orientation == 'horizontal') {
             return this.outerBar.height() + this.offset;
         }
         return this.outerBar.width() + this.offset;
     };
 
-    scope.NextendSmartSliderWidgetThumbnailDefault = NextendSmartSliderWidgetThumbnailDefault;
-
-})(n2, window);
+    return SmartSliderWidgetThumbnailDefault;
+});

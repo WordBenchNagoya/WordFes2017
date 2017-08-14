@@ -99,8 +99,8 @@ class CPTP_Module_Rewrite extends CPTP_Module {
 					$category_base = 'category';
 				}
 
-				add_rewrite_rule( $slug . '/'. $category_base . '/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?category_name=$matches[1]&paged=$matches[2]&post_type=' . $post_type, 'top' );
-				add_rewrite_rule( $slug . '/'. $category_base . '/([^/]+)/?$', 'index.php?category_name=$matches[1]&post_type=' . $post_type, 'top' );
+				add_rewrite_rule( $slug . '/' . $category_base . '/([^/]+)/page/?([0-9]{1,})/?$', 'index.php?category_name=$matches[1]&paged=$matches[2]&post_type=' . $post_type, 'top' );
+				add_rewrite_rule( $slug . '/' . $category_base . '/([^/]+)/?$', 'index.php?category_name=$matches[1]&post_type=' . $post_type, 'top' );
 
 			}
 
@@ -117,20 +117,23 @@ class CPTP_Module_Rewrite extends CPTP_Module {
 	 *
 	 * register_taxonomy_rules
 	 *
-	 * @param string       $taxonomy
+	 * @param string $taxonomy
 	 * @param array|string $object_type
-	 * @param array        $args
+	 * @param array|WP_Taxonomy $args
 	 *
 	 * @return void
 	 */
 	public function register_taxonomy_rules( $taxonomy, $object_type, $args ) {
 		global $wp_rewrite;
 
-		if ( get_option( 'no_taxonomy_structure' ) ) {
+		/* for 4.7 */
+		$args = (array) $args;
+
+		if ( CPTP_Util::get_no_taxonomy_structure() ) {
 			return;
 		}
 
-		if ( $args['_builtin'] ) {
+		if ( ! empty( $args['_builtin'] ) ) {
 			return;
 		}
 
@@ -213,7 +216,7 @@ class CPTP_Module_Rewrite extends CPTP_Module {
 				),
 				// tax archive.
 				array(
-					'regex' => '%s/(.+?)/?$',
+					'regex'    => '%s/(.+?)/?$',
 					'redirect' => "index.php?{$taxonomy_key}=\$matches[1]",
 				),
 			);
@@ -256,7 +259,7 @@ class CPTP_Module_Rewrite extends CPTP_Module {
 	public function parse_request( $obj ) {
 		$taxes = CPTP_Util::get_taxonomies();
 		foreach ( $taxes as $key => $tax ) {
-			if ( isset( $obj->query_vars[ $tax ] ) ) {
+			if ( isset( $obj->query_vars[ $tax ] ) and is_string( $obj->query_vars[ $tax ] ) ) {
 				if ( false !== strpos( $obj->query_vars[ $tax ], '/' ) ) {
 					$query_vars = explode( '/', $obj->query_vars[ $tax ] );
 					if ( is_array( $query_vars ) ) {

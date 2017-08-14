@@ -1,9 +1,9 @@
 <?php
 
-class N2CacheCombine extends N2Cache
-{
+class N2CacheCombine extends N2Cache {
 
     protected $files = array();
+    protected $inline = '';
     protected $fileType = '';
     protected $minify = false;
     protected $options = array();
@@ -22,10 +22,17 @@ class N2CacheCombine extends N2Cache
         }
     }
 
+    public function addInline($text) {
+        $this->inline .= $text;
+    }
+
     protected function getHash() {
         $hash = '';
         for ($i = 0; $i < count($this->files); $i++) {
             $hash .= $this->files[$i] . filemtime($this->files[$i]);
+        }
+        if (!empty($this->inline)) {
+            $hash .= $this->inline;
         }
         return md5($hash . json_encode($this->options));
     }
@@ -41,6 +48,7 @@ class N2CacheCombine extends N2Cache
             if ($this->minify !== false) {
                 $buffer = call_user_func($this->minify, $buffer);
             }
+            $buffer .= $this->inline;
             N2Filesystem::createFile($file, $buffer);
         }
         return $file;

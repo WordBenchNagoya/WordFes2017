@@ -1,7 +1,6 @@
 <?php
 
-class N2SystemBackendAviaryControllerAjax extends N2BackendControllerAjax
-{
+class N2SystemBackendAviaryControllerAjax extends N2BackendControllerAjax {
 
     public function actionGetHighResolutionAuth() {
         N2Loader::import('libraries.image.aviary');
@@ -11,7 +10,7 @@ class N2SystemBackendAviaryControllerAjax extends N2BackendControllerAjax
         ));
     }
 
-    public function  actionSaveImage() {
+    public function actionSaveImage() {
         $this->validateToken();
         N2Loader::import('libraries.image.aviary');
 
@@ -30,7 +29,12 @@ class N2SystemBackendAviaryControllerAjax extends N2BackendControllerAjax
             $path = N2Filesystem::realpath($root . '/' . $folder);
         }
 
-        $tmp = tempnam(sys_get_temp_dir(), 'image-');
+        $folder = sys_get_temp_dir();
+        if (!is_writable($folder)) {
+            $folder = N2Filesystem::getNotWebCachePath();
+        }
+
+        $tmp = tempnam($folder, 'image-');
         file_put_contents($tmp, file_get_contents($image));
 
         $src = null;

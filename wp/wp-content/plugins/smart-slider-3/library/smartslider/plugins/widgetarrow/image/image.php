@@ -136,7 +136,7 @@ class N2SSPluginWidgetArrowImage extends N2SSPluginWidgetAbstract {
                 $html .= self::getHTML($id, $params, $animation, 'next', $next, $displayClass, $displayAttributes, $styleClass, $nextColor, $nextHover, $nextHoverColor);
             }
 
-            N2JS::addInline('new NextendSmartSliderWidgetArrowImage("' . $id . '", ' . n2_floatval($params->get(self::$key . 'responsive-desktop')) . ', ' . n2_floatval($params->get(self::$key . 'responsive-tablet')) . ', ' . n2_floatval($params->get(self::$key . 'responsive-mobile')) . ');');
+            N2JS::addInline('new N2Classes.SmartSliderWidgetArrowImage("' . $id . '", ' . n2_floatval($params->get(self::$key . 'responsive-desktop')) . ', ' . n2_floatval($params->get(self::$key . 'responsive-tablet')) . ', ' . n2_floatval($params->get(self::$key . 'responsive-mobile')) . ');');
         }
 
         return $html;
@@ -177,31 +177,50 @@ class N2SSPluginWidgetArrowImage extends N2SSPluginWidgetAbstract {
         if ($imageHover === null) {
             $image = N2Html::image($image, 'Arrow', array(
                 'class'        => 'n2-ow',
-                'data-no-lazy' => '1'
+                'data-no-lazy' => '1',
+                'data-hack' => 'data-lazy-src'
             ));
         } else {
             $image = N2Html::image($image, 'Arrow', array(
                     'class'        => 'n2-arrow-normal-img n2-ow',
-                    'data-no-lazy' => '1'
+                    'data-no-lazy' => '1',
+                    'data-hack' => 'data-lazy-src'
                 )) . N2Html::image($imageHover, 'Arrow', array(
                     'class'        => 'n2-arrow-hover-img n2-ow',
-                    'data-no-lazy' => '1'
+                    'data-no-lazy' => '1',
+                    'data-hack' => 'data-lazy-src'
                 ));
+        }
+
+        $label = '';
+        switch ($side) {
+            case 'previous':
+                $label = 'Previous slide';
+                break;
+            case 'next':
+                $label = 'Next slide';
+                break;
         }
 
         if ($animation == 'none' || $animation == 'fade') {
             return N2Html::tag('div', $displayAttributes + $attributes + array(
                     'id'    => $id . '-arrow-' . $side,
-                    'class' => $displayClass . $styleClass . 'nextend-arrow n2-ib nextend-arrow-' . $side . '  nextend-arrow-animated-' . $animation,
-                    'style' => $style
+                    'class' => $displayClass . $styleClass . 'nextend-arrow n2-ib n2-ow nextend-arrow-' . $side . '  nextend-arrow-animated-' . $animation,
+                    'style' => $style,
+                    'role' => 'button',
+                    'aria-label' => $label,
+                    'tabindex' => '0'
                 ), $image);
         }
 
 
         return N2Html::tag('div', $displayAttributes + $attributes + array(
                 'id'    => $id . '-arrow-' . $side,
-                'class' => $displayClass . 'nextend-arrow n2-ib nextend-arrow-animated nextend-arrow-animated-' . $animation . ' nextend-arrow-' . $side,
-                'style' => $style
+                'class' => $displayClass . 'nextend-arrow n2-ib nextend-arrow-animated n2-ow nextend-arrow-animated-' . $animation . ' nextend-arrow-' . $side,
+                'style' => $style,
+                'role' => 'button',
+                'aria-label' => $label,
+                'tabindex' => '0'
             ), N2Html::tag('div', array(
                 'class' => $styleClass . ' n2-resize'
             ), $image) . N2Html::tag('div', array(

@@ -24,80 +24,102 @@ class N2SmartSliderExport {
         $this->backup = new N2SmartSliderBackup();
         $slidersModel = new N2SmartsliderSlidersModel();
         if ($this->backup->slider = $slidersModel->get($this->sliderId)) {
-            $this->backup->slider['params'] = new N2Data($this->backup->slider['params'], true);
-            $slidesModel                    = new N2SmartsliderSlidesModel();
-            $this->backup->slides           = $slidesModel->getAll($this->backup->slider['id']);
+
+            $zip = new N2ZipFile();
 
             if (empty($this->backup->slider['type'])) {
                 $this->backup->slider['type'] = 'simple';
             }
+            self::addImage($this->backup->slider['thumbnail']);
 
-            $class = 'N2SSPluginType' . $this->backup->slider['type'];
-            N2Loader::importPath(call_user_func(array(
+            $this->backup->slider['params'] = new N2Data($this->backup->slider['params'], true);
+
+            if ($this->backup->slider['type'] == 'group') {
+                $xref = new N2SmartsliderSlidersXrefModel();
+
+                $sliders = $xref->getSliders($this->backup->slider['id']);
+                foreach ($sliders AS $k => $slider) {
+                    $export = new N2SmartSliderExport($slider['slider_id']);
+
+                    $fileName = $export->create(true);
+
+                    $zip->addFile(file_get_contents($fileName), 'sliders/' . $k . '.ss3');
+                    unlink($fileName);
+                }
+            } else {
+                $slidesModel          = new N2SmartsliderSlidesModel();
+                $this->backup->slides = $slidesModel->getAll($this->backup->slider['id']);
+
+                $class = 'N2SSPluginType' . $this->backup->slider['type'];
+                N2Loader::importPath(call_user_func(array(
+                        $class,
+                        "getPath"
+                    )) . NDS . 'backup');
+
+                $class = 'N2SmartSliderBackup' . $this->backup->slider['type'];
+                call_user_func_array(array(
                     $class,
-                    "getPath"
-                )) . NDS . 'backup');
+                    'export'
+                ), array(
+                    $this,
+                    $this->backup->slider
+                ));
 
-            $class = 'N2SmartSliderBackup' . $this->backup->slider['type'];
-            call_user_func_array(array(
-                $class,
-                'export'
-            ), array(
-                $this,
-                $this->backup->slider
-            ));
+                $enabledWidgets = array();
+                $plugins        = array();
+                N2Plugin::callPlugin('sswidget', 'onWidgetList', array(&$plugins));
 
-            $enabledWidgets = array();
-            $plugins        = array();
-            N2Plugin::callPlugin('sswidget', 'onWidgetList', array(&$plugins));
 
-            $params = $this->backup->slider['params'];
-            foreach ($plugins AS $k => $v) {
-                $widget = $params->get('widget' . $k);
-                if ($widget && $widget != 'disabled') {
-                    $enabledWidgets[$k] = $widget;
+                $params = $this->backup->slider['params'];
+                foreach ($plugins AS $k => $v) {
+                    $widget = $params->get('widget' . $k);
+                    if ($widget && $widget != 'disabled') {
+                        $enabledWidgets[$k] = $widget;
+                    }
                 }
-            }
 
-            foreach ($enabledWidgets AS $k => $v) {
-                $class = 'N2SSPluginWidget' . $k . $v;
-                if (class_exists($class, false)) {
-                    $params->fillDefault(call_user_func(array(
-                        $class,
-                        'getDefaults'
-                    )));
+                foreach ($enabledWidgets AS $k => $v) {
+                    $class = 'N2SSPluginWidget' . $k . $v;
+                    if (class_exists($class, false)) {
+                        $params->fillDefault(call_user_func(array(
+                            $class,
+                            'getDefaults'
+                        )));
 
-                    call_user_func_array(array(
-                        $class,
-                        'prepareExport'
-                    ), array(
-                        $this,
-                        &$params
-                    ));
-                } else {
-                    unset($enabledWidgets);
+                        call_user_func_array(array(
+                            $class,
+                            'prepareExport'
+                        ), array(
+                            $this,
+                            &$params
+                        ));
+                    } else {
+                        unset($enabledWidgets);
+                    }
                 }
-            }
 
-            for ($i = 0; $i < count($this->backup->slides); $i++) {
-                $slide = $this->backup->slides[$i];
-                self::addImage($slide['thumbnail']);
-                $slide['params'] = new N2Data($slide['params'], true);
+                for ($i = 0; $i < count($this->backup->slides); $i++) {
+                    $slide = $this->backup->slides[$i];
+                    self::addImage($slide['thumbnail']);
+                    $slide['params'] = new N2Data($slide['params'], true);
 
-                self::addImage($slide['params']->get('backgroundImage'));
-                self::addLightbox($slide['params']->get('link'));
+                    self::addImage($slide['params']->get('backgroundImage'));
+                    self::addImage($slide['params']->get('ligthboxImage'));
+                    self::addLightbox($slide['params']->get('link'));
+
+                    $layers = json_decode($slide['slide'], true);
+
+                    self::prepareExportLayer($this, $layers);
 
 
-                N2SmartSliderLayer::prepareExport($this, $slide['slide']);
-
-                if (!empty($slide['generator_id'])) {
-                    N2Loader::import("models.generator", "smartslider");
-                    $generatorModel             = new N2SmartsliderGeneratorModel();
-                    $this->backup->generators[] = $generatorModel->get($slide['generator_id']);
+                    if (!empty($slide['generator_id'])) {
+                        N2Loader::import("models.generator", "smartslider");
+                        $generatorModel             = new N2SmartsliderGeneratorModel();
+                        $this->backup->generators[] = $generatorModel->get($slide['generator_id']);
+                    }
                 }
-            }
 
-            $zip = new N2ZipFile();
+            }
 
             $this->images  = array_unique($this->images);
             $this->visuals = array_unique($this->visuals);
@@ -133,10 +155,14 @@ class N2SmartSliderExport {
             foreach ($this->visuals AS $visual) {
                 $this->backup->visuals[] = N2StorageSectionAdmin::getById($visual);
             }
+
             $zip->addFile(serialize($this->backup), 'data');
+
             if (!$saveAsFile) {
-                ob_end_clean();
-                header('Content-disposition: attachment; filename=' . preg_replace('/[^a-zA-Z0-9_-]/', '', $this->backup->slider['title']) . '.ss3');
+                while (ob_list_handlers()) {
+                    ob_end_clean();
+                }
+                header('Content-disposition: attachment; filename*=UTF-8\'\'' . rawurlencode($this->backup->slider['title'] . '.ss3'));
                 header('Content-type: application/zip');
                 echo $zip->file();
                 n2_exit(true);
@@ -148,11 +174,43 @@ class N2SmartSliderExport {
                     N2Filesystem::createFolder($folder);
                 }
                 N2Filesystem::createFile($folder . $file, $zip->file());
+
+                return $folder . $file;
             }
         }
     }
 
-    public function  createHTML($isZIP = true) {
+    /**
+     * @param N2SmartSliderExport $export
+     * @param array               $layers
+     */
+    public static function prepareExportLayer($export, $layers) {
+        foreach ($layers AS $layer) {
+
+            if (isset($layer['type'])) {
+                switch ($layer['type']) {
+                    case 'content':
+                        N2SSSlideComponentContent::prepareExport($export, $layer);
+                        break;
+                    case 'row':
+                        N2SSSlideComponentRow::prepareExport($export, $layer);
+                        break;
+                    case 'col':
+                        N2SSSlideComponentCol::prepareExport($export, $layer);
+                        break;
+                    case 'group':
+                        N2SSSlideComponentGroup::prepareExport($export, $layer);
+                        break;
+                    default:
+                        N2SSSlideComponentLayer::prepareExport($export, $layer);
+                }
+            } else {
+                N2SSSlideComponentLayer::prepareExport($export, $layer);
+            }
+        }
+    }
+
+    public function createHTML($isZIP = true) {
         $this->files = array();
         ob_end_clean();
         N2AssetsManager::createStack();
@@ -161,7 +219,7 @@ class N2SmartSliderExport {
 
         ob_start();
         N2Base::getApplication("smartslider")
-              ->getApplicationType('widget')
+              ->getApplicationType('frontend')
               ->render(array(
                   "controller" => 'home',
                   "action"     => N2Platform::getPlatform(),
@@ -264,8 +322,8 @@ class N2SmartSliderExport {
         foreach ($this->files AS $path => $content) {
             $zip->addFile($content, $path);
         }
-        ob_end_clean();
-        header('Content-disposition: attachment; filename=' . preg_replace('/[^a-zA-Z0-9_-]/', '', $slider['title']) . '.zip');
+        if (ob_get_length()) ob_end_clean();
+        header('Content-disposition: attachment; filename*=UTF-8\'\'' . rawurlencode($slider['title'] . '.zip'));
         header('Content-type: application/zip');
         echo $zip->file();
         n2_exit(true);
@@ -275,6 +333,7 @@ class N2SmartSliderExport {
         if (substr($image, 0, 2) == '//') {
             return N2Uri::$scheme . ':' . $image;
         }
+
         return $image;
     }
 
@@ -296,6 +355,7 @@ class N2SmartSliderExport {
             } else {
                 $fileName = $this->imageTranslation[$path];
             }
+
             return str_replace($found[2], 'images/' . $fileName, $found[0]);
         } else {
             return $found[0];
@@ -316,9 +376,9 @@ class N2SmartSliderExport {
         $path = realpath($this->basePath . '/' . $exploded[0]);
         if ($path === false) {
             return 'url(' . str_replace(array(
-                'http://',
-                'https://'
-            ), '//', $this->baseUrl) . '/' . $matches[1] . ')';
+                    'http://',
+                    'https://'
+                ), '//', $this->baseUrl) . '/' . $matches[1] . ')';
         }
 
         $path = N2Filesystem::fixPathSeparator($path);
@@ -335,6 +395,7 @@ class N2SmartSliderExport {
         } else {
             $fileName = $this->imageTranslation[$path];
         }
+
         return str_replace($matches[1], '../images/' . $fileName, $matches[0]);
     }
 
@@ -347,6 +408,7 @@ class N2SmartSliderExport {
                 $image
             ));
         }
+
         return 'n2-lightbox-urls="' . implode(',', $images) . '"';
     }
 
@@ -356,6 +418,7 @@ class N2SmartSliderExport {
             '',
             $found[3]
         ));
+
         return str_replace($found[3], $path, $found[0]);
     }
 
@@ -366,6 +429,7 @@ class N2SmartSliderExport {
             '',
             $image
         ));
+
         return str_replace($found[1], str_replace('/', '\\/', $path), $found[0]);
     }
 

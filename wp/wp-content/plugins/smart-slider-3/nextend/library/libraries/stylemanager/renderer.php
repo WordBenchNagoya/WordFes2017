@@ -4,8 +4,7 @@ N2Loader::import(array(
     'libraries.stylemanager.storage'
 ));
 
-class N2StyleRenderer
-{
+class N2StyleRenderer {
 
     public static $pre = '';
     public static $sets = array();
@@ -35,7 +34,13 @@ class N2StyleRenderer
             $style = N2StorageSectionAdmin::getById($style, 'style');
             if ($style) {
                 if (is_string($style['value'])) {
-                    $value = json_decode(base64_decode($style['value']), true);
+
+                    $decoded = $style['value'];
+                    if ($decoded[0] != '{') {
+                        $decoded = base64_decode($decoded);
+                    }
+
+                    $value = json_decode($decoded, true);
                 } else {
                     $value = $style['value'];
                 }
@@ -56,14 +61,23 @@ class N2StyleRenderer
                 return $selector . ' ';
             }
         } else if ($style != '') {
-            $value = json_decode(base64_decode($style), true);
+            $decoded = $style;
+            if ($decoded[0] != '{') {
+                $decoded = base64_decode($decoded);
+            } else {
+                $style = base64_encode($decoded);
+            }
+
+            $value = json_decode($decoded, true);
             if ($value) {
                 $selector = 'n2-style-' . md5($style) . '-' . $mode;
 
                 N2CSS::addCode(self::renderStyle($mode, $pre, $selector, $value['data']), $group);
+
                 return $selector . ' ';
             }
         }
+
         return '';
     }
 
@@ -82,6 +96,7 @@ class N2StyleRenderer
         );
         $tabs[0] = array_merge(array(
             'backgroundcolor' => 'ffffff00',
+            'opacity'         => 100,
             'padding'         => '0|*|0|*|0|*|0|*|px',
             'boxshadow'       => '0|*|0|*|0|*|0|*|000000ff',
             'border'          => '0|*|solid|*|000000ff',
@@ -92,6 +107,7 @@ class N2StyleRenderer
             $search[]  = '@tab' . $k;
             $replace[] = self::$style->style($tab);
         }
+
         return str_replace($search, $replace, $template);
     }
 }
@@ -137,7 +153,7 @@ N2StyleRenderer::$mode = array(
         ),
         'preview'       => '<div class="{styleClassName}" style="width: 200px; height:100px;"></div>',
         'selectors'     => array(
-            '@pre@selector'                             => '@tab0',
+            '@pre@selector'       => '@tab0',
             '@pre@selector:HOVER' => '@tab1'
         )
     ),
@@ -153,7 +169,7 @@ N2StyleRenderer::$mode = array(
         ),
         'preview'       => '<div><a style="display:inline-block; margin:20px;" class="{styleClassName}" href="#" onclick="return false;">Button</a></div>',
         'selectors'     => array(
-            '@pre@selector'       => '@tab0',
+            '@pre@selector'                                                  => '@tab0',
             '@pre@selector:Hover, @pre@selector:ACTIVE, @pre@selector:FOCUS' => '@tab1'
         )
     ),
@@ -169,7 +185,7 @@ N2StyleRenderer::$mode = array(
         ),
         'preview'       => '<div class="{styleClassName}">Heading</div>',
         'selectors'     => array(
-            '@pre@selector'       => '@tab0',
+            '@pre@selector'                                                  => '@tab0',
             '@pre@selector:Hover, @pre@selector:ACTIVE, @pre@selector:FOCUS' => '@tab1'
         )
     ),
@@ -209,8 +225,7 @@ N2StyleRenderer::$mode = array(
 
 N2Loader::import('libraries.image.color');
 
-class N2Style
-{
+class N2Style {
 
     /**
      * @param string $tab
@@ -228,6 +243,7 @@ class N2Style
             $style .= $this->parse($k, $v);
         }
         $style .= $this->parse('extra', $extra);
+
         return $style;
     }
 
@@ -239,6 +255,7 @@ class N2Style
      */
     public function parse($property, $value) {
         $fn = 'parse' . $property;
+
         return $this->$fn($value);
     }
 
@@ -249,13 +266,19 @@ class N2Style
             $rgba = N2Color::hex2rgba($v);
             $style .= 'background: RGBA(' . $rgba[0] . ',' . $rgba[1] . ',' . $rgba[2] . ',' . round($rgba[3] / 127, 2) . ');';
         }
+
         return $style;
+    }
+
+    public function parseOpacity($v) {
+        return 'opacity:' . (intval($v) / 100) . ';';
     }
 
     public function parsePadding($v) {
         $padding   = explode('|*|', $v);
         $unit      = array_pop($padding);
         $padding[] = '';
+
         return 'padding:' . implode($unit . ' ', $padding) . ';';
     }
 
@@ -266,6 +289,7 @@ class N2Style
             return 'box-shadow: none;';
         } else {
             $rgba = N2Color::hex2rgba($boxShadow[4]);
+
             return 'box-shadow: ' . $boxShadow[0] . 'px ' . $boxShadow[1] . 'px ' . $boxShadow[2] . 'px ' . $boxShadow[3] . 'px RGBA(' . $rgba[0] . ',' . $rgba[1] . ',' . $rgba[2] . ',' . round($rgba[3] / 127, 2) . ');';
         }
     }
@@ -276,6 +300,7 @@ class N2Style
         $style .= 'border-style: ' . $border[1] . ';';
         $rgba = N2Color::hex2rgba($border[2]);
         $style .= 'border-color: #' . substr($border[2], 0, 6) . "; border-color: RGBA(" . $rgba[0] . ',' . $rgba[1] . ',' . $rgba[2] . ',' . round($rgba[3] / 127, 2) . ');';
+
         return $style;
     }
 

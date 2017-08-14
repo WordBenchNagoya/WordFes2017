@@ -7,9 +7,9 @@ class N2SmartSliderFeatureSpinner {
     private static $spinners = array(
         '-1'                 => '',
         '0'                  => '',
-        'rectangleDark'      => '<div><div class="n2-ss-spinner-rectangle-dark-container"><div class="n2-ss-spinner-rectangle-dark"><div class="n2-ss-spinner-rectangle-1"></div><div class="n2-ss-spinner-rectangle-2"></div><div class="n2-ss-spinner-rectangle-3"></div><div class="n2-ss-spinner-rectangle-4"></div></div></div>
-<style type="text/css">
-.n2-ss-spinner-rectangle-dark-container {
+        'rectangleDark'      => array(
+            '<div><div class="n2-ss-spinner-rectangle-dark-container"><div class="n2-ss-spinner-rectangle-dark"><div class="n2-ss-spinner-rectangle-1"></div><div class="n2-ss-spinner-rectangle-2"></div><div class="n2-ss-spinner-rectangle-3"></div><div class="n2-ss-spinner-rectangle-4"></div></div></div></div>',
+            '.n2-ss-spinner-rectangle-dark-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -64,11 +64,11 @@ div.n2-ss-spinner-rectangle-4 {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
-}
-</style></div>',
-        'simpleDark'         => '<div><div class="n2-ss-spinner-simple-dark-container"><div class="n2-ss-spinner-simple-dark"></div></div>
-<style type="text/css">
-.n2-ss-spinner-simple-dark-container {
+}'
+        ),
+        'simpleDark'         => array(
+            '<div><div class="n2-ss-spinner-simple-dark-container"><div class="n2-ss-spinner-simple-dark"></div></div></div>',
+            '.n2-ss-spinner-simple-dark-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -111,12 +111,11 @@ div.n2-ss-spinner-rectangle-4 {
 
 @-webkit-keyframes n2SimpleDark {
     to {-webkit-transform: rotate(360deg);}
-}
-
-</style></div>',
-        'simpleDarkCounter'  => '<div><div class="n2-ss-spinner-simple-dark-counter-container"><div class="n2-ss-spinner-simple-dark-counter n2-ss-spinner-counter"></div></div>
-<style type="text/css">
-.n2-ss-spinner-simple-dark-counter-container {
+}'
+        ),
+        'simpleDarkCounter'  => array(
+            '<div><div class="n2-ss-spinner-simple-dark-counter-container"><div class="n2-ss-spinner-simple-dark-counter n2-ss-spinner-counter"></div></div></div>',
+            '.n2-ss-spinner-simple-dark-counter-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -165,12 +164,11 @@ div.n2-ss-spinner-rectangle-4 {
 
 @-webkit-keyframes n2SimpleDarkCounter {
     to {-webkit-transform: rotate(360deg);}
-}
-
-</style></div>',
-        'simpleWhite'        => '<div><div class="n2-ss-spinner-simple-white-container"><div class="n2-ss-spinner-simple-white"></div></div>
-<style type="text/css">
-.n2-ss-spinner-simple-white-container {
+}'
+        ),
+        'simpleWhite'        => array(
+            '<div><div class="n2-ss-spinner-simple-white-container"><div class="n2-ss-spinner-simple-white"></div></div></div>',
+            '.n2-ss-spinner-simple-white-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -213,12 +211,11 @@ div.n2-ss-spinner-rectangle-4 {
 
 @-webkit-keyframes n2SimpleWhite {
     to {-webkit-transform: rotate(360deg);}
-}
-
-</style></div>',
-        'simpleWhiteCounter' => '<div><div class="n2-ss-spinner-simple-white-counter-container"><div class="n2-ss-spinner-simple-white-counter n2-ss-spinner-counter"></div></div>
-<style type="text/css">
-.n2-ss-spinner-simple-white-counter-container {
+}'
+        ),
+        'simpleWhiteCounter' => array(
+            '<div><div class="n2-ss-spinner-simple-white-counter-container"><div class="n2-ss-spinner-simple-white-counter n2-ss-spinner-counter"></div></div></div>',
+            '.n2-ss-spinner-simple-white-counter-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -267,12 +264,11 @@ div.n2-ss-spinner-rectangle-4 {
 
 @-webkit-keyframes n2SimpleWhiteCounter {
     to {-webkit-transform: rotate(360deg);}
-}
-
-</style></div>',
-        'infiniteDark'       => '<div><div class="n2-ss-spinner-infinite-dark-container"><div class="n2-ss-spinner-infinite-dark"></div></div>
-<style type="text/css">
-.n2-ss-spinner-infinite-dark-container {
+}'
+        ),
+        'infiniteDark'       => array(
+            '<div><div class="n2-ss-spinner-infinite-dark-container"><div class="n2-ss-spinner-infinite-dark"></div></div></div>',
+            '.n2-ss-spinner-infinite-dark-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -311,11 +307,11 @@ div.n2-ss-spinner-rectangle-4 {
 }
 @-webkit-keyframes n2InfiniteDark {
     to {-webkit-transform: rotate(360deg);}
-}
-</style></div>',
-        'infiniteWhite'      => '<div><div class="n2-ss-spinner-infinite-white-container"><div class="n2-ss-spinner-infinite-white"></div></div>
-<style type="text/css">
-.n2-ss-spinner-infinite-white-container {
+}'
+        ),
+        'infiniteWhite'      => array(
+            '<div><div class="n2-ss-spinner-infinite-white-container"><div class="n2-ss-spinner-infinite-white"></div></div></div>',
+            '.n2-ss-spinner-infinite-white-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -354,8 +350,8 @@ div.n2-ss-spinner-rectangle-4 {
 }
 @-webkit-keyframes n2InfiniteWhite {
     to {-webkit-transform: rotate(360deg);}
-}
-</style></div>'
+}'
+        )
     );
 
     public function __construct($slider) {
@@ -365,9 +361,20 @@ div.n2-ss-spinner-rectangle-4 {
 
     public function renderSlider($slider, $sliderHTML) {
 
-        $div = self::$spinners[$this->slider->params->get('spinner', 'simpleWhite')];
-        if (!empty($div)) {
-            return $sliderHTML . '<div id="' . $slider->elementId . '-spinner">' . $div . '</div>';
+        $customSpinner = $this->slider->params->get('custom-spinner', '');
+        if (!empty($customSpinner)) {
+            $width      = $this->slider->params->get('custom-spinner-width', '100');
+            $height     = $this->slider->params->get('custom-spinner-height', '100');
+            $marginLeft = -($width / 2);
+            $marginTop  = -($height / 2);
+            $style      = '';
+            if ($this->slider->params->get('custom-display', '1')) {
+                $style = 'style="display:none;"';
+            }
+            return $sliderHTML . '<div id="' . $slider->elementId . '-spinner" ' . $style . '><img src="' . N2ImageHelper::fixed($customSpinner) . '" style="width:' . $width . 'px; height:' . $height . 'px; position:absolute;left:50%;top:50%;margin-left:' . $marginLeft . 'px;margin-top:' . $marginTop . 'px;" alt="loading"/></div>';
+        } else if (isset(self::$spinners[$this->slider->params->get('spinner', 'simpleWhite')]) && !empty(self::$spinners[$this->slider->params->get('spinner', 'simpleWhite')])) {
+            N2CSS::addInline(self::$spinners[$this->slider->params->get('spinner', 'simpleWhite')][1]);
+            return $sliderHTML . '<div id="' . $slider->elementId . '-spinner" style="display: none;">' . self::$spinners[$this->slider->params->get('spinner', 'simpleWhite')][0] . '</div>';
         }
 
         return $sliderHTML;

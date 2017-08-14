@@ -1,8 +1,8 @@
 === Enable Media Replace ===
 Contributors: mungobbq
 Tags: admin, attachment, media, files
-Requires at least: 3.5
-Tested up to: 4.4.1
+Requires at least: 4.0
+Tested up to: 4.8
 Stable tag: trunk
 
 Enables replacing attachment files by simply uploading a new file in the media library edit view.
@@ -36,6 +36,21 @@ So `[file_modified id=870]` would display the last time the file with ID 870 was
 If you want more control over the format used to display the time, you can use the format option, so `[file_modified id=870 format=Y-m-d]` would display the file modification date but not the time. The format string uses [standard PHP date() formatting tags](http://php.net/manual/en/function.date.php). 
 
 == Changelog ==
+
+= 3.1.1 =
+* Fixed bug introduced in an earlier version, preventing the updating of URLs on pages/posts if the link did not contain the domain name
+
+= 3.1 =
+* Got rid of some pesky old code, and added some better filtering options, thanks to GitHub users speerface, aaemnnosttv, and ururk
+* Brand new, shiny code to replace other image sizes in embeded media, thanks to GitHub user ianmjones!
+* Tested with WP 4.8
+
+= 3.0.6 =
+* Tested with WP 4.7.2
+* New PT translations (thanks Pedro Mendonca! https://github.com/mansj/enable-media-replace/commit/b6e63b9a8a3ae46b3a6664bd5bbf19b2beaf9d3f)
+
+= 3.0.5 =
+* Tested with WP 4.6.1
 
 = 3.0.4 =
 * Fixed typo in .pt translations (https://github.com/mansj/enable-media-replace/pull/18)

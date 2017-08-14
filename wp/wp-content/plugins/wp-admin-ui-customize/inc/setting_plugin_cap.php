@@ -16,7 +16,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 	<?php echo $this->Msg; ?>
 	<h2><?php echo sprintf( __( '%1$s of %2$s %3$s' , 'wp-admin-ui-customize' ) , __( 'Change' ) , __( 'Plugin' ) , __( 'Capabilities' ) ); ?></h2>
 	<p><?php echo sprintf( __( 'You can change the user role %2$s of %1$s settings.' , 'wp-admin-ui-customize' ) , $this->Name , __( 'Capabilities' ) ); ?></p>
-	<p><?php echo sprintf( __( 'Please choose the minimum role that can modify %s settings.' , 'wp-admin-ui-customize' ) , $this->Name ); ?></p>
+	<p><?php echo sprintf( __( 'Select the capability required to modify %s settings.' , 'wp-admin-ui-customize' ) , $this->Name ); ?></p>
 	
 	<p>&nbsp;</p>
 
@@ -33,7 +33,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 
 					<div id="appearance_menus">
 						<div class="postbox">
-							<h3 class="hndle"><span><?php echo sprintf( __( 'Capability role for the %s' , 'wp-admin-ui-customize' ) , $this->Name ); ?></span></h3>
+							<h3 class="hndle"><span><?php echo sprintf( __( 'Capability required to modify %s settings' , 'wp-admin-ui-customize' ) , $this->Name ); ?></span></h3>
 							<div class="inside">
 								<table class="form-table">
 									<tbody>

@@ -3,7 +3,7 @@
         <param type="group" label="Mode" default="1|*|0"
                >
             <param name="responsiveScaleDown" type="onoff" label="Down scale" default="1"/>
-            <param name="responsiveScaleUp" type="onoff" label="Up scale" default="0"/>
+            <param name="responsiveScaleUp" type="onoff" label="Up scale" default="1"/>
         </param>
         <param type="group" label="Slider height">
             <param name="responsiveSliderHeightMin" type="number" label="Min" style="width:40px" default="0">

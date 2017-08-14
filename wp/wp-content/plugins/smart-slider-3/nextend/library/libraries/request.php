@@ -1,73 +1,47 @@
 <?php
 
-class N2RequestStorage
-{
+class N2Request {
 
-    public static $REQUEST, $COOKIE, $POST, $GET;
-
-    public static function init() {
-        self::$GET     = self::stripslashesRecursive($_GET);
-        self::$POST    = self::stripslashesRecursive($_POST);
-        self::$COOKIE  = self::stripslashesRecursive($_COOKIE);
-        self::$REQUEST = self::stripslashesRecursive($_REQUEST);
-    }
-
-    public static function stripslashesRecursive($array) {
-        foreach ($array as $key => $value) {
-            $array[$key] = is_array($value) ? self::stripslashesRecursive($value) : stripslashes($value);
-        }
-        return $array;
-    }
-}
-
-class N2Request
-{
-
-    public static $storage, $_requestUri;
+    public static $originalStorage, $storage, $_requestUri;
 
     public static function init() {
-        self::$storage = N2RequestStorage::$REQUEST;
+        self::$originalStorage = $_REQUEST;
+        self::$storage         = array();
     }
 
-    /**
-     * @param $var
-     * @param $val
-     */
     static function set($var, $val) {
         self::$storage[$var] = $val;
     }
 
-    /**
-     * @param      $var
-     * @param null $default
-     *
-     * @return null
-     */
+    protected static function get($var, $default = false) {
+        if (isset(self::$storage[$var])) {
+            return self::$storage[$var];
+        } else if (isset(self::$originalStorage[$var])) {
+            self::$storage[$var] = is_array(self::$originalStorage[$var]) ? self::stripslashesRecursive(self::$originalStorage[$var]) : stripslashes(self::$originalStorage[$var]);
+            return self::$storage[$var];
+        }
+        return $default;
+    }
+
     static function getVar($var, $default = null) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return $val;
+        return self::get($var, $default);
     }
 
-    /**
-     * @param     $var
-     * @param int $default
-     *
-     * @return int
-     */
     static function getInt($var, $default = 0) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return intval($val);
+        return intval(self::get($var, $default));
     }
 
-    /**
-     * @param        $var
-     * @param string $default
-     *
-     * @return mixed
-     */
     static function getCmd($var, $default = '') {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return preg_replace("/[^\w_]/", "", $val);
+        return preg_replace("/[^\w_]/", "", self::get($var, $default));
+    }
+
+    protected static function _isset($var) {
+        if (isset(self::$storage[$var])) {
+            return true;
+        } else if (isset(self::$originalStorage[$var])) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -75,7 +49,7 @@ class N2Request
      */
     public static function getIsAjaxRequest() {
 
-        if (isset(self::$storage["nextendajax"]) || isset(self::$storage["najax"])) {
+        if (self::_isset("nextendajax")) {
             return true;
         }
 
@@ -123,96 +97,122 @@ class N2Request
         return self::$_requestUri;
     }
 
+    public static function stripslashesRecursive($array) {
+        foreach ($array as $key => $value) {
+            $array[$key] = is_array($value) ? self::stripslashesRecursive($value) : stripslashes($value);
+        }
+        return $array;
+    }
 }
 
-class N2Get
-{
+class N2Get {
 
-    public static $storage;
+    public static $originalStorage, $storage;
 
     public static function init() {
-        self::$storage = N2RequestStorage::$GET;
+        self::$originalStorage = $_GET;
+        self::$storage         = array();
     }
 
     static function set($var, $val) {
         self::$storage[$var] = $val;
     }
 
+    protected static function get($var, $default = false) {
+        if (isset(self::$storage[$var])) {
+            return self::$storage[$var];
+        } else if (isset(self::$originalStorage[$var])) {
+            self::$storage[$var] = is_array(self::$originalStorage[$var]) ? N2Request::stripslashesRecursive(self::$originalStorage[$var]) : stripslashes(self::$originalStorage[$var]);
+            return self::$storage[$var];
+        }
+        return $default;
+    }
+
     static function getVar($var, $default = null) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return $val;
+        return self::get($var, $default);
     }
 
     static function getInt($var, $default = 0) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return intval($val);
+        return intval(self::get($var, $default));
     }
 
     static function getCmd($var, $default = '') {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return preg_replace("/[^\w_]/", "", $val);
+        return preg_replace("/[^\w_]/", "", self::get($var, $default));
     }
 }
 
-class N2Post
-{
+class N2Post {
 
-    public static $storage;
+    public static $originalStorage, $storage;
 
     public static function init() {
-        self::$storage = N2RequestStorage::$POST;
+        self::$originalStorage = $_POST;
+        self::$storage         = array();
     }
 
     static function set($var, $val) {
         self::$storage[$var] = $val;
     }
 
+    protected static function get($var, $default = false) {
+        if (isset(self::$storage[$var])) {
+            return self::$storage[$var];
+        } else if (isset(self::$originalStorage[$var])) {
+            self::$storage[$var] = is_array(self::$originalStorage[$var]) ? N2Request::stripslashesRecursive(self::$originalStorage[$var]) : stripslashes(self::$originalStorage[$var]);
+            return self::$storage[$var];
+        }
+        return $default;
+    }
+
     static function getVar($var, $default = null) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return $val;
+        return self::get($var, $default);
     }
 
     static function getInt($var, $default = 0) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return intval($val);
+        return intval(self::get($var, $default));
     }
 
     static function getCmd($var, $default = '') {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return preg_replace("/[^\w_]/", "", $val);
+        return preg_replace("/[^\w_]/", "", self::get($var, $default));
     }
 }
 
-class N2Cookie
-{
+class N2Cookie {
 
-    public static $storage;
+    public static $originalStorage, $storage;
 
     public static function init() {
-        self::$storage = N2RequestStorage::$COOKIE;
+        self::$originalStorage = $_COOKIE;
+        self::$storage         = array();
     }
 
     static function set($var, $val) {
         self::$storage[$var] = $val;
     }
 
+    protected static function get($var, $default = false) {
+        if (isset(self::$storage[$var])) {
+            return self::$storage[$var];
+        } else if (isset(self::$originalStorage[$var])) {
+            self::$storage[$var] = is_array(self::$originalStorage[$var]) ? N2Request::stripslashesRecursive(self::$originalStorage[$var]) : stripslashes(self::$originalStorage[$var]);
+            return self::$storage[$var];
+        }
+        return $default;
+    }
+
     static function getVar($var, $default = null) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return $val;
+        return self::get($var, $default);
     }
 
     static function getInt($var, $default = 0) {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return intval($val);
+        return intval(self::get($var, $default));
     }
 
     static function getCmd($var, $default = '') {
-        $val = isset(self::$storage[$var]) ? self::$storage[$var] : $default;
-        return preg_replace("/[^\w_]/", "", $val);
+        return preg_replace("/[^\w_]/", "", self::get($var, $default));
     }
 }
 
-N2RequestStorage::init();
 N2Request::init();
 N2Get::init();
 N2Post::init();

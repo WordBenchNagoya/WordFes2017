@@ -1,8 +1,7 @@
 <?php
 N2Loader::import("libraries.mvc.db");
 
-class N2Model
-{
+class N2Model {
 
     /**
      * @var N2DBConnectorAbstract
@@ -16,6 +15,10 @@ class N2Model
         }
         $this->db = new N2DBConnector($tableName);
 
+    }
+
+    public function getTable() {
+        return $this->db->tableName;
     }
 
 }

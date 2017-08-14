@@ -1,5 +1,5 @@
 <root>
-  <params name="simpleslidertypeanimation" type="groupped" label="Animation settings">
+  <params name="animation" type="groupped" label="Animation">
     <params name="simpleslidertypeanimation-top" label="" hidetitle="1">
       <param type="group" label="Background animation">
         <param type="backgroundanimation" name="background-animation" label="Animation(s)" default=""/>

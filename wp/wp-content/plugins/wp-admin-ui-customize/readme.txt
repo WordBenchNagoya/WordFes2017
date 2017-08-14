@@ -1,10 +1,10 @@
 === WP Admin UI Customize ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=wauc&utm_campaign=1_5_9
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=wauc&utm_campaign=1_5_10
 Tags: admin, post, posts, page, option, sitemenu, menu, custom, customize, dashboard, admin_bar, multisite, network, metabox
 Requires at least: 4.2
-Tested up to: 4.5
-Stable tag: 1.5.9
+Tested up to: 4.7
+Stable tag: 1.5.10
 License: GPL2
 
 Customize the management screen UI.
@@ -49,6 +49,10 @@ These to Customization is possible.
 11. Plugin Capabilities Settings
 
 == Changelog ==
+
+= 1.5.10 =
+* Changed: More labels and texts.
+* Removed: Donate message.
 
 = 1.5.9 =
 * Fixed: Items panel expand on Sidemenus and Admin bar menus.

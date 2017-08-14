@@ -1,16 +1,18 @@
 <?php
 
-N2Loader::import('libraries.mobiledetect.Mobile_Detect');
 N2Loader::import('libraries.parse.font');
 
 N2Loader::import('libraries.slider.type', 'smartslider');
 N2Loader::import('libraries.slider.css', 'smartslider');
+N2Loader::import('libraries.slider.group', 'smartslider');
 N2Loader::importAll('libraries.slider.features', 'smartslider');
-N2Loader::importAll('libraries.slider.slide', 'smartslider');
+N2Loader::importAll("libraries.slider.slides", "smartslider");
 N2Loader::import('libraries.settings.settings', 'smartslider');
 N2Loader::import('libraries.slider.widget.widgets', 'smartslider');
 
 abstract class N2SmartSliderAbstract {
+
+    protected $isGroup = false;
 
     public $sliderId = 0;
 
@@ -88,9 +90,6 @@ abstract class N2SmartSliderAbstract {
 
         $this->disableResponsive = $this->parameters['disableResponsive'];
 
-
-        $this->device = new Mobile_Detect();
-
         N2Loader::import("models.Sliders", "smartslider");
 
     }
@@ -112,14 +111,16 @@ abstract class N2SmartSliderAbstract {
 
         $type = $this->data->get('type', 'simple');
 
-        $class = 'N2SSPluginType' . $type;
-
-        N2Loader::importPath(call_user_func(array(
-                $class,
-                "getPath"
-            )) . NDS . $resourceName);
 
         $class = 'N2SmartSlider' . $resourceName . $type;
+
+        if (!class_exists($class, false)) {
+            N2Loader::importPath(call_user_func(array(
+                    'N2SSPluginType' . $type,
+                    "getPath"
+                )) . NDS . $resourceName);
+        }
+
         return new $class($this);
     }
 
@@ -145,6 +146,13 @@ abstract class N2SmartSliderAbstract {
         if (empty($slider)) {
             return false;
         }
+
+        switch ($slider['type']) {
+            case 'group':
+                $this->isGroup = true;
+                break;
+        }
+
         if (isset($this->parameters['extend']['sliderData']) && is_array($this->parameters['extend']['sliderData'])) {
             $sliderData      = $this->parameters['extend']['sliderData'];
             $slider['title'] = $sliderData['title'];
@@ -163,19 +171,31 @@ abstract class N2SmartSliderAbstract {
         $this->params->fillDefault($this->sliderType->getDefaults());
         $this->sliderType->limitParams($this->params);
 
-        $this->features = new N2SmartSliderFeatures($this);
+        if (!$this->isGroup) {
+            $this->features = new N2SmartSliderFeatures($this);
 
-        $this->initSlides();
+            $this->initSlides();
+        }
+
         return true;
     }
 
     private function initSlides() {
         if ($this->isAdmin) {
+            N2Loader::importAll("libraries.slider.slides.admin", "smartslider");
             $this->slidesBuilder = new N2SmartSliderSlidesAdmin($this);
         } else {
             $this->slidesBuilder = new N2SmartSliderSlides($this);
         }
         $this->slides = $this->slidesBuilder->getSlides(isset($this->parameters['extend']) ? $this->parameters['extend'] : array(), $this->parameters['addDummySlidesIfEmpty']);
+    }
+
+    public function getNextCacheRefresh() {
+        if ($this->isGroup) {
+            return $this->sliderType->getNextCacheRefresh();
+        }
+
+        return $this->slidesBuilder->getNextCacheRefresh();
     }
 
     public function render() {
@@ -184,19 +204,20 @@ abstract class N2SmartSliderAbstract {
             return false;
         }
 
-        if (count($this->slides) == 0) {
+        if (!$this->isGroup && count($this->slides) == 0) {
             return false;
         }
-
         $this->assets = $this->getSliderTypeResource('css');
         $this->assets->render();
-        $this->slides[$this->_activeSlide]->setActive();
-        for ($i = 0; $i < count($this->slides); $i++) {
-            $this->slides[$i]->prepare();
-            $this->slides[$i]->setSlidesParams();
-        }
+        if (!$this->isGroup) {
+            $this->slides[$this->_activeSlide]->setActive();
+            for ($i = 0; $i < count($this->slides); $i++) {
+                $this->slides[$i]->prepare();
+                $this->slides[$i]->setSlidesParams();
+            }
 
-        $this->renderStaticSlide();
+            $this->renderStaticSlide();
+        }
         $slider = $this->sliderType->render();
 
         if (!$this->isAdmin) {
@@ -211,7 +232,7 @@ abstract class N2SmartSliderAbstract {
         if (!N2Platform::$isAdmin) {
             $rocketAttributes = '';
             $dependency       = max(0, intval($this->params->get('dependency')));
-            if ($dependency) {
+            if ($dependency && ($dependency != $this->sliderId)) {
                 $rocketAttributes .= 'data-dependency="' . $dependency . '"';
             } else {
                 $delay = max(0, intval($this->params->get('delay'), 0));
@@ -231,13 +252,19 @@ abstract class N2SmartSliderAbstract {
             }
         }
 
-        $slider = $this->features->translateUrl->renderSlider($slider);
+        if (!$this->isGroup) {
+            $slider = $this->features->translateUrl->renderSlider($slider);
 
-        $slider = $this->features->loadSpinner->renderSlider($this, $slider);
-        $slider = $this->features->align->renderSlider($slider, $this->assets->sizes['width']);
-        $slider = $this->features->margin->renderSlider($slider);
+            $slider = $this->features->loadSpinner->renderSlider($this, $slider);
+            $slider = $this->features->align->renderSlider($slider, $this->assets->sizes['width']);
+            $slider = $this->features->margin->renderSlider($slider);
 
-        $slider .= $this->features->fadeOnLoad->renderPlaceholder($this->assets->sizes);
+            $slider .= $this->features->fadeOnLoad->renderPlaceholder($this->assets->sizes);
+        }
+		
+		if (intval($this->params->get('clear-both', 0))) {
+            $slider = '<div class="n2-clear"></div>' . $slider;
+        }
 
         return "\n<!-- Nextend Smart Slider 3 #" . $this->sliderId . " - BEGIN -->\n" . $slider . "\n<!-- Nextend Smart Slider 3 #" . $this->sliderId . " - END -->\n";
     }
@@ -264,6 +291,7 @@ abstract class N2SmartSliderAbstract {
         if ($this->_activeSlide == 0) {
             return $this->slides[$length - 1];
         }
+
         return $this->slides[$this->_activeSlide - 1];
     }
 
@@ -275,6 +303,7 @@ abstract class N2SmartSliderAbstract {
         if ($this->_activeSlide == $length - 1) {
             return $this->slides[0];
         }
+
         return $this->slides[$this->_activeSlide + 1];
     }
 
@@ -282,6 +311,7 @@ abstract class N2SmartSliderAbstract {
         $content = preg_replace('/smartslider3\[([0-9]+)\]/', '', $content);
         $content = preg_replace('/\[smartslider3 slider="([0-9]+)"\]/', '', $content);
         $content = preg_replace('/\[smartslider3 slider=([0-9]+)\]/', '', $content);
+
         return $content;
     }
 
@@ -291,3 +321,8 @@ abstract class N2SmartSliderAbstract {
 }
 
 N2Loader::import("libraries.slider.slider", "smartslider.platform");
+
+
+class N2SmartSliderSliderBehavior {
+
+}

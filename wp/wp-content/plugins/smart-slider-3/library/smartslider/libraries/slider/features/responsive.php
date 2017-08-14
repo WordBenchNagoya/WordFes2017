@@ -22,6 +22,8 @@ class N2SmartSliderFeatureResponsive {
     public $scaleUp = 0;
 
     public $forceFull = 0;
+	
+	public $forceFullHorizontalSelector = '';
 
     public $constrainRatio = 1;
 
@@ -390,7 +392,6 @@ class N2SmartSliderFeatureResponsive {
             $this->maximumSlideWidthMobileLandscape = $this->maximumSlideWidthMobile;
         }
 
-
         $properties['responsive'] = array(
             'desktop' => N2Platform::$isAdmin ? 1 : $this->desktop,
             'tablet'  => $this->tablet,
@@ -410,6 +411,7 @@ class N2SmartSliderFeatureResponsive {
             'maximumSlideWidthMobileLandscape' => $this->maximumSlideWidthMobileLandscape,
             'maximumSlideWidthConstrainHeight' => intval($this->maximumSlideWidthConstrainHeight),
             'forceFull'                        => $this->forceFull,
+			'forceFullHorizontalSelector'      => $this->forceFullHorizontalSelector,
             'constrainRatio'                   => $this->constrainRatio,
             'verticalOffsetSelectors'          => $this->verticalOffsetSelectors,
 
@@ -431,7 +433,13 @@ class N2SmartSliderFeatureResponsive {
             'orientationMode'            => $this->orientationMode,
 
             'scrollFix'          => intval($this->slider->params->get('scroll-fix', 0)),
-            'overflowHiddenPage' => intval($this->slider->params->get('overflow-hidden-page', 0))
+            'overflowHiddenPage' => intval($this->slider->params->get('overflow-hidden-page', 0)),
+
+            'desktopPortraitScreenWidth' => $this->desktopPortraitScreenWidth,
+            'tabletPortraitScreenWidth'  => $this->tabletPortraitScreenWidth,
+            'mobilePortraitScreenWidth'  => $this->mobilePortraitScreenWidth,
+            'tabletLandscapeScreenWidth' => $this->tabletLandscapeScreenWidth,
+            'mobileLandscapeScreenWidth' => $this->mobileLandscapeScreenWidth,
         );
     }
 

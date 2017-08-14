@@ -38,16 +38,16 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 										<?php $field = 'allow_comments'; ?>
 										<tr>
 											<th>
-												<label><?php _e( 'Allow people to post comments on new articles when hide to discussion of metabox' , 'wp-admin-ui-customize' ); ?></label>
+												<label><?php _e( 'Allow comments if discussion meta box is hidden' , 'wp-admin-ui-customize' ); ?></label>
 											</th>
 											<td>
 												<?php  if( $comment_status == 'open' ) : ?>
 													<?php $Checked = ''; ?>
 													<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 													<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Allow' ); ?></label>
-													<p class="description"><?php _e( 'Notice: If hide the Discussion on metabox, comments does not display of Add New Post on apply user role.' , 'wp-admin-ui-customize' ); ?></p>
-													<p><?php _e( 'Please select if you want to display the comments on Site.' , 'wp-admin-ui-customize' ); ?></p>
-													<p><a href="<?php echo admin_url( 'options-discussion.php' ); ?>"><?php echo sprintf( __( 'However, this will follow the setting of %s.' , 'wp-admin-ui-customize' ) , __( 'Default article settings' ) ); ?></a></p>
+													<p class="description"><?php _e( 'If the discussion meta box is hidden comments will not be displayed on new posts for the selected role.' , 'wp-admin-ui-customize' ); ?></p>
+													<p><?php _e( 'Check \'Allow\' to allow comments on new posts.' , 'wp-admin-ui-customize' ); ?></p>
+													<p><a href="<?php echo admin_url( 'options-discussion.php' ); ?>"><?php echo sprintf( __( 'The %s in WordPress will override this setting.' , 'wp-admin-ui-customize' ) , __( 'Default article settings' ) ); ?></a></p>
 												<?php else : ?>
 													<p><a href="<?php echo admin_url( 'options-discussion.php' ); ?>"><?php echo sprintf( __( 'Please select the <strong>%s</strong>' , 'wp-admin-ui-customize' ) , __( 'Allow people to post comments on new articles' ) ); ?></a></p>
 												<?php endif; ?>
@@ -75,7 +75,7 @@ wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', arr
 												<?php $Checked = ''; ?>
 												<?php if( !empty( $Data[$field] ) ) : $Checked = 'checked="checked"'; endif; ?>
 												<label><input type="checkbox" name="data[<?php echo $field; ?>]" value="1" <?php echo $Checked; ?> /> <?php _e ( 'Hide' ); ?></label>
-												<p class="description"><?php _e( 'Only appears when you have settings to the default permalink.' , 'wp-admin-ui-customize' ); ?></p>
+												<p class="description"><?php _e( 'Only appears when the permalinks are set to the default setting.' , 'wp-admin-ui-customize' ); ?></p>
 												<p><img src="<?php echo $this->Url; ?>images/post_add_edit_screen__edit_ppermalink.png" /></p>
 											</td>
 										</tr>

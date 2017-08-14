@@ -32,29 +32,38 @@ class N2Uri extends N2UriAbstract {
 
     public static function getUris() {
         $i = N2Uri::getInstance();
+
         return $i->uris;
     }
 
-    static function pathToUri($path) {
+    static function pathToUri($path, $protocol = true) {
         $paths = N2Filesystem::getPaths();
 
         foreach ($paths AS $i => $_path) {
             if (substr($path, 0, strlen($_path)) == $_path) {
                 $ins = N2Uri::getInstance();
 
-                return $ins->uris[$i] . str_replace(array(
-                    $_path,
-                    DIRECTORY_SEPARATOR
-                ), array(
-                    '',
-                    '/'
-                ), str_replace('/', DIRECTORY_SEPARATOR, $path));
+                return $ins->getUriByIndex($i, $protocol) . str_replace(array(
+                        $_path,
+                        DIRECTORY_SEPARATOR
+                    ), array(
+                        '',
+                        '/'
+                    ), str_replace('/', DIRECTORY_SEPARATOR, $path));
             }
         }
         if (substr($path, 0, 1) == '/') {
-            return N2Uri::getInstance()
-                        ->getBaseUri() . $path;
+            return N2Uri::getBaseUri() . $path;
         }
+
         return $path;
+    }
+
+    public function getUriByIndex($i, $protocol = true) {
+        if (!$protocol) {
+            return preg_replace('/^http:/', '', $this->uris[$i]);
+        }
+
+        return $this->uris[$i];
     }
 }

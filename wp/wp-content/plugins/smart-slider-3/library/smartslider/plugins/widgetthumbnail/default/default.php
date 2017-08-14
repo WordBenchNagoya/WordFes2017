@@ -31,7 +31,9 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             'widget-thumbnail-overlay'                 => 0,
             'widget-thumbnail-show-image'              => 1,
             'widget-thumbnail-width'                   => 100,
-            'widget-thumbnail-height'                  => 60
+            'widget-thumbnail-height'                  => 60,
+            'widget-thumbnail-align-content'           => 'start',
+            'widget-thumbnail-invert-group-direction'  => 0
         );
     }
 
@@ -49,6 +51,7 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             self::$key . 'position-',
             'thumbnail'
         );
+
         return $positions;
     }
 
@@ -58,6 +61,7 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
         if ($ini == 0) return '';
         $ini += strlen($start);
         $len = strpos($string, $end, $ini) - $ini;
+
         return substr($string, $ini, $len);
     }
 
@@ -124,13 +128,13 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
 
         $group = max(1, intval($params->get(self::$key . 'group')));
 
-        $orientation = self::getOrientationByPosition($params->get(self::$key . 'position-mode'), $params->get(self::$key . 'position-area'), $params->get(self::$key . 'orientation'));
-        if ($orientation == 'auto') {
-            $orientation = 'vertical';
+        $orientation = $params->get(self::$key . 'orientation');
+        if ($params->get(self::$key . 'orientation') == 'auto') {
+            $orientation = self::getOrientationByPosition($params->get(self::$key . 'position-mode'), $params->get(self::$key . 'position-area'), $orientation);
+            if ($orientation == 'auto') {
+                $orientation = 'vertical';
+            }
         }
-        $slides = N2Html::openTag('table', array('class' => 'n2-ow'));
-
-        $containerStyle    = '';
         $captionClass      = 'n2-caption-' . $captionPlacement;
         $captionExtraStyle = '';
         switch ($captionPlacement) {
@@ -180,6 +184,7 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             $thumbnailCode = '';
         }
 
+        $slides = '';
         foreach ($slider->slides AS $slide) {
             $active = '';
             if ($slider->_activeSlide == $i) {
@@ -197,7 +202,7 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             if ($showImage) {
                 $imgstyle = "width: {$width}px; height: {$height}px;";
                 $image    = N2Html::tag('div', array(
-                    'class' => 'n2-ss-thumb-image',
+                    'class' => 'n2-ss-thumb-image n2-ow',
                     'style' => "background-image: URL('" . $slider->features->optimize->optimizeThumbnail($slide->getThumbnail()) . "');" . $imgstyle . $thumbnailCode
                 ), $slide->getThumbnailTypeHTML());
             }
@@ -208,18 +213,18 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
                 $html = '';
                 if ($showTitle) {
                     $html .= N2Html::tag('div', array(
-                        'class' => $titleFont
+                        'class' => $titleFont . ' n2-ow'
                     ), $slide->getTitle());
                 }
                 $description = $slide->getDescription();
                 if ($showDescription && !empty($description)) {
                     $html .= N2Html::tag('div', array(
-                        'class' => $descriptionFont
+                        'class' => $descriptionFont . ' n2-ow'
                     ), $description);
                 }
 
                 $inner = N2Html::tag('div', array(
-                    'class' => $captionStyle . 'n2-ss-caption ' . $captionClass,
+                    'class' => $captionStyle . 'n2-ss-caption ' . $captionClass . ' n2-ow',
                     'style' => $captionExtraStyle
                 ), $html);
             }
@@ -232,17 +237,13 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
                     $inner = $image . $inner;
             }
 
-            $rows[$row][] = N2Html::tag('td', array(), N2Html::tag('div', array(
-                'class' => $slideStyle . $active,
-                'style' => $containerStyle
-            ), $inner));
+            $slides .= N2Html::tag('div', array(
+                'class'    => $slideStyle . $active . ' n2-ow',
+                'style'    => $containerStyle,
+                'tabindex' => '0'
+            ), $inner);
             $i++;
         }
-
-        foreach ($rows AS $row) {
-            $slides .= N2Html::tag('tr', array(), implode('', $row));
-        }
-        $slides .= N2Html::closeTag('table');
 
         $parameters = array(
             'overlay'               => $params->get(self::$key . 'position-mode') != 'simple' || $params->get(self::$key . 'overlay'),
@@ -251,10 +252,11 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             'group'                 => $group,
             'action'                => $params->get(self::$key . 'action'),
             'captionSize'           => intval($captionSize),
-            'minimumThumbnailCount' => max(1, intval($params->get(self::$key . 'minimum-thumbnail-count'))) + 0.5
+            'minimumThumbnailCount' => max(1, intval($params->get(self::$key . 'minimum-thumbnail-count'))) + 0.5,
+            'invertGroupDirection'  => intval($params->get('widget-thumbnail-invert-group-direction', 0))
         );
 
-        N2JS::addInline('new NextendSmartSliderWidgetThumbnailDefault("' . $id . '", ' . json_encode($parameters) . ');');
+        N2JS::addInline('new N2Classes.SmartSliderWidgetThumbnailDefault("' . $id . '", ' . json_encode($parameters) . ');');
 
         $size = $params->get(self::$key . 'size');
         if ($orientation == 'horizontal') {
@@ -294,13 +296,14 @@ class N2SSPluginWidgetThumbnailDefault extends N2SSPluginWidgetAbstract {
             }
         }
 
+
         return N2Html::tag('div', $displayAttributes + $attributes + array(
-                'class' => $displayClass . 'nextend-thumbnail nextend-thumbnail-default nextend-thumbnail-' . $orientation,
+                'class' => $displayClass . 'nextend-thumbnail nextend-thumbnail-default n2-ow nextend-thumbnail-' . $orientation,
                 'style' => $style
             ), $previous . $next . N2Html::tag('div', array(
-                'class' => 'nextend-thumbnail-inner'
+                'class' => 'nextend-thumbnail-inner n2-ow'
             ), N2Html::tag('div', array(
-                'class' => $barStyle . 'nextend-thumbnail-scroller',
+                'class' => $barStyle . 'nextend-thumbnail-scroller n2-ow n2-align-content-' . $params->get('widget-thumbnail-align-content') . ($params->get('widget-thumbnail-invert-group-direction', 0) ? ' nextend-thumbnail-invert-group-dir' : ''),
             ), $slides)));
     }
 

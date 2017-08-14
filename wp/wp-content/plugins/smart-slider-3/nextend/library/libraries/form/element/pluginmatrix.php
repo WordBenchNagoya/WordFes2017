@@ -4,8 +4,7 @@
  */
 N2Loader::import('libraries.form.element.hidden');
 
-class N2ElementPluginMatrix extends N2ElementHidden
-{
+class N2ElementPluginMatrix extends N2ElementHidden {
 
     var $_list = null;
 
@@ -39,7 +38,7 @@ class N2ElementPluginMatrix extends N2ElementHidden
 
             $html .= N2Html::tag("div", array(
                 "onclick" => "n2('#{$this->_id}').val('{$type}');",
-                "class"   => $class . ($value == $type ? ' n2-active' : '')
+                "class"   => $class . ($value == $type ? ' n2-active' : '') . ' n2-fm-' . $type
             ), N2Html::tag("span", array("class" => "n2-underline"), $v[0]));
 
         }
@@ -88,6 +87,8 @@ class N2ElementPluginMatrix extends N2ElementHidden
                     views.eq(i).addClass("n2-active");
                     panes.eq(i).addClass("n2-active");
                 });
+
+                views.find(":visible").first().trigger("click");
             })();
         ');
 

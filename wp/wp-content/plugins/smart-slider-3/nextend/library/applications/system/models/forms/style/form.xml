@@ -2,12 +2,17 @@
     <params name="firstrow" type="horizontal">
         <param name="backgroundcolor" label="Background color" type="color" alpha="1" default="000000FF"/>
 
-        <param name="padding" label="Padding" type="mixed" default="0|*|0|*|0|*|0|*|px" translateable="0">
+        <param name="opacity" label="Opacity" type="numberautocomplete" default="100" values="0,50,90,100"
+               style="width: 22px;">
+            <unit value="%">%</unit>
+        </param>
+
+        <param name="padding" label="Padding" type="connected" default="0|*|0|*|0|*|0|*|px" translateable="0">
             <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
             <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
             <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
             <param type="numberautocomplete" style="width: 22px;" values="0,5,10,20,30"/>
-            <param type="switcher">
+            <param type="units">
                 <unit value="px">px</unit>
                 <unit value="em">em</unit>
                 <unit value="%">%</unit>

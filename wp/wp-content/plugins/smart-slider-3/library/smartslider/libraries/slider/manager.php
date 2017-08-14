@@ -6,6 +6,8 @@ class N2SmartSliderManager {
 
     public $slider;
 
+    public $nextCacheRefresh;
+
     public function __construct($sliderId, $backend = false, $parameters = array()) {
 
         if ($backend) {
@@ -44,8 +46,10 @@ class N2SmartSliderManager {
             'renderCachedSlider'
         ));
 
+        $this->nextCacheRefresh = $cache->getData('nextCacheRefresh', false);
+
         if ($cachedSlider === false) {
-            return '<h3>Smart Slider with ID #' . $this->slider->sliderId . ' does NOT EXIST or has NO SLIDES!</h3><h4>Usage: ' . $this->usage . '</h4>';
+            return '<!--Smart Slider #' . $this->slider->sliderId . ' does NOT EXIST or has NO SLIDES!' . $this->usage . '-->';
         }
         N2AssetsManager::loadFromArray($cachedSlider['assets']);
 

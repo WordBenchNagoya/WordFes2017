@@ -4,6 +4,13 @@
       <unit>Slides</unit>
     </param>
     <param name="widget-thumbnail-position" type="widgetposition" label="Position"/>
+    <param name="widget-thumbnail-align-content" type="radio" label="Align thumbnails" default="start">
+      <option value="start">Start</option>
+      <option value="center">Center</option>
+      <option value="end">End</option>
+      <option value="space-between">Space between</option>
+      <option value="space-around">Space around</option>
+    </param>
     <param type="group" label="Style">
       <param name="widget-thumbnail-style-bar" type="style" previewmode="simple" style2="sliderwidget-thumbnail-style-slides" label="Bar" set="1900">
         <![CDATA[ <div class="{styleClassName}" style="overflow: hidden; width:{$('#sliderwidget-thumbnail-width').val()*2.5}px;"><div style="width:200%"><div class="{styleClassName2}" style="display: inline-block; vertical-align:top; width:{$('#sliderwidget-thumbnail-width').val()}px; height: {$('#sliderwidget-thumbnail-height').val()}px; background: url('$system$/images/placeholder/imageback.png');"></div><div class="{styleClassName2} n2-active" style="display: inline-block; vertical-align:top; width:{$('#sliderwidget-thumbnail-width').val()}px; height: {$('#sliderwidget-thumbnail-height').val()}px; background: url('$system$/images/placeholder/image.png');"></div><div class="{styleClassName2}" style="display: inline-block; vertical-align:top; width:{$('#sliderwidget-thumbnail-width').val()}px; height: {$('#sliderwidget-thumbnail-height').val()}px; background: url('$system$/images/placeholder/imagefront.png');"></div></div></div> ]]>

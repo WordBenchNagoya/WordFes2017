@@ -33,7 +33,7 @@ class N2AssetsJs extends N2AssetsAbstract {
                 }
             }
             $combinedFile = $jsCombined->make();
-            $scripts      = 'nextend.loadScript("' . N2Uri::pathToUri($combinedFile) . '?' . filemtime($combinedFile) . '");';
+            $scripts      = 'nextend.loadScript("' . N2Uri::pathToUri($combinedFile, false) . '");';
             $output .= N2Html::script(self::minify_js($scripts . "\n"));
         } else {
             if (!N2Platform::$isAdmin && N2Settings::get('combine-js', '0')) {
@@ -42,15 +42,16 @@ class N2AssetsJs extends N2AssetsAbstract {
                     $jsCombined->add($file);
                 }
                 $combinedFile = $jsCombined->make();
-                $output .= N2Html::script(N2Uri::pathToUri($combinedFile) . '?' . filemtime($combinedFile), true) . "\n";
+                $output .= N2Html::script(N2Uri::pathToUri($combinedFile, false), true) . "\n";
             } else {
                 foreach ($this->getFiles() AS $file) {
-                    $output .= N2Html::script(N2Uri::pathToUri($file) . '?' . filemtime($file), true) . "\n";
+                    $output .= N2Html::script(N2Uri::pathToUri($file, false) . '?' . filemtime($file), true) . "\n";
                 }
             }
         }
 
         $output .= N2Html::script(self::minify_js(N2Localization::toJS() . "\n" . $this->getInlineScripts() . "\n"));
+
         return $output;
     }
 
@@ -105,6 +106,7 @@ class N2AssetsJs extends N2AssetsAbstract {
 
     public static function minify_js($input) {
         if (trim($input) === "") return $input;
+
         return preg_replace(array(
             // Remove comment(s)
             '#\s*("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')\s*|\s*\/\*(?!\!|@cc_on)(?>[\s\S]*?\*\/)\s*|\s*(?<![\:\=])\/\/.*(?=[\n\r]|$)|^\s*|\s*$#',

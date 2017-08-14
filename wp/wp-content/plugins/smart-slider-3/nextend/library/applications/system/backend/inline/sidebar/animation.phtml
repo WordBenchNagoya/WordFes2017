@@ -1,15 +1,14 @@
 <div class="n2-sidebar-row n2-sidebar-header-bg n2-form-dark n2-sets-header">
     <div class="n2-table">
         <div class="n2-tr">
-            <div class="n2-td n2-set-label">
-                <div class="n2-h3 n2-uc"><?php n2_e('Set'); ?></div>
-            </div>
             <div class="n2-td n2-manage-set">
                 <?php
                 $model->renderSetsForm();
                 ?>
+            </div>
+            <div class="n2-td">
                 <div id="animationset-manage"
-                     class="n2-button n2-button-medium n2-button-grey n2-h5 n2-uc"><?php n2_e('Manage'); ?></div>
+                     class="n2-button n2-button-icon n2-button-m n2-radius-s n2-button-grey n2-h5 n2-uc"><i class="n2-i n2-i-settings"></i></div>
             </div>
         </div>
     </div>
@@ -20,7 +19,7 @@ $ul = array();
 $ul[] = array(
     'class'    => 'n2-button-container n2-save-as-new-container',
     'contents' => N2Html::tag('a', array(
-        'class' => 'n2-button n2-button-big n2-button-green n2-uc n2-animation-save-as-new',
+        'class' => 'n2-button n2-button-normal n2-button-l n2-radius-s n2-button-green n2-uc n2-animation-save-as-new',
         'href'  => '#'
     ), n2_('Save as new animation')),
 );

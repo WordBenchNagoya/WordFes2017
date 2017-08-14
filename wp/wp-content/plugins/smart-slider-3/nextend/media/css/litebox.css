@@ -207,6 +207,8 @@
     height: 100%;
     position: relative;
     z-index: 999999;
+    width: 1px;
+    min-width: 100%;
 }
 
 .litebox-overlay .litebox-inline-html {

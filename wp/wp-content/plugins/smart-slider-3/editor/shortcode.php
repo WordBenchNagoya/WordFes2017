@@ -11,7 +11,7 @@ class N2SSShortcodeInsert {
 
     public static function addButton() {
         N2Loader::import('libraries.settings.settings', 'smartslider');
-        if ((!current_user_can('edit_posts') && !current_user_can('edit_pages')) || !intval(N2SmartSliderSettings::get('editor-icon', 1))) {
+        if ((!current_user_can('edit_posts') && !current_user_can('edit_pages'))) {
             return;
         }
         if (in_array(basename($_SERVER['PHP_SELF']), array(
@@ -20,11 +20,37 @@ class N2SSShortcodeInsert {
             'post.php',
             'page.php'
         ))) {
-            wp_register_style('smart-slider-editor', plugin_dir_url(__FILE__) . 'editor.min.css', array(), '3.22', 'screen');
-        
-            wp_enqueue_style('smart-slider-editor');
 
-            add_action('admin_print_footer_scripts', array(
+            self::addForced();
+
+            wp_enqueue_script('jquery-ui-dialog');
+            wp_enqueue_style("wp-jquery-ui-dialog");
+
+            if (intval(N2SmartSliderSettings::get('editor-icon', 1))) {
+                if (get_user_option('rich_editing') == 'true') {
+                    add_filter('mce_external_plugins', array(
+                        'N2SSShortcodeInsert',
+                        'mceAddPlugin'
+                    ));
+                    add_filter('mce_buttons', array(
+                        'N2SSShortcodeInsert',
+                        'mceRegisterButton'
+                    ));
+                }
+            }
+        }
+    }
+
+    public static function addForcedFrontend($action = 'wp_print_footer_scripts') {
+        self::addForced('wp_print_footer_scripts');
+    }
+
+    public static function addForced($action = 'admin_print_footer_scripts') {
+        static $added = false;
+        if (!$added) {
+            self::initButtonDialog();
+
+            add_action($action, array(
                 'N2SSShortcodeInsert',
                 'addButtonDialog'
             ));
@@ -32,148 +58,117 @@ class N2SSShortcodeInsert {
             wp_enqueue_script('jquery-ui-dialog');
             wp_enqueue_style("wp-jquery-ui-dialog");
 
-            if (get_user_option('rich_editing') == 'true') {
-                add_filter('mce_external_plugins', array(
-                    'N2SSShortcodeInsert',
-                    'mceAddPlugin'
-                ));
-                add_filter('mce_buttons', array(
-                    'N2SSShortcodeInsert',
-                    'mceRegisterButton'
-                ));
-            }
+            $added = true;
         }
     }
 
     public static function mceAddPlugin($plugin_array) {
         $plugin_array['nextend2smartslider3'] = plugin_dir_url(__FILE__) . 'shortcode.js';
+
         return $plugin_array;
     }
 
     public static function mceRegisterButton($buttons) {
         array_push($buttons, "|", "nextend2smartslider3");
+
         return $buttons;
     }
 
+    public static function initButtonDialog() {
+        wp_register_style('smart-slider-editor', plugin_dir_url(__FILE__) . 'editor.min.css', array(), '3.22', 'screen');
+    
+        wp_enqueue_style('smart-slider-editor');
+    }
+
     public static function addButtonDialog() {
-
-        global $wpdb;
-        $query   = 'SELECT sliders.title, sliders.id, slides.thumbnail
-            FROM ' . $wpdb->prefix . 'nextend2_smartslider3_sliders AS sliders
-            LEFT JOIN ' . $wpdb->prefix . 'nextend2_smartslider3_slides AS slides ON slides.id = (SELECT id FROM ' . $wpdb->prefix . 'nextend2_smartslider3_slides WHERE slider = sliders.id AND published = 1 AND generator_id = 0 AND thumbnail NOT LIKE \'\' ORDER BY ordering DESC LIMIT 1)
-            ORDER BY time DESC';
-        $sliders = $wpdb->get_results($query, ARRAY_A);
+        N2Loader::import('libraries.settings.settings', 'smartslider');
         ?>
-        <div id='n2-ss-editor-modal' title='Select a Slider'>
-            <div class="n2-ss-editor-inner">
-                <div class="n2-ss-editor-header">Select a Slider<div class="n2-ss-editor-header-close"></div></div>
-                <div class="n2-ss-editor-boxes">
-                <?php
-                $router = N2Base::getApplication('smartslider')->router;
-                $token  = N2Form::tokenizeUrl();
-                foreach ($sliders AS $slider) :
-                    if (empty($slider['thumbnail'])) {
-                        $slider['thumbnail'] = '$system$/images/placeholder/image.png';
-                    }
-                    ?>
-                    <div class="n2-ss-editor-box" data-sliderid="<?php echo $slider['id']; ?>" style="background-image: url(<?php echo N2ImageHelper::fixed($slider['thumbnail']); ?>); ">
-                        <div class="n2-ss-editor-box-actions">
-                            <a target="_blank" href="<?php echo $router->createUrl(array(
-                                'slider/edit',
-                                array(
-                                    'sliderid' => $slider["id"]
-                                )
-                            )); ?>">Edit</a>
-                            <a target="_blank" href="<?php echo $router->createUrl(array(
-                                'preview/index',
-                                array(
-                                    'sliderid' => $slider["id"]
-                                ) + $token
-                            )); ?>">Preview</a>
-                        </div>
-                        <div class="n2-ss-editor-box-title"><?php echo $slider['title']; ?></div>
-                    </div>
+        <div id="n2-ss-editor-modal">
+				<div class="n2-ss-editor-inner">
+					<div class="n2-ss-editor-header">Select a Slider<div class="n2-ss-editor-header-close"></div></div>
                     <?php
-                endforeach;
-                ?>
-                </div>
-                <div class="n2-ss-editor-buttons">
-                    <a href="#" class="n2-ss-editor-insert">Insert slider</a>
-                    <a target="_blank" href="<?php echo $router->createUrl(array('sliders/index')); ?>" class="n2-ss-editor-create-slider">Create slider</a>
-                </div>
-            </div>
-        </div>
+                    $router = N2Base::getApplication('smartslider')->router;
+                    ?>
+                    <iframe src="<?php echo $router->createUrl(array('sliders/embed')); ?>"></iframe>
+				</div>
+			</div>
         <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                var modal = $('#n2-ss-editor-modal'),
-                    inner = $('.n2-ss-editor-inner'),
-                    boxes = inner.find('.n2-ss-editor-boxes'),
-                    $window = $(window),
-                    active = null,
-                    callback = function () {
-                    },
-                    watchResize = function () {
-                        boxes.height(inner.height() - 116);
-                        $window.on('resize.ss', function () {
-                            boxes.height(inner.height() - 116);
-                        });
-                    },
-                    unWatchResize = function () {
-                        $window.off('resize.ss');
-                    },
-                    show = function () {
-                        modal.addClass('n2-active');
-                        watchResize();
-                    },
-                    hide = function () {
-                        unWatchResize();
-                        modal.removeClass('n2-active');
-                    };
+				jQuery(document).ready(function ($) {
+                    var modal = $('#n2-ss-editor-modal'),
+                        inner = $('.n2-ss-editor-inner'),
+                        iframe = inner.find('iframe'),
+                        $window = $(window),
+                        callback = function () {
+                        },
+                        watchResize = function () {
+                            iframe.height(inner.height() - 59);
+                            $window.on('resize.ss', function () {
+                                iframe.height(inner.height() - 59);
+                            });
+                        },
+                        unWatchResize = function () {
+                            $window.off('resize.ss');
+                        },
+                        show = function () {
+                            modal.addClass('n2-active');
+                            watchResize();
+                        },
+                        hide = function () {
+                            unWatchResize();
+                            modal.removeClass('n2-active');
+                        };
 
-                boxes.find('.n2-ss-editor-box').on('click', function () {
-                    if (active !== null) {
-                        active.removeClass('n2-active');
-                    }
-                    active = $(this).addClass('n2-active');
-                });
-
-                modal.on('click', function (e) {
-                    if (e.target == modal.get(0)) {
+                    modal.on('click', function (e) {
+                        if (e.target == modal.get(0)) {
+                            hide();
+                        }
+                    });
+                    $('.n2-ss-editor-header-close').on('click', function (e) {
+                        e.preventDefault();
                         hide();
-                    }
-                });
-                $('.n2-ss-editor-header-close').on('click', function (e) {
-                    e.preventDefault();
-                    hide();
-                });
+                    });
 
-                $('.n2-ss-editor-insert').on('click', function (e) {
-                    e.preventDefault();
-                    if (active !== null) {
-                        callback(active.data('sliderid'));
-                        hide();
-                    } else {
-                        alert('Please select a slider!');
-                    }
-                });
+                    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 
-                window.NextendSmartSliderWPTinyMCEModal = function (ed) {
-                    callback = function (id) {
-                        ed.execCommand('mceInsertContent', false, '<div>[smartslider3 slider=' + id + ']</div>');
-                    };
-                    show();
-                };
+                    window[eventMethod](eventMethod == "attachEvent" ? "onmessage" : "message", function (e) {
+                        if (e.source == (iframe[0].contentWindow || iframe[0].contentDocument)) {
+                            callback(e[e.message ? "message" : "data"]);
+                            hide();
+                        }
+                    }, false);
 
-                if (typeof QTags !== 'undefined') {
-                    QTags.addButton('smart-slider-3', 'Smart Slider', function () {
+                    <?php
+                    if (intval(N2SmartSliderSettings::get('editor-icon', 1))) {
+                    ?>
+                    window.NextendSmartSliderWPTinyMCEModal = function (ed) {
                         callback = function (id) {
-                            QTags.insertContent('<div>[smartslider3 slider=' + id + ']</div>');
+                            ed.execCommand('mceInsertContent', false, '<div>[smartslider3 slider=' + id + ']</div>');
                         };
                         show();
-                    });
-                }
-            });
-        </script>
+                    };
+
+                    if (typeof QTags !== 'undefined') {
+                        QTags.addButton('smart-slider-3', 'Smart Slider', function () {
+                            callback = function (id) {
+                                QTags.insertContent('<div>[smartslider3 slider=' + id + ']</div>');
+                            };
+                            show();
+                        });
+                    }
+                    <?php
+                    }
+                    ?>
+
+                    window.NextendSmartSliderSelectModal = function ($input) {
+                        callback = function (id) {
+                            $input.val(id).trigger('input').trigger('change');
+                        };
+                        show();
+                        return false;
+                    };
+
+                });
+			</script>
         <?php
     }
 }

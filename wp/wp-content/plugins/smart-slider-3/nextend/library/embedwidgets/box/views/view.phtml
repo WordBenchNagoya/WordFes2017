@@ -1,10 +1,5 @@
-<?php echo N2Html::openTag('div', $attributes); ?>
-<?php if ($image[0] == '<'): ?>
-    <?php echo $image; ?>
-<?php else: ?>
-    <img src="<?php echo N2ImageHelper::fixed($image); ?>"/>
-<?php endif; ?>
-
+<?php
+echo N2Html::openTag('div', $attributes); ?>
 
 <?php
 if ($lt) {
@@ -23,39 +18,23 @@ if ($center) {
     echo N2Html::tag('div', $centerAttributes, $center);
 }
 if ($overlay) {
-    echo N2Html::tag('div', array(
-        'class' => 'n2-box-overlay n2-on-hover'
-    ), $rb);
+    if ($overlay === true) {
+        echo N2Html::tag('div', array(
+            'class' => 'n2-box-overlay n2-on-hover'
+        ), $rb);
+    } else {
+        echo $overlay;
+    }
 }
 ?>
 
 <?php
-if ($firstCol):
+if (!empty($placeholderContent)):
     ?>
     <div class="n2-box-placeholder">
         <?php echo $placeholderContent; ?>
-        <?php
-        if ($secondCol):
-            ?>
-            <table>
-                <tr>
-                    <td class="n2-box-button"><?php echo $firstCol; ?></td>
-                    <td class="n2-box-button"><?php echo $secondCol; ?></td>
-                </tr>
-            </table>
-        <?php
-        else:
-            ?>
-            <table>
-                <tr>
-                    <td class="n2-box-button"><?php echo $firstCol; ?></td>
-                </tr>
-            </table>
-        <?php
-        endif;
-        ?>
     </div>
-<?php
+    <?php
 endif;
 ?>
 </div>
