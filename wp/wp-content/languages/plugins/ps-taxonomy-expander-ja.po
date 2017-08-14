@@ -1,0 +1,134 @@
+# Translation of Plugins - PS Taxonomy Expander - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - PS Taxonomy Expander - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-12-17 11:04:19+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - PS Taxonomy Expander - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "Hitoshi Omagari"
+msgstr "Hitoshi Omagari"
+
+#. Description of the plugin/theme
+msgid "PS Taxonomy Expander makes easy to use categories, tags and custom taxonomies on editing posts."
+msgstr "PS Taxonomy Expanderは、カテゴリー・タグ、そしてカスタム分類の記事編集時における使い勝手を向上させます。"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.warna.info/archives/451/"
+msgstr "http://www.warna.info/archives/451/"
+
+#. Plugin Name of the plugin/theme
+msgid "PS Taxonomy Expander"
+msgstr "PS Taxonomy Expander"
+
+#: ps-taxonomy-expander.php:1052
+msgid "Scripts and styles should not be registered or enqueued until the %1$s, %2$s, or %3$s hooks."
+msgstr "スクリプトとスタイルは %1$s, %2$s, or %3$s のフックまで登録またはエンキューされるべきではありません。"
+
+#: ps-taxonomy-expander.php:901
+msgid "View all %s"
+msgstr "%s指定なし"
+
+#: ps-taxonomy-expander.php:853
+msgid "Display on the list of %s"
+msgstr "%s一覧に表示"
+
+#: ps-taxonomy-expander.php:819
+msgid "No %s"
+msgstr "%sなし"
+
+#: ps-taxonomy-expander.php:768
+msgid "Invalid post type"
+msgstr "無効な投稿タイプ"
+
+#: ps-taxonomy-expander.php:644
+msgid "Save Changes"
+msgstr "変更内容を保存"
+
+#: ps-taxonomy-expander.php:632
+msgid "%s order"
+msgstr "%s順序"
+
+#: ps-taxonomy-expander.php:630
+msgid "Back to parent %s"
+msgstr "親%sに戻る"
+
+#: ps-taxonomy-expander.php:627
+msgid "Back to top %s"
+msgstr "トップ%sに戻る"
+
+#: ps-taxonomy-expander.php:624
+msgid "Move to child %s"
+msgstr "子%sに移動"
+
+#: ps-taxonomy-expander.php:617
+msgid "Sub %s"
+msgstr "サブ%s"
+
+#: ps-taxonomy-expander.php:579
+msgid "Updated successfully."
+msgstr "正しく更新されました。"
+
+#: ps-taxonomy-expander.php:577
+msgid "Non Updated"
+msgstr "更新されませんでした"
+
+#: ps-taxonomy-expander.php:534 ps-taxonomy-expander.php:544
+#: ps-taxonomy-expander.php:598
+msgid "Term order"
+msgstr "Term order"
+
+#: ps-taxonomy-expander.php:512
+msgid "Display taxonomies on Right Now in the Dashboard."
+msgstr "ダッシュボードの現在の状況にカスタム分類を表示する。"
+
+#: ps-taxonomy-expander.php:507
+msgid "Add taxonomies on Right Now"
+msgstr "現在の状況にタクソノミーを追加"
+
+#: ps-taxonomy-expander.php:257
+msgid "check the taxonomy box to turn into single selection."
+msgstr "単一選択にするタクソノミーにチェックを入れて下さい。"
+
+#: ps-taxonomy-expander.php:248 ps-taxonomy-expander.php:415
+msgid "%s is not registerd."
+msgstr "%sが登録されていません。"
+
+#: ps-taxonomy-expander.php:241
+msgid "unset"
+msgstr "設定しない"
+
+#: ps-taxonomy-expander.php:230 ps-taxonomy-expander.php:547
+msgid "Option to register taxonomies"
+msgstr "タクソノミー登録方法"
+
+#: ps-taxonomy-expander.php:226
+msgid "Default Media %s"
+msgstr "メディア用%sの初期設定"
+
+#: ps-taxonomy-expander.php:216
+msgid "Default %s %s"
+msgstr "%s用%sの初期設定"
+
+#: ps-taxonomy-expander.php:172
+msgctxt "tag delimiter"
+msgid ","
+msgstr ","
+
+#: ps-taxonomy-expander.php:171
+msgid "(no title)"
+msgstr "(タイトルなし)"
+
+#: ps-taxonomy-expander.php:170
+msgid "Remove From Bulk Edit"
+msgstr "一括編集から削除"
+
+#: ps-taxonomy-expander.php:169
+msgid "Error while saving the changes."
+msgstr "変更の保存中にエラーが発生しました。"
