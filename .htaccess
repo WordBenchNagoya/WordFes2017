@@ -1,4 +1,4 @@
-AddHandler x-httpd-php5527 .php
+AddHandler x-httpd-php71 .php
 suPHP_ConfigPath /home/ae163jnh5u/html/wp
 
 <FilesMatch "^(\.htaccess|\.htpasswd|php\.ini|.*\.sql|.*\.log|.*\.cron|.*\.inc|.*\.phps|.*\.yml)$">
@@ -9,7 +9,7 @@ Options +SymLinksIfOwnerMatch
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteEngine On
+RewriteEngine on
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
