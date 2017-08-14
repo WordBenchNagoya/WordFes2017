@@ -1,9 +1,9 @@
 === CampTix Event Ticketing ===
-Contributors:      automattic, kovshenin, andreamiddleton, iandunn
+Contributors:      automattic, kovshenin, andreamiddleton, iandunn, coreymckrill
 Tags:              ticketing, event ticketing
 Requires at least: 3.5
-Tested up to:      4.2
-Stable tag:        1.4.2
+Tested up to:      4.7.3
+Stable tag:        1.6.0
 Donate link:       http://wordpressfoundation.org/donate/
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,28 @@ For more information, visit the [Getting Started](https://github.com/automattic/
 7. Mass e-mail attendees
 
 == Changelog ==
+
+= 1.6.0 (2017-03-10) =
+* [NEW] Enabled compatibility with language packs. [See status of translation locales](https://translate.wordpress.org/projects/wp-plugins/camptix).
+* [NEW] Addon to collect and track tshirt sizes for attendees, plus a shortcode to display aggregated tshirt size data.
+* [NEW] Enhanced the [camptix_attendees] shortcode to lazy-load attendee gravatars.
+* [Full changelog](https://github.com/Automattic/camptix/compare/0855047c86ef30ae8f72094899a412d2f7d27a7d...2ec1ec005d490dc627b3b0df2b1dd33491962d84)
+
+= 1.5.1 (2016-10-11) =
+* [SECURITY] Fixed 3 CSV injection bypasses reported in [#160500-h1](https://hackerone.com/reports/160500), [#160520-h1](https://hackerone.com/reports/160520), and [#160674-h1](https://hackerone.com/reports/160674). Props to [white_walker](https://hackerone.com/white_walker), [lalka](https://hackerone.com/lalka), and [grande](https://hackerone.com/grande) for discovery and coordinated disclosure.
+* [SECURITY] Fixed an XSS vulnerability reported in [#164793-h1](https://hackerone.com/reports/164793). Props to [grande](https://hackerone.com/grande) for discovery and coordinated disclosure.
+
+= 1.5 (2016-08-10) =
+* [SECURITY] Fixed [CSV injection vulnerability](https://hackerone.com/reports/151516) with CVSS score of [8.3](https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H). Props to [Zawad Bin Hafiz](https://hackerone.com/thezawad) for discovery and coordinated disclosure.
+* [SECURITY] Fixed [XSS vulnerability](https://hackerone.com/reports/152958) with CVSS score of [4.8](https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N). Props to [Zawad Bin Hafiz](https://hackerone.com/thezawad) for discovery and coordinated disclosure.
+* [NEW] Added ability to send Notify emails to segments of attendees.
+* [NEW] Added a built-in Ticket Question for attendee's country.
+* [NEW] Added partial support for HTML emails (requires custom template).
+* [NEW] Added `payment method` field to Attendee Information meta box and CSV export.
+* [FIX] Improved currency formatting in non-English locales.
+* [FIX] Fixed bug where PayPal transactions would sometimes be rejected in multibyte languages.
+* [FIX] Fixed bug where not all attendees were displayed in the Attendees shortcode.
+* [Full changelog](https://github.com/Automattic/camptix/compare/30b2d16...294552c41f88704c85dd126d17d89df2523b7cb4)
 
 = 1.4.2 =
 * Added a nonce check for privacy and attendance toggles for better security
