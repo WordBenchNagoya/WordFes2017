@@ -25,12 +25,15 @@ wp-signup.php
 wp-trackback.php
 xmlrpc.php
 
-#Ignore Config File
+# Ignore Config File
 wp-config.php
 
 
-#CPI System file
+# CPI System file
 sys-common
+
+# Deploy Related
+deploy*
 
 # Other System files
 # .htaccess
