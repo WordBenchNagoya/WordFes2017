@@ -31,7 +31,9 @@ h1 {
 }
 
 h2 {
-  font-size: 1.43rem;
+  font-size: 1.71rem;
+  font-family: 'Pocket-Calculator';
+  color: #e85524;
 }
 
 ul {
@@ -138,7 +140,7 @@ header #site-navigation ul li a img {
  */
 .copyright-wrapper {
   padding: 10px;
-  background-color: #0e6939;
+  background-color: #e85524;
   color: #FFF;
 }
 

@@ -31,7 +31,10 @@ h1 {
 }
 
 h2 {
-	font-size: $fs-20;
+  //2017
+	font-size: $fs-24;
+	font-family: 'Pocket-Calculator';
+	color: $headlineColor;
 }
 
 ul {
@@ -157,7 +160,8 @@ header {
  */
 .copyright-wrapper {
 	padding: 10px;
-	background-color: #0e6939;
+// 	background-color: #0e6939;
+	background-color: $headlineColor;
 	color: #FFF;
 	
 	.copyright {
