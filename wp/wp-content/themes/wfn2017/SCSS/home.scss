@@ -123,7 +123,9 @@ header {
 		background: $bgColor;
 	}
 	&:nth-child(2) {
-		background: #fff;
+// 		background: #fff;
+		background-image: url(../images/top/bg-schedule.svg) ;
+		background-position: center top;
 	}
 	&:nth-child(3) {
 		background: #fff;

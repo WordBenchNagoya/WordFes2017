@@ -116,7 +116,8 @@ header #site-navigation {
 }
 
 .section:nth-child(2) {
-  background: #fff;
+  background-image: url(../images/top/bg-schedule.svg);
+  background-position: center top;
 }
 
 .section:nth-child(3) {
