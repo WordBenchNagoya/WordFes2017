@@ -14,3 +14,14 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
+
+@font-face {
+    font-family: 'Pocket-Calculator';
+    src:url('fonts/Pocket-Calculator.ttf.woff') format('woff'),
+        url('fonts/Pocket-Calculator.ttf.svg#Pocket-Calculator') format('svg'),
+        url('fonts/Pocket-Calculator.ttf.eot'),
+        url('fonts/Pocket-Calculator.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
