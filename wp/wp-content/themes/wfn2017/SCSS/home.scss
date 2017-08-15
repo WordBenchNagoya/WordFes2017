@@ -108,6 +108,7 @@ header {
 	
 	width: 100%;
 	
+/*
 	&:nth-child(odd) {
 		
 		background: #fff;
@@ -117,6 +118,23 @@ header {
 	&:nth-child(even) {
 		background: $bgColor;
 	}
+*/
+	&:nth-child(1) {
+		background: $bgColor;
+	}
+	&:nth-child(2) {
+		background: #fff;
+	}
+	&:nth-child(3) {
+		background: #fff;
+	}
+	&:nth-child(4) {
+		background: $bgColor;
+	}
+	&:nth-child(5) {
+		background: #fff;
+	}
+	
 } // .section
 
 .section-inner {
@@ -146,9 +164,10 @@ header {
 				display: inline-block;
 				margin: 0 0 5px;
 				padding: 2px 15px;
-				background: #0e6939;
+// 				background: #0e6939;
 				border-radius: 5px;
-				color: #fff;
+// 				color: #fff;
+				color: $headlineColor;
 			} // .date
 			
 			.title {
@@ -157,7 +176,7 @@ header {
 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat;
 				
 				a {
-					color: #000;
+					color: $headlineColor;
 					text-decoration: none;
 					
 					&:hover {
