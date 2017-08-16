@@ -17,23 +17,39 @@
 					if ( 'supporter_option' == $tax_type ) {
 						
 						$add_name = 'opt' . $number;
-						
+						if($number == '01'){ // ブースオプション
+  						$displayName = 'ブース出展';
+  				  }else{
+  						$displayName = '資料全員配布';
+						}
 					} else {
 						
 						$add_name = $number;
-						
+						if($number == '01'){ // ブースオプション
+  						$displayName = '企業・団体';
+  				  }elseif($number == '02'){
+  						$displayName = '個人';
+						}else{
+  						$displayName = 'バックアップ';
+						}
 					}
 					
 				?>
 					<div class="supporter-contents">
 						<div class="clearfix">
+<!--
 							<h3 class="supporter-title supporter-<?php echo esc_html( $add_name ); ?> col-sm-3">
 								<img src="<?php echo esc_url( get_template_directory_uri() . '/images/supporter/title-sup-' . $add_name . '.png' ); ?>" alt="" />
 							</h3>
+-->
+							<h3 class="supporter-title supporter-<?php echo esc_html( $add_name ); ?>"><?php echo $displayName; ?></h3>
+
 							<?php if ( 'sup-type-02' == $term_slug ): ?>
-							<div class="column-person colmun-row col-sm-9 clearfix text-left">
+<!-- 							<div class="column-person colmun-row col-sm-9 clearfix text-left"> -->
+							<div class="column-person colmun-row clearfix text-left">
 							<?php else: ?>
-							<div class="column-row col-sm-9 clearfix">
+<!-- 							<div class="column-row col-sm-9 clearfix"> -->
+							<div class="column-row clearfix">
 							<?php endif; ?>
 							<?php
 							
@@ -70,7 +86,8 @@
 										 様
 									</span>
 								<?php else: ?>
-									<div class="column col-sm-6 text-center<?php echo esc_attr( $add_class ); ?>">
+<!-- 									<div class="column col-sm-6 text-center<?php echo esc_attr( $add_class ); ?>"> -->
+									<div class="column col-md-4 text-center<?php echo esc_attr( $add_class ); ?>">
 										<a href="<?php echo esc_url( get_field( 'pdc-supporter-link' ) ) ?>" target="_blank" title="<?php the_title(); ?>">
 										<?php if ( $image ): ?>
 										<?php //var_dump($image); ?>

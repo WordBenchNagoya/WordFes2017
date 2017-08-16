@@ -41,6 +41,7 @@ if ( is_front_page() ) {
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <?php wp_head(); ?>
+<script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Winn3RhO6lE%3D" charset="utf-8"></script>
 </head>
 
 <body id="<?php echo esc_attr( pdc_get_page_slug() ); ?>" <?php body_class(); ?>>

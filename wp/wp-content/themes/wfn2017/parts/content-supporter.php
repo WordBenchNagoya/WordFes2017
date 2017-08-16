@@ -20,7 +20,8 @@
 	<div class="section supporter-section">
 		<div class="section-inner">
 			<h2 class="section-title text-center entry-title">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/images/supporter/title-supporter.png' ); ?>" alt="SUPPORTER" />
+<!-- 				<img src="<?php echo esc_url( get_template_directory_uri() . '/images/supporter/title-supporter.png' ); ?>" alt="SUPPORTER" /> -->
+				SUPPORTER
 			</h2>
 			<div class="suporter-area">
 			<?php
