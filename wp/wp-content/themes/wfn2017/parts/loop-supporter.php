@@ -28,9 +28,9 @@
 						if($number == '01'){ // ブースオプション
   						$displayName = '企業・団体';
   				  }elseif($number == '02'){
-  						$displayName = '個人';
-						}else{
   						$displayName = 'バックアップ';
+						}else{
+  						$displayName = '個人';
 						}
 					}
 					
