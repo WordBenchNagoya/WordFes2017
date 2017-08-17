@@ -35,7 +35,8 @@ function wordfes2017_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		//'primary'   => esc_html__( 'Primary Menu',   'wordfes2017' ),
+		// 2017プライマリメニュのコメントアウト解除
+		'primary'   => esc_html__( 'Primary Menu',   'wordfes2017' ),
 		'secondary' => esc_html__( 'Secondary Menu', 'wordfes2017' ),
 	) );
 
