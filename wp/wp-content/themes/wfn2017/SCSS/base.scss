@@ -325,6 +325,21 @@ header {
 	}
 } // .copyright-wrapper
 
+// ボタン
+.btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  background: #e85524;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #e85524;
+  text-decoration: none;
+}
+
 /*
 // スマホ
 */
