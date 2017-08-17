@@ -283,11 +283,14 @@ header .site-header {
   background: #e85524;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  color: white;
+  font-size: 1.29rem;
 }
 
 .btn:hover {
   background: #e85524;
   text-decoration: none;
+  color: white;
 }
 
 /*
