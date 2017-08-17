@@ -44,7 +44,7 @@
 -->
 							<h3 class="supporter-title supporter-<?php echo esc_html( $add_name ); ?>"><?php echo $displayName; ?></h3>
 
-							<?php if ( 'sup-type-02' == $term_slug ): ?>
+							<?php if ( 'sup-type-03' == $term_slug ): ?>
 <!-- 							<div class="column-person colmun-row col-sm-9 clearfix text-left"> -->
 							<div class="column-person colmun-row clearfix text-left">
 							<?php else: ?>
@@ -65,7 +65,7 @@
 								$image     = wp_get_attachment_image_src( get_field( 'pdc-supporter-banner' ), 'full' );
 								$disp_flag = get_post_meta( get_the_ID(), 'pdc-supporter-anonym', true );
 								
-								if ( 'sup-type-02' == $term_slug && true == $disp_flag ) {
+								if ( 'sup-type-03' == $term_slug && true == $disp_flag ) {
 									
 									$anonym_count++;
 									continue;
@@ -77,7 +77,7 @@
 								//var_dump($image);
 							?>
 								
-								<?php if ( 'sup-type-02' == $term_slug ): ?>
+								<?php if ( 'sup-type-03' == $term_slug ): ?>
 									<span class="person">
 									<?php if ( 1 != $count ){ echo '、'; } ?>
 										<a href="<?php echo esc_url( get_field( 'pdc-supporter-link' ) ) ?>" target="_blank" title="<?php the_title(); ?>">
