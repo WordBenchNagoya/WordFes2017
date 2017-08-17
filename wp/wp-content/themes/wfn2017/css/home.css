@@ -59,6 +59,19 @@ header .bxslider li img {
   padding: 0;
 }
 
+#sec-about {
+  color: white;
+}
+
+#sec-about h2,
+#sec-about h3 {
+  color: white;
+}
+
+#sec-social h2 {
+  color: white;
+}
+
 .section {
   width: 100%;
   /*

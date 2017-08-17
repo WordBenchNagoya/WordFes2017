@@ -25,6 +25,7 @@ header {
 	}
 	*/
 	
+	
 	#signboard {
 		position: absolute;
 		right: 0;
@@ -68,6 +69,21 @@ header {
 	} // #site-navigation
 */
 } // header
+
+#sec-about {
+	color: white;
+	h2,
+	h3 {
+  	color: white;	
+	}
+}
+
+#sec-social {
+	h2 {
+  	color: white;	
+	}
+}
+
 
 .section {
 	
@@ -113,6 +129,7 @@ header {
 	.sub-title {
 		text-align: center;
 	}
+	
 	
 	h3 {
 		color: $headlineColor;
