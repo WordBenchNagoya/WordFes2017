@@ -56,75 +56,37 @@ if ( is_front_page() ) {
 
 <div id="page">
 
-	<header class="site-header">
+	<header class="site-header" role="banner">
 		
-		<?php
-		if ( is_front_page() ) {
-			
-			get_template_part( 'parts/header', 'home' );
-			
-		} else {
-			
-			get_template_part( 'parts/header', 'page' );
-			
-		}
-		?>
+		
+		<div class="main-image">
+			<div class="site-branding">
+				<?php
+				$main_image = 'page-title.svg';
+// 				if( ! ( is_home() || is_front_page() || wordfes2015_is_mobile() ) ) {
+				if( ! ( is_home() || is_front_page() ) ) {
+					$main_image = 'subpage-title.svg';
+				}
+				?>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" /></a></h1>
+			</div><!-- .site-branding -->
+		</div><!-- .main-image -->
 
-		<nav id="site-navigation">
-			
-			<div class="navigation-menu clearfix text-center">
-				
-				<p class="menu-bar visible-xs"><img class="menu-open" src="<?php echo get_template_directory_uri(); ?>/images/navigation/btn-open.png" alt="open"></p>
-				
-				<ul class="clearfix text-center">
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-home.png" alt="トップ">
-						</a>
-					</li>
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/about') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-about.png" alt="開催概要">
-						</a>
-					</li>
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/sessions') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-timetable.png" alt="タイムテーブル">
-						</a>
-					</li>
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/access') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-access.png" alt="アクセス">
-						</a>
-					</li>
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/supporter') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-supporter.png" alt="サポーター">
-						</a>
-					</li>
-					<li class="col-sm-2 col-xs-12">
-						<a href="<?php echo esc_url( home_url('/entry') ); ?>">
-							<img class="swap" src="<?php echo get_template_directory_uri(); ?>/images/navigation/nav-entry.png" alt="参加申込">
-						</a>
-					</li>
-				</ul>
-				
+		
+		<nav id="site-navigation" class="main-navigation lato" role="navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wordfes2017' ); ?></button>
+			<div class="navigation-menu">
+				<?php wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'menu_class'     => 'nav-menu',
+					'menu_id'        => 'primary-menu',
+					'depth'          => 1,
+				) ); ?>
 			</div>
-			
 		</nav><!-- #site-navigation -->
+
 		
 	</header><!-- #masthead -->
 	
-	<?php if ( is_page() || is_single() || is_archive() ): ?>
-	<!--
-	<div class="bread-crumb">
-		
-		<ul>
-			<li><a href="<?php home_url('/'); ?>">トップページ</a> &gt;</li>
-		</ul>
-		
-	</div>
-	-->
-	<?php endif; ?>
 
 	<div id="content" class="site-content">
