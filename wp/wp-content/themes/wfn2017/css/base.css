@@ -90,7 +90,7 @@ header .site-header {
 .main-navigation {
   font-size: 0.9em;
   text-transform: uppercase;
-  line-height: 3;
+  line-height: 1;
   clear: both;
   display: block;
   float: left;
@@ -118,6 +118,7 @@ header .site-header {
 
 .main-navigation li {
   list-style: none;
+  position: relative;
 }
 
 .main-navigation .menu-toggle {
@@ -228,7 +229,9 @@ header .site-header {
     text-align: left;
   }
   .main-navigation ul {
+    list-style: none;
     display: block;
+    padding-left: 0;
   }
   .main-navigation ul ul a {
     width: 230px;
