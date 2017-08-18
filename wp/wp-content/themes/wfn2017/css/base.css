@@ -184,6 +184,9 @@ header .site-header {
 }
 
 @media screen and (min-width: 37.5em) {
+  .menu-toggle {
+    display: none;
+  }
   .main-navigation {
     background: #c11329;
   }
@@ -218,6 +221,9 @@ header .site-header {
     box-shadow: none;
     top: 40px;
     text-align: left;
+  }
+  .main-navigation ul {
+    display: block;
   }
   .main-navigation ul ul a {
     width: 230px;
