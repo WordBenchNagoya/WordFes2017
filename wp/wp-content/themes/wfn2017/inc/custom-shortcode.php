@@ -66,6 +66,7 @@ function pdc_article_list( $atts ) {
 			$result .= "  <li>\n";
 			$result .= "    <p class=\"date\">" . get_the_time( 'Y.m.d' ) . "</p>\n";
 			$result .= "    <p class=\"title\">";
+			$result .= "    <i class=\"fa fa-play\" aria-hidden=\"true\">";			
 			$result .= "      <a href=\"" . get_the_permalink() . "\">" . get_the_title() . "</a>\n";
 			$result .= "    </p>\n";
 			$result .= "  </li>\n";
