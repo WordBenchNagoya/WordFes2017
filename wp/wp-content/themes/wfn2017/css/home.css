@@ -179,6 +179,11 @@ header .bxslider li img {
     background: url(../images/common/bg-header.png) center center repeat-x;
     background-size: auto 100%;
     /*
+		.site-title {
+			margin-top: 0;
+		}
+*/
+    /*
 		#signboard {
 			position: relative;
 			top: 0;
@@ -196,9 +201,6 @@ header .bxslider li img {
   }
   header .main-image img {
     width: 100%;
-  }
-  header .site-title {
-    margin-top: 0;
   }
   header #signboard {
     position: relative;
