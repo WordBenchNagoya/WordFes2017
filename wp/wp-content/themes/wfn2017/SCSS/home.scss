@@ -167,8 +167,8 @@ header {
 			.title {
 				margin: 0;
 				padding-left: 15px;
-				background: url(../images/common/list-mark-gr.png) left .4em no-repeat;
-				
+/* 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat; */
+				color: $headlineColor;
 				a {
 					color: $headlineColor;
 					text-decoration: none;

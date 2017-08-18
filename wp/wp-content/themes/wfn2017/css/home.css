@@ -158,7 +158,8 @@ header .bxslider li img {
 .section-inner ul li .title {
   margin: 0;
   padding-left: 15px;
-  background: url(../images/common/list-mark-gr.png) left 0.4em no-repeat;
+  /* 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat; */
+  color: #e85524;
 }
 
 .section-inner ul li .title a {
