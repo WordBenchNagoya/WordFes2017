@@ -164,9 +164,17 @@ header {
   position: relative;
 }
 
+/*
 .main-navigation li+li {
-  border-left: 1px solid #000000;
+  border-left: 1px solid white;
 }
+*/
+
+.main-navigation li+li {
+  content: "|";
+  color:white;
+}
+
 
 .main-navigation .menu-toggle {
 	background: #c11329;
