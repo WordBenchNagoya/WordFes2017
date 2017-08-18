@@ -116,10 +116,14 @@ header {
 # Navigation
 --------------------------------------------------------------*/
 .main-navigation {
-	background: #333;
+// 	background: #333;
 	font-size: 0.9em;
 	text-transform: uppercase;
 	line-height: 3;
+  clear: both;
+	display: block;
+	float: left;
+	width: 100%;
 }
 
 .main-navigation a {
@@ -127,6 +131,8 @@ header {
 	height: 40px;
 	text-indent: 10px;
 	padding: 13px 0;
+	display: block;
+	text-decoration: none;
 }
 
 .main-navigation a:hover {
@@ -354,6 +360,7 @@ header {
 /*
 // スマホ
 */
+/*
 @media screen and (max-width: 767px) {
 	
 	.site-header {
@@ -395,3 +402,4 @@ header {
 		}
 	}
 }
+*/
