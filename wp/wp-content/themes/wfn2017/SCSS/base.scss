@@ -164,19 +164,19 @@ header {
   position: relative;
 }
 
+/*
 .main-navigation li+li {
   content: "";
   color:white;
   border-right:1px solid white;
   font-size: 10px;
 }
+*/
 
-/*
 .main-navigation li+li {
-  content: "|";
+  content: " | ";
   color:white;
 }
-*/
 
 
 .main-navigation .menu-toggle {
