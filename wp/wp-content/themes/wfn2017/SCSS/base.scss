@@ -117,6 +117,7 @@ header {
 --------------------------------------------------------------*/
 .main-navigation {
 // 	background: #333;
+  background: #c11329;
 	font-size: 0.9em;
 	text-transform: uppercase;
 	line-height: 1;
@@ -137,8 +138,15 @@ header {
 
 .main-navigation a:hover {
 	text-decoration: none;
-	background: #666;
+// 	background: #666;
+	opacity: 0.5 ;
 }
+
+.main-navigation ul{
+  list-style: none;
+  padding-left: 0;
+}
+
 
 .main-navigation ul,
 .main-navigation li {
@@ -178,16 +186,23 @@ header {
 }
 
 .main-navigation .menu-toggle:hover:before {
-	background: #333;
+// 	background: #333;
+	opacity: 0.5;
 }
 
 .main-navigation.toggled .menu-toggle:before {
 	content: "\f00d";
 }
 
+.main-navigation.toggled ul {
+	display: block;
+}
+
+
 @media screen and (max-width: 37.5em) {
 	.main-navigation .navigation-menu {
-		background: #333;
+// 		background: #333;
+		background: #c11329;
 		padding: 0;
 		position: absolute;
 		top: 40px;
