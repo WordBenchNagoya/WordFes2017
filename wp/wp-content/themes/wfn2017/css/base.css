@@ -132,6 +132,11 @@ header .site-header {
   position: relative;
 }
 
+.main-navigation li + li:before {
+  content: " | ";
+  padding: 0 10px;
+}
+
 .main-navigation .menu-toggle {
   background: #c11329;
   box-shadow: none;

@@ -164,6 +164,11 @@ header {
   position: relative;
 }
 
+.main-navigation li + li:before{
+  content: " | ";
+  padding: 0 10px;
+}
+
 .main-navigation .menu-toggle {
 	background: #c11329;
 	box-shadow: none;
@@ -220,6 +225,7 @@ header {
 		box-shadow: 0 1px 0 rgba(255,255,255,0.1);
 		float: none;
 	}
+	
 
 	.main-navigation li:last-child {
 		border-bottom: 0;
