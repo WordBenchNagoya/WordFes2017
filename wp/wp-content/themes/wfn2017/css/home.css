@@ -6,6 +6,8 @@
  * トップページ
  */
 header {
+  background: url(../images/common/bg-header.png) center center repeat-x;
+  background-size: auto 100%;
   /*
 	#signboard {
 		position: absolute;
@@ -180,8 +182,6 @@ header .bxslider li img {
 
 @media screen and (max-width: 767px) {
   header {
-    background: url(../images/common/bg-header.png) center center repeat-x;
-    background-size: auto 100%;
     /*
 		.site-title {
 			margin-top: 0;

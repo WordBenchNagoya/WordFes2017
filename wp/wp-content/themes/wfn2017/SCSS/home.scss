@@ -7,6 +7,8 @@
  */
 header {
 	
+  background: url(../images/common/bg-header.png) center center repeat-x;
+	background-size: auto 100%;
 
 	.site-title {
 // 		margin: 150px auto 0;
@@ -193,8 +195,6 @@ header {
 @media screen and (max-width: 767px) {
 	
 	header {
-		background: url(../images/common/bg-header.png) center center repeat-x;
-		background-size: auto 100%;
 		
 		.main-image {
 			height: auto;
