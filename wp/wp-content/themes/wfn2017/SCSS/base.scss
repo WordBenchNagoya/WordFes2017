@@ -164,6 +164,9 @@ header {
   position: relative;
 }
 
+.main-navigation li:not(:first-child):before {
+    content: " | ";
+}
 
 .main-navigation .menu-toggle {
 	background: #c11329;
