@@ -164,10 +164,6 @@ header {
   position: relative;
 }
 
-.main-navigation li + li:before{
-  content: " | ";
-  padding: 0 10px;
-}
 
 .main-navigation .menu-toggle {
 	background: #c11329;
@@ -261,7 +257,8 @@ header {
 
 	.main-navigation a:hover {
 		text-decoration: none;
-		background: #333;
+// 		background: #333;
+    opacity: 0.5;
 	}
 
 	.main-navigation .navigation-menu {
@@ -315,7 +312,8 @@ header {
 	}
 
 	.main-navigation ul ul li:hover a {
-		background: #666;
+// 		background: #666;
+    opacity: 0.5;
 	}
 }
 
