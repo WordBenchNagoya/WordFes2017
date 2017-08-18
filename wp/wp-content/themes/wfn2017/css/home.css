@@ -72,7 +72,6 @@ header .bxslider li img {
   color: white;
 }
 
-s
 .section {
   width: 100%;
   /*
@@ -88,28 +87,23 @@ s
 */
 }
 
-s
 .section:nth-child(1) {
   background: #f09875;
 }
 
-s
 .section:nth-child(2) {
   background-image: url(../images/top/bg-schedule.svg);
   background-position: center top;
 }
 
-s
 .section:nth-child(3) {
   background: #fff;
 }
 
-s
 .section:nth-child(4) {
   background: #f09875;
 }
 
-s
 .section:nth-child(5) {
   background: #fff;
 }
