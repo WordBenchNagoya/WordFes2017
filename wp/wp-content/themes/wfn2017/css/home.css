@@ -233,7 +233,7 @@ header .bxslider li img {
     text-align: center;
   }
   #sec-about .right-box {
-    float: center;
+    float: none;
   }
   .section-inner {
     width: 100%;
