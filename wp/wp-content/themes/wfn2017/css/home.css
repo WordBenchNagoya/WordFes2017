@@ -31,9 +31,10 @@ header {
 */
 }
 
-header .site-branding {
+header .main-image {
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 450px;
+  padding: 100px 10px;
 }
 
 header .site-title {
