@@ -74,6 +74,11 @@ table th {
 　
 header {
   /*
+  .site-header .site-branding h1{
+	  margin: 0;
+  }
+*/
+  /*
 	 * ヘッダーナビゲーション
 	 */
 }
@@ -82,11 +87,6 @@ header {
 header .site-header {
   position: relative;
   background: #e85524;
-}
-
-　
-header .site-header .site-branding h1 {
-  margin: 0;
 }
 
 /*--------------------------------------------------------------

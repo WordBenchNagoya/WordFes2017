@@ -29,6 +29,10 @@ header {
 */
 }
 
+header .site-title {
+  margin: 0;
+}
+
 header #signboard {
   position: absolute;
   right: 0;
