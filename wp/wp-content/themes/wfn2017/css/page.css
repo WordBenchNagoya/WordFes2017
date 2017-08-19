@@ -25,7 +25,7 @@
 
 .sidebar ul li a:before { content: "\f0da"; font-family: FontAwesome; color: #ea5514; font-size: 20px; position: absolute; left: 10px; top: calc(50% - 10px); line-height: 1; }
 
-.site-header { height: 415px; background: url(../images/common/bg-header.png) center center repeat-x; }
+.site-header { background: url(../images/common/bg-header.png) center center repeat-x; }
 
 .site-header .main-image { position: relative; height: 357px; padding-top: 30px; }
 
