@@ -149,6 +149,11 @@ header .bxslider li img {
   text-align: center;
 }
 
+.section-inner h2 {
+  font-size: 5rem;
+  font-family: 'Pocket-Calculator';
+}
+
 .section-inner h3 {
   color: #e85524;
   font-weight: bold;

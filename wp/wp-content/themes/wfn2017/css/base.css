@@ -31,8 +31,10 @@ h1 {
 }
 
 h2 {
-  font-size: 5rem;
-  font-family: 'Pocket-Calculator';
+  /*
+	font-size: 5rem;
+	font-family: 'Pocket-Calculator';
+*/
   color: #e85524;
 }
 
