@@ -45,15 +45,15 @@ header .main-image .imdesc .headerLeft {
   position: absolute;
   top: 0%;
   left: 0%;
-  width: 175px;
-  margin: 0px -150px;
+  width: 200px;
+  margin: 0px -120px;
 }
 
 header .main-image .imdesc .headerRight {
   position: absolute;
   bottom: 0%;
   right: 0%;
-  width: 200px;
+  width: 225px;
   margin: 0px -175px;
 }
 
@@ -258,6 +258,23 @@ header .bxslider li img {
   header .main-image img {
     width: 100%;
   }
+  header .main-image .imdesc {
+    position: relative;
+  }
+  header .main-image .imdesc .headerLeft {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 175px;
+    margin: 0px -100px;
+  }
+  header .main-image .imdesc .headerRight {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 200px;
+    margin: 0px -150px;
+  }
   header #signboard {
     position: relative;
     top: 0;
@@ -292,5 +309,25 @@ header .bxslider li img {
   }
   .schedule:last-child {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  header .main-image .imdesc {
+    position: relative;
+  }
+  header .main-image .imdesc .headerLeft {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 125px;
+    margin: 0px -80px;
+  }
+  header .main-image .imdesc .headerRight {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 150px;
+    margin: 0px -100px;
   }
 }

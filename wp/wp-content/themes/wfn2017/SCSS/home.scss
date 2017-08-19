@@ -23,18 +23,17 @@ header {
         position: absolute;
         top: 0%;
         left: 0%;
-        width: 175px;
+        width: 200px;
         // マージンで左上からの位置を調整
-        margin: 0px -150px;
+        margin: 0px -120px;
       }
       .headerRight{
         position: absolute;
         bottom: 0%;
         right: 0%;
-        width: 200px;
+        width: 225px;
         // マージンで右下からの位置を調整
         margin: 0px -175px;
-        
       }
     }
     
@@ -259,6 +258,27 @@ header {
 			img {
 				width: 100%;
 			}
+			
+      //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
+      .imdesc{
+        position: relative;
+        .headerLeft{
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          width: 175px;
+          // マージンで左上からの位置を調整
+          margin: 0px -100px;
+        }
+        .headerRight{
+          position: absolute;
+          bottom: 0%;
+          right: 0%;
+          width: 200px;
+          // マージンで右下からの位置を調整
+          margin: 0px -150px;
+        }
+      }
 		}
 
 /*
@@ -325,4 +345,32 @@ header {
 			margin-bottom: 0;
 		}
 	}
+}
+
+@media screen and (max-width: 479px) {
+	header {
+		
+		.main-image {
+      //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
+      .imdesc{
+        position: relative;
+        .headerLeft{
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          width: 125px;
+          // マージンで左上からの位置を調整
+          margin: 0px -80px;
+        }
+        .headerRight{
+          position: absolute;
+          bottom: 0%;
+          right: 0%;
+          width: 150px;
+          // マージンで右下からの位置を調整
+          margin: 0px -100px;
+        }
+      }
+		}
+  }
 }
