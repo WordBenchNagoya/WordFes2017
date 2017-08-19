@@ -127,8 +127,8 @@
 	.section-inner {
 		
 		h2,h3,h4,h5,h6 {
-			margin-top: 60px;
-			margin-bottom: 30px;
+			margin-top: 40px;
+			margin-bottom: 20px;
 		}
 		
 		h3,h4,h5,h6 {
@@ -157,6 +157,44 @@
 		
 		h6 {
 			padding: 5px 0;
+		}
+		
+		hr {
+			border-top: 1px solid rgba( $primaryColor, 0.6 );
+		}
+		
+		.box {
+			border: 6px solid rgba( $primaryColor, 0.6 );
+			padding: 20px;
+		}
+		.box p:last-child {
+			margin-bottom: 0;
+		}
+		
+		table {
+			width: 100%;
+		}
+		table th,
+		table td {
+			color: $primaryColor;
+			border: 2px solid $primaryColor;
+			padding: 15px;
+		}
+		table th {
+			font-weight: bold;
+			background: #F7F8F8;
+			min-width: 100px;
+		}
+		.bt {
+			color: #fff;
+			background: $primaryColor;
+			padding: 20px;
+			display: inline-block;
+			text-align: center;
+			min-width: 250px;
+		}
+		.bt:hover {
+			background: rbga($primaryColor,0.8);
 		}
 		
 	}

@@ -169,8 +169,8 @@
   margin-bottom: 50px;
 }
 #main .section-inner h2, #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
-  margin-top: 60px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
   padding: 5px 10px;
@@ -193,6 +193,41 @@
 }
 #main .section-inner h6 {
   padding: 5px 0;
+}
+#main .section-inner hr {
+  border-top: 1px solid rgba(234, 85, 20, 0.6);
+}
+#main .section-inner .box {
+  border: 6px solid rgba(234, 85, 20, 0.6);
+  padding: 20px;
+}
+#main .section-inner .box p:last-child {
+  margin-bottom: 0;
+}
+#main .section-inner table {
+  width: 100%;
+}
+#main .section-inner table th,
+#main .section-inner table td {
+  color: #ea5514;
+  border: 2px solid #ea5514;
+  padding: 15px;
+}
+#main .section-inner table th {
+  font-weight: bold;
+  background: #F7F8F8;
+  min-width: 100px;
+}
+#main .section-inner .bt {
+  color: #fff;
+  background: #ea5514;
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+  min-width: 250px;
+}
+#main .section-inner .bt:hover {
+  background: rbga(#ea5514, 0.8);
 }
 #main.archive .page-title {
   margin-top: 30px;
