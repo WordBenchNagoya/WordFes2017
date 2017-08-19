@@ -399,7 +399,21 @@
 }
 
 @media screen and ( max-width: 767px ) {
-	
+    
+    header {
+        
+        .imdesc{
+    
+            .headerLeft{
+                display: none;
+            }
+            
+            .headerRight{
+                display: none;
+            }
+        }
+    }
+    
 	.site-header {
 		height: auto;
 		background-position: center top;
