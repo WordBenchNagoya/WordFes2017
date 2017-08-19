@@ -12,7 +12,8 @@
 .sidebar h2 {
   margin: 0;
   padding: 5px;
-  background: #94c554;
+  background: #ea5514;
+  font-size: 1.43rem;
   color: #fff;
 }
 .sidebar .banner-container {
@@ -34,23 +35,21 @@
 }
 .sidebar ul li.current_page_item a {
   background-color: #ecfada;
-  background-image: url(../images/common/list-mark-gr.png);
-  background-position: 9px 1.5em;
-  background-repeat: no-repeat;
 }
 .sidebar ul li a {
   display: block;
   padding: 15px 5px 15px 23px;
   background-color: #f4f4f4;
-  background-image: url(../images/common/list-mark-gr.png);
-  background-position: 9px 1.5em;
-  background-repeat: no-repeat;
   color: #2d2d2d;
 }
 .sidebar ul li a:hover {
   background-color: #ecfada;
   color: #2d2d2d;
   text-decoration: none;
+}
+.sidebar ul li a:before {
+  content: "\f0da";
+  font-family: FontAwesome;
 }
 
 .site-header {

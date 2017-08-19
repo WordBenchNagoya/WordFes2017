@@ -9,7 +9,8 @@
 	h2 {
 		margin: 0;
 		padding: 5px;
-		background: #94c554;
+		background: $primaryColor;
+		font-size: $fs-20;
 		color: #fff;
 	}
 	
@@ -34,24 +35,22 @@
 			
 			&.current_page_item a {
 				background-color: #ecfada;
-				background-image:  url(../images/common/list-mark-gr.png);
-				background-position:  9px 1.5em;
-				background-repeat: no-repeat;
 			}
 			
 			a {
 				display: block;
 				padding: 15px 5px 15px 23px;
 				background-color: #f4f4f4;
-				background-image:  url(../images/common/list-mark-gr.png);
-				background-position:  9px 1.5em;
-				background-repeat: no-repeat;
 				color: $textColor;
 				
 				&:hover {
 					background-color: #ecfada;
 					color: $textColor;
 					text-decoration: none;
+				}
+				&:before {
+					content: "\f0da";
+					font-family: FontAwesome;
 				}
 			}
 		}
