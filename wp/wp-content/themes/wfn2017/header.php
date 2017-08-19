@@ -63,7 +63,7 @@ if ( is_front_page() ) {
 		
 		
 		<div class="main-image">
-  		<div class="imdesc" style="display: inline-block; position: relative;">
+  		<div class="imdesc" style="position: relative;">
 			  <div class="site-branding">
   				<?php
             $main_image = 'page-title.svg';
