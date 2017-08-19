@@ -19,86 +19,84 @@
 
 	<div class="section supporter-section">
 		<div class="section-inner">
+        <?php
+        $args  = array(
+            'post_type'      => 'supporter',
+            'posts_per_page' => -1,
+        );
+        $posts = get_posts( $args )->posts;
+        
+        if ( 0 < $posts ):
+        ?>
+				
 			<h2 class="section-title text-center entry-title">
 <!-- 				<img src="<?php echo esc_url( get_template_directory_uri() . '/images/supporter/title-supporter.png' ); ?>" alt="SUPPORTER" /> -->
 				SUPPORTER
 			</h2>
 			<div class="suporter-area">
 			<?php
-			if ( is_user_logged_in() ) {
-				$post_status = array( 'draft','publish' );
-			} else {
-				$post_status = array( 'publish' );
-			}
+    		if ( is_user_logged_in() ) {
+    		    $post_status = array( 'draft','publish' );
+    		} else {
+    		    $post_status = array( 'publish' );
+    		}
 			
-			$args  = array(
-    			'post_type'      => 'supporter',
-    			'posts_per_page' => -1,
-			);
-			$posts = get_posts( $args )->posts;
-			
-			echo count( $posts );
-			
-			if ( 0 < $posts ):
-				
-                $supporter_opts = get_terms( 'supporter_option', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
+            $supporter_opts = get_terms( 'supporter_option', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
+            
+            foreach ( $supporter_opts as $key => $supporter_term ):
+            
+                /* サポーター */
+            
+                $args = array(
+                	'post_type'      => 'supporter',
+                	'post_status'    => $post_status,
+                	'posts_per_page' => -1,
+                	'orderby'        => 'order',
+                	'order'          => 'ASC',
+                	'tax_query'      => array(
+                		array(
+                			'taxonomy' => 'supporter_option',
+                			'field'    => 'id',
+                			'terms'    => $supporter_term->term_id,
+                		),
+                	),
+                );
                 
-                foreach ( $supporter_opts as $key => $supporter_term ):
+                set_query_var( 'term_slug', $supporter_term->slug );
+                set_query_var( 'args', $args );
+                get_template_part( 'parts/loop', 'supporter' );
                 
-                    /* サポーター */
+            endforeach;
+            
+            // Get Sponsor Kind
+            $supporter_temrs = get_terms( 'supporter_type', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
+            
+            foreach ( $supporter_temrs as $key => $supporter_term ):
+            
+                /* サポーター */
+            
+                $args = array(
+                	'post_type'      => 'supporter',
+                	'post_status'    => $post_status,
+                	'posts_per_page' => -1,
+                	'orderby'        => 'order',
+                	'order'          => 'ASC',
+                	'tax_query'      => array(
+                		array(
+                			'taxonomy' => 'supporter_type',
+                			'field'    => 'id',
+                			'terms'    => $supporter_term,
+                		),
+                	),
+                );
                 
-                    $args = array(
-                    	'post_type'      => 'supporter',
-                    	'post_status'    => $post_status,
-                    	'posts_per_page' => -1,
-                    	'orderby'        => 'order',
-                    	'order'          => 'ASC',
-                    	'tax_query'      => array(
-                    		array(
-                    			'taxonomy' => 'supporter_option',
-                    			'field'    => 'id',
-                    			'terms'    => $supporter_term->term_id,
-                    		),
-                    	),
-                    );
-                    
-                    set_query_var( 'term_slug', $supporter_term->slug );
-                    set_query_var( 'args', $args );
-                    get_template_part( 'parts/loop', 'supporter' );
-                    
-                endforeach;
+                //echo '<!-- <pre>'; var_dump( $supporter_term ); echo '</pre> -->';
                 
-                // Get Sponsor Kind
-                $supporter_temrs = get_terms( 'supporter_type', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
+                set_query_var( 'term_slug', $supporter_term->slug );
+                set_query_var( 'args', $args );
+                get_template_part( 'parts/loop', 'supporter' );
                 
-                foreach ( $supporter_temrs as $key => $supporter_term ):
-                
-                    /* サポーター */
-                
-                    $args = array(
-                    	'post_type'      => 'supporter',
-                    	'post_status'    => $post_status,
-                    	'posts_per_page' => -1,
-                    	'orderby'        => 'order',
-                    	'order'          => 'ASC',
-                    	'tax_query'      => array(
-                    		array(
-                    			'taxonomy' => 'supporter_type',
-                    			'field'    => 'id',
-                    			'terms'    => $supporter_term,
-                    		),
-                    	),
-                    );
-                    
-                    //echo '<!-- <pre>'; var_dump( $supporter_term ); echo '</pre> -->';
-                    
-                    set_query_var( 'term_slug', $supporter_term->slug );
-                    set_query_var( 'args', $args );
-                    get_template_part( 'parts/loop', 'supporter' );
-                    
-                endforeach;
-			
-			endif;
+            endforeach;
 			?>
 		
 			<?php if ( is_user_logged_in() ) { ?>
@@ -108,5 +106,8 @@
 			<?php } ?>
 		
 			</div>
+        <?php
+        endif;
+        ?>
 		</div><!-- .section-inner -->
 	</div><!-- .section -->
