@@ -34,7 +34,7 @@
   padding: 0;
 }
 .sidebar ul li.current_page_item a {
-  background-color: #f7baa0;
+  background-color: #f9cbb8;
 }
 .sidebar ul li a {
   display: block;
@@ -44,7 +44,7 @@
   color: #2d2d2d;
 }
 .sidebar ul li a:hover {
-  background-color: #f7baa0;
+  background-color: #f9cbb8;
   color: #2d2d2d;
   text-decoration: none;
 }
@@ -165,6 +165,7 @@
   margin-bottom: 50px;
 }
 #main .section-inner h2, #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
+  font-family: "じゅん 34", "Jun 34";
   font-size: 1.43rem;
   padding: 10px;
   margin-top: 40px;

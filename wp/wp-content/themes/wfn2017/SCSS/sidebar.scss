@@ -34,7 +34,7 @@
 			padding: 0;
 			
 			&.current_page_item a {
-				background-color: lighten($primaryColor,30%);
+				background-color: lighten($primaryColor,35%);
 			}
 			
 			a {
@@ -45,7 +45,7 @@
 				color: $textColor;
 				
 				&:hover {
-					background-color: lighten($primaryColor,30%);
+					background-color: lighten($primaryColor,35%);
 					color: $textColor;
 					text-decoration: none;
 				}
