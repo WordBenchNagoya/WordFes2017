@@ -83,7 +83,6 @@ if ( is_front_page() ) {
             <div class="headerRight" style="position: absolute;   bottom: 0%; right: 0%; width: 200px; margin: 0px 0px;">
               <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-black.svg" alt="futureワプー" />
             </div>			  
-          }
         <?php endif;
 			  
       </div>
