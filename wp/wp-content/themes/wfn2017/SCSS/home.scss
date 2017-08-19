@@ -12,9 +12,13 @@ header {
 	
 	.main-image{
   	margin: 0 auto;
-  	max-width: 500px;
+  	max-width: $titleLogoWidth;
     padding: 50px 10px;
     
+    // サファリで画面が広い時にはみ出してしまうので追加
+    img{
+  	  max-width: $titleLogoWidth;
+    }
     
     //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
     .imdesc{
@@ -349,30 +353,4 @@ header {
 	}
 }
 
-@media screen and (max-width: 479px) {
-	header {
-		
-		.main-image {
-      //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
-      .imdesc{
-        position: relative;
-        .headerLeft{
-          position: absolute;
-          top: 0%;
-          left: 0%;
-          width: 125px;
-          // マージンで左上からの位置を調整
-          margin: 0px -80px;
-        }
-        .headerRight{
-          position: absolute;
-          bottom: 0%;
-          right: 0%;
-          width: 150px;
-          // マージンで右下からの位置を調整
-          margin: 0px -100px;
-        }
-      }
-		}
-  }
-}
+
