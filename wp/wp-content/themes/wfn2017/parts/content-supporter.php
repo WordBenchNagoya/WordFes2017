@@ -30,6 +30,14 @@
 			} else {
 				$post_status = array( 'publish' );
 			}
+			
+			$args  = array(
+    			'post_type'      => 'supporter',
+    			'posts_per_page' => -1,
+			);
+			$posts = get_posts( $args )->posts;
+			
+			echo count( $posts );
 				
 			$supporter_opts = get_terms( 'supporter_option', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
 		
