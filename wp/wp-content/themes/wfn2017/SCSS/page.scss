@@ -90,6 +90,9 @@
 		display: -ms-flexbox;
 		display: -webkit-flex;
 		display: flex;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		-ms-align-items: center;
 		align-items: center;
 		text-align: center;
 	}
@@ -98,16 +101,18 @@
 		border-top: 3px solid $primaryColor;
 		content: "";
 		display: inline;
+		-webkit-box-flex: 1;
 		-webkit-flex-grow: 1;
 		-moz-flex-grow: 1;
 		-ms-flex-grow: 1;
 		flex-grow: 1;
+		min-width: 1em;
 	}
 	.page-title:before {
-		margin-right: 1em;
+		margin-right: 0.75em;
 	}
 	.page-title:after {
-		margin-left: 1em;
+		margin-left: 0.75em;
 	}
 	
 	.section {
