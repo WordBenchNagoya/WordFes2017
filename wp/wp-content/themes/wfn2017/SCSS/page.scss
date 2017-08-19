@@ -52,21 +52,10 @@
 	width: 100%;
 	max-width: $contentWidth;
 	margin: auto;
+}
 
-/*
-	.section {
-		
-		&:nth-child(odd) {
-			
-			background: #fff;
-			
-		}
-		
-		&:nth-child(even) {
-			background: $bgColor;
-		}
-	} // .section
-*/
+#primary.content-area {
+	margin-top: 40px;
 }
 
 #secondary {
@@ -157,7 +146,7 @@
 		}
 		
 		h6 {
-			padding: 5px 0;
+			padding: 0;
 		}
 		
 		hr {
