@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package WordFes Nagoya 2015
+ * @package WordFes Nagoya 2017
  */
 
 ?><!DOCTYPE html>

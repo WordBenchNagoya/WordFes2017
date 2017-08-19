@@ -1,8 +1,8 @@
 <?php
 /**
- * WordFes Nagoya 2015 functions and definitions
+ * WordFes Nagoya 2017 functions and definitions
  *
- * @package WordFes Nagoya 2015
+ * @package WordFes Nagoya 2017
  */
 
 if ( ! function_exists( 'wordfes2017_setup' ) ) :

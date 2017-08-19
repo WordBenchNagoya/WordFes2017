@@ -4,7 +4,7 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package WordFes Nagoya 2015
+ * @package WordFes Nagoya 2017
  */
 ?>
 	<?php //include get_stylesheet_directory() . '/template-parts/suporter.php'; ?>

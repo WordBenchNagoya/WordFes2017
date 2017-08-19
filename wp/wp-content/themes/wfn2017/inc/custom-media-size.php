@@ -1,8 +1,8 @@
 <?php
 /**
- * WordFes Nagoya 2015 Add image size.
+ * WordFes Nagoya 2017 Add image size.
  *
- * @package WordFes Nagoya 2015
+ * @package WordFes Nagoya 2017
  */
 
 /**
