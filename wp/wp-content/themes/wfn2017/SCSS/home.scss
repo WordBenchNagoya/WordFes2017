@@ -263,6 +263,7 @@ header {
       .imdesc{
         position: relative;
         .headerLeft{
+          display: none;
           position: absolute;
           top: 0%;
           left: 0%;
@@ -271,6 +272,7 @@ header {
           margin: 0px -115px;
         }
         .headerRight{
+          display: none;
           position: absolute;
           bottom: 0%;
           right: 0%;
