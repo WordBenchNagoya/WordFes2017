@@ -126,11 +126,39 @@
 	
 	.section-inner {
 		
-		h2 {
-			margin-top: 30px;
-			padding: 15px 10px;
-			background: #f4f4f4 url(../images/common/bg-subtitle.png) left center no-repeat;
+		h2,h3,h4,h5,h6 {
+			margin-top: 60px;
+			margin-bottom: 30px;
 		}
+		
+		h3,h4,h5,h6 {
+			padding: 5px 10px;
+			color: $primaryColor;
+		}
+		
+		h2 {
+			padding: 15px 10px;
+			background: $primaryColor;
+			color: #fff;
+		}
+		
+		h3 {
+			border-top: 2px solid $primaryColor; 
+			border-bottom: 2px solid $primaryColor; 
+		}
+		
+		h4 {
+			border-bottom: 2px solid $primaryColor; 
+		}
+		
+		h5 {
+			border-left: 4px solid $primaryColor; 
+		}
+		
+		h6 {
+			padding: 5px 0;
+		}
+		
 	}
 	
 	/*

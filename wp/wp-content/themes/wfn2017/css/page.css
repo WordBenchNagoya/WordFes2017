@@ -168,10 +168,31 @@
 #main .section {
   margin-bottom: 50px;
 }
+#main .section-inner h2, #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+#main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
+  padding: 5px 10px;
+  color: #ea5514;
+}
 #main .section-inner h2 {
-  margin-top: 30px;
   padding: 15px 10px;
-  background: #f4f4f4 url(../images/common/bg-subtitle.png) left center no-repeat;
+  background: #ea5514;
+  color: #fff;
+}
+#main .section-inner h3 {
+  border-top: 2px solid #ea5514;
+  border-bottom: 2px solid #ea5514;
+}
+#main .section-inner h4 {
+  border-bottom: 2px solid #ea5514;
+}
+#main .section-inner h5 {
+  border-left: 4px solid #ea5514;
+}
+#main .section-inner h6 {
+  padding: 5px 0;
 }
 #main.archive .page-title {
   margin-top: 30px;
