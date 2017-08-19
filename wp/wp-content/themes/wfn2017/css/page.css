@@ -125,6 +125,8 @@
   */
 }
 #main .page-title {
+  font-size: 1.86rem;
+  font-family: "じゅん 34", "Jun 34";
   padding: 25px 10px 25px;
   color: #ea5514;
   display: -webkit-box;
