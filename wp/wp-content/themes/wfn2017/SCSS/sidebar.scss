@@ -34,7 +34,7 @@
 			padding: 0;
 			
 			&.current_page_item a {
-				background-color: rgba($primaryColor,0.6);
+				background-color: lighten($primaryColor,30%);
 			}
 			
 			a {
@@ -45,13 +45,14 @@
 				color: $textColor;
 				
 				&:hover {
-					background-color: rgba($primaryColor,0.6);
+					background-color: lighten($primaryColor,30%);
 					color: $textColor;
 					text-decoration: none;
 				}
 				&:before {
 					content: "\f0da";
 					font-family: FontAwesome;
+					color: $primaryColor;
 					font-size: 20px;
 					position: absolute;
 					left: 10px;
