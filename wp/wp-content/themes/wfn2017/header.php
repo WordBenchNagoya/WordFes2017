@@ -74,12 +74,18 @@ if ( is_front_page() ) {
 				  ?>
           <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" /></a></h1>
 			  </div><!-- .site-branding -->
-			  <div class="hearderLeft" style="position: absolute;   top: 0%; left: 0%; width: 175px; margin: 0px 0px;">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-orange.svg" alt="babyワプー" />
-			  </div>
-			  <div class="headerRight" style="position: absolute;   bottom: 0%; right: 0%; width: 200px; margin: 0px 0px;">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-black.svg" alt="futureワプー" />
-			  </div>			  
+        <?php
+//  			if( ( is_home() || is_front_page() || wordfes2015_is_mobile() ) ) {
+				  if( ( is_home() || is_front_page() ) ) {
+            <div class="hearderLeft" style="position: absolute;   top: 0%; left: 0%; width: 175px; margin: 0px 0px;">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-orange.svg" alt="babyワプー" />
+            </div>
+            <div class="headerRight" style="position: absolute;   bottom: 0%; right: 0%; width: 200px; margin: 0px 0px;">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-black.svg" alt="futureワプー" />
+            </div>			  
+          }
+				?>
+			  
       </div>
 		</div><!-- .main-image -->
 
