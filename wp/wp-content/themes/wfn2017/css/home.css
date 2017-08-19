@@ -46,7 +46,7 @@ header .main-image .imdesc .headerLeft {
   top: 0%;
   left: 0%;
   width: 200px;
-  margin: 0px -130px;
+  margin: 0px -140px;
 }
 
 header .main-image .imdesc .headerRight {
@@ -273,7 +273,7 @@ header .bxslider li img {
     bottom: 0%;
     right: 0%;
     width: 200px;
-    margin: 0px -175px;
+    margin: 0px -165px;
   }
   header #signboard {
     position: relative;
