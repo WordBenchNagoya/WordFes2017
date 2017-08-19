@@ -80,6 +80,14 @@ header .bxslider li img {
   color: white;
 }
 
+#sec-social {
+  /*
+	.twitter-box #twitter-widget-0{
+  	background-color: #fdeee4;  	
+	}
+*/
+}
+
 #sec-social h2 {
   color: white;
 }
@@ -91,11 +99,7 @@ header .bxslider li img {
 
 #sec-social .blog-box ul {
   background-color: #fdeee4;
-  border-radius: 2px;
-}
-
-#sec-social .twitter-box #twitter-widget-0 {
-  background-color: #fdeee4;
+  border-radius: 5px;
 }
 
 .section {
