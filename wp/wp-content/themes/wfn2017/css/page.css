@@ -9,42 +9,35 @@
   padding-top: 25px;
   padding-bottom: 25px;
 }
-
 .sidebar h2 {
   margin: 0;
   padding: 5px;
   background: #94c554;
   color: #fff;
 }
-
 .sidebar .banner-container {
   padding: 5px 0 0;
   background: #f4f4f4;
 }
-
 .sidebar .banner-container .banner-item {
   padding: 0 5px 5px;
 }
-
 .sidebar ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
   text-align: left;
 }
-
 .sidebar ul li {
   margin: 0;
   padding: 0;
 }
-
 .sidebar ul li.current_page_item a {
   background-color: #ecfada;
   background-image: url(../images/common/list-mark-gr.png);
   background-position: 9px 1.5em;
   background-repeat: no-repeat;
 }
-
 .sidebar ul li a {
   display: block;
   padding: 15px 5px 15px 23px;
@@ -54,7 +47,6 @@
   background-repeat: no-repeat;
   color: #2d2d2d;
 }
-
 .sidebar ul li a:hover {
   background-color: #ecfada;
   color: #2d2d2d;
@@ -65,13 +57,11 @@
   height: 415px;
   background: url(../images/common/bg-header.png) center center repeat-x;
 }
-
 .site-header .main-image {
   position: relative;
   height: 357px;
   padding-top: 30px;
 }
-
 .site-header #signboard {
   position: absolute;
   right: 0;
@@ -83,23 +73,19 @@
   padding: 30px 75px 50px;
   background: url(../images/common/bg-signboard.png) center center no-repeat;
 }
-
 .site-header .site-title {
   width: 100%;
 }
-
 .site-header .site-title img {
   width: 70%;
   height: auto;
 }
-
 .site-header .page-title {
   line-height: .8;
   font-weight: normal;
   font-size: 2rem;
   color: #046a37;
 }
-
 .site-header .page-title span {
   font-size: 1.14rem;
   color: #777;
@@ -110,26 +96,25 @@
   max-width: 1000px;
   margin: auto;
   /*
-	.section {
-		
-		&:nth-child(odd) {
-			
-			background: #fff;
-			
-		}
-		
-		&:nth-child(even) {
-			background: $bgColor;
-		}
-	} // .section
-*/
+  	.section {
+  		
+  		&:nth-child(odd) {
+  			
+  			background: #fff;
+  			
+  		}
+  		
+  		&:nth-child(even) {
+  			background: $bgColor;
+  		}
+  	} // .section
+  */
 }
 
 #secondary {
   width: 100%;
   margin: auto;
 }
-
 #secondary .section {
   padding: 30px 20px;
   background: #f09875;
@@ -137,28 +122,23 @@
 
 #main {
   /*
-	// アーカイブページ
-	*/
+  // アーカイブページ
+  */
   /*
-	// シングルページ
-	*/
+  // シングルページ
+  */
 }
-
 #main .page-title {
   padding: 25px 10px 25px;
-  background: url(../images/common/bg-pagetitle.png) center bottom no-repeat;
 }
-
 #main .section {
   margin-bottom: 50px;
 }
-
 #main .section-inner h2 {
   margin-top: 30px;
   padding: 15px 10px;
   background: #f4f4f4 url(../images/common/bg-subtitle.png) left center no-repeat;
 }
-
 #main.archive .page-title {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -168,66 +148,54 @@
   font-size: 2rem;
   font-weight: 700;
 }
-
 #main.archive .page-title .title {
   display: block;
   padding: 25px 0 25px 70px;
   background: url(../images/common/bg-title-border.png) left bottom no-repeat;
 }
-
 #main.archive article {
   padding: 10px 0;
 }
-
 #main.archive .image-box {
   padding: 0;
 }
-
 #main.archive .image-box img {
   width: 100%;
 }
-
 #main.archive .text-box h2 {
   margin: 0 0 5px;
   padding: 0 0 5px 25px;
   background: url(../images/common/bg-archive-title.png) 3px top no-repeat;
   border-bottom: 1px dotted #0e6939;
 }
-
 #main.archive .text-box h2 .date {
   float: left;
   width: 20%;
-  padding: 0.25rem 5px 0;
+  padding: .25rem 5px 0;
   font-size: 0.92rem;
   font-weight: normal;
 }
-
 #main.archive .text-box h2 .title {
   float: left;
   width: 80%;
   padding: 0 5px;
   font-size: 1.29rem;
 }
-
 #main.archive .text-box h2 .title a {
   color: #2d2d2d;
 }
-
 #main.archive .text-box h2 .title a:hover {
   color: #2d2d2d;
 }
-
 #main.archive .pagenavi a,
 #main.archive .pagenavi span {
   border-width: 2px;
 }
-
 #main .article-header {
   margin: 0;
   padding: 0 0 5px;
   border-bottom: 3px solid #94c554;
 }
-
 #main .article-header .article-title {
   margin-bottom: 0;
   padding: 18px 0 18px 70px;
@@ -235,74 +203,59 @@
   font-size: 2rem;
   font-weight: 700;
 }
-
 #main .article-header .article-date {
   margin: 0;
   padding: 0;
 }
-
 #main .social {
   padding: 10px 0;
 }
-
 #main .social .social-list {
   padding: 0;
   list-style-type: none;
 }
-
 #main .social .social-list .social-item {
   display: inline-block;
 }
-
 #main .social .social-list .social-item .sns-button {
   display: inline-block;
 }
-
 #main .social .social-list .social-item .fb-like {
   overflow: hidden !important;
 }
-
 #main .article-content {
   margin: 25px 0;
   line-height: 1.8;
 }
-
 #main .article-content img,
 #main .article-content iframe {
   max-width: 100%;
   height: auto;
 }
-
 #main .article-content p {
   position: relative;
 }
-
 #main .article-content img.aligncenter {
   float: none;
   display: block;
   margin-right: auto;
   margin-left: auto;
 }
-
 #main .page-navi {
   padding: 10px 0;
   border-top: 3px solid #94c554;
 }
-
 #main .page-navi .prev {
   padding-left: 0;
 }
-
 #main .page-navi .prev a {
   display: block;
   padding-left: 25px;
   background: url(../images/common/bg-prev.png) left 0.1em no-repeat;
 }
-
 #main .page-navi .next {
   padding-right: 0;
 }
-
 #main .page-navi .next a {
   display: block;
   padding-right: 25px;
@@ -347,9 +300,11 @@
   .site-header #signboard .page-title span {
     font-size: 0.86rem;
   }
+
   #primary {
     width: 100%;
   }
+
   #main.archive .text-box {
     padding: 5px 0;
   }
@@ -371,6 +326,7 @@
   #main .section .article-title {
     margin: 0;
   }
+
   #sessions #main table {
     display: block;
     width: 100%;
@@ -385,3 +341,5 @@
     width: 100%;
   }
 }
+
+/*# sourceMappingURL=page.css.map */
