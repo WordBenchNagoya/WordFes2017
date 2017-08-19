@@ -69,13 +69,13 @@
 }
 
 .site-header {
-  background: url(../images/common/bg-header.png) center center repeat-x;
+  background: url(../images/common/bg-sub-header.png) center center repeat-x;
 }
 
 .site-header .main-image {
   position: relative;
-  height: 357px;
   padding-top: 30px;
+  padding-bottom: 10px;
 }
 
 .site-header #signboard {
@@ -92,10 +92,10 @@
 
 .site-header .site-title {
   width: 100%;
+  margin: 0;
 }
 
 .site-header .site-title img {
-  width: 70%;
   height: auto;
   max-height: 300px;
 }
