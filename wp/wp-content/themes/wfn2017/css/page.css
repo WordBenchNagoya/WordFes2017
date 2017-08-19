@@ -205,6 +205,7 @@
   margin-bottom: 0;
 }
 #main .section-inner table {
+  margin: 20px 0;
   width: 100%;
 }
 #main .section-inner table th,
@@ -219,15 +220,17 @@
   min-width: 100px;
 }
 #main .section-inner .bt {
+  margin: 20px 0;
   color: #fff;
   background: #ea5514;
   padding: 20px;
   display: inline-block;
   text-align: center;
   min-width: 250px;
+  border-radius: 5px;
 }
 #main .section-inner .bt:hover {
-  background: rbga(#ea5514, 0.8);
+  background: rgba(234, 85, 20, 0.8);
 }
 #main.archive .page-title {
   margin-top: 30px;

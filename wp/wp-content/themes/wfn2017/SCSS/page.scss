@@ -172,6 +172,7 @@
 		}
 		
 		table {
+			margin: 20px 0;
 			width: 100%;
 		}
 		table th,
@@ -186,15 +187,17 @@
 			min-width: 100px;
 		}
 		.bt {
+			margin: 20px 0;
 			color: #fff;
 			background: $primaryColor;
 			padding: 20px;
 			display: inline-block;
 			text-align: center;
 			min-width: 250px;
+			border-radius: 5px;
 		}
 		.bt:hover {
-			background: rbga($primaryColor,0.8);
+			background: rgba($primaryColor,0.8);
 		}
 		
 	}
