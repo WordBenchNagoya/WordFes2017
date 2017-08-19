@@ -54,7 +54,7 @@ header .main-image .imdesc .headerRight {
   bottom: 0%;
   right: 0%;
   width: 200px;
-  margin: 0px 175px;
+  margin: 0px -175px;
 }
 
 header .site-title {
