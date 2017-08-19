@@ -133,10 +133,11 @@ header .site-header {
   position: relative;
 }
 
-.main-navigation li + li {
-  border-left: 1px solid white;
+/*
+.main-navigation li+li {
+  border-left:1px solid white;
 }
-
+*/
 .main-navigation .menu-toggle {
   background: #c11329;
   box-shadow: none;
