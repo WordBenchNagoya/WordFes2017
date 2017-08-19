@@ -5,7 +5,7 @@
 
 
 .site-header {
-	height: 415px;
+	//height: 415px;
 	background: url(../images/common/bg-header.png) center center repeat-x;
 	
 	.main-image {
@@ -47,6 +47,16 @@
 			color: #777;
 		}
 	}
+	
+    .imdesc{
+      .headerLeft{
+        display: none;
+      }
+      .headerRight{
+        display: none;
+      }
+    }
+	
 } // header
 
 #primary {
@@ -399,14 +409,19 @@
 }
 
 @media screen and ( max-width: 767px ) {
-	
+    
 	.site-header {
 		height: auto;
 		background-position: center top;
+		background-size: cover;
 		
 		.main-image {
 			height: auto;
-			margin-top: 40px;
+			//margin-top: 40px;
+			
+			.site-branding {
+    			overflow: auto;
+			}
 		}
 		
 		#signboard {
