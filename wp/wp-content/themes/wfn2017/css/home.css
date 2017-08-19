@@ -37,6 +37,26 @@ header .main-image {
   padding: 50px 10px;
 }
 
+header .main-image .imdesc {
+  position: relative;
+}
+
+header .main-image .imdesc .headerLeft {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 175px;
+  margin: 0px -150px;
+}
+
+header .main-image .imdesc .headerRight {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 200px;
+  margin: 0px 175px;
+}
+
 header .site-title {
   margin: 0;
 }

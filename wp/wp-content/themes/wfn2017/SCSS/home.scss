@@ -14,6 +14,31 @@ header {
   	margin: 0 auto;
   	max-width: 500px;
     padding: 50px 10px;
+    
+    
+    //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
+    .imdesc{
+      position: relative;
+      .headerLeft{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 175px;
+        // マージンで左上からの位置を調整
+        margin: 0px -150px;
+      }
+      .headerRight{
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        width: 200px;
+        // マージンで右下からの位置を調整
+        margin: 0px 175px;
+        
+      }
+    }
+    
+    
 	}
 
 	.site-title {
