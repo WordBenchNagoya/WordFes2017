@@ -156,7 +156,7 @@
 #entry #main .tix-column-remaining { display: none; }
 
 @media screen and (max-width: 767px) { .site-header { height: auto; background-position: center top; }
-  .site-header .main-image { height: auto; margin-top: 40px; }
+  .site-header .main-image { height: auto; padding-bottom: 20px; }
   .site-header #signboard { position: relative; width: 100%; height: auto; padding: 55px 30px 45px; background-size: 100% auto; background-position: center bottom; }
   .site-header #signboard .site-title { margin-bottom: 10px; }
   .site-header #signboard .site-title img { width: 65%; }
