@@ -42,6 +42,9 @@ if ( is_front_page() ) {
 <![endif]-->
 <?php wp_head(); ?>
 <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Winn3RhO6lE%3D" charset="utf-8"></script>
+
+<?php include_once( get_template_directory_uri() . 'parts/ga-code.php' ); ?>
+
 </head>
 
 <body id="<?php echo esc_attr( pdc_get_page_slug() ); ?>" <?php body_class(); ?>>
