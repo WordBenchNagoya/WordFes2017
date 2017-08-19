@@ -177,12 +177,13 @@
 		}
 		table th,
 		table td {
+			font-weight: bold;
+			text-align: left;
 			color: $primaryColor;
 			border: 2px solid $primaryColor;
 			padding: 15px;
 		}
 		table th {
-			font-weight: bold;
 			background: #F7F8F8;
 			min-width: 100px;
 		}
@@ -195,9 +196,11 @@
 			text-align: center;
 			min-width: 250px;
 			border-radius: 5px;
+			text-decoration: none;
 		}
 		.bt:hover {
 			background: rgba($primaryColor,0.8);
+			text-decoration: none;
 		}
 		
 	}
