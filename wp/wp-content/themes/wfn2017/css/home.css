@@ -42,7 +42,7 @@ header .main-image .imdesc {
 }
 
 header .main-image .imdesc .site-branding img {
-  max-width: 500px;
+  max-width: 480px;
 }
 
 header .main-image .imdesc .headerLeft {
@@ -58,7 +58,7 @@ header .main-image .imdesc .headerRight {
   bottom: 0%;
   right: 0%;
   width: 225px;
-  margin: 0px -200px;
+  margin: -50px -150px;
 }
 
 header .site-title {

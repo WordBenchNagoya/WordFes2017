@@ -23,7 +23,7 @@ header {
       // サファリで画像が飛び出すのを修正
       .site-branding{
         img{
-          max-width: $titleLogoWidth;
+          max-width: $titleLogoWidth - 20px;
         }
       }
       
@@ -41,7 +41,7 @@ header {
         right: 0%;
         width: 225px;
         // マージンで右下からの位置を調整
-        margin: 0px -200px;
+        margin: -50px -150px;
       }
     }
     
