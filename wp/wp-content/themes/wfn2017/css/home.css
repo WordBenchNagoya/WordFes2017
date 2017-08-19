@@ -37,12 +37,12 @@ header .main-image {
   padding: 50px 10px;
 }
 
-header .main-image img {
-  max-width: 500px;
-}
-
 header .main-image .imdesc {
   position: relative;
+}
+
+header .main-image .imdesc .site-branding img {
+  max-width: 500px;
 }
 
 header .main-image .imdesc .headerLeft {

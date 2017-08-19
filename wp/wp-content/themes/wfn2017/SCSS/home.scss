@@ -15,14 +15,18 @@ header {
   	max-width: $titleLogoWidth;
     padding: 50px 10px;
     
-    // サファリで画面が広い時にはみ出してしまうので追加
-    img{
-  	  max-width: $titleLogoWidth;
-    }
     
     //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
     .imdesc{
       position: relative;
+      
+      // サファリで画像が飛び出すのを修正
+      .site-branding{
+        img{
+          max-width: $titleLogoWidth;
+        }
+      }
+      
       .headerLeft{
         position: absolute;
         top: 0%;
