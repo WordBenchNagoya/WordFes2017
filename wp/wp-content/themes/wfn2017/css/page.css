@@ -85,6 +85,7 @@
 .site-header .site-title img {
   width: 70%;
   height: auto;
+  max-height: 300px;
 }
 .site-header .page-title {
   line-height: .8;
@@ -208,13 +209,16 @@
   margin: 20px 0;
   width: 100%;
 }
+#main .section-inner table p {
+  margin-bottom: 0;
+}
 #main .section-inner table th,
 #main .section-inner table td {
   font-weight: bold;
   text-align: left;
   color: #ea5514;
   border: 2px solid #ea5514;
-  padding: 15px;
+  padding: 10px;
 }
 #main .section-inner table th {
   background: #F7F8F8;
