@@ -141,10 +141,14 @@
   -ms-align-items: center;
   align-items: center;
   text-align: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
 }
 #main .page-title:before,
 #main .page-title:after {
-  border-top: 3px solid #ea5514;
+  border-top: 6px solid #ea5514;
   content: "";
   display: inline;
   -webkit-box-flex: 1;
@@ -153,12 +157,13 @@
   -ms-flex-grow: 1;
   flex-grow: 1;
   min-width: 1em;
+  max-width: 135px;
 }
 #main .page-title:before {
-  margin-right: 0.75em;
+  margin-right: 1.25em;
 }
 #main .page-title:after {
-  margin-left: 0.75em;
+  margin-left: 1.25em;
 }
 #main .section {
   margin-bottom: 50px;
