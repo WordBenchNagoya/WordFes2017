@@ -47,6 +47,16 @@
 			color: #777;
 		}
 	}
+	
+    .imdesc{
+      .headerLeft{
+        display: none;
+      }
+      .headerRight{
+        display: none;
+      }
+    }
+	
 } // header
 
 #primary {
@@ -399,20 +409,6 @@
 }
 
 @media screen and ( max-width: 767px ) {
-    
-    header {
-        
-        .imdesc{
-    
-            .headerLeft{
-                display: none;
-            }
-            
-            .headerRight{
-                display: none;
-            }
-        }
-    }
     
 	.site-header {
 		height: auto;
