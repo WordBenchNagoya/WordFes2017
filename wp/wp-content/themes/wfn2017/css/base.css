@@ -120,6 +120,7 @@ header .site-header {
 .main-navigation ul {
   list-style: none;
   padding-left: 0;
+  display: none;
 }
 
 .main-navigation ul,
@@ -132,17 +133,8 @@ header .site-header {
   position: relative;
 }
 
-/*
-.main-navigation li+li {
-  content: "";
-  color:white;
-  border-right:1px solid white;
-  font-size: 10px;
-}
-*/
 .main-navigation li + li {
-  content: " | ";
-  color: white;
+  border-right: 1px solid white;
 }
 
 .main-navigation .menu-toggle {
