@@ -21,11 +21,11 @@
 <?php
 if ( is_front_page() ) {
 	
-	$title = 'WordFes Nagoya 2017 | WordPress の森に集おう！';
+	$title = 'WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜';
 	
 } else {
 	
-	$title = get_the_title() . ' | WordFes Nagoya 2017'; 
+	$title = get_the_title() . ' | WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜'; 
 	
 }
 ?>
