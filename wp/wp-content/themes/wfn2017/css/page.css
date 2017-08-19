@@ -190,6 +190,7 @@
 }
 #main .section-inner h5 {
   border-left: 4px solid #ea5514;
+  padding: 0 10px;
 }
 #main .section-inner h6 {
   padding: 5px 0;
