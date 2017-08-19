@@ -84,8 +84,32 @@
 	
 	.page-title {
 		padding: 25px 10px 25px;
+		color: $primaryColor;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		text-align: center;
 	}
-		
+	.page-title:before,
+	.page-title:after {
+		border-top: 3px solid $primaryColor;
+		content: "";
+		display: inline;
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		-ms-flex-grow: 1;
+		flex-grow: 1;
+	}
+	.page-title:before {
+		margin-right: 1em;
+	}
+	.page-title:after {
+		margin-left: 1em;
+	}
+	
 	.section {
 		margin-bottom: 50px;
 	}

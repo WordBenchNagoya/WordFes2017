@@ -130,6 +130,30 @@
 }
 #main .page-title {
   padding: 25px 10px 25px;
+  color: #ea5514;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+#main .page-title:before,
+#main .page-title:after {
+  border-top: 3px solid #ea5514;
+  content: "";
+  display: inline;
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+#main .page-title:before {
+  margin-right: 1em;
+}
+#main .page-title:after {
+  margin-left: 1em;
 }
 #main .section {
   margin-bottom: 50px;
