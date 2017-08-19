@@ -134,7 +134,7 @@ header .site-header {
 }
 
 .main-navigation li + li {
-  border-right: 1px solid white;
+  border-left: 1px solid white;
 }
 
 .main-navigation .menu-toggle {
