@@ -34,23 +34,29 @@
 			padding: 0;
 			
 			&.current_page_item a {
-				background-color: #ecfada;
+				background-color: rgba($primaryColor,0.6);
 			}
 			
 			a {
 				display: block;
 				padding: 15px 5px 15px 23px;
+				position: relative;
 				background-color: #f4f4f4;
 				color: $textColor;
 				
 				&:hover {
-					background-color: #ecfada;
+					background-color: rgba($primaryColor,0.6);
 					color: $textColor;
 					text-decoration: none;
 				}
 				&:before {
 					content: "\f0da";
 					font-family: FontAwesome;
+					font-size: 20px;
+					position: absolute;
+					left: 10px;
+					top: calc(50% - 10px);
+					line-height: 1;
 				}
 			}
 		}

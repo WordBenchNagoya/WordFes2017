@@ -31,22 +31,28 @@
   padding: 0;
 }
 .sidebar ul li.current_page_item a {
-  background-color: #ecfada;
+  background-color: rgba(234, 85, 20, 0.6);
 }
 .sidebar ul li a {
   display: block;
   padding: 15px 5px 15px 23px;
+  position: relative;
   background-color: #f4f4f4;
   color: #2d2d2d;
 }
 .sidebar ul li a:hover {
-  background-color: #ecfada;
+  background-color: rgba(234, 85, 20, 0.6);
   color: #2d2d2d;
   text-decoration: none;
 }
 .sidebar ul li a:before {
   content: "\f0da";
   font-family: FontAwesome;
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 10px);
+  line-height: 1;
 }
 
 /*# sourceMappingURL=sidebar.css.map */
