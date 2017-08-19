@@ -46,7 +46,7 @@ header .main-image .imdesc .headerLeft {
   top: 0%;
   left: 0%;
   width: 200px;
-  margin: 0px -120px;
+  margin: 0px -130px;
 }
 
 header .main-image .imdesc .headerRight {
@@ -54,7 +54,7 @@ header .main-image .imdesc .headerRight {
   bottom: 0%;
   right: 0%;
   width: 225px;
-  margin: 0px -175px;
+  margin: 0px -200px;
 }
 
 header .site-title {
@@ -266,14 +266,14 @@ header .bxslider li img {
     top: 0%;
     left: 0%;
     width: 175px;
-    margin: 0px -100px;
+    margin: 0px -115px;
   }
   header .main-image .imdesc .headerRight {
     position: absolute;
     bottom: 0%;
     right: 0%;
     width: 200px;
-    margin: 0px -150px;
+    margin: 0px -175px;
   }
   header #signboard {
     position: relative;
