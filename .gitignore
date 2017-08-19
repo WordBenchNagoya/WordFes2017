@@ -32,6 +32,9 @@ wp-config.php
 # CPI System file
 sys-common
 
+# Google Search Console
+/google*
+
 # Deploy Related
 deploy*
 
