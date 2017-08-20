@@ -41,6 +41,15 @@ if ( is_front_page() ) {
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <?php wp_head(); ?>
+
+<?php
+if ( is_front_page() ) {
+    
+    echo '<meta property="og:image" content="/wp/wp-content/uploads/2017/08/wordfesnagoya2017-ogp.jpg" />';
+    
+}
+?>
+
 <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Winn3RhO6lE%3D" charset="utf-8"></script>
 
 <?php require_once( get_template_directory_uri() . '/parts/ga-code.php' ); ?>
