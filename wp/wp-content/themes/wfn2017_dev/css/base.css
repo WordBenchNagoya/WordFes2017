@@ -14,9 +14,9 @@ ul { padding-left: 2em; }
 
 table { width: 100%; /* th, td { padding: 10px; border: 1px solid #ccc; font-weight: normal; font-size: $fs-15; } th { text-align: center; } */ }
 
-table table th, table table td { font-weight: bold; text-align: left; color: #ea5514; border: 2px solid #ea5514; padding: 10px; }
+table th, table td { font-weight: bold; text-align: left; color: #ea5514; border: 2px solid #ea5514; padding: 10px; }
 
-table table th { background: #F7F8F8; min-width: 100px; }
+table th { background: #F7F8F8; min-width: 100px; }
 
 #page { width: 100%; margin: 0 auto; padding: 0; }
 
