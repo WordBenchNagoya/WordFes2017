@@ -254,6 +254,14 @@ header {
 	}
 } // .section-inner
 
+.schedule {
+    font-family: "じゅん 34", "Jun 34";
+    
+    p {
+        color: $primaryColor;
+    }
+}
+
 @media screen and (max-width: 767px) {
 	
 	header {

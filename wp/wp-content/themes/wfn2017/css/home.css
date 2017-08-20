@@ -2,319 +2,98 @@
 /* サイズ */
 /* フォントサイズ */
 /* カラー */
-/*
- * トップページ
- */
-header {
-  background: url(../images/common/bg-header.png) center center repeat-x;
-  background-size: auto 100%;
-  /*
-	#signboard {
-		position: absolute;
-		right: 0;
-		bottom: 225px;
-		left: 0;
-		width: 735px;
-		height: 422px;
-		margin: auto;
-		background: url(../images/top/img-signboard.png) center center no-repeat;
-	}
-	*/
-  /*
-	 * ヘッダーナビゲーション
-	 */
-  /*
-	#site-navigation {
-		padding: 20px 15px 25px;
-		background: url(../images/navigation/bg-navigation.png) center bottom repeat-x;
-	} // #site-navigation
-*/
-}
+/* トップページ */
+header { background: url(../images/common/bg-header.png) center center repeat-x; background-size: auto 100%; /* #signboard { position: absolute; right: 0; bottom: 225px; left: 0; width: 735px; height: 422px; margin: auto; background: url(../images/top/img-signboard.png) center center no-repeat; } */ /* ヘッダーナビゲーション */ /* #site-navigation { padding: 20px 15px 25px; background: url(../images/navigation/bg-navigation.png) center bottom repeat-x; } // #site-navigation */ }
 
-header .main-image {
-  margin: 0 auto;
-  max-width: 500px;
-  padding: 50px 10px;
-}
+header .main-image { margin: 0 auto; max-width: 500px; padding: 50px 10px; }
 
-header .main-image .imdesc {
-  position: relative;
-}
+header .main-image .imdesc { position: relative; }
 
-header .main-image .imdesc .site-branding img {
-  max-width: 480px;
-}
+header .main-image .imdesc .site-branding img { max-width: 480px; }
 
-header .main-image .imdesc .headerLeft {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 200px;
-  margin: 0px -150px;
-}
+header .main-image .imdesc .headerLeft { position: absolute; top: 0%; left: 0%; width: 200px; margin: 0px -150px; }
 
-header .main-image .imdesc .headerRight {
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  width: 200px;
-  margin: -50px -145px;
-}
+header .main-image .imdesc .headerRight { position: absolute; bottom: 0%; right: 0%; width: 200px; margin: -50px -145px; }
 
-header .site-title {
-  margin: 0;
-  padding-bottom: 30px;
-}
+header .site-title { margin: 0; padding-bottom: 30px; }
 
-header #signboard {
-  position: absolute;
-  right: 0;
-  bottom: 305px;
-  left: 55px;
-  width: 550px;
-  height: 280px;
-  margin: auto;
-  background: none;
-}
+header #signboard { position: absolute; right: 0; bottom: 305px; left: 55px; width: 550px; height: 280px; margin: auto; background: none; }
 
-header #signboard .bx-wrapper .bx-viewport {
-  background: transparent;
-  border: none;
-  moz-box-shadow: none;
-  webkit-box-shadow: none;
-  box-shadow: none;
-}
+header #signboard .bx-wrapper .bx-viewport { background: transparent; border: none; moz-box-shadow: none; webkit-box-shadow: none; box-shadow: none; }
 
-header .bxslider {
-  margin: 0;
-  padding: 0;
-}
+header .bxslider { margin: 0; padding: 0; }
 
-header .bxslider li img {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
-#sec-about {
-  color: white;
-}
+#sec-about { color: white; }
 
-#sec-about h2,
-#sec-about h3 {
-  color: white;
-}
+#sec-about h2, #sec-about h3 { color: white; }
 
-#sec-social {
-  /*
-	.twitter-box #twitter-widget-0{
-  	background-color: #fdeee4;  	
-	}
-*/
-}
+#sec-social { /* .twitter-box #twitter-widget-0{ background-color: #fdeee4;  	 } */ }
 
-#sec-social h2 {
-  color: white;
-}
+#sec-social h2 { color: white; }
 
-#sec-social .news-box ul {
-  background-color: #fdede3;
-  border-radius: 5px;
-}
+#sec-social .news-box ul { background-color: #fdede3; border-radius: 5px; }
 
-#sec-social .blog-box ul {
-  background-color: #fdeee4;
-  border-radius: 5px;
-}
+#sec-social .blog-box ul { background-color: #fdeee4; border-radius: 5px; }
 
-.section {
-  width: 100%;
-  /*
-	&:nth-child(odd) {
-		
-		background: #fff;
-		
-	}
-	
-	&:nth-child(even) {
-		background: $bgColor;
-	}
-*/
-}
+.section { width: 100%; /* &:nth-child(odd) { background: #fff; } &:nth-child(even) { background: $bgColor; } */ }
 
-.section:nth-child(1) {
-  background: #f09875;
-}
+.section:nth-child(1) { background: #f09875; }
 
-.section:nth-child(2) {
-  background-image: url(../images/top/bg-schedule.svg);
-  background-position: center top;
-}
+.section:nth-child(2) { background-image: url(../images/top/bg-schedule.svg); background-position: center top; }
 
-.section:nth-child(3) {
-  background: #fff;
-}
+.section:nth-child(3) { background: #fff; }
 
-.section:nth-child(4) {
-  background: #f09875;
-}
+.section:nth-child(4) { background: #f09875; }
 
-.section:nth-child(5) {
-  background: #fff;
-}
+.section:nth-child(5) { background: #fff; }
 
-.section-inner {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  overflow: hidden;
-}
+.section-inner { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; }
 
-.section-inner .sub-title {
-  text-align: center;
-}
+.section-inner .sub-title { text-align: center; }
 
-.section-inner h2 {
-  font-size: 5rem;
-  font-family: 'Pocket-Calculator';
-  color: #e85524;
-  font-weight: normal;
-}
+.section-inner h2 { font-size: 5rem; font-family: 'Pocket-Calculator'; color: #e85524; font-weight: normal; }
 
-.section-inner h3 {
-  color: #e85524;
-  font-weight: bold;
-  font-family: "じゅん 34", "Jun 34";
-}
+.section-inner h3 { color: #e85524; font-weight: bold; font-family: "じゅん 34", "Jun 34"; }
 
-.section-inner ul {
-  padding: 0;
-  list-style-type: none;
-}
+.section-inner ul { padding: 0; list-style-type: none; }
 
-.section-inner ul li {
-  overflow: hidden;
-  margin: 0 0 15px;
-}
+.section-inner ul li { overflow: hidden; margin: 0 0 15px; }
 
-.section-inner ul li .date {
-  display: inline-block;
-  margin: 0 0 5px;
-  padding: 2px 15px;
-  border-radius: 5px;
-  color: #e85524;
-}
+.section-inner ul li .date { display: inline-block; margin: 0 0 5px; padding: 2px 15px; border-radius: 5px; color: #e85524; }
 
-.section-inner ul li .title {
-  margin: 0;
-  padding-left: 15px;
-  /* 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat; */
-  color: #e85524;
-}
+.section-inner ul li .title { margin: 0; padding-left: 15px; /* 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat; */ color: #e85524; }
 
-.section-inner ul li .title a {
-  color: #e85524;
-  text-decoration: none;
-}
+.section-inner ul li .title a { color: #e85524; text-decoration: none; }
 
-.section-inner ul li .title a:hover {
-  text-decoration: underline;
-}
+.section-inner ul li .title a:hover { text-decoration: underline; }
 
-.section-inner .remains {
-  font-weight: bold;
-}
+.section-inner .remains { font-weight: bold; }
 
-.section-inner .remains.red {
-  color: red;
-}
+.section-inner .remains.red { color: red; }
 
-.section-inner .remains.green {
-  color: #0e6939;
-}
+.section-inner .remains.green { color: #0e6939; }
 
-.section-inner .button-box {
-  margin: 30px 0;
-}
+.section-inner .button-box { margin: 30px 0; }
 
-@media screen and (max-width: 767px) {
-  header {
-    /*
-		.site-title {
-			margin-top: 0;
-		}
-*/
-    /*
-		#signboard {
-			position: relative;
-			top: 0;
-			bottom: 0;
-			width: 100%;
-			height: auto;
-			margin: 20px 0 0;
-		}
-		*/
-  }
-  header .main-image {
-    height: auto;
-    padding: 40px 10px 0;
-    background: none;
-  }
-  header .main-image img {
-    width: 100%;
-  }
-  header .main-image .imdesc {
-    position: relative;
-  }
-  header .main-image .imdesc .headerLeft {
-    display: none;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 175px;
-    margin: 0px -115px;
-  }
-  header .main-image .imdesc .headerRight {
-    display: none;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    width: 200px;
-    margin: 0px -165px;
-  }
-  header #signboard {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    margin: 0 0 30px;
-    padding: 60px 50px 60px 50px;
-    background: url(../images/top/bg-signbord.png) center center no-repeat;
-    background-size: 100%;
-  }
-  header .bx-wrapper .bx-viewport {
-    right: 0;
-    left: 0;
-  }
-  #sec-about .left-box {
-    padding-bottom: 20px;
-    text-align: center;
-  }
-  .section-inner {
-    width: 100%;
-  }
-  .section-inner .pickup-item {
-    text-align: center;
-  }
-  .section-inner .pickup-item img {
-    margin: auto;
-  }
-  .schedule {
-    margin-bottom: 20px;
-  }
-  .schedule:last-child {
-    margin-bottom: 0;
-  }
-}
+.schedule { font-family: "じゅん 34", "Jun 34"; }
+
+.schedule p { color: #ea5514; }
+
+@media screen and (max-width: 767px) { header { /* .site-title { margin-top: 0; } */ /* #signboard { position: relative; top: 0; bottom: 0; width: 100%; height: auto; margin: 20px 0 0; } */ }
+  header .main-image { height: auto; padding: 40px 10px 0; background: none; }
+  header .main-image img { width: 100%; }
+  header .main-image .imdesc { position: relative; }
+  header .main-image .imdesc .headerLeft { display: none; position: absolute; top: 0%; left: 0%; width: 175px; margin: 0px -115px; }
+  header .main-image .imdesc .headerRight { display: none; position: absolute; bottom: 0%; right: 0%; width: 200px; margin: 0px -165px; }
+  header #signboard { position: relative; top: 0; bottom: 0; left: 0; width: 100%; height: auto; margin: 0 0 30px; padding: 60px 50px 60px 50px; background: url(../images/top/bg-signbord.png) center center no-repeat; background-size: 100%; }
+  header .bx-wrapper .bx-viewport { right: 0; left: 0; }
+  #sec-about .left-box { padding-bottom: 20px; text-align: center; }
+  .section-inner { width: 100%; }
+  .section-inner .pickup-item { text-align: center; }
+  .section-inner .pickup-item img { margin: auto; }
+  .schedule { margin-bottom: 20px; }
+  .schedule:last-child { margin-bottom: 0; } }
+
+/*# sourceMappingURL=../css/home.map */
