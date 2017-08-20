@@ -40,3 +40,6 @@ deploy*
 
 # Other System files
 # .htaccess
+
+# INDEX.HTML
+index.html
