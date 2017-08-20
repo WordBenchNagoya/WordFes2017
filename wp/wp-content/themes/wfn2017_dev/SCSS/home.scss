@@ -254,6 +254,13 @@ header {
 	}
 } // .section-inner
 
+.schedule {
+    
+    p {
+        color: $primaryColor;
+    }
+}
+
 @media screen and (max-width: 767px) {
 	
 	header {
@@ -354,10 +361,6 @@ header {
 		
 		&:last-child {
 			margin-bottom: 0;
-		}
-		
-		p {
-    		color: $primaryColor;
 		}
 	}
 }

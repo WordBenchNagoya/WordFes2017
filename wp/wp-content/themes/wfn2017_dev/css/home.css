@@ -77,6 +77,8 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 .section-inner .button-box { margin: 30px 0; }
 
+.schedule p { color: #ea5514; }
+
 @media screen and (max-width: 767px) { header { /* .site-title { margin-top: 0; } */ /* #signboard { position: relative; top: 0; bottom: 0; width: 100%; height: auto; margin: 20px 0 0; } */ }
   header .main-image { height: auto; padding: 40px 10px 0; background: none; }
   header .main-image img { width: 100%; }
@@ -90,7 +92,6 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
   .section-inner .pickup-item { text-align: center; }
   .section-inner .pickup-item img { margin: auto; }
   .schedule { margin-bottom: 20px; }
-  .schedule:last-child { margin-bottom: 0; }
-  .schedule p { color: #ea5514; } }
+  .schedule:last-child { margin-bottom: 0; } }
 
 /*# sourceMappingURL=../css/home.map */
