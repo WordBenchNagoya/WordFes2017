@@ -1,0 +1,138 @@
+@charset 'utf-8';
+
+@import 'variables';
+
+#main .section-inner h2.sub-title04 {
+	margin: 0;
+}
+
+.social-icon,
+.belong,
+.profile {
+	margin-bottom: 5px;
+}
+
+.social-icon {
+	margin-bottom: 10px;
+	
+	a {
+		color: $textColor;
+		
+		&:hover {
+			color: $textColor;
+		}
+	}
+	
+	.facebook-icon,
+	.twitter-icon,
+	.website-icon {
+		float: none;
+		width: auto;
+		padding: 3px 10px 3px 23px;
+	}
+	
+	.facebook-icon {
+		background: url(../images/common/icon-facebook) left center no-repeat;
+		background-size: 20px auto;
+
+	}
+	
+	.twitter-icon {
+		background: url(../images/common/icon-twitter) left center no-repeat;
+		background-size: 20px auto;
+	}
+	
+	.website-icon {
+		background: url(../images/common/icon-hp) left center no-repeat;
+		background-size: 20px auto;
+	}
+}
+
+.recommended {
+	padding: 20px 0 10px;
+	text-align: left;
+	list-style-type: none;
+	
+	li {
+		padding: 5px 0 5px 20px;
+		background: url(../images/common/list-mark-gr.png) .5em .7em no-repeat;
+	}
+}
+
+dd {
+	
+	.target {
+		margin-top: 5px;
+		line-height: 1;
+		
+		span {
+			display: inline-block;
+			margin: 2px;
+			padding: 5px 7px;
+			font-size: $fs-10;
+			font-weight: bold;
+			border-radius: 3px;
+			
+			&.level_alluser {
+				background: #00A7EA;
+				color: #fff;
+			}
+			
+			&.level_beginer {
+				background: #00A95F;
+				color: #fff;
+			}
+			
+			&.level_frontend {
+				background: #915DA3;
+				color: #fff;
+			}
+			
+			&.level_bloger {
+				background: #F08300;
+				color: #fff;
+			}
+			
+			&.level_webtan {
+				background: #187FC4;
+				color: #fff;
+			}
+			
+			&.level_webdesign {
+				background: #E73656;
+				color: #fff;
+			}
+		}
+	}
+}
+
+@media screen and ( max-width: 767px ) {
+	
+	#primary {
+		
+		#main {
+			
+			.speaker-image {
+				
+				img {
+					max-width: 300px;
+					margin: auto;
+				}
+			}
+				
+			.social-icon {
+				
+				a {
+					
+					&.facebook-icon,
+					&.twitter-icon,
+					&.website-icon {
+						display: block;
+						width: 100%;
+						padding: 5px 10px 5px 23px;
+					}
+				}
+			}
+		} // #main
+	} // #primary
+}

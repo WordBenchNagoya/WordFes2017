@@ -1,0 +1,443 @@
+@charset 'utf-8';
+
+@import 'variables';
+
+html,
+body {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: $baseFontSize;
+	font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+	color: $textColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 20px;
+	padding: 0;
+	font-weight: bold;
+}
+
+h1 {
+	text-align: center;
+	font-size: $fs-30;
+}
+
+h2 {
+  //2017
+/*
+	font-size: 5rem;
+	font-family: 'Pocket-Calculator';
+	color: $headlineColor;
+*/
+}
+
+// 2017 ->
+h3 {
+    
+}
+
+h4 {
+    
+}
+
+h5 {
+    
+}
+
+.box {
+    
+}
+// <- 2017
+
+ul {
+	padding-left: 2em;
+}
+
+table {
+	
+	width: 100%;
+	
+	th,
+	td {
+		padding: 10px;
+		border: 1px solid #ccc;
+		font-weight: normal;
+		font-size: $fs-15;
+	}
+	
+	th {
+		text-align: center;
+	}
+}
+
+#page {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.entry-header {
+	display: none;
+}
+
+.tix-submit {
+	padding: 20px 0;
+	text-align: center !important;
+	
+	input[type="submit"] {
+		//background-color: #c33;
+		//border: none;
+	}
+}
+
+　
+/*
+ * ヘッダー
+ */
+header {
+  .site-header {
+	  position: relative;
+    background: $headlineColor;
+  }
+  
+/*
+  .site-header .site-branding h1{
+	  margin: 0;
+  }
+*/
+
+	
+	/*
+	 * ヘッダーナビゲーション
+	 */
+} // header
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+.main-navigation {
+// 	background: #333;
+  background: #c11329;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	line-height: 1;
+  clear: both;
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.main-navigation a {
+	color: #fff;
+	height: 40px;
+	text-indent: 10px;
+	padding: 13px 0;
+	display: block;
+	text-decoration: none;
+}
+
+.main-navigation a:hover {
+	text-decoration: none;
+// 	background: #666;
+	opacity: 0.5 ;
+}
+
+.main-navigation ul{
+  list-style: none;
+  padding-left: 0;
+  display: none;
+}
+
+
+.main-navigation ul,
+.main-navigation li {
+	margin: 0;
+}
+
+.main-navigation li {
+	list-style: none;
+  position: relative;
+}
+
+/*
+.main-navigation li+li {
+  border-left:1px solid white;
+}
+*/
+
+
+
+.main-navigation .menu-toggle {
+	background: #c11329;
+	box-shadow: none;
+	border: 0;
+	border-radius: 0;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-shadow: none;
+	width: 40px;
+}
+
+.main-navigation .menu-toggle:before {
+	content: "\f0c9";
+	display: block;
+	font-family: FontAwesome;
+	font-size: 20px;
+	margin-right: 100px;
+	text-align: center;
+	width: 100%;
+}
+
+.main-navigation .menu-toggle:hover:before {
+// 	background: #333;
+	opacity: 0.5;
+}
+
+.main-navigation.toggled .menu-toggle:before {
+	content: "\f00d";
+}
+
+.main-navigation.toggled ul {
+	display: block;
+}
+
+
+@media screen and (max-width: 37.5em) {
+	.main-navigation .navigation-menu {
+// 		background: #333;
+		background: #c11329;
+		padding: 0;
+		position: absolute;
+		top: 40px;
+		width: 100%;
+	}
+
+	.main-navigation li {
+		border-bottom: 1px solid rgba(0,0,0,1);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+		float: none;
+	}
+	
+
+	.main-navigation li:last-child {
+		border-bottom: 0;
+		box-shadow: none;
+	}
+
+	.main-navigation > ul {
+		border-bottom: 1px solid rgba(0,0,0,1);
+	}
+
+	.main-navigation ul ul {
+		border-top: 1px solid rgba(0,0,0,1);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset;
+		float: none;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+
+	.main-navigation ul ul a {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 37.5em) {
+	.menu-toggle {
+		display: none;
+	}
+  
+	.main-navigation {
+		background: #c11329;
+	}
+
+	.main-navigation a:hover {
+		text-decoration: none;
+// 		background: #333;
+    opacity: 0.5;
+	}
+
+	.main-navigation .navigation-menu {
+		font-size:0;
+	}
+
+	.main-navigation .navigation-menu #primary-menu {
+		text-align: center;
+	}
+
+	.main-navigation .navigation-menu #primary-menu > li {
+		display: inline-block;
+		font-size: 13px;
+		float: none;
+	}
+
+	.main-navigation .navigation-menu #primary-menu > li > a {
+		padding-right: 20px;
+		padding-left: 10px;
+		background: url(../images/navi_line.png) no-repeat right center;
+	}
+
+	.main-navigation .navigation-menu #primary-menu > li:hover > a {
+		background: #333;
+	}
+
+	.main-navigation .navigation-menu #primary-menu > li:last-child > a {
+		background-image: none;
+	}
+
+	.main-navigation ul ul {
+		background: #333;
+		box-shadow: none;
+		top: 40px;
+		text-align: left;
+	}
+
+	.main-navigation ul {
+  	list-style: none;
+		display: block;
+    padding-left: 0;
+	}
+
+	.main-navigation ul ul a {
+		width: 230px;
+	}
+
+	.main-navigation ul ul li {
+		border-bottom: 1px solid rgba(0,0,0,1);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+	}
+
+	.main-navigation ul ul li:hover a {
+// 		background: #666;
+    opacity: 0.5;
+	}
+}
+
+/*
+ * コンテンツ
+ */
+#main {
+	
+	.section-inner {
+		padding: 25px 0;
+		word-wrap: break-word;
+	}
+	
+	.button-wrapper {
+		margin: 20px 0;
+		text-align: center;
+		
+		a {
+			display: block;
+			width: 50%;
+			margin: 0 auto;
+			padding: 10px 15px;
+			background: #0e6939;
+			border-radius: 6px;
+			box-shadow: 0px 4px 0px rgba( 14, 105, 57, 0.5 );
+			color: #fff;
+			text-decoration: none;
+			
+			&:hover {
+				background: rgba( 14, 105, 57, 0.6 );
+				box-shadow: none;
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+	}
+} // #main
+
+
+/*
+ * フッター
+ */
+.copyright-wrapper {
+	padding: 10px;
+// 	background-color: #0e6939;
+	background-color: $headlineColor;
+	color: #FFF;
+	
+	.copyright {
+		margin: 0;
+	}
+} // .copyright-wrapper
+
+// ボタン
+.btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  background: #e85524;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: $fs-18;
+}
+
+.btn:hover {
+  background: #e85524;
+  text-decoration: none;
+  color: white;
+}
+
+/*
+// スマホ
+*/
+/*
+@media screen and (max-width: 767px) {
+	
+	.site-header {
+		
+		#site-navigation {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			padding: 0;
+			background-image: none;
+			
+			.menu-bar {
+				width: 100%;
+				height: 40px;
+				margin: 0;
+				padding: 5px 10px;
+				background: $titleColor;
+				line-height: 1;
+				text-align: right;
+				
+				.menu-open {
+					width: 20px;
+					height: 20px;
+					margin: 5px;
+				}
+			}
+			
+			ul {
+				display: none;
+				width: 100%;
+				z-index: 9998;
+				border-radius: 0;
+				
+				li {
+					z-index: 9999;
+					text-align: left;
+				}
+			}
+		}
+	}
+}
+*/

@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* サイズ */
+/* フォントサイズ */
+/* カラー */
+.sidebar {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 5px;
+  background: #ea5514;
+  font-size: 1.43rem;
+  color: #fff;
+}
+
+.sidebar .banner-container {
+  padding: 5px 0 0;
+  background: #f4f4f4;
+}
+
+.sidebar .banner-container .banner-item {
+  padding: 0 5px 5px;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.sidebar ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar ul li.current_page_item a {
+  background-color: #f9cbb8;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 15px 5px 15px 23px;
+  position: relative;
+  background-color: #f4f4f4;
+  color: #2d2d2d;
+}
+
+.sidebar ul li a:hover {
+  background-color: #f9cbb8;
+  color: #2d2d2d;
+  text-decoration: none;
+}
+
+.sidebar ul li a:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  color: #ea5514;
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 10px);
+  line-height: 1;
+}

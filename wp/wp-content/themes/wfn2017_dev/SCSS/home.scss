@@ -1,0 +1,361 @@
+@charset 'utf-8';
+
+@import 'variables';
+
+/*
+ * トップページ
+ */
+header {
+	
+  background: url(../images/common/bg-header.png) center center repeat-x;
+	background-size: auto 100%;
+	
+	.main-image{
+  	margin: 0 auto;
+  	max-width: $titleLogoWidth;
+    padding: 50px 10px;
+    
+    
+    //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
+    .imdesc{
+      position: relative;
+      
+      // サファリで画像が飛び出すのを修正
+      .site-branding{
+        img{
+          max-width: $titleLogoWidth - 20px;
+        }
+      }
+      
+      .headerLeft{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 200px;
+        // マージンで左上からの位置を調整
+        margin: 0px -150px;
+      }
+      .headerRight{
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        width: 200px;
+        // マージンで右下からの位置を調整
+        margin: -50px -145px;
+      }
+    }
+    
+    
+	}
+
+	.site-title {
+// 		margin: 150px auto 0;
+    margin: 0;
+    padding-bottom: 30px;
+	}
+	
+	/*
+	#signboard {
+		position: absolute;
+		right: 0;
+		bottom: 225px;
+		left: 0;
+		width: 735px;
+		height: 422px;
+		margin: auto;
+		background: url(../images/top/img-signboard.png) center center no-repeat;
+	}
+	*/
+	
+	
+	#signboard {
+		position: absolute;
+		right: 0;
+		bottom: 305px;
+		left: 55px;
+		width: 550px;
+		height: 280px;
+		margin: auto;
+		background: none;
+		
+		.bx-wrapper .bx-viewport {
+			background: transparent;
+			border: none;
+			moz-box-shadow: none;
+			webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	}
+
+	.bxslider {
+		margin: 0;
+		padding: 0;
+		
+		li {
+			
+			img {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	/*
+	 * ヘッダーナビゲーション
+	 */
+/*
+	#site-navigation {
+		padding: 20px 15px 25px;
+		background: url(../images/navigation/bg-navigation.png) center bottom repeat-x;
+	} // #site-navigation
+*/
+} // header
+
+#sec-about {
+	color: white;
+	h2,
+	h3 {
+  	color: white;	
+	}
+}
+
+#sec-social {
+	h2 {
+  	color: white;	
+	}
+	
+	.news-box ul{
+  	background-color: #fdede3;
+  	border-radius: 5px;
+	}
+	
+	.blog-box ul{
+  	background-color: #fdeee4;
+  	border-radius: 5px;
+	}
+	
+/*
+	.twitter-box #twitter-widget-0{
+  	background-color: #fdeee4;  	
+	}
+*/
+}
+
+
+.section {
+	
+	width: 100%;
+	
+/*
+	&:nth-child(odd) {
+		
+		background: #fff;
+		
+	}
+	
+	&:nth-child(even) {
+		background: $bgColor;
+	}
+*/
+	&:nth-child(1) {
+		background: $bgColor;
+	}
+	&:nth-child(2) {
+// 		background: #fff;
+		background-image: url(../images/top/bg-schedule.svg) ;
+		background-position: center top;
+	}
+	&:nth-child(3) {
+		background: #fff;
+	}
+	&:nth-child(4) {
+		background: $bgColor;
+	}
+	&:nth-child(5) {
+		background: #fff;
+	}
+	
+} // .section
+
+.section-inner {
+	width: 100%;
+	max-width: $contentWidth;
+	margin: 0 auto;
+	overflow: hidden;
+
+	.sub-title {
+		text-align: center;
+	}
+	
+  h2 {
+	  font-size: 5rem;
+    font-family: 'Pocket-Calculator';
+    color: $headlineColor;
+    font-weight: normal;
+  }
+	
+	
+	h3 {
+		color: $headlineColor;
+		font-weight: bold;
+		font-family: "じゅん 34", "Jun 34";
+	}
+	
+	ul {
+		padding: 0;
+		list-style-type: none;
+		
+		li {
+			overflow: hidden;
+			margin: 0 0 15px;
+			
+			.date {
+				display: inline-block;
+				margin: 0 0 5px;
+				padding: 2px 15px;
+// 				background: #0e6939;
+				border-radius: 5px;
+// 				color: #fff;
+				color: $headlineColor;
+			} // .date
+			
+			.title {
+				margin: 0;
+				padding-left: 15px;
+/* 				background: url(../images/common/list-mark-gr.png) left .4em no-repeat; */
+				color: $headlineColor;
+				a {
+					color: $headlineColor;
+					text-decoration: none;
+					
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			} // .title
+		} // li
+	} // ul
+	
+	.remains {
+		font-weight: bold;
+		
+		&.red {
+			color: red;
+		}
+		
+		&.green {
+			color: #0e6939;
+		}
+	}
+	
+	.button-box {
+		margin: 30px 0;
+	}
+} // .section-inner
+
+@media screen and (max-width: 767px) {
+	
+	header {
+		
+		.main-image {
+			height: auto;
+// 			margin-top: 40px;
+			padding: 40px 10px 0;
+			background: none;
+
+			img {
+				width: 100%;
+			}
+			
+      //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
+      .imdesc{
+        position: relative;
+        .headerLeft{
+          display: none;
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          width: 175px;
+          // マージンで左上からの位置を調整
+          margin: 0px -115px;
+        }
+        .headerRight{
+          display: none;
+          position: absolute;
+          bottom: 0%;
+          right: 0%;
+          width: 200px;
+          // マージンで右下からの位置を調整
+          margin: 0px -165px;
+        }
+      }
+		}
+
+/*
+		.site-title {
+			margin-top: 0;
+		}
+*/
+		
+		/*
+		#signboard {
+			position: relative;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			height: auto;
+			margin: 20px 0 0;
+		}
+		*/
+		
+		#signboard {
+			position: relative;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+			margin: 0 0 30px;
+			padding: 60px 50px 60px 50px;
+			background: url(../images/top/bg-signbord.png) center center no-repeat;
+			background-size: 100%;
+		}
+		
+		.bx-wrapper .bx-viewport {
+			right: 0;
+			left: 0;
+		}
+	}
+	
+	#sec-about {
+		
+		.left-box {
+			padding-bottom: 20px;
+			text-align: center;
+		}
+		
+	}
+	
+	.section-inner {
+		width: 100%;
+		
+		.pickup-item {
+			text-align: center;
+			
+			img {
+				margin: auto;
+			}
+		}
+	}
+	
+	.schedule {
+		margin-bottom: 20px;
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
