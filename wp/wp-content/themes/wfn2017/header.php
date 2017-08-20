@@ -45,7 +45,7 @@ if ( is_front_page() ) {
 <?php
 if ( is_front_page() ) {
     
-    echo '<meta property="og:image" content="/wp/wp-content/uploads/2017/08/wordfesnagoya2017-ogp.jpg" />';
+    echo '<meta property="og:image" content="http://2017.wordfes.org/wp/wp-content/uploads/2017/08/wordfesnagoya2017-ogp.jpg" />';
     
 }
 ?>
