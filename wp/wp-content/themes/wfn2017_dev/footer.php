@@ -38,8 +38,10 @@ jQuery(document).ready(function(){
 			jQuery('.schedule-inner').tile(3);
 		});
 	} else {
-		// IEでウェブフォントのロードイベントを取得できないた場合の苦肉の策
-		jQuery('.schedule-inner').delay(4000).tile(3);
+		// IEでウェブフォントのロードイベントを取得できない場合の苦肉の策
+		jQuery('.schedule-inner').delay(3000).queue(function(){
+			$(this).tile(3);
+		});
 	}
 
 	jQuery(".menu-open").on("click", function() {
