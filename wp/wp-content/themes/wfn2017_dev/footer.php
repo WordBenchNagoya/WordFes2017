@@ -35,7 +35,7 @@ jQuery(document).ready(function(){
 	jQuery('.schedule-inner').tile(3);
 	document.fonts.ready.then(function(fontFaceSet) {
 		jQuery('.schedule-inner').tile(3);
-	}
+	});
 
 	jQuery(".menu-open").on("click", function() {
 		jQuery('.navigation-menu ul').slideToggle();
