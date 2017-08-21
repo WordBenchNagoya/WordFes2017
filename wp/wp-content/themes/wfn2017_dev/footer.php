@@ -33,10 +33,13 @@
 jQuery(document).ready(function(){
 	
 	jQuery('.schedule-inner').tile(3);
-	if( document.fonts != undefined ) {
+	if( document.fonts ) {
 		document.fonts.ready.then(function(fontFaceSet) {
 			jQuery('.schedule-inner').tile(3);
 		});
+	} else {
+		// IEでウェブフォントのロードイベントを取得できないた場合の苦肉の策
+		jQuery('.schedule-inner').delay(1500).tile(3);
 	}
 
 	jQuery(".menu-open").on("click", function() {
