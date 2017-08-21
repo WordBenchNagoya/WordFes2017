@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 	} else {
 		// IEでウェブフォントのロードイベントを取得できない場合の苦肉の策
 		jQuery('.schedule-inner').delay(3000).queue(function(){
-			jQuery(this).tile(3);
+			jQuery('.schedule-inner').tile(3);
 		});
 	}
 
