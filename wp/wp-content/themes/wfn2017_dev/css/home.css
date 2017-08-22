@@ -5,11 +5,11 @@
 /* トップページ */
 header { background: url(../images/common/bg-header.png) center center repeat-x; background-size: auto 100%; /* #signboard { position: absolute; right: 0; bottom: 225px; left: 0; width: 735px; height: 422px; margin: auto; background: url(../images/top/img-signboard.png) center center no-repeat; } */ /* ヘッダーナビゲーション */ /* #site-navigation { padding: 20px 15px 25px; background: url(../images/navigation/bg-navigation.png) center bottom repeat-x; } // #site-navigation */ }
 
-header .main-image { margin: 0 auto; max-width: 500px; padding: 50px 10px; }
+header .main-image { margin: 0 auto; max-width: 1000px; padding: 50px 10px; }
 
 header .main-image .imdesc { position: relative; }
 
-header .main-image .imdesc .site-branding img { max-width: 480px; }
+header .main-image .imdesc .site-branding img { max-width: 100%; }
 
 header .main-image .imdesc .headerLeft { position: absolute; top: 0%; left: 0%; width: 200px; margin: 0px -150px; }
 
