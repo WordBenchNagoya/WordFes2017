@@ -27,7 +27,7 @@
 
 .site-header { background: url(../images/common/bg-sub-header.png) center top repeat-x; }
 
-.site-header .main-image { position: relative; padding-bottom: 10px; }
+.site-header .main-image { position: relative; }
 
 .site-header #signboard { position: absolute; right: 0; bottom: 0; left: 0; width: 600px; height: 320px; margin: auto; padding: 30px 75px 50px; background: url(../images/common/bg-signboard.png) center center no-repeat; }
 
