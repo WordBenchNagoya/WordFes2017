@@ -76,7 +76,8 @@ if ( is_front_page() ) {
   		<div class="imdesc">
 			  <div class="site-branding">
   				<?php
-                  $main_image = 'page-title.svg';
+                  //$main_image = 'page-title.svg';
+                  $main_image = 'page-title.png';
 //  				if( ! ( is_home() || is_front_page() || wordfes2015_is_mobile() ) ) {
 		  		  if( ! ( is_home() || is_front_page() ) ) {
 			  		  $main_image = 'subpage-title.svg';
@@ -89,12 +90,14 @@ if ( is_front_page() ) {
                 </a>
             </h1>
 			  </div><!-- .site-branding -->
+            <!--
             <div class="headerLeft">
               <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-orange.svg" alt="babyワプー" />
             </div>
             <div class="headerRight">
               <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-black.svg" alt="futureワプー" />
-            </div>			  
+            </div>
+            -->
       </div>
 		</div><!-- .main-image -->
 
