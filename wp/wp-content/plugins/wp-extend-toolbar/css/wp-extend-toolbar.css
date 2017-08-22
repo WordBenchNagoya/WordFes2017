@@ -4,6 +4,9 @@ body {
 	position: relative;
 }
 
+#wpadminbar {
+    background-color: rgba(35, 40, 45, 0.75);
+}
 #wp-admin-bar-extend-toolbar {
 	z-index: 9998 !important;
 }
@@ -23,4 +26,19 @@ body {
 #wp-admin-bar-extend-toolbar-title .ab-item,
 #wp-admin-bar-extend-toolbar-description .ab-item {
 	height: auto !important;
+}
+
+#open-close-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 64px;
+    height: auto;
+    z-index: 999;
+    margin: 0;
+    cursor: pointer;
+}
+
+#open-close-button:active {
+    margin: 1px 0 0 0;
 }

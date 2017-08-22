@@ -29,6 +29,32 @@ jQuery(function($){
 		$('body.admin-bar .navbar-fixed-top').css({
 			'cssText': 'top:' + total_height + 'px !important'
 		});
-		
+		$('#wpadminbar').after(
+		    '<img src="../img/btn-close.png" id="open-close-button" class="open" alt="">'
+        );
+        $('#open-close-button').css({
+            'top': + ( total_height + 10 ) + 'px'
+        });
+		$('#open-close-button').on('click', function(){
+    		if( $(this).hasClass('open') ) {
+        		
+        		$(this).removeClass('open');
+        		$(this).addClass('close');
+        		$(this).attr('src', '../img/btn-open.png');
+        		$('#wpadminbar').css({
+            		'cssText':'visibility: hidden;'
+        		});
+        		
+    		} else {
+        		
+        		$(this).removeClass('close');
+        		$(this).addClass('open');
+        		$(this).attr('src', '../img/btn-close.png');
+        		$('#wpadminbar').css({
+            		'cssText':'visibility: visible; height:'+total_height+'px;'
+        		});
+        		
+    		}
+		});
 	}
 });

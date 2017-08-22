@@ -4,7 +4,7 @@
  Plugin URI: https://github.com/michouse/wp-extend-toolbar
  Description: Adds a page information to the admin bar.
  Author: Michinari Odajima
- Version: 1.3.0
+ Version: 2.0.0
  Author URI: http://piece-web.jp/
  Domain Path: /language
  Text Domain: wp-extend-toolbar
