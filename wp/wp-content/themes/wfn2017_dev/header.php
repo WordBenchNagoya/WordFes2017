@@ -70,8 +70,6 @@ if ( is_front_page() ) {
 
 	<header class="site-header" role="banner">
 		
-		<div class="test-message" style="position: absolute; top: 20px; z-index: 999">テスト</div>
-		
 		<div class="main-image">
   		<div class="imdesc">
 			  <div class="site-branding">
