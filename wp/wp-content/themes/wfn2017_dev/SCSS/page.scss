@@ -6,12 +6,12 @@
 
 .site-header {
 	//height: 415px;
-	background: url(../images/common/bg-sub-header.png) center center repeat-x;
+	background: url(../images/common/bg-sub-header.png) center top repeat-x;
 	
 	.main-image {
 		position: relative;
 // 		height: 357px;
-		padding-top: 30px;
+		//padding-top: 30px;
 		padding-bottom: 10px;
 	}
 	
@@ -33,7 +33,7 @@
 		img {
 // 			width: 70%;
 			height: auto;
-			max-height: 300px;
+			//max-height: 300px;
 		}
 	}
 	
