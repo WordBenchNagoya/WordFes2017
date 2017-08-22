@@ -79,14 +79,15 @@ if ( is_front_page() ) {
                   //$main_image = 'page-title.svg';
                   $main_image = 'page-title.png';
 //  				if( ! ( is_home() || is_front_page() || wordfes2015_is_mobile() ) ) {
+                /*
 		  		  if( ! ( is_home() || is_front_page() ) ) {
 			  		  $main_image = 'subpage-title.svg';
 				    }
+				*/
 				  ?>
             <h1 class="site-title">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" class="hidden-xs" />
-                  <img src="<?php echo get_template_directory_uri(); ?>/images/common/subpage-title.svg" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" class="visible-xs" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" />
                 </a>
             </h1>
 			  </div><!-- .site-branding -->
