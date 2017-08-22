@@ -33,7 +33,7 @@
 
 .site-header .site-title { width: 100%; margin: 0; }
 
-.site-header .site-title img { height: auto; }
+.site-header .site-title img { height: auto; max-height: 400px; }
 
 .site-header .page-title { line-height: .8; font-weight: normal; font-size: 2rem; color: #046a37; }
 
