@@ -21,11 +21,11 @@
 <?php
 if ( is_front_page() ) {
 	
-	$title = '【開発】WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜';
+	$title = 'WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜';
 	
 } else {
 	
-	$title = '【開発】' . get_the_title() . ' | WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜'; 
+	$title = get_the_title() . ' | WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜'; 
 	
 }
 ?>
