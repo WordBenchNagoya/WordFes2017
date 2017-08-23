@@ -21,11 +21,11 @@
 <?php
 if ( is_front_page() ) {
 	
-	$title = 'WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜';
+	$title = '【開発】WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜';
 	
 } else {
 	
-	$title = get_the_title() . ' | WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜'; 
+	$title = '【開発】' . get_the_title() . ' | WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜'; 
 	
 }
 ?>
@@ -70,25 +70,33 @@ if ( is_front_page() ) {
 
 	<header class="site-header" role="banner">
 		
-		
 		<div class="main-image">
   		<div class="imdesc">
 			  <div class="site-branding">
   				<?php
-            $main_image = 'page-title.svg';
+                  //$main_image = 'page-title.svg';
+                  $main_image = 'page-title.png';
 //  				if( ! ( is_home() || is_front_page() || wordfes2015_is_mobile() ) ) {
+                /*
 		  		  if( ! ( is_home() || is_front_page() ) ) {
 			  		  $main_image = 'subpage-title.svg';
 				    }
+				*/
 				  ?>
-          <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" /></a></h1>
+            <h1 class="site-title">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                  <img src="<?php echo get_template_directory_uri(); ?>/images/common/<?php echo $main_image; ?>" alt="<?php bloginfo( 'description' ); ?> <?php bloginfo( 'name' ); ?>" />
+                </a>
+            </h1>
 			  </div><!-- .site-branding -->
+            <!--
             <div class="headerLeft">
               <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-orange.svg" alt="babyワプー" />
             </div>
             <div class="headerRight">
               <img src="<?php echo get_template_directory_uri(); ?>/images/common/wapu-black.svg" alt="futureワプー" />
-            </div>			  
+            </div>
+            -->
       </div>
 		</div><!-- .main-image -->
 
