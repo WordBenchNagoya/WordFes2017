@@ -158,11 +158,10 @@
 @media screen and (max-width: 767px) { .site-header { height: auto; background-position: center top; background-size: cover; }
   .site-header .main-image { height: auto; }
   .site-header .main-image .site-branding { overflow: auto; }
-  .site-header #signboard { position: relative; width: 100%; height: auto; padding: 55px 30px 45px; background-size: 100% auto; background-position: center bottom; }
-  .site-header #signboard .site-title { margin-bottom: 10px; }
-  .site-header #signboard .site-title img { width: 100%; }
-  .site-header #signboard .page-title { margin: 0; font-size: 1.5rem; }
-  .site-header #signboard .page-title span { font-size: 0.86rem; }
+  .site-header .site-title { margin-bottom: 10px; }
+  .site-header .site-title img { width: 100%; }
+  .site-header .page-title { margin: 0; font-size: 1.5rem; }
+  .site-header .page-title span { font-size: 0.86rem; }
   #primary { width: 100%; }
   #main.archive .text-box { padding: 5px 0; }
   #main.archive .text-box h2 { background-position: left center; }

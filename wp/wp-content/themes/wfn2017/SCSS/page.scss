@@ -425,31 +425,23 @@
 			}
 		}
 		
-		#signboard {
-			position: relative;
-			width: 100%;
-			height: auto;
-			padding: 55px 30px 45px;
-			background-size: 100% auto;
-			background-position: center bottom;
 			
-			.site-title {
-				margin-bottom: 10px;
-				
-				img {
-					width: 100%;
-				}
-			}
-			
-			.page-title {
-				margin: 0;
-				font-size: $fs-21;
-				
-				span {
-					font-size: $fs-12;
-				}
-			}
-		}
+        .site-title {
+            margin-bottom: 10px;
+            
+            img {
+            	width: 100%;
+            }
+        }
+        
+        .page-title {
+            margin: 0;
+            font-size: $fs-21;
+            
+            span {
+            	font-size: $fs-12;
+            }
+        }
 	}
 	
 	#primary {
