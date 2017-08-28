@@ -67,6 +67,7 @@ table th { background: #F7F8F8; min-width: 100px; }
   .main-navigation .navigation-menu { font-size: 0; }
   .main-navigation .navigation-menu #primary-menu { text-align: center; }
   .main-navigation .navigation-menu #primary-menu > li { display: inline-block; font-size: 13px; float: none; }
+  .main-navigation .navigation-menu #primary-menu > li:before { content: '|'; color: #fff; }
   .main-navigation .navigation-menu #primary-menu > li > a { padding-right: 20px; padding-left: 10px; }
   .main-navigation .navigation-menu #primary-menu > li:hover > a { background: #333; }
   .main-navigation .navigation-menu #primary-menu > li:last-child > a { background-image: none; }

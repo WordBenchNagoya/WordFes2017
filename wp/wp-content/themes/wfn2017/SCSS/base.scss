@@ -299,6 +299,11 @@ header {
 		display: inline-block;
 		font-size: 13px;
 		float: none;
+		
+		&:before {
+    		content: '|';
+    		color: #fff;
+		}
 	}
 
 	.main-navigation .navigation-menu #primary-menu > li > a {
