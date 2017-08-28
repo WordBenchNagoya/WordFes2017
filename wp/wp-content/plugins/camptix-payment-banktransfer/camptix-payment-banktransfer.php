@@ -2,7 +2,7 @@
 /*
 Plugin Name: CampTix Payment Method: Bank transfer
 Description: Extends CampTix with support for Bank transfer
-Version: 999
+Version: 758
 Author: Raphael Michel
 */
 
