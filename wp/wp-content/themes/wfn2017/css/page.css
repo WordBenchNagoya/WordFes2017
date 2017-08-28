@@ -53,7 +53,7 @@
 
 #main { /* // アーカイブページ */ /* // シングルページ */ }
 
-#main .page-title { font-size: 1.86rem; font-family: "じゅん 34", "Jun 34"; padding: 25px 10px 25px; color: #ea5514; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; align-items: center; text-align: center; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; }
+#main .page-title { font-size: 1.86rem; font-family: "じゅん 34", "Jun 34"; margin: 20px 0 0; padding: 25px 10px 25px; color: #ea5514; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; align-items: center; text-align: center; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; justify-content: center; }
 
 #main .page-title:before, #main .page-title:after { border-top: 6px solid #ea5514; content: ""; display: inline; -webkit-box-flex: 1; -webkit-flex-grow: 1; -moz-flex-grow: 1; -ms-flex-grow: 1; flex-grow: 1; min-width: 1em; max-width: 135px; }
 

@@ -284,7 +284,7 @@ header {
 	.main-navigation a:hover {
 		text-decoration: none;
 // 		background: #333;
-    opacity: 0.5;
+        opacity: 1;
 	}
 
 	.main-navigation .navigation-menu {
@@ -296,24 +296,49 @@ header {
 	}
 
 	.main-navigation .navigation-menu #primary-menu > li {
+    	clear: both;
 		display: inline-block;
 		font-size: 13px;
 		float: none;
+
+		&:before {
+    		display: inline-block;
+    		float: left;
+    		content: '|';
+    		padding-top: 1em;
+    		color: #fff;
+		}
+		
+		&:last-child {
+    		
+    		&:after {
+        		display: inline-block;
+        		float: left;
+        		content: '|';
+        		padding-top: 1em;
+        		color: #fff;
+    		}
+		}
+
+        a {
+            float: left;
+        }
+    		
+	}
+	
+	.main-navigation .navigation-menu #primary-menu .current-menu-item {
+    	background: #E60012;
 	}
 
 	.main-navigation .navigation-menu #primary-menu > li > a {
 		padding-right: 20px;
 		padding-left: 10px;
 		//background: url(../images/navi_line.png) no-repeat right center;
-
-		&:before {
-    		content: '|';
-    		color: #fff;
-		}
 	}
 
 	.main-navigation .navigation-menu #primary-menu > li:hover > a {
-		background: #333;
+		//background: #333;
+		background: #E60012;
 	}
 
 	.main-navigation .navigation-menu #primary-menu > li:last-child > a {
@@ -321,16 +346,17 @@ header {
 	}
 
 	.main-navigation ul ul {
-		background: #333;
+		//background: #333;
+		background: #E60012;
 		box-shadow: none;
 		top: 40px;
 		text-align: left;
 	}
 
 	.main-navigation ul {
-  	list-style: none;
+        list-style: none;
 		display: block;
-    padding-left: 0;
+        padding-left: 0;
 	}
 
 	.main-navigation ul ul a {
@@ -344,7 +370,7 @@ header {
 
 	.main-navigation ul ul li:hover a {
 // 		background: #666;
-    opacity: 0.5;
+        opacity: 0.5;
 	}
 }
 
