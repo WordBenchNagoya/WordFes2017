@@ -6,13 +6,13 @@
 
 .site-header {
 	//height: 415px;
-	background: url(../images/common/bg-sub-header.png) center center repeat-x;
+	background: url(../images/common/bg-sub-header.png) center top repeat-x;
 	
 	.main-image {
 		position: relative;
 // 		height: 357px;
-		padding-top: 30px;
-		padding-bottom: 10px;
+		//padding-top: 30px;
+		//padding-bottom: 10px;
 	}
 	
 	#signboard {
@@ -33,7 +33,7 @@
 		img {
 // 			width: 70%;
 			height: auto;
-			max-height: 300px;
+			max-height: 400px;
 		}
 	}
 	
@@ -86,6 +86,7 @@
 	.page-title {
 		font-size: $fs-26;
 		font-family: "じゅん 34", "Jun 34";
+		margin: 20px 0 0;
 		padding: 25px 10px 25px;
 		color: $primaryColor;
 		display: -webkit-box;
@@ -425,31 +426,23 @@
 			}
 		}
 		
-		#signboard {
-			position: relative;
-			width: 100%;
-			height: auto;
-			padding: 55px 30px 45px;
-			background-size: 100% auto;
-			background-position: center bottom;
 			
-			.site-title {
-				margin-bottom: 10px;
-				
-				img {
-					width: 65%;
-				}
-			}
-			
-			.page-title {
-				margin: 0;
-				font-size: $fs-21;
-				
-				span {
-					font-size: $fs-12;
-				}
-			}
-		}
+        .site-title {
+            margin-bottom: 10px;
+            
+            img {
+            	width: 100%;
+            }
+        }
+        
+        .page-title {
+            margin: 0;
+            font-size: $fs-21;
+            
+            span {
+            	font-size: $fs-12;
+            }
+        }
 	}
 	
 	#primary {

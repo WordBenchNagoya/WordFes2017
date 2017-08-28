@@ -3,7 +3,7 @@ Contributors: michouse
 Tags: plugin, admin bar, tool bar, custom admin bar, custom tool bar
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.3.0
+Stable tag: 2.0.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,10 @@ WP Extend Toolbar は、ツールバーを拡張し、以下のページ情報�
 
 
 == Changelog ==
+
+= 2.0.0 =
+* ツールバーを隠せるように変更。
+* 開閉ボタン実装。
 
 = 1.3.0 =
 * For other languages.

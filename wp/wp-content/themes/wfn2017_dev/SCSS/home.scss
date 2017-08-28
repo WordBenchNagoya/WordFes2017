@@ -12,8 +12,8 @@ header {
 	
 	.main-image{
   	margin: 0 auto;
-  	max-width: $titleLogoWidth;
-    padding: 50px 10px;
+  	max-width: $contentWidth;
+    padding: 0;
     
     
     //トップ画面のワプーロゴの位置調整関係(真ん中の画像を元に位置を調整する)
@@ -23,7 +23,7 @@ header {
       // サファリで画像が飛び出すのを修正
       .site-branding{
         img{
-          max-width: $titleLogoWidth - 20px;
+          max-width: 100%;
         }
       }
       
