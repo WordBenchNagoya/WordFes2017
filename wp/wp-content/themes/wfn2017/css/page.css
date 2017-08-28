@@ -107,7 +107,6 @@
   #main .page-title {
     font-size: 1.86rem;
     font-family: "じゅん 34", "Jun 34";
-    margin: 20px 0 0;
     padding: 25px 10px 25px;
     color: #ea5514;
     display: -webkit-box;
@@ -152,7 +151,7 @@
     color: #ea5514; }
   #main .section-inner h2 {
     background: #ea5514;
-    color: #ea5514; }
+    color: #fff; }
   #main .section-inner h3 {
     border-top: 2px solid #ea5514;
     border-bottom: 2px solid #ea5514; }
