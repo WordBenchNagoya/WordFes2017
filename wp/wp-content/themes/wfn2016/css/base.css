@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* サイズ */
+/* フォントサイズ */
+/* カラー */
+html, body { width: 100%; height: auto; margin: 0; padding: 0; text-align: center; font-size: 14px; font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif; color: #2d2d2d; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0 0 20px; padding: 0; font-weight: bold; }
+
+h1 { text-align: center; font-size: 2.14rem; }
+
+h2 { font-size: 1.43rem; }
+
+ul { padding-left: 2em; }
+
+table { width: 100%; }
+table th, table td { padding: 10px; border: 1px solid #ccc; font-weight: normal; font-size: 1.07rem; }
+table th { text-align: center; }
+
+#page { width: 100%; margin: 0 auto; padding: 0; }
+
+.entry-header { display: none; }
+
+.tix-submit { padding: 20px 0; text-align: center !important; }
+
+/* ヘッダー */
+header { /* ヘッダーナビゲーション */ }
+header #site-navigation ul { width: 100%; max-width: 1000px; margin: auto; padding: 10px 0 5px; background: #fff; border-radius: 10px; list-style-type: none; }
+header #site-navigation ul li img { width: auto; opacity: 0.5; }
+header #site-navigation ul li a { display: block; }
+header #site-navigation ul li a img { opacity: 1; }
+
+/* コンテンツ */
+#main .section-inner { padding: 25px 0; word-wrap: break-word; }
+#main .button-wrapper { margin: 20px 0; text-align: center; }
+#main .button-wrapper a { display: block; width: 50%; margin: 0 auto; padding: 10px 15px; background: #0e6939; border-radius: 6px; box-shadow: 0px 4px 0px rgba(14, 105, 57, 0.5); color: #fff; text-decoration: none; }
+#main .button-wrapper a:hover { background: rgba(14, 105, 57, 0.6); box-shadow: none; color: #fff; text-decoration: none; }
+
+/* フッター */
+.copyright-wrapper { padding: 10px; background-color: #0e6939; color: #FFF; }
+.copyright-wrapper .copyright { margin: 0; }
+
+/*
+// スマホ
+*/
+@media screen and (max-width: 767px) { .site-header #site-navigation { position: absolute; top: 0; width: 100%; padding: 0; background-image: none; }
+  .site-header #site-navigation .menu-bar { width: 100%; height: 40px; margin: 0; padding: 5px 10px; background: #0e6939; line-height: 1; text-align: right; }
+  .site-header #site-navigation .menu-bar .menu-open { width: 20px; height: 20px; margin: 5px; }
+  .site-header #site-navigation ul { display: none; width: 100%; z-index: 9998; border-radius: 0; }
+  .site-header #site-navigation ul li { z-index: 9999; text-align: left; } }
+
+/*# sourceMappingURL=base.css.map */

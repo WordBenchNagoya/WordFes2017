@@ -1,0 +1,211 @@
+@charset 'utf-8';
+
+@import 'variables';
+
+html,
+body {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: $baseFontSize;
+	font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+	color: $textColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 20px;
+	padding: 0;
+	font-weight: bold;
+}
+
+h1 {
+	text-align: center;
+	font-size: $fs-30;
+}
+
+h2 {
+	font-size: $fs-20;
+}
+
+ul {
+	padding-left: 2em;
+}
+
+table {
+	
+	width: 100%;
+	
+	th,
+	td {
+		padding: 10px;
+		border: 1px solid #ccc;
+		font-weight: normal;
+		font-size: $fs-15;
+	}
+	
+	th {
+		text-align: center;
+	}
+}
+
+#page {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.entry-header {
+	display: none;
+}
+
+.tix-submit {
+	padding: 20px 0;
+	text-align: center !important;
+	
+	input[type="submit"] {
+		//background-color: #c33;
+		//border: none;
+	}
+}
+
+
+/*
+ * ヘッダー
+ */
+header {
+	
+	/*
+	 * ヘッダーナビゲーション
+	 */
+	#site-navigation {
+		
+		ul {
+			width: 100%;
+			max-width: $contentWidth;
+			margin: auto;
+			padding: 10px 0 5px;
+			background: #fff;
+			border-radius: 10px;
+			list-style-type: none;
+			
+			li {
+				
+				img {
+					width: auto;
+					//width: 100%;
+					opacity: 0.5;
+				}
+				
+				a {
+					display: block;
+					
+					img {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	} // nav
+} // header
+
+
+/*
+ * コンテンツ
+ */
+#main {
+	
+	.section-inner {
+		padding: 25px 0;
+		word-wrap: break-word;
+	}
+	
+	.button-wrapper {
+		margin: 20px 0;
+		text-align: center;
+		
+		a {
+			display: block;
+			width: 50%;
+			margin: 0 auto;
+			padding: 10px 15px;
+			background: #0e6939;
+			border-radius: 6px;
+			box-shadow: 0px 4px 0px rgba( 14, 105, 57, 0.5 );
+			color: #fff;
+			text-decoration: none;
+			
+			&:hover {
+				background: rgba( 14, 105, 57, 0.6 );
+				box-shadow: none;
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+	}
+} // #main
+
+
+/*
+ * フッター
+ */
+.copyright-wrapper {
+	padding: 10px;
+	background-color: #0e6939;
+	color: #FFF;
+	
+	.copyright {
+		margin: 0;
+	}
+} // .copyright-wrapper
+
+/*
+// スマホ
+*/
+@media screen and (max-width: 767px) {
+	
+	.site-header {
+		
+		#site-navigation {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			padding: 0;
+			background-image: none;
+			
+			.menu-bar {
+				width: 100%;
+				height: 40px;
+				margin: 0;
+				padding: 5px 10px;
+				background: $titleColor;
+				line-height: 1;
+				text-align: right;
+				
+				.menu-open {
+					width: 20px;
+					height: 20px;
+					margin: 5px;
+				}
+			}
+			
+			ul {
+				display: none;
+				width: 100%;
+				z-index: 9998;
+				border-radius: 0;
+				
+				li {
+					z-index: 9999;
+					text-align: left;
+				}
+			}
+		}
+	}
+}

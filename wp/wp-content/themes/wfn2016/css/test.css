@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* サイズ */
+/* フォントサイズ */
+/* カラー */
+header .main-image { background: url(../images/top/bg-main.png) center center no-repeat; }
+header #signboard { position: absolute; right: 0; bottom: 305px; left: 55px; width: 550px; height: 280px; margin: auto; background: none; }
+header #signboard .bx-wrapper .bx-viewport { background: transparent; border: none; moz-box-shadow: none; webkit-box-shadow: none; box-shadow: none; }
+
+@media screen and (max-width: 767px) { header .main-image { height: auto; margin-top: 40px; padding: 30px 10px 0; background: none; }
+  header .main-image img { width: 100%; }
+  header .site-title { margin-top: 0; }
+  header #signboard { position: relative; top: 0; bottom: 0; left: 0; width: 100%; height: auto; margin: 0 0 30px; padding: 60px 50px 60px 50px; background: url(../images/top/bg-signbord.png) center center no-repeat; background-size: 100%; }
+  header .bx-wrapper .bx-viewport { right: 0; left: 0; } }
+
+/*# sourceMappingURL=test.css.map */
