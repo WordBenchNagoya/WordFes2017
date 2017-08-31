@@ -5,13 +5,14 @@
 
 
 .site-header {
-	height: 415px;
-	background: url(../images/common/bg-header.png) center center repeat-x;
+	//height: 415px;
+	background: url(../images/common/bg-sub-header.png) center top repeat-x;
 	
 	.main-image {
 		position: relative;
-		height: 357px;
-		padding-top: 30px;
+// 		height: 357px;
+		//padding-top: 30px;
+		//padding-bottom: 10px;
 	}
 	
 	#signboard {
@@ -28,10 +29,11 @@
 	
 	.site-title {
 		width: 100%;
-		
+		margin: 0;
 		img {
-			width: 70%;
+// 			width: 70%;
 			height: auto;
+			max-height: 400px;
 		}
 	}
 	
@@ -46,27 +48,26 @@
 			color: #777;
 		}
 	}
+	
+    .imdesc{
+      .headerLeft{
+        display: none;
+      }
+      .headerRight{
+        display: none;
+      }
+    }
+	
 } // header
 
 #primary {
 	width: 100%;
 	max-width: $contentWidth;
 	margin: auto;
+}
 
-/*
-	.section {
-		
-		&:nth-child(odd) {
-			
-			background: #fff;
-			
-		}
-		
-		&:nth-child(even) {
-			background: $bgColor;
-		}
-	} // .section
-*/
+#primary.content-area {
+	margin-top: 40px;
 }
 
 #secondary {
@@ -83,21 +84,136 @@
 #main {
 	
 	.page-title {
+		font-size: $fs-26;
+		font-family: "じゅん 34", "Jun 34";
+		margin: 20px 0 0;
 		padding: 25px 10px 25px;
-		background: url(../images/common/bg-pagetitle.png) center bottom no-repeat;
+		color: $primaryColor;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		text-align: center;
+		-webkit-justify-content: center;
+		-moz-justify-content: center;
+		-ms-justify-content: center;
+		justify-content: center;
 	}
-		
+	.page-title:before,
+	.page-title:after {
+		border-top: 6px solid $primaryColor;
+		content: "";
+		display: inline;
+		-webkit-box-flex: 1;
+		-webkit-flex-grow: 1;
+		-moz-flex-grow: 1;
+		-ms-flex-grow: 1;
+		flex-grow: 1;
+		min-width: 1em;
+		max-width: 135px;
+	}
+	.page-title:before {
+		margin-right: 1.25em;
+	}
+	.page-title:after {
+		margin-left: 1.25em;
+	}
+	
 	.section {
 		margin-bottom: 50px;
 	}
 	
 	.section-inner {
 		
-		h2 {
-			margin-top: 30px;
-			padding: 15px 10px;
-			background: #f4f4f4 url(../images/common/bg-subtitle.png) left center no-repeat;
+		h2,h3,h4,h5,h6 {
+			font-family: "じゅん 34", "Jun 34";
+			font-size: $fs-20;
+			padding: 10px;
+			margin-top: 40px;
+			margin-bottom: 20px;
 		}
+		
+		h3,h4,h5,h6 {
+			color: $primaryColor;
+		}
+		
+		h2 {
+			background: $primaryColor;
+			color: #fff;
+		}
+		
+		h3 {
+			border-top: 2px solid $primaryColor; 
+			border-bottom: 2px solid $primaryColor; 
+		}
+		
+		h4 {
+			border-bottom: 2px solid $primaryColor; 
+		}
+		
+		h5 {
+			border-left: 4px solid $primaryColor; 
+			padding: 0 10px;
+		}
+		
+		h6 {
+			padding: 0;
+		}
+		
+		hr {
+			border-top: 1px solid rgba( $primaryColor, 0.6 );
+		}
+		
+		.box {
+			border: 6px solid rgba( $primaryColor, 0.6 );
+			padding: 20px;
+		}
+		.box p:last-child {
+			margin-bottom: 0;
+		}
+		
+		table {
+			margin: 20px 0;
+			width: 100%;
+		}
+		table p {
+			margin-bottom: 0;
+		}
+		table th,
+		table td {
+			font-weight: bold;
+			text-align: left;
+			color: $primaryColor;
+			border: 2px solid $primaryColor;
+			padding: 10px;
+		}
+		table th {
+			background: #F7F8F8;
+			min-width: 100px;
+		}
+		.bt {
+			font-size: $fs-20;
+			font-weight: bold;
+			margin: 20px 0;
+			color: #fff;
+			background: $primaryColor;
+			padding: 20px;
+			display: inline-block;
+			text-align: center;
+			min-width: 250px;
+			border-radius: 5px;
+			text-decoration: none;
+		}
+		.bt:hover {
+			background: rgba($primaryColor,0.8);
+			text-decoration: none;
+		}
+		
 	}
 	
 	/*
@@ -182,10 +298,12 @@
 	.article-header {
 		margin: 0;
 		padding: 0 0 5px;
+		border-bottom: 3px solid #94c554;
 
 		.article-title {
 			margin-bottom: 0;
-			padding: 18px 0 18px 0px;
+			padding: 18px 0 18px 70px;
+			background: url(../images/common/bg-article-title.png) left center no-repeat;
 			font-size: $fs-28;
 			font-weight: 700;
 		}
@@ -245,7 +363,7 @@
 	
 	.page-navi {
 		padding: 10px 0;
-		border-top: 3px solid #ea5514;
+		border-top: 3px solid #94c554;
 		
 		.prev {
 			padding-left: 0;
@@ -293,41 +411,38 @@
 }
 
 @media screen and ( max-width: 767px ) {
-	
+    
 	.site-header {
 		height: auto;
 		background-position: center top;
+		background-size: cover;
 		
 		.main-image {
 			height: auto;
-			margin-top: 40px;
+			//margin-top: 40px;
+			
+			.site-branding {
+    			overflow: auto;
+			}
 		}
 		
-		#signboard {
-			position: relative;
-			width: 100%;
-			height: auto;
-			padding: 55px 30px 45px;
-			background-size: 100% auto;
-			background-position: center bottom;
 			
-			.site-title {
-				margin-bottom: 10px;
-				
-				img {
-					width: 65%;
-				}
-			}
-			
-			.page-title {
-				margin: 0;
-				font-size: $fs-21;
-				
-				span {
-					font-size: $fs-12;
-				}
-			}
-		}
+        .site-title {
+            margin-bottom: 10px;
+            
+            img {
+            	width: 100%;
+            }
+        }
+        
+        .page-title {
+            margin: 0;
+            font-size: $fs-21;
+            
+            span {
+            	font-size: $fs-12;
+            }
+        }
 	}
 	
 	#primary {
