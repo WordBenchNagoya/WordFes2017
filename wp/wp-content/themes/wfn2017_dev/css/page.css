@@ -50,12 +50,9 @@
           line-height: 1; }
 
 .site-header {
-  height: 415px;
-  background: url(../images/common/bg-header.png) center center repeat-x; }
+  background: url(../images/common/bg-sub-header.png) center top repeat-x; }
   .site-header .main-image {
-    position: relative;
-    height: 357px;
-    padding-top: 30px; }
+    position: relative; }
   .site-header #signboard {
     position: absolute;
     right: 0;
@@ -67,10 +64,11 @@
     padding: 30px 75px 50px;
     background: url(../images/common/bg-signboard.png) center center no-repeat; }
   .site-header .site-title {
-    width: 100%; }
+    width: 100%;
+    margin: 0; }
     .site-header .site-title img {
-      width: 70%;
-      height: auto; }
+      height: auto;
+      max-height: 400px; }
   .site-header .page-title {
     line-height: .8;
     font-weight: normal;
@@ -79,25 +77,18 @@
     .site-header .page-title span {
       font-size: 1.14rem;
       color: #777; }
+  .site-header .imdesc .headerLeft {
+    display: none; }
+  .site-header .imdesc .headerRight {
+    display: none; }
 
 #primary {
   width: 100%;
   max-width: 1000px;
-  margin: auto;
-  /*
-  	.section {
-  		
-  		&:nth-child(odd) {
-  			
-  			background: #fff;
-  			
-  		}
-  		
-  		&:nth-child(even) {
-  			background: $bgColor;
-  		}
-  	} // .section
-  */ }
+  margin: auto; }
+
+#primary.content-area {
+  margin-top: 40px; }
 
 #secondary {
   width: 100%;
@@ -114,14 +105,100 @@
   // シングルページ
   */ }
   #main .page-title {
+    font-size: 1.86rem;
+    font-family: "じゅん 34", "Jun 34";
     padding: 25px 10px 25px;
-    background: url(../images/common/bg-pagetitle.png) center bottom no-repeat; }
+    color: #ea5514;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    text-align: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center; }
+  #main .page-title:before,
+  #main .page-title:after {
+    border-top: 6px solid #ea5514;
+    content: "";
+    display: inline;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    min-width: 1em;
+    max-width: 135px; }
+  #main .page-title:before {
+    margin-right: 1.25em; }
+  #main .page-title:after {
+    margin-left: 1.25em; }
   #main .section {
     margin-bottom: 50px; }
+  #main .section-inner h2, #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
+    font-family: "じゅん 34", "Jun 34";
+    font-size: 1.43rem;
+    padding: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px; }
+  #main .section-inner h3, #main .section-inner h4, #main .section-inner h5, #main .section-inner h6 {
+    color: #ea5514; }
   #main .section-inner h2 {
-    margin-top: 30px;
-    padding: 15px 10px;
-    background: #f4f4f4 url(../images/common/bg-subtitle.png) left center no-repeat; }
+    background: #ea5514;
+    color: #fff; }
+  #main .section-inner h3 {
+    border-top: 2px solid #ea5514;
+    border-bottom: 2px solid #ea5514; }
+  #main .section-inner h4 {
+    border-bottom: 2px solid #ea5514; }
+  #main .section-inner h5 {
+    border-left: 4px solid #ea5514;
+    padding: 0 10px; }
+  #main .section-inner h6 {
+    padding: 0; }
+  #main .section-inner hr {
+    border-top: 1px solid rgba(234, 85, 20, 0.6); }
+  #main .section-inner .box {
+    border: 6px solid rgba(234, 85, 20, 0.6);
+    padding: 20px; }
+  #main .section-inner .box p:last-child {
+    margin-bottom: 0; }
+  #main .section-inner table {
+    margin: 20px 0;
+    width: 100%; }
+  #main .section-inner table p {
+    margin-bottom: 0; }
+  #main .section-inner table th,
+  #main .section-inner table td {
+    font-weight: bold;
+    text-align: left;
+    color: #ea5514;
+    border: 2px solid #ea5514;
+    padding: 10px; }
+  #main .section-inner table th {
+    background: #F7F8F8;
+    min-width: 100px; }
+  #main .section-inner .bt {
+    font-size: 1.43rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #fff;
+    background: #ea5514;
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+    min-width: 250px;
+    border-radius: 5px;
+    text-decoration: none; }
+  #main .section-inner .bt:hover {
+    background: rgba(234, 85, 20, 0.8);
+    text-decoration: none; }
   #main.archive .page-title {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -165,10 +242,12 @@
     border-width: 2px; }
   #main .article-header {
     margin: 0;
-    padding: 0 0 5px; }
+    padding: 0 0 5px;
+    border-bottom: 3px solid #94c554; }
     #main .article-header .article-title {
       margin-bottom: 0;
-      padding: 18px 0 18px 0px;
+      padding: 18px 0 18px 70px;
+      background: url(../images/common/bg-article-title.png) left center no-repeat;
       font-size: 2rem;
       font-weight: 700; }
     #main .article-header .article-date {
@@ -201,7 +280,7 @@
       margin-left: auto; }
   #main .page-navi {
     padding: 10px 0;
-    border-top: 3px solid #ea5514; }
+    border-top: 3px solid #94c554; }
     #main .page-navi .prev {
       padding-left: 0; }
       #main .page-navi .prev a {
@@ -224,26 +303,21 @@
 @media screen and (max-width: 767px) {
   .site-header {
     height: auto;
-    background-position: center top; }
+    background-position: center top;
+    background-size: cover; }
     .site-header .main-image {
-      height: auto;
-      margin-top: 40px; }
-    .site-header #signboard {
-      position: relative;
-      width: 100%;
-      height: auto;
-      padding: 55px 30px 45px;
-      background-size: 100% auto;
-      background-position: center bottom; }
-      .site-header #signboard .site-title {
-        margin-bottom: 10px; }
-        .site-header #signboard .site-title img {
-          width: 65%; }
-      .site-header #signboard .page-title {
-        margin: 0;
-        font-size: 1.5rem; }
-        .site-header #signboard .page-title span {
-          font-size: 0.86rem; }
+      height: auto; }
+      .site-header .main-image .site-branding {
+        overflow: auto; }
+    .site-header .site-title {
+      margin-bottom: 10px; }
+      .site-header .site-title img {
+        width: 100%; }
+    .site-header .page-title {
+      margin: 0;
+      font-size: 1.5rem; }
+      .site-header .page-title span {
+        font-size: 0.86rem; }
 
   #primary {
     width: 100%; }
