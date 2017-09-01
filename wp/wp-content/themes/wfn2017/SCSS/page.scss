@@ -298,14 +298,16 @@
 	.article-header {
 		margin: 0;
 		padding: 0 0 5px;
-		border-bottom: 3px solid #94c554;
+		border-bottom: 3px solid $primaryColor;
 
 		.article-title {
 			margin-bottom: 0;
-			padding: 18px 0 18px 70px;
-			background: url(../images/common/bg-article-title.png) left center no-repeat;
+			//padding: 18px 0 18px 70px;
+			padding: 18px 0;
+			//background: url(../images/common/bg-article-title.png) left center no-repeat;
 			font-size: $fs-28;
 			font-weight: 700;
+			color: $primaryColor;
 		}
 		
 		.article-date {
@@ -363,7 +365,7 @@
 	
 	.page-navi {
 		padding: 10px 0;
-		border-top: 3px solid #94c554;
+		border-top: 3px solid $primaryColor;
 		
 		.prev {
 			padding-left: 0;

@@ -117,9 +117,9 @@
 
 #main.archive .pagenavi a, #main.archive .pagenavi span { border-width: 2px; }
 
-#main .article-header { margin: 0; padding: 0 0 5px; border-bottom: 3px solid #94c554; }
+#main .article-header { margin: 0; padding: 0 0 5px; border-bottom: 3px solid #ea5514; }
 
-#main .article-header .article-title { margin-bottom: 0; padding: 18px 0 18px 70px; background: url(../images/common/bg-article-title.png) left center no-repeat; font-size: 2rem; font-weight: 700; }
+#main .article-header .article-title { margin-bottom: 0; padding: 18px 0; font-size: 2rem; font-weight: 700; color: #ea5514; }
 
 #main .article-header .article-date { margin: 0; padding: 0; }
 
@@ -141,7 +141,7 @@
 
 #main .article-content img.aligncenter { float: none; display: block; margin-right: auto; margin-left: auto; }
 
-#main .page-navi { padding: 10px 0; border-top: 3px solid #94c554; }
+#main .page-navi { padding: 10px 0; border-top: 3px solid #ea5514; }
 
 #main .page-navi .prev { padding-left: 0; }
 
