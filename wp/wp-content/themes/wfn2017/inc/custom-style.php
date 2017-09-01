@@ -10,7 +10,7 @@ echo <<<Eof
 html,
 body.login {
 	/* ページの背景色 */
-	background: #ecfada;
+	background: #f09875;
 }
 
 .login h1 a {
