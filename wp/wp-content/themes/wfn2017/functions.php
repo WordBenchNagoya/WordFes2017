@@ -179,11 +179,7 @@ function custom_pre_get_posts( $query ) {
 		
 		if ( is_user_logged_in() ) {
 			
-			if ( 'post' == $query->query_vars['post_type'] || 'topics' == $query->query_vars['post_type'] ) {
-			
-				$query->set( 'post_status', array( 'publish', 'draft', 'private' ) );
-			
-			}
+			$query->set( 'post_status', array( 'publish', 'draft', 'private' ) );
 			
 		}
 
