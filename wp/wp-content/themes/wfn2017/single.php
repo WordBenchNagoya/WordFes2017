@@ -43,7 +43,7 @@ get_header(); ?>
 				</div><!-- .section-inner -->
 				
 			</div><!-- .section -->
-
+			
 		</main><!-- #main -->
 		
 		<?php get_sidebar(); ?>

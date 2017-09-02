@@ -33,9 +33,7 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 #sec-social h2 { color: white; }
 
-#sec-social .news-box ul { background-color: #fdede3; border-radius: 5px; }
-
-#sec-social .blog-box ul { background-color: #fdeee4; border-radius: 5px; }
+#sec-social .news-box ul, #sec-social .blog-box ul { padding: 10px 0; background-color: #fdede3; border-radius: 5px; }
 
 .section { width: 100%; /* &:nth-child(odd) { background: #fff; } &:nth-child(even) { background: $bgColor; } */ }
 

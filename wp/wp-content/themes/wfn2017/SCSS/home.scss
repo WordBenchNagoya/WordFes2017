@@ -125,13 +125,10 @@ header {
   	color: white;	
 	}
 	
-	.news-box ul{
+	.news-box ul,
+	.blog-box ul {
+	padding: 10px 0;
   	background-color: #fdede3;
-  	border-radius: 5px;
-	}
-	
-	.blog-box ul{
-  	background-color: #fdeee4;
   	border-radius: 5px;
 	}
 	

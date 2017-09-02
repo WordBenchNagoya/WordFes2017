@@ -219,11 +219,11 @@
 	/*
 	// アーカイブページ
 	*/
-	&.archive {
+	&.archive { // #main.archive
 		
 		.page-title {
-			margin-top: 30px;
-			margin-bottom: 20px;
+			margin-top: 35px;
+			margin-bottom: 50px;
 			padding: 0;
 			background: url(../images/common/bg-article-title.png) left center no-repeat;
 			text-align: left;
@@ -242,20 +242,23 @@
 		}
 		
 		.image-box {
+			max-width: 150px;
 			padding: 0;
 			
 			img {
-				width: 100%;
+				max-width: 100%;
+				height: auto;
 			}
 		}
 		
 		.text-box {
 			
-			h2 {
+			.post-title {
 				margin: 0 0 5px;
-				padding: 0 0 5px 25px;
-				background: url(../images/common/bg-archive-title.png) 3px top no-repeat;
-				border-bottom: 1px dotted $titleColor;
+				//padding: 0 0 5px 25px;
+				padding: 7px 5px;
+				//background: url(../images/common/bg-archive-title.png) 3px top no-repeat;
+				//border-bottom: 1px dotted $titleColor;
 				
 				
 				.date {
@@ -282,15 +285,7 @@
 				}
 			}
 		} // .text-box
-		
-		.pagenavi {
-			
-			a,
-			span {
-				border-width: 2px;
-			}
-		}
-	}
+	} // .archive
 	
 	/*
 	// シングルページ
@@ -364,6 +359,7 @@
 	}
 	
 	.page-navi {
+		margin-bottom: 50px;
 		padding: 10px 0;
 		border-top: 3px solid $primaryColor;
 		
@@ -372,8 +368,9 @@
 			
 			a {
 				display: block;
-				padding-left: 25px;
-				background: url(../images/common/bg-prev.png) left .1em no-repeat;
+				text-align: left;
+				//padding-left: 25px;
+				//background: url(../images/common/bg-prev.png) left .1em no-repeat;
 			}
 		}
 		
@@ -382,8 +379,9 @@
 			
 			a {
 				display: block;
-				padding-right: 25px;
-				background: url(../images/common/bg-next.png) right .1em no-repeat;
+				text-align: right;
+				//padding-right: 25px;
+				//background: url(../images/common/bg-next.png) right .1em no-repeat;
 			}
 		}
 	}

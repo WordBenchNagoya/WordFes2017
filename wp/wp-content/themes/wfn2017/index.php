@@ -13,7 +13,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area clearfix">
-		<main id="main" class="site-main col-md-8 col-xs-12" role="main">
+		<main id="main" class="archive site-main col-md-8 col-xs-12" role="main">
 			
 			<?php
 			$page_name = pdc_get_page_name();
@@ -39,6 +39,18 @@ get_header(); ?>
 			endif;
 			?>
 			
+			</div>
+			
+			<div class="page-navi clearfix">
+				
+				<div class="prev col-xs-6">
+					<?php previous_posts_link('&lt; 前のページ'); ?>
+				</div>
+				
+				<div class="next col-xs-6">
+					<?php next_posts_link('次のページ &gt;'); ?>
+				</div>
+				
 			</div>
 
 		</main><!-- #main -->

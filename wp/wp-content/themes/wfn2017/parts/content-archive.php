@@ -1,15 +1,7 @@
 				<?php
-				if ( is_home() ) {
-					
-					$dummy   = get_template_directory_uri() . '/images/common/dummy-blog.png';
-				
-				} else {
-					
-					$dummy   = get_template_directory_uri() . '/images/common/dummy-topics.png';
-					
-				}
+				$dummy   = get_template_directory_uri() . '/images/common/no-image.png';
 				$thumb   = pdc_get_post_thumbnail( get_the_ID(), $dummy );
-				$excerpt = pdc_get_excerpt( get_the_content(), 86 );
+				$excerpt = pdc_get_excerpt( get_the_content(), 67 );
 				?>
 				
 				<article class="section-inner text-left clearfix">
@@ -22,10 +14,10 @@
 					
 					<div class="text-box col-xs-12 col-sm-9">
 						
-						<h2 class="clearfix">
+						<h3 class="post-title clearfix">
 							<span class="date"><?php the_time('Y.n.j'); ?></span>
 							<span class="title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
-						</h2>
+						</h3>
 						
 						<p>
 							<?php echo esc_html( $excerpt ); ?>
