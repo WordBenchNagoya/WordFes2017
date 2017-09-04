@@ -35,17 +35,19 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 #sec-social .news-box ul, #sec-social .blog-box ul { padding: 10px 0; background-color: #fdede3; border-radius: 5px; }
 
-.section { width: 100%; /* &:nth-child(odd) { background: #fff; } &:nth-child(even) { background: $bgColor; } */ }
+.section { width: 100%; /* &:nth-child(odd) { background: #fff; } &:nth-child(even) { background: $bgColor; } */ /* &:nth-child(1) { background: $bgColor; } &:nth-child(2) { // 		background: #fff; background-image: url(../images/top/bg-schedule.svg) ; background-position: center top; } &:nth-child(3) { background: #fff; } &:nth-child(4) { background: $bgColor; } &:nth-child(5) { background: #fff; } */ }
 
-.section:nth-child(1) { background: #f09875; }
+.section#sec-about { background: #f09875; }
 
-.section:nth-child(2) { background-image: url(../images/top/bg-schedule.svg); background-position: center top; }
+.section#sec-entry { background: #fff; }
 
-.section:nth-child(3) { background: #fff; }
+.section#sec-schedule { background-image: url(../images/top/bg-schedule.svg); background-position: center top; }
 
-.section:nth-child(4) { background: #f09875; }
+.section#sec-pickup { background: #fff; }
 
-.section:nth-child(5) { background: #fff; }
+.section#sec-social { background: #f09875; }
+
+.section#sec-supporter { background: #fff; }
 
 .section-inner { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; }
 

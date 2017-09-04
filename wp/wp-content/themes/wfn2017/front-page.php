@@ -23,9 +23,13 @@ get_header(); ?>
 			$parent_ID = $page_slug->ID;
 
 			if ( is_user_logged_in() ) {
+				
 				$post_status = 'draft,publish';
+				
 			} else {
+				
 				$post_status = 'publish';
+				
 			}
 			
 /*
