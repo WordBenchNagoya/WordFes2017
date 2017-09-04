@@ -79,6 +79,8 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 .schedule { font-family: "じゅん 34", "Jun 34"; }
 
+.schedule h3 { margin: 0; padding: 10px 5px; background: #e85524; line-height: 1.6; font-weight: normal; font-size: 1.43rem; color: #fff; }
+
 .schedule p { color: #ea5514; }
 
 @media screen and (max-width: 767px) { header { /* .site-title { margin-top: 0; } */ /* #signboard { position: relative; top: 0; bottom: 0; width: 100%; height: auto; margin: 20px 0 0; } */ }

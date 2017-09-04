@@ -291,6 +291,16 @@ header {
 .schedule {
     font-family: "じゅん 34", "Jun 34";
     
+    h3 {
+	    margin: 0;
+	    padding: 10px 5px;
+	    background: #e85524;
+	    line-height: 1.6;
+	    font-weight: normal;
+	    font-size: $fs-20;
+	    color: #fff;
+    }
+    
     p {
         color: $primaryColor;
     }
