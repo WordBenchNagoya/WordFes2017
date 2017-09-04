@@ -18,15 +18,18 @@
 ?>
 
 	<div class="section supporter-section">
+		
 		<div class="section-inner">
         <?php
         $args  = array(
             'post_type'      => 'supporter',
-            'posts_per_page' => -1,
+            'numberposts' => -1,
         );
-        $posts = get_posts( $args )->posts;
+        $posts = get_posts( $args );
         
-        if ( 0 < $posts ):
+        //echo '<pre>'; var_dump( $post_obj ); echo '</pre>';
+        
+        if ( 0 < count( $posts ) ):
         ?>
 				
 			<h2 class="section-title text-center entry-title">
@@ -73,6 +76,8 @@
             
             foreach ( $supporter_temrs as $key => $supporter_term ):
             
+            	//var_dump( $supporter_term );
+            
                 /* サポーター */
             
                 $args = array(
@@ -85,7 +90,7 @@
                 		array(
                 			'taxonomy' => 'supporter_type',
                 			'field'    => 'id',
-                			'terms'    => $supporter_term,
+                			'terms'    => $supporter_term->term_id,
                 		),
                 	),
                 );
