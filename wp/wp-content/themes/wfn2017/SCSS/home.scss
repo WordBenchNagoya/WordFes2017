@@ -190,12 +190,33 @@ header {
 		
 		background-image: url(../images/top/bg-schedule.svg) ;
 		background-position: center top;
+
+		.schedule {
+		    font-family: "じゅん 34", "Jun 34";
+		    
+		    h3 {
+			    margin: 0;
+			    padding: 10px 5px;
+			    background: #e85524;
+			    line-height: 1.6;
+			    font-weight: normal;
+			    font-size: $fs-20;
+			    color: #fff;
+		    }
+		    
+		    p {
+		        color: $primaryColor;
+		    }
+		}
 	}
 	
 	&#sec-pickup {
 		
 		background: #fff;
 
+		.pickup-container {
+			margin-bottom: 15px;
+		}
 	}
 	
 	&#sec-social {
@@ -287,23 +308,6 @@ header {
 		margin: 30px 0;
 	}
 
-	.schedule {
-	    font-family: "じゅん 34", "Jun 34";
-	    
-	    h3 {
-		    margin: 0;
-		    padding: 10px 5px;
-		    background: #e85524;
-		    line-height: 1.6;
-		    font-weight: normal;
-		    font-size: $fs-20;
-		    color: #fff;
-	    }
-	    
-	    p {
-	        color: $primaryColor;
-	    }
-	}
 
 } // .section-inner
 

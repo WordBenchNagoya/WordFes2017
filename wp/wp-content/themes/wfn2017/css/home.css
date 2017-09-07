@@ -43,7 +43,15 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 .section#sec-schedule { background-image: url(../images/top/bg-schedule.svg); background-position: center top; }
 
+.section#sec-schedule .schedule { font-family: "じゅん 34", "Jun 34"; }
+
+.section#sec-schedule .schedule h3 { margin: 0; padding: 10px 5px; background: #e85524; line-height: 1.6; font-weight: normal; font-size: 1.43rem; color: #fff; }
+
+.section#sec-schedule .schedule p { color: #ea5514; }
+
 .section#sec-pickup { background: #fff; }
+
+.section#sec-pickup .pickup-container { margin-bottom: 15px; }
 
 .section#sec-social { background: #f09875; }
 
@@ -76,12 +84,6 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 .section-inner .remains.green { color: #0e6939; }
 
 .section-inner .button-box { margin: 30px 0; }
-
-.section-inner .schedule { font-family: "じゅん 34", "Jun 34"; }
-
-.section-inner .schedule h3 { margin: 0; padding: 10px 5px; background: #e85524; line-height: 1.6; font-weight: normal; font-size: 1.43rem; color: #fff; }
-
-.section-inner .schedule p { color: #ea5514; }
 
 @media screen and (max-width: 767px) { header { /* .site-title { margin-top: 0; } */ /* #signboard { position: relative; top: 0; bottom: 0; width: 100%; height: auto; margin: 20px 0 0; } */ }
   header .main-image { height: auto; padding: 40px 10px 0; background: none; }
