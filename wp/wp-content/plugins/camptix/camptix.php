@@ -7863,7 +7863,7 @@ INFO;
     $ticket_id                      = get_post_meta( $post->ID, 'tix_ticket_id', true );
 
     // セッションのみの場合実行しない
-    if ( $ticket_id == 74 ){
+    if ( $ticket_id == 1224 ){
       return false;
     }
     $admin_email                    = $email_addr;
