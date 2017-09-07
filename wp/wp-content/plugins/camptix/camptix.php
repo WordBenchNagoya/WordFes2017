@@ -11,7 +11,7 @@
  */
 
 $email_addr  = 'entry@wordfes.org';
-$this_year   = '2016';
+$this_year   = '2017';
 
 
 global $email_addr, $this_year;
@@ -5923,7 +5923,7 @@ WordFes Nagoya %s のチケットキャンセルが正常に完了しました�
 
 イベントへのご参加を再度ご希望の場合は、以下からもう一度お試しください。
 
-http://2016.wordfes.org/entry/
+http://2017.wordfes.org/entry/
 
 ご不明な点は、下記までお問い合わせください。
 WordFes Nagoya %s 実行委員会：info@wordfes.org
