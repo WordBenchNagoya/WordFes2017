@@ -5342,10 +5342,24 @@ class CampTix_Plugin {
                       <td class="<?php if ( $required ) {
                         echo 'tix-required';
                       } ?> tix-left">
-                        <?php echo esc_html( apply_filters( 'the_title', $question->post_title ) ); ?>
+                        <?php
+	                    //echo esc_html( apply_filters( 'the_title', $question->post_title ) );
+	                    $q_title = apply_filters( 'the_title', $question->post_title );
+	                    if ( false !== preg_match( '/\[(.+)\]/', $q_title, $q_match ) ) {
+    	                    
+    	                    $q_title = str_replace( $q_match[0], '', $q_title );
+    	                    
+	                    }
+	                    echo esc_html( $q_title );
+	                    ?>
                         <?php if ( $required ) {
                           echo ' <span class="tix-required-star">*</span>';
                         } ?>
+                        <?php
+                        if ( isset( $q_match[1] ) ) {
+                            echo wp_kses_post( '<br>' . $q_match[1] );
+                        }
+                        ?>
                       </td>
                       <td class="tix-right">
                         <?php do_action( "camptix_question_field_{$type}", $name, $value, $question ); ?>
