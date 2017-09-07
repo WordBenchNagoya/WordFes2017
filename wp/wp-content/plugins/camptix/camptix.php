@@ -10,11 +10,20 @@
  * License:     GPLv2
  */
 
+// 受付用メールアドレスを設定
 $email_addr  = 'entry@wordfes.org';
+
+// 開催年を設定（毎年変更）
 $this_year   = '2017';
 
+// 宿泊のチケット ID を設定（毎年変更）
+$ticket_stay_id    = 1230;
 
-global $email_addr, $this_year;
+// セッションのみのチケット ID を設定（毎年変更）
+$ticket_session_id = 1224;
+
+
+global $email_addr, $this_year, $ticket_stay_id, $ticket_session_id;
 
 class CampTix_Plugin {
   protected $options;
@@ -5130,7 +5139,7 @@ class CampTix_Plugin {
    * Step 2: asks for attendee information on chosen tickets.
    */
   function form_attendee_info() {
-    global $post;
+    global $post, $ticket_stay_id;
 
     // Clean things up before and after the shortcode.
     $post->post_content = $this->shortcode_str;
@@ -5374,7 +5383,7 @@ class CampTix_Plugin {
           <?php endforeach; // range ?>
         <?php endforeach; // tickets_selected ?>
         
-        <?php if ( 1230 == $ticket->ID ): // <-- "1230" は、宿泊チケットの ID です。毎年変わると思いますので、調べる必要あり。?>
+        <?php if ( $ticket_stay_id == $ticket->ID ): ?>
         	<p style="margin-top: 10px; font-size:0.8em">
 		        <strong style="color: red;">※ 今回、宿泊コースでは、国内旅行保険に加入いたします。そのため姓名、ふりがな、性別、生年月日は保険の適用に必要となります。宿泊コースの方は必ず各項目に正しく入力してください。正しい情報を入力されなければ保険の適用がされなくなります。</strong>
         	</p>
@@ -7848,7 +7857,7 @@ INFO;
    */
   public function publish_tix_attendee( $ID, $post ) {
 	  
-	global $email_addr, $this_year;
+	global $email_addr, $this_year, $ticket_session_id;
 	
 	session_start();
 	
@@ -7877,7 +7886,7 @@ INFO;
     $ticket_id                      = get_post_meta( $post->ID, 'tix_ticket_id', true );
 
     // セッションのみの場合実行しない
-    if ( $ticket_id == 1224 ){
+    if ( $ticket_session_id == $ticket_id ){
       return false;
     }
     $admin_email                    = $email_addr;
