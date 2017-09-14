@@ -96,8 +96,8 @@
 		<tr class="session1">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_7' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_7' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_16' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_16' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -112,8 +112,8 @@
 			<tr class="session2">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_9' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_9' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_17' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_17' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -137,8 +137,8 @@
 
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_11' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_11' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_18' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_18' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -153,8 +153,8 @@
 		<tr class="session4">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_12' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_12' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -173,8 +173,8 @@
 		<tr class="session5">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_19' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_19' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -188,8 +188,8 @@
 		<tr class="session6">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_20' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_20' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -207,8 +207,8 @@
 		<tr class="session7">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_21' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_21' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
@@ -222,8 +222,8 @@
 		<tr class="session8">
 			<th>
 			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_22' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_22' );
 			
 			echo esc_html( $start_time . ' 〜 ' . $end_time );
 			?>
