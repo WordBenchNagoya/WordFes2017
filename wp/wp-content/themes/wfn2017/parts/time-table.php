@@ -94,7 +94,7 @@
 			<td class="hidden-xs"></td>
 		</tr>
 		<tr class="session1">
-			<th><strong>─ SESSION1 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_7' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_7' );
@@ -110,7 +110,7 @@
 		</tr>
 	
 			<tr class="session2">
-			<th><strong>─ SESSION2 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_9' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_9' );
@@ -135,7 +135,7 @@
 
 		<tr class="session3">
 
-			<th><strong>─ SESSION3 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_11' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_11' );
@@ -151,7 +151,7 @@
 		</tr>
 		
 		<tr class="session4">
-			<th><strong>─ SESSION4 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
@@ -171,7 +171,7 @@
 		</tr>
 
 		<tr class="session5">
-			<th><strong>─ SESSION5 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
@@ -186,7 +186,7 @@
 		</tr>
 
 		<tr class="session6">
-			<th><strong>─ SESSION6 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
@@ -205,7 +205,7 @@
 			<td colspan="4" class="rest">休憩</td>
 		</tr>
 		<tr class="session7">
-			<th><strong>─ SESSION7 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
@@ -220,7 +220,7 @@
 		</tr>
 
 		<tr class="session8">
-			<th><strong>─ SESSION8 ─</strong><br />
+			<th>
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
 			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
