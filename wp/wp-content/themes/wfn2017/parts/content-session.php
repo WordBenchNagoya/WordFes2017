@@ -2,11 +2,11 @@
 /**
  * セッション詳細ページ テンプレート
  * =====================================================
- * @package    Wordfes2014
+ * @package    Wordfes2017
  * @author     WordBench Nagoya
  * @license    GPL v2 or later
- * @link       http://2014.wordfes.org
- * @copyright  2014 WordBench Nagoya
+ * @link       http://2017.wordfes.org
+ * @copyright  2017 WordBench Nagoya
  * =====================================================
  */
 
@@ -145,7 +145,7 @@ $slide_data   = get_field( 'session_slide' );
 					} ?>
 				</div>
 				<div class="col-sm-9 col-xs-12 text-left">
-					<h4><?php echo esc_html( $speaker_name )  ?></h4>
+					<h4 style="margin-top: 0px;><?php echo esc_html( $speaker_name )  ?></h4>
 					<div class="social-icon clearfix">
 						<?php
 						if ( $facebook ) : ?>
@@ -199,7 +199,7 @@ $slide_data   = get_field( 'session_slide' );
 						<?php echo wp_get_attachment_image( $session_server_image, 'full', false, array( 'class' => 'thumbnail img-responsive','style="margin-top: 20px"' ) ); ?>
 					</div>
 					<div class="col-sm-9 col-xs-12 text-left">
-						<h4><?php echo esc_html( $server_name ); ?></h4>
+						<h4 style="margin-top: 0px;><?php echo esc_html( $server_name ); ?></h4>
 						<div class="social-icon text-center">
 							<?php
 							if ( $session_server_facebook ) : ?>
