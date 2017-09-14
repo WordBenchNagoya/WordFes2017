@@ -272,7 +272,7 @@
 	<table class="table table-bordered time-table">
 		<col class="col" width="20%">
 		<tr>
-			<th scope="row">8/28 (日)<br>9:00〜</th>
+			<th scope="row">10/29 (日)<br>9:00〜</th>
 <!-- 			<td><a href="http://2014.wordfes.org/inuyama-tour/">2日目ツアー：未定</a></td> -->
 			<td>宿泊組はソピア・キャビンで現地解散</td>
 		</tr>
