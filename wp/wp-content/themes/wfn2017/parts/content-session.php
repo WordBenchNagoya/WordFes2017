@@ -145,7 +145,7 @@ $slide_data   = get_field( 'session_slide' );
 					} ?>
 				</div>
 				<div class="col-sm-9 col-xs-12 text-left">
-					<h4 style="margin-top: 0px;><?php echo esc_html( $speaker_name )  ?></h4>
+					<h4 style="margin-top: 0px";><?php echo esc_html( $speaker_name )  ?></h4>
 					<div class="social-icon clearfix">
 						<?php
 						if ( $facebook ) : ?>
@@ -199,7 +199,7 @@ $slide_data   = get_field( 'session_slide' );
 						<?php echo wp_get_attachment_image( $session_server_image, 'full', false, array( 'class' => 'thumbnail img-responsive','style="margin-top: 20px"' ) ); ?>
 					</div>
 					<div class="col-sm-9 col-xs-12 text-left">
-						<h4 style="margin-top: 0px;><?php echo esc_html( $server_name ); ?></h4>
+						<h4 style="margin-top: 0px";><?php echo esc_html( $server_name ); ?></h4>
 						<div class="social-icon text-center">
 							<?php
 							if ( $session_server_facebook ) : ?>
