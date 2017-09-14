@@ -4,11 +4,11 @@
  * Time Table
  * =====================================================
  * @package    WordPress
- * @subpackage wordfes2015
+ * @subpackage wordfes2017
  * @author     WordBench Nagoya
  * @license    GPLv2 or Later
- * @link       http://2015.wordfes.org
- * @copyright  2015 WordBench Nagoya
+ * @link       http://2017.wordfes.org
+ * @copyright  2017 WordBench Nagoya
  * =====================================================
  */
 
@@ -87,7 +87,7 @@
 		</tr>
 
 		<tr>
-			<th>10:40〜11:00</th>
+			<th>10:30〜10:45</th>
 			<td>開会式</td>
 			<td class="hidden-xs"></td>
 			<td class="hidden-xs"></td>
@@ -108,16 +108,8 @@
 			}
 			?>
 		</tr>
-
-		<tr>
-			<th>11:45〜13:15</th>
-			<td class="rest">昼食休憩（90分）<br /><a href="/wanted/lunch/">Lunch MeetUp!</a><br class="visible-xs"><span class="visible-xs">5214教室</span></td>
-			<td class="rest hidden-xs">昼食休憩（90分）</td>
-			<td class="rest hidden-xs">昼食休憩（90分）<!-- <a href="http://2014.wordfes.org/sessions/lunch-workshop/">ランチタイムハンズオン</a> --></td>
-			<td class="rest hidden-xs">昼食休憩（90分）</td>
-		</tr>
-
-		<tr class="session2">
+	
+			<tr class="session2">
 			<th><strong>─ SESSION2 ─</strong><br />
 			<?php
 			$start_time = get_field( 'pdc-timezone-start', 'timezone_9' );
@@ -133,12 +125,14 @@
 			?>
 		</tr>
 
-
-
 		<tr>
-			<th>14:00〜14:15</th>
-			<td colspan="5" class="rest">休憩</td>
+			<th>11:45〜13:00</th>
+			<td class="rest">昼食休憩（75分）<br /><a href="/wanted/lunch/">Lunch MeetUp!</a><br class="visible-xs"><span class="visible-xs">5214教室</span></td>
+			<td class="rest hidden-xs">昼食休憩（75分）</td>
+			<td class="rest hidden-xs">昼食休憩（75分）<!-- <a href="http://2017.wordfes.org/sessions/lunch-workshop/">ランチタイムハンズオン</a> --></td>
+			<td class="rest hidden-xs">昼食休憩（75分）</td>
 		</tr>
+
 		<tr class="session3">
 
 			<th><strong>─ SESSION3 ─</strong><br />
@@ -155,12 +149,7 @@
 			}
 			?>
 		</tr>
-
-		<tr>
-			<th>15:00〜15:15</th>
-			<td colspan="4" class="rest">休憩</td>
-		</tr>
-
+		
 		<tr class="session4">
 			<th><strong>─ SESSION4 ─</strong><br />
 			<?php
@@ -175,10 +164,79 @@
 				wordfes2017_timetable_meta( 'tz-09', $stage );
 			} ?>
 		</tr>
+		
+		<tr>
+			<th>14:00〜14:15</th>
+			<td colspan="4" class="rest">休憩</td>
+		</tr>
+
+		<tr class="session5">
+			<th><strong>─ SESSION5 ─</strong><br />
+			<?php
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			
+			echo esc_html( $start_time . ' 〜 ' . $end_time );
+			?>
+			</th>
+			<?php
+			foreach ( $stage_terms as $stage_key => $stage ) {
+				wordfes2017_timetable_meta( 'tz-11', $stage );
+			} ?>
+		</tr>
+
+		<tr class="session6">
+			<th><strong>─ SESSION6 ─</strong><br />
+			<?php
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			
+			echo esc_html( $start_time . ' 〜 ' . $end_time );
+			?>
+			</th>
+			<?php
+			foreach ( $stage_terms as $stage_key => $stage ) {
+				wordfes2017_timetable_meta( 'tz-13', $stage );
+			} ?>
+		</tr>
 
 		<tr>
+			<th>15:00〜15:15</th>
+			<td colspan="4" class="rest">休憩</td>
+		</tr>
+		<tr class="session7">
+			<th><strong>─ SESSION7 ─</strong><br />
+			<?php
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			
+			echo esc_html( $start_time . ' 〜 ' . $end_time );
+			?>
+			</th>
+			<?php
+			foreach ( $stage_terms as $stage_key => $stage ) {
+				wordfes2017_timetable_meta( 'tz-15', $stage );
+			} ?>
+		</tr>
+
+		<tr class="session8">
+			<th><strong>─ SESSION8 ─</strong><br />
+			<?php
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_13' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_13' );
+			
+			echo esc_html( $start_time . ' 〜 ' . $end_time );
+			?>
+			</th>
+			<?php
+			foreach ( $stage_terms as $stage_key => $stage ) {
+				wordfes2017_timetable_meta( 'tz-17', $stage );
+			} ?>
+		</tr>
+				
+		<tr>
 			<th><strong>─ LT大会 ─</strong><br />
-				16:05〜16:50
+				16:10〜16:50
 			</th>
 			<td>LT大会</td>
 			<td class="hidden-xs">&nbsp;</td>
