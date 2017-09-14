@@ -74,12 +74,12 @@ $slide_data   = get_field( 'session_slide' );
 							$timezone   = array_shift( get_the_terms( $post->ID, 'timezone' ) );
 							$tz_id      = $timezone->term_id;
 							
-							var_dump( $tz_id )
 							
 							$start_time = get_field( 'pdc-timezone-start', 'timezone_' . $tz_id );
 							$end_time   = get_field( 'pdc-timezone-end', 'timezone_' . $tz_id );
 							
 							echo esc_html( $start_time . ' 〜 ' . $end_time );
+							var_dump( $tz_id )
 							?>
 							</td>
 						</tr>
