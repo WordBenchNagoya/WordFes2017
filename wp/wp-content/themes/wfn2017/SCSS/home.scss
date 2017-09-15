@@ -231,6 +231,16 @@ header {
 		
 	}
 	
+	&.supporter-section {
+    	
+    	.section-inner {
+        	
+        	.section-title {
+            	color: $headlineColor;
+        	}
+    	}
+	}
+	
 } // .section
 
 .section-inner {

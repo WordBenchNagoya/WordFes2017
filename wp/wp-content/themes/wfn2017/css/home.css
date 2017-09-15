@@ -57,6 +57,8 @@ header .bxslider li img { width: 100%; margin: 0; padding: 0; }
 
 .section#sec-supporter { background: #fff; }
 
+.section.supporter-section .section-inner .section-title { color: #e85524; }
+
 .section-inner { width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; }
 
 .section-inner .sub-title { text-align: center; }
