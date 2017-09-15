@@ -93,6 +93,26 @@
 			<td class="hidden-xs"></td>
 			<td class="hidden-xs"></td>
 		</tr>
+		
+		<?php if ( get_the_ID(1432); ) : ?>
+		<tr class="session1">
+			<th>
+			<?php
+			$start_time = get_field( 'pdc-timezone-start', 'timezone_16' );
+			$end_time   = get_field( 'pdc-timezone-end', 'timezone_17' );
+			
+			echo esc_html( $start_time . ' 〜 ' . $end_time );
+			?>
+			</th>
+			<?php
+			foreach ( $stage_terms as $stage_key => $stage ) {
+				wordfes2017_timetable_meta( 'tz-03', $stage );
+			}
+			?>
+		</tr>
+		
+		<?php else: ?>
+		
 		<tr class="session1">
 			<th>
 			<?php
@@ -124,7 +144,8 @@
 			}
 			?>
 		</tr>
-
+		<?php endif; ?>
+		
 		<tr>
 			<th>11:45〜13:00</th>
 			<td class="rest">昼食休憩（75分）<br /><a href="/wanted/lunch/">Lunch MeetUp!</a><br class="visible-xs"><span class="visible-xs">5214教室</span></td>
