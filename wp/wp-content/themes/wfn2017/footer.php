@@ -32,15 +32,17 @@
 <script type="text/javascript">
 jQuery(document).ready(function(){
 	
-	jQuery('.schedule-inner').tile(3);
+	jQuery('.schedule-inner').matchHeight();
 	if( document.fonts ) {
 		document.fonts.ready.then(function(fontFaceSet) {
-			jQuery('.schedule-inner').tile(3);
+			jQuery('.schedule-inner').matchHeight();
+			jQuery('.column-row .sup-01').matchHeight();
 		});
 	} else {
 		// IEでウェブフォントのロードイベントを取得できない場合の苦肉の策
 		jQuery('.schedule-inner').delay(3000).queue(function(){
-			jQuery('.schedule-inner').tile(3);
+			jQuery('.schedule-inner').matchHeight();
+			jQuery('.column-row .sup-01').matchHeight();
 		});
 	}
 
@@ -101,6 +103,8 @@ jQuery("#tix-entry-form").submit(function(){
 </script>
 
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- <link href='<?php echo esc_url( get_template_directory_uri() . '/css/supporter2.css?ver=4.8.1' ); ?>' type='text/css' media='all' /> -->
 
 </body>
 </html>

@@ -113,7 +113,6 @@ function wordfes2017_scripts() {
 
 	// css
 	wp_enqueue_style( 'wfn2017-base',      get_template_directory_uri() . '/css/base.css' );
-	wp_enqueue_style( 'wfn2017-supporter2', get_template_directory_uri() . '/css/supporter2.css' );
 
 	//wp_enqueue_style( 'wfn2017-slider',    get_template_directory_uri() . '/css/jquery.bxslider.css' );
 	
@@ -135,6 +134,7 @@ function wordfes2017_scripts() {
 	} else {
 		
 		wp_enqueue_style( 'wfn2017-page', get_template_directory_uri() . '/css/page.css' );
+        wp_enqueue_style( 'wfn2017-supporter', get_template_directory_uri() . '/css/supporter.css' );
 		
 		$post_type = get_query_var('post_type') ? get_query_var('post_type') : get_query_var('pagename');
 		
@@ -153,8 +153,9 @@ function wordfes2017_scripts() {
 
 	// js
 	wp_enqueue_script( 'wordfes2017-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), null, true );
-	wp_enqueue_script( 'wordfes2017-tile', get_template_directory_uri() . '/js/tile.js', array(), null, true );
-	wp_enqueue_script( 'wordfes2017-scripts', get_template_directory_uri() . '/js/scripts.js', array(), null, true );
+	//wp_enqueue_script( 'wordfes2017-tile',                get_template_directory_uri() . '/js/tile.js', array(), null, true );
+	wp_enqueue_script( 'wordfes2017-match-height',        get_template_directory_uri() . '/js/jquery.matchHeight-min.js', array(), null, true );
+	wp_enqueue_script( 'wordfes2017-scripts',             get_template_directory_uri() . '/js/scripts.js', array(), null, true );
 	//wp_enqueue_script( 'wordfes2017-slider', get_template_directory_uri() . '/js/jquery.bxslider.min.js', array(), null, true );
 
 	wp_enqueue_script( 'wordfes2017-navigation', get_template_directory_uri() . '/js/navigation.js', array(), null, true );
