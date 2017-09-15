@@ -6,7 +6,7 @@
 
 .supporter-section .section-inner { width: 100%; max-width: 1000px; margin: auto; }
 
-.supporter-section .section-inner .section-title { font-family: 'Pocket-Calculator'; color: #fff; }
+.supporter-section .section-inner .section-title { font-family: 'Pocket-Calculator'; font-size: 5rem; color: #fff; }
 
 .supporter-section .supporter-contents { margin-bottom: 50px; }
 
@@ -26,4 +26,4 @@
 
 .supporter-section .supporter-contents .anonym { margin-top: 1em; }
 
-/*# sourceMappingURL=../css/supporter2.map */
+/*# sourceMappingURL=../css/supporter.map */
