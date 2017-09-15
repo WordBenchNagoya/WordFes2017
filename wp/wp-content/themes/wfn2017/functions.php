@@ -113,7 +113,8 @@ function wordfes2017_scripts() {
 
 	// css
 	wp_enqueue_style( 'wfn2017-base',      get_template_directory_uri() . '/css/base.css' );
-	wp_enqueue_style( 'wfn2017-supporter', get_template_directory_uri() . '/css/supporter.css' );
+	wp_enqueue_style( 'wfn2017-supporter2', get_template_directory_uri() . '/css/supporter2.css' );
+
 	//wp_enqueue_style( 'wfn2017-slider',    get_template_directory_uri() . '/css/jquery.bxslider.css' );
 	
 	if( is_front_page() ) {
