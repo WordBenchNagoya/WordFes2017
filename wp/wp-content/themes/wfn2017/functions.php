@@ -113,6 +113,7 @@ function wordfes2017_scripts() {
 
 	// css
 	wp_enqueue_style( 'wfn2017-base',      get_template_directory_uri() . '/css/base.css' );
+    wp_enqueue_style( 'wfn2017-supporter', get_template_directory_uri() . '/css/supporter.css' );
 
 	//wp_enqueue_style( 'wfn2017-slider',    get_template_directory_uri() . '/css/jquery.bxslider.css' );
 	
@@ -134,7 +135,6 @@ function wordfes2017_scripts() {
 	} else {
 		
 		wp_enqueue_style( 'wfn2017-page', get_template_directory_uri() . '/css/page.css' );
-        wp_enqueue_style( 'wfn2017-supporter', get_template_directory_uri() . '/css/supporter.css' );
 		
 		$post_type = get_query_var('post_type') ? get_query_var('post_type') : get_query_var('pagename');
 		
