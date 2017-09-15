@@ -8,6 +8,8 @@ suPHP_ConfigPath /home/ae163jnh5u/html/wp
 Options +SymLinksIfOwnerMatch
 
 # BEGIN WordPress
+
+
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteBase /
