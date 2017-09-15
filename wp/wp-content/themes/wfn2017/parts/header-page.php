@@ -3,7 +3,7 @@
 			<div id="signboard">
 				
 				<h1 class="site-title">
-					<img src="<?php echo get_template_directory_uri(); ?>/images/common/img-sitetitle.png" alt="WordPressの森に集おう WordFes Nagoya 2017">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/common/img-sitetitle.png" alt="WordFes Nagoya 2017 これから 〜未来へ繋ぐ〜">
 				</h1>
 				
 				<h2 class="page-title">
