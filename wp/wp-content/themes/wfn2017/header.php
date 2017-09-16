@@ -112,7 +112,13 @@ if ( is_front_page() ) {
 				) ); ?>
 			</div>
 		</nav><!-- #site-navigation -->
-
+<?php
+if ( is_user_logged_in() ) {
+    echo 'ログイン中';
+} else {
+    echo '';
+};
+?>
 		
 	</header><!-- #masthead -->
 	
