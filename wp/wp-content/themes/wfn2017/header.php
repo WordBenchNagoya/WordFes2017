@@ -112,13 +112,9 @@ if ( is_front_page() ) {
 				) ); ?>
 			</div>
 		</nav><!-- #site-navigation -->
-<?php
-if ( is_user_logged_in() ) {
-   <p>ログイン中のみスライダー表示</p>
-} else {
-    echo "'';
-};
-?>
+<?php if ( is_user_logged_in() ) : ?>
+スライダー
+<?php endif : ?>
 		
 	</header><!-- #masthead -->
 	
