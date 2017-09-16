@@ -118,7 +118,8 @@ if ( is_user_logged_in() ) {
     
     			<div id="signboard">
 				<ul class="bxslider clearfix">
-				<?php
+
+
 				$args = array(
 					'post_type'      => 'slider',
 					'posts_per_page' => -1,
@@ -146,20 +147,14 @@ if ( is_user_logged_in() ) {
 				*/	
 						$image = wp_get_attachment_image_src( get_field('wfn-slider-image', $slide), 'full' );
 						$url   = get_field('wfn-slider-url', $slide);
-				?>
+
+
 					<li class="slide">
 						<a href="<?php echo esc_url( $url ); ?>">
 							<img class="slide-img" src="<?php echo esc_url( $image[0] ); ?>" alt="<?php the_title(); ?>">
 						</a>
 					</li>
-				<?php
-				/*
-						$count++;
-					endforeach;
-				endif;
-				*/
-				endwhile;
-				?>
+
 				</ul>
 			</div>
 			
