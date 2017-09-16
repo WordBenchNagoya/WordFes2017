@@ -114,7 +114,7 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php
 if ( is_user_logged_in() ) {
-    echo 'ログイン中のみスライダー表示';
+   <p>ログイン中のみスライダー表示</p>
     
     			<div id="signboard">
 				<ul class="bxslider clearfix">
