@@ -114,7 +114,7 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
 スライダー
-<?php endif : ?>
+<?php endif ; ?>
 		
 	</header><!-- #masthead -->
 	
