@@ -74,6 +74,14 @@ get_header(); ?>
 				
 			}
 		} ?>
+		
+<?php
+if ( is_user_logged_in() ) {
+    echo 'ログイン中';
+} else {
+    echo '';
+};
+?>
 
 		<?php get_template_part( 'parts/content', 'supporter' ); ?>
 		
