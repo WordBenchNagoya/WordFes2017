@@ -114,6 +114,56 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
 スライダー
+
+			<div id="signboard">
+				<ul class="bxslider clearfix">
+				<?php
+				$args = array(
+					'post_type'      => 'slider',
+					'posts_per_page' => -1,
+				);
+				$sliders   = new WP_Query( $args );
+				while ( $sliders->have_posts() ):
+					$sliders->the_post();
+				/*
+				$slide_ids  = array();
+				foreach( $sliders->posts as $slider ) {
+		<?php if ( is_user_logged_in() ) : ?>
+    ここにログイン時だけ表示したいコードを書く
+<?php endif; ?>			
+					$slide_ids[] = $slider->ID;
+					
+				}
+				shuffle( $slide_ids );
+				
+				if ( 0 < count( $slide_ids ) ):
+					$count_max = 5;
+					$count     = 0;
+					foreach ( $slide_ids as $slide ):
+					
+						if ( $count >= $count_max ) {
+							break;
+						}
+				*/	
+						$image = wp_get_attachment_image_src( get_field('wfn-slider-image', $slide), 'full' );
+						$url   = get_field('wfn-slider-url', $slide);
+				?>
+					<li class="slide">
+						<a href="<?php echo esc_url( $url ); ?>">
+							<img class="slide-img" src="<?php echo esc_url( $image[0] ); ?>" alt="<?php the_title(); ?>">
+						</a>
+					</li>
+				<?php
+				/*
+						$count++;
+					endforeach;
+				endif;
+				*/
+				endwhile;
+				?>
+				</ul>
+			</div>
+			
 <?php endif ; ?>
 		
 	</header><!-- #masthead -->
