@@ -57,7 +57,7 @@ get_header(); ?>
 				'post_status' => $post_status,
 			);
 
-if (is_user_logged_in()) {
+<?php if (is_user_logged_in()) {
 			<div id="signboard">
 				<ul class="bxslider clearfix">
 				<?php
@@ -107,7 +107,7 @@ if (is_user_logged_in()) {
 } else {
   // ログインしていない
 }
-
+?>
 			$wfnposts = get_pages( $args );
 			
 			$sec_count = 1;
