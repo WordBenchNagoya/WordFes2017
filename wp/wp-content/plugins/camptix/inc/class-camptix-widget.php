@@ -53,8 +53,8 @@ class Camptix_Widgets extends WP_Widget {
   ?>
   <div class="participate-contents">
     <?php
-    $unsold_seat = $camptix->get_remaining_tickets( '74' , true );
-    $all_seat    = get_post_meta( '74', 'tix_quantity', true );
+    $unsold_seat = $camptix->get_remaining_tickets( '1224' , true );
+    $all_seat    = get_post_meta( '1224', 'tix_quantity', true );
      ?>
 <style>
 h2{
@@ -102,8 +102,8 @@ text-align: left;
       </tbody>
     </table>
     <?php
-    $unsold_seat = $camptix->get_remaining_tickets( '88' , true );
-    $all_seat    = get_post_meta( '88', 'tix_quantity', true );
+    $unsold_seat = $camptix->get_remaining_tickets( '1228' , true );
+    $all_seat    = get_post_meta( '1228', 'tix_quantity', true );
      ?>
     <h4 class="participate-title">セッション + 懇親会</h4>
     <table>
@@ -123,8 +123,8 @@ text-align: left;
       </tbody>
     </table>
     <?php
-    $unsold_seat = $camptix->get_remaining_tickets( '87' , true );
-    $all_seat    = get_post_meta( '87', 'tix_quantity', true );
+    $unsold_seat = $camptix->get_remaining_tickets( '1230' , true );
+    $all_seat    = get_post_meta( '1230', 'tix_quantity', true );
      ?>
     <h4 class="participate-title">セッション + 懇親会 + 宿泊</h4>
     <table>
