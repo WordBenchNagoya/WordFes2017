@@ -93,7 +93,7 @@ text-align: left;
         </tr>
         <tr>
           <th>締め切り</th>
-          <td>8月27日</td>
+          <td>10月27日(金)</td>
         </tr>
         <tr>
           <th>料金</th>
@@ -114,7 +114,7 @@ text-align: left;
         </tr>
         <tr>
           <th>締め切り</th>
-          <td><del>8月16日</del>&nbsp;<strong style="color: red;">8月21日</strong></td>
+          <td><del>10月4日(水)</del>&nbsp;<strong style="color: red;">8月21日</strong></td>
         </tr>
         <tr>
           <th>料金</th>
@@ -135,7 +135,7 @@ text-align: left;
         </tr>
         <tr>
           <th>締め切り</th>
-          <td>8月16日</td>
+          <td>10月4日(水)</td>
         </tr>
         <tr>
           <th>料金</th>
