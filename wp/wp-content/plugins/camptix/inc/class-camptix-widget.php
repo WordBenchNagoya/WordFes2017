@@ -114,7 +114,7 @@ text-align: left;
         </tr>
         <tr>
           <th>締め切り</th>
-          <td><del>10月4日(水)</del></td>
+          <td>10月4日(水)</td>
         </tr>
         <tr>
           <th>料金</th>
