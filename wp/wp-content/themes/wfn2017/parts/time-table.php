@@ -17,7 +17,7 @@
 <div class="section text-center">
 	
 	<div class="section-inner text-left clearfix">
-	
+		
 	<p>お断り: セッションの内容は、予告なしに変更される場合がございます。予めご了承ください</p>
 	<p>お断り: リンクが貼られていないページは、内容が確定しておりません。情報が確定し次第、詳細ページを掲載いたします。</p>
 	<!-- <p class="visible-xs" style="font-weight: bold; color: #c33;">※タイムテーブルは横にスクロールします。</p> -->
@@ -47,7 +47,7 @@
 				<th>定　員</th>
 				<?php
 				// persons
-				$stage_terms = get_terms( 'classroom', array( 'hide_empty' => false, 'orderby' => 'order' ) );
+				//$stage_terms = get_terms( 'classroom', array( 'hide_empty' => false, 'orderby' => 'order' ) );
 				foreach ( $stage_terms as $stage_key => $stage ) { ?>
 						<th class="persons">
 							<?php echo esc_html( get_field( 'classroom_persons', $stage ) ); ?>
@@ -95,35 +95,11 @@
 		</tr>
 		
 		<tr class="session1">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_16' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_16' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-03', $stage );
-			}
-			?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-03'); ?>
 		</tr>
 	
-			<tr class="session2">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_17' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_17' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-05', $stage );
-			}
-			?>
+		<tr class="session2">
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-05'); ?>
 		</tr>
 
 		<tr>
@@ -135,35 +111,11 @@
 		</tr>
 
 		<tr class="session3">
-
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_18' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_18' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-07', $stage );
-			}
-			?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-07'); ?>
 		</tr>
 		
 		<tr class="session4">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_12' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_12' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-09', $stage );
-			} ?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-09'); ?>
 		</tr>
 		
 		<tr>
@@ -172,33 +124,11 @@
 		</tr>
 
 		<tr class="session5">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_19' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_19' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-11', $stage );
-			} ?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-11'); ?>
 		</tr>
 
 		<tr class="session6">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_20' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_20' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-13', $stage );
-			} ?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-13'); ?>
 		</tr>
 
 		<tr>
@@ -206,33 +136,11 @@
 			<td colspan="4" class="rest">休憩</td>
 		</tr>
 		<tr class="session7">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_21' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_21' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-15', $stage );
-			} ?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-15'); ?>
 		</tr>
 
 		<tr class="session8">
-			<th>
-			<?php
-			$start_time = get_field( 'pdc-timezone-start', 'timezone_22' );
-			$end_time   = get_field( 'pdc-timezone-end', 'timezone_22' );
-			
-			echo esc_html( $start_time . ' 〜 ' . $end_time );
-			?>
-			</th>
-			<?php
-			foreach ( $stage_terms as $stage_key => $stage ) {
-				wordfes2017_timetable_meta( 'tz-17', $stage );
-			} ?>
+			<?php wordfes2017_set_timetable( $stage_terms, 'tz-17'); ?>
 		</tr>
 				
 		<tr>
@@ -283,54 +191,81 @@
 	</div><!-- .section-inner -->
 	
 </div><!-- .section -->
+
 <?php
-
-
 function wordfes2017_timetable_meta( $timezone, $stage ){
+	
+	static $ses_array;
+	
+	if ( ! is_array( $ses_array ) ) {
+		
+		$ses_array = array();
+		
+	}
 
 	if ( ! $timezone || ! $stage ) {
 		return;
 	}
 	
-	if ( $stage->slug !== 'challenge-stage' ) : ?>
-
-		<td class="<?php echo esc_html( $stage->slug ); ?>">
-			<dl>
-			<?php
-			if ( is_user_logged_in() ) {
-				
-				$status = array( 'publish', 'draft', 'private' );
-				
-			} else {
-				
-				$status = array( 'publish', 'draft' );
-				
-			}
-			$session_args = get_posts(
+	if ( is_user_logged_in() ) {
+		
+		$status = array( 'publish', 'draft', 'private' );
+		
+	} else {
+		
+		$status = array( 'publish', 'draft' );
+		
+	}
+	
+	$session_args = get_posts(
+		array(
+			'post_type'      => 'sessions',
+			'post_status'    => $status,
+			'posts_per_page' => 1,
+			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
-					'post_type'      => 'sessions',
-					'post_status'    => $status,
-					'posts_per_page' => 1,
-					'tax_query'      => array(
-						'relation' => 'AND',
-						array(
-							'taxonomy' => 'timezone',
-							'field'    => 'slug',
-							'terms'    => $timezone,
-						),
-						array(
-							'taxonomy' => 'classroom',
-							'field'    => 'id',
-							'terms'    => $stage->term_id,
-						),
-					)
-				)
-			);
-			
-			foreach ( $session_args as $session_key => $session ) {
-				
-				
-			?>
+					'taxonomy' => 'timezone',
+					'field'    => 'slug',
+					'terms'    => $timezone,
+				),
+				array(
+					'taxonomy' => 'classroom',
+					'field'    => 'id',
+					'terms'    => $stage->term_id,
+				),
+			)
+		)
+	);
+	
+	$ses_id  = $session_args[0]->ID;
+	$ses_tzs = get_the_terms( $ses_id, 'timezone' );
+	
+	if ( false !== array_search( $ses_id, $ses_array ) ) {
+		
+		return;
+		
+	} elseif ( null != $ses_id ) {
+		
+		$ses_array[] = $ses_id;
+		
+	}
+	
+	if ( 1 < count( $ses_tzs ) ) {
+		
+		$rowspan = 'rowspan="' . count( $ses_tzs ) . '"';
+		
+	} else {
+		
+		$rowspan = '';
+		
+	}
+	
+	
+?>
+		<td class="<?php echo esc_html( $stage->slug ); ?>" <?php echo $rowspan; ?>>
+		<?php foreach ( $session_args as $session_key => $session ): ?>
+			<dl>
 				<dt>
 					<?php if ( 'draft' != $session->post_status ): ?>
 					<a href="<?php echo esc_url( get_the_permalink( $session->ID ) ); ?>">
@@ -359,91 +294,27 @@ function wordfes2017_timetable_meta( $timezone, $stage ){
 					</p>
 					<?php //wordfes2017_entry_footer(); ?>
 				</dd>
-			<?php
-			}
-			?>
 			</dl>
+		<?php endforeach; ?>
 		</td>
+<?php
+} // End Function
 
-	<?php else : ?>
-
-		<td class="<?php echo esc_html( $stage->slug ); ?>">
-			<dl>
-
-			<?php
-			$session_args = get_posts(
-				array(
-					'post_type'      => 'sessions',
-					'post_status' => array( 'publish', 'private' ),
-					'posts_per_page' => 1,
-					'tax_query'      => array(
-						'relation' => 'AND',
-						array(
-							'taxonomy' => 'timezone',
-							'field'    => 'slug',
-							'terms'    => $timezone,
-						),
-						array(
-							'taxonomy' => 'classroom',
-							'field'    => 'id',
-							'terms'    => $stage->term_id,
-						),
-					)
-				)
-			);
-
-			foreach ( $session_args as $session_key => $session ) { ?>
-				<dt><a href="<?php echo esc_url( get_the_permalink( $session->ID ) ); ?>"><?php echo esc_html( $session->post_title ) ?></a></dt>
-				<dd>
-					<i class="glyphicon glyphicon-user"></i> <?php echo esc_html( get_field( 'session_speaker_name', $session->ID ) ) ?><br>
-					<span class="visible-xs visible-sm grenn"><?php echo esc_html( $stage->name ); ?></span>
-<!-- 					<i class="level_<?php wordfes2014_the_term( $session->ID, 'target', 'slug' );?> level_icon"><?php wordfes2014_the_term( $session->ID, 'target' );?></i> -->
-					<?php wordfes2017_post_edit_link( $session->ID ); ?>
-				</dd>
-			<?php
-			}
-			?>
-			</dl>
-		</td>
-
-		<td class="<?php echo esc_html( $stage->slug ); ?>">
-			<dl>
-			<?php
-			$session_args = get_posts(
-				array(
-					'post_type'      => 'sessions',
-					'post_status' => array( 'publish', 'private' ),
-					'offset' => 1,
-					'posts_per_page' => 1,
-					'tax_query'      => array(
-						'relation' => 'AND',
-						array(
-							'taxonomy' => 'timezone',
-							'field'    => 'slug',
-							'terms'    => $timezone,
-						),
-						array(
-							'taxonomy' => 'classroom',
-							'field'    => 'id',
-							'terms'    => $stage->term_id,
-						),
-					)
-				)
-			);
-
-			foreach ( $session_args as $session_key => $session ) { ?>
-				<dt><a href="<?php echo esc_url( get_the_permalink( $session->ID ) ); ?>"><?php echo esc_html( $session->post_title ) ?></a></dt>
-				<dd>
-					<i class="glyphicon glyphicon-user"></i> <?php echo esc_html( get_field( 'session_speaker_name', $session->ID ) ) ?><br>
-					<span class="visible-xs visible-sm grenn"><?php echo esc_html( $stage->name ); ?>(<?php echo esc_html( $stage->description ); ?>）</span>
-					<i class="level_<?php wordfes2014_the_term( $session->ID, 'target', 'slug' );?> level_icon"><?php wordfes2017_the_term( $session->ID, 'target' );?></i>
-					<?php wordfes2017_post_edit_link( $session->ID ); ?>
-				</dd>
-			<?php
-			}
-			?>
-			</dl>
-		</td>
-	<?php
-	endif;
-}
+function wordfes2017_set_timetable( $stage_terms, $tz_slug ) {
+	
+	$tz_obj     = get_term_by( 'slug', $tz_slug, 'timezone' );
+	$tz_id      = 'timezone_' . $tz_obj->term_id;
+	$start_time = get_field( 'pdc-timezone-start', $tz_id );
+	$end_time   = get_field( 'pdc-timezone-end',   $tz_id );
+?>
+	<th>
+		<?php echo esc_html( $start_time . ' 〜 ' . $end_time ); ?>
+	</th>
+<?php
+	foreach ( $stage_terms as $stage_key => $stage ) {
+	
+		wordfes2017_timetable_meta( $tz_slug, $stage );
+	
+	}
+	
+} // End Function
