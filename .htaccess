@@ -9,10 +9,15 @@ Options +SymLinksIfOwnerMatch
 
 # BEGIN WordPress
 
-
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteBase /
+
+# CloudFlare Redirect from http to https
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# WordPress Standard
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
