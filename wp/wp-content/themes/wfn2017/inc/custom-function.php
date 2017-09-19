@@ -192,6 +192,7 @@ function manage_pages_columns( $columns ) {
 	
 	$columns['pagetitle'] = 'ページタイトル';
 	$columns['slug']      = 'スラッグ';
+	$columns['menu_order'] = '表示順';
 	
 	$columns['author']    = $escape_author;
 	$columns['date']      = $escape_date;
@@ -206,9 +207,10 @@ add_filter( 'manage_pages_columns', 'manage_pages_columns' );
  */
 function add_page_column( $column_name, $post_id ) {
 	
+	$post = get_post($post_id);
+	
 	if( 'slug' == $column_name ) {
 		
-		$post = get_post($post_id);
 		$slug = $post->post_name;
 		
 		echo attribute_escape($slug);
@@ -218,6 +220,12 @@ function add_page_column( $column_name, $post_id ) {
 		$pagetitle = get_post_meta( $post_id, 'pdc-page-title', true );
 		
 		echo esc_html( $pagetitle );
+		
+	} elseif( 'menu_order' == $column_name ) {
+		
+		$menu_order = $post->menu_order;
+		
+		echo $menu_order;
 		
 	}
 	
