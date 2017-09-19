@@ -128,11 +128,11 @@ $('.bxslider').bxSlider({
 </script>
 
 <ul class="bxslider">
-<li><img src="http://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" width="486" height="323"></li>
-<li><img src="http://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" width="486" height="323"></li>
-<li><img src="http://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" width="486" height="323"></li>
-<li><img src="http://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" width="486" height="323"></li>
-<li><img src="http://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" width="486" height="323"></li>
+<li><img src="https://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" width="486" height="323"></li>
+<li><img src="https://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" width="486" height="323"></li>
+<li><img src="https://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" width="486" height="323"></li>
+<li><img src="https://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" width="486" height="323"></li>
+<li><img src="https://2017.wordfes.org/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" width="486" height="323"></li>
 </ul>
 
 <?php endif ; ?>
