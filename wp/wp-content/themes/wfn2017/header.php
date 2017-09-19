@@ -113,7 +113,7 @@ if ( is_front_page() ) {
 			</div>
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
-スライダー
+スライダーサンプル
 <script>
 $(function(){
 $('.bxslider').bxSlider({
