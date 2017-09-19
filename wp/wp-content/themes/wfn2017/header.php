@@ -114,8 +114,26 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
 スライダー
+<script>
+$(function(){
+$('.bxslider').bxSlider({
+	auto: true,
+	slideWidth: 486,
+	slideHeight: 323,
+	minSlides: 2
+	mode: horizontal
+	
+});
+</script>
 
-			<div id="signboard">
+<ul class="bxslider">
+<li><img src="../images/slider/sample-01.png" alt="" width="486" height="323"></li>
+<li><img src="../images/slider/sample-02.png" alt="" width="486" height="323"></li>
+<li><img src="../images/slider/sample-03.png" alt="" width="486" height="323"></li>
+<li><img src="../images/slider/sample-04.png" alt="" width="486" height="323"></li>
+<li><img src="../images/slider/sample-05.png" alt="" width="486" height="323"></li>
+</ul>
+			/*<div id="signboard">
 				<ul class="bxslider clearfix">
 				<?php
 				$args = array(
@@ -145,7 +163,7 @@ if ( is_front_page() ) {
 							break;
 						}
 				*/	
-						$image = wp_get_attachment_image_src( get_field('wfn-slider-image', $slide), 'full' );
+				/*		$image = wp_get_attachment_image_src( get_field('wfn-slider-image', $slide), 'full' );
 						$url   = get_field('wfn-slider-url', $slide);
 				?>
 					<li class="slide">
@@ -159,9 +177,10 @@ if ( is_front_page() ) {
 					endforeach;
 				endif;
 				*/
-				endwhile;
+				/*endwhile;
 				?>
 				</ul>
+*/
 			</div>
 			
 <?php endif ; ?>
