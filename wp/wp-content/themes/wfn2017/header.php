@@ -115,7 +115,9 @@ if ( is_front_page() ) {
 <?php if ( is_user_logged_in() ) : ?>
 スライダーサンプル
 
-<script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/jquery.bxslider.css">
+<script type="text/javascript">
 $(function(){
 $('.bxslider').bxSlider({
 	auto: true,
