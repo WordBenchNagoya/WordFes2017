@@ -321,14 +321,14 @@ function inside_district_column( $column_name ) {
 		
 		echo esc_url( $url );
 		
-	} elseif ( 'tix_attendee' == $post->post_type && 'tix_name' == $column_name ) {
+/*	} elseif ( 'tix_attendee' == $post->post_type && 'tix_name' == $column_name ) {
 		
 		$attendees = get_posts( array(
 			'p'              => $post->ID,
 			'posts_per_page' => 1,
-			'post_type' => 'tix_attendee',
-			'post_status' => array( 'pending', 'publish' ),
-			'cache_results' => false,
+			'post_type'      => 'tix_attendee',
+			'post_status'    => array( 'pending', 'publish' ),
+			'cache_results'  => false,
 		) );
 		
 		$terms = get_post_meta( $post->ID, 'tix_log' );
@@ -345,7 +345,7 @@ function inside_district_column( $column_name ) {
 		}
 
 		//echo '<pre>'; var_dump( $terms[0][0]['data']['post']['tix_attendee_questions'][1][239] ); echo '</pre>';
-		
+*/		
 	}
 	
 }

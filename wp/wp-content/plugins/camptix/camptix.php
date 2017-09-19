@@ -11,16 +11,24 @@
  */
 
 // 受付用メールアドレスを設定
-$email_addr  = 'entry@wordfes.org';
+$email_addr            = 'entry@wordfes.org';
 
 // 開催年を設定（毎年変更）
-$this_year   = '2017';
+$this_year             = '2017';
 
 // 宿泊のチケット ID を設定（毎年変更）
-$ticket_stay_id    = 1230;
+$ticket_stay_id        = 1230;
 
 // セッションのみのチケット ID を設定（毎年変更）
-$ticket_session_id = 1224;
+$ticket_session_id     = 1224;
+
+
+// 懇親会の振込名義人のカスタムフィールド ID（毎年変更）
+$ticket_party_tix_name = 1229;
+
+// 宿泊の振込名義人のカスタムフィールド ID（毎年変更）
+$ticket_stay_tix_name  = 1232;
+
 
 
 global $email_addr, $this_year, $ticket_stay_id, $ticket_session_id;
@@ -655,6 +663,9 @@ class CampTix_Plugin {
    * Manage columns action for attendee post type.
    */
   function manage_columns_attendee_action( $column, $post_id ) {
+	  
+	  global $ticket_party_tix_name,$ticket_stay_tix_name;
+	  
     switch ( $column ) {
       case 'tix_ticket':
         $ticket_id = intval( get_post_meta( $post_id, 'tix_ticket_id', true ) );
@@ -670,10 +681,10 @@ class CampTix_Plugin {
         break;
       case 'tix_name':
         $questions = get_post_meta( $post_id, 'tix_questions', true );
-        if ( $questions['68'] ) {
-          echo esc_html( $questions['68'] );
-        } else if ( $questions['431'] ) {
-          echo esc_html( $questions['431'] );
+        if ( $questions[$ticket_party_tix_name] ) {
+          echo esc_html( $questions[$ticket_party_tix_name] );
+        } else if ( $questions[$ticket_stay_tix_name] ) {
+          echo esc_html( $questions[$ticket_stay_tix_name] );
         }
         break;
       case 'tix_coupon':
