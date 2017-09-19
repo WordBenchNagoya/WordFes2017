@@ -1,0 +1,360 @@
+.clear{
+	clear:both;
+}
+
+/*** Add extra space in wp 3.6 ***/
+.version-3-6 #titlediv{
+	margin-bottom: 20px;
+}
+
+/*** Reset metaboxes ***/
+#bxslider-general-options-meta-box .inside,
+#bxslider-pager-options-meta-box .inside,
+#bxslider-controls-options-meta-box .inside,
+#bxslider-auto-options-meta-box .inside,
+#bxslider-auto-options-meta-box .inside {
+    padding: 0;
+}
+
+/*** Slides Metabox ***/
+#bxslider-slides-meta-box .inside{
+    margin: 0;
+    padding: 20px;
+}
+
+.bxslider-sortable{
+    margin-bottom:20px;
+}
+.bxslider-slide{
+	margin-bottom:10px;
+}
+.bxslider-header{
+    border:1px solid #D3D3D3;
+	cursor:move;
+    background-color: #fcfcfc; /* Fallback */
+}
+.bxslider-header .bxslider-icon{
+	float:left;
+	padding:6px;
+	border-right:1px solid #D3D3D3;
+}
+.rtl .bxslider-header .bxslider-icon{
+	float:right;
+    border-left:1px solid #D3D3D3;
+    border-right:0;
+}
+.bxslider-icon i{
+	width:14px;
+	height:14px;
+	display:block;
+	background: url(../images/glyphicons-halflings.png) no-repeat;
+}
+i.icon-facetime-video{
+	background-position: -432px -48px;
+}
+i.icon-film{
+	background-position: -192px 0;
+}
+i.icon-picture{
+	background-position: -456px -48px;
+}
+i.icon-pencil{
+	background-position:0 -72px;
+}
+i.icon-font{
+	background-position: -144px -48px;
+}
+.bxslider-title{
+    float:left;
+	padding:5px 6px;
+	border-left: 1px solid #D3D3D3;
+	margin-left: -1px;
+}
+.rtl .bxslider-title{
+    float:right;
+	border-right: 1px solid #D3D3D3;
+	margin-right: -1px;
+    border-left: 0;
+	margin-left: 0;
+}
+.bxslider-controls{
+    float:right;
+	padding:5px;
+}
+.rtl .bxslider-controls{
+    float:left;
+}
+.bxslider-drag,
+.bxslider-toggle,
+.bxslider-delete{
+    margin:0 5px;
+    display:block;
+    float:left;
+    text-indent:-99999px;
+    width:15px;
+    height:15px;
+}
+.rtl .bxslider-drag,
+.rtl .bxslider-toggle,
+.rtl .bxslider-delete{
+    float:right;
+    text-indent:99999px;
+}
+.bxslider-drag{
+	display:none;
+	cursor:move;
+    color:#285C00;
+    background: url(../images/ui-icons.png) no-repeat 0 0;
+}
+.bxslider-toggle{
+	cursor:pointer;
+    color:#21759B;
+    background: url(../images/ui-icons.png) no-repeat -15px 0;
+}
+.bxslider-delete{
+	cursor:pointer;
+    color:#ff9191;
+    background: url(../images/ui-icons.png) no-repeat -30px 0;
+}
+.bxslider-header:hover .bxslider-toggle{
+    background-position:-15px -15px;
+    color:#fff;
+}
+.bxslider-slide:hover .bxslider-header,
+.bxslider-slide:hover .bxslider-body{
+    border-color:#c0c0c0;
+}
+.bxslider-header .bxslider-delete:hover{
+    background-color:#ff9191;
+    color:#fff;
+}
+.bxslider-body{
+    background:#F5F5F5;
+    min-height:1px; /* IE7 - on open disappearing content - bug fix */
+    border-left:1px solid #D3D3D3;
+    border-right:1px solid #D3D3D3;
+    border-bottom:1px solid #D3D3D3;
+    display:none;
+}
+.bxslider-slide-type-bar{
+	padding:10px 2%;
+	background: #ECECEC;
+	border-bottom:1px solid #D3D3D3;
+}
+.bxslider-image-preview{
+	padding:15px 2%;
+	float:left;
+    width:40%;
+}
+.bxslider-image-settings{
+	float:left;
+    width:50%;
+	padding:15px 2%;
+}
+.bxslider-image-thumb img{
+    display:block;
+    max-width:90%;
+    margin-bottom:10px;
+    border:3px solid #ccc;
+}
+.bxslider-media-gallery-show{
+    margin-bottom:15px;
+}
+.bxslider-slide textarea{
+    overflow:auto;
+}
+.bxslider-slide .note,
+.bxslider-field .note{
+    font-weight:normal;
+    font-size:11px;
+    font-style:italic;
+    color:#666666;
+}
+.bxslider-field label.note{
+	display: inline;
+}
+
+/*** Custom HTML ***/
+.bxslider-custom{
+    padding:15px 2%;
+}
+.bxslider-custom-html{
+	min-height:140px;
+}
+
+/*** Slide effects toggle ***/
+.bxslider_metas_enable_slide_effects{
+	float:right;
+	margin-bottom:15px;
+}
+
+/*** Hide other slide types ***/
+.bxslider-video, .bxslider-custom, .bxslider-image{
+	display:none;
+}
+.bxslider-image {
+	display:block;
+}
+
+/*** Placeholder ***/
+.bxslider-slide-placeholder{
+    padding:5px;
+    height:20px;
+    border:1px dashed #ccc;
+    margin-bottom:10px;
+}
+
+/* Skeleton for adding slide box in JS */
+.bxslider-slide-skeleton{
+    display:none;
+}
+
+/*** Expandables ***/
+.expandable-group-title{
+    font-weight:bold;
+    font-size:12px;
+    margin-bottom:10px;
+    text-transform:capitalize;
+}
+.expandable-box.last{
+    border-bottom:1px solid #D3D3D3;
+}
+.expandable-header{
+    border-left:1px solid #D3D3D3;
+    border-right:1px solid #D3D3D3;
+    border-top:1px solid #D3D3D3;
+    padding:3px 7px;
+    font-weight:bold;
+    color:#666666;
+    background-color: #f1f1f1;
+    cursor:pointer;
+}
+.expandable-body{
+    border-top:1px solid #D3D3D3;
+    border-left:1px solid #D3D3D3;
+    border-right:1px solid #D3D3D3;
+    padding:20px;
+    background:#f9f9f9;
+	display:none;
+}
+.expandable-header.first{
+    -webkit-border-radius: 3px 3px 0px 0px;
+    border-radius: 3px 3px 0px 0px;
+}
+
+
+
+/*** Form Fields ***/
+.field{
+	margin-bottom:15px;
+}
+.field.last{
+	margin:0;
+}
+.field label{
+	display:inline-block;
+	margin-bottom:5px;
+	font-weight:bold;
+}
+.field-inline label{
+	width:40%;
+}
+.field-inline input,
+.field-inline select,
+.field-inline textarea{
+	max-width:40%;
+}
+
+
+.bxslider-slide-meta-speed,
+.bxslider-slide-meta-timeout,
+.bxslider-slide-meta-tile-count,
+.bxslider-slide-meta-tile-delay{
+	width:25%;
+}
+.bxslider-meta-field .note.disabled,
+label.disabled,
+input:disabled{
+	color:#999;
+}
+
+
+
+
+
+/*** BxSlider Field ***/
+.bxslider-field{
+    padding:15px 10px 20px 10px;
+    border-bottom:1px solid #DFDFDF;
+}
+.bxslider-field.last{
+    padding-bottom:10px;
+    border-bottom:0;
+}
+.bxslider-field label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+.bxslider-field input[type="text"],
+.bxslider-field select{
+    display:block;
+    min-width:50%;
+    margin-bottom:3px;
+}
+.bxslider-field-tile-properties,
+.bxslider-slide-tile-properties{
+	display:none;
+}
+.bxslider-spacer-10{
+	height:10px;
+}
+.bxslider-spacer-15{
+	height:15px;
+}
+
+/*** Hide admin stuff ***/
+.inline-edit-date,
+.inline-edit-group{
+	display:none;
+}
+
+.bxslider-get-more{
+	padding-top:5px;
+	float:right;
+}
+
+/*** Buy premium ***/
+#bxslider-pager-options-meta-box .inside,
+#bxslider-controls-options-meta-box .inside,
+#bxslider-auto-options-meta-box .inside,
+#bxslider-carousel-options-meta-box .inside{
+	position: relative;
+	margin: 0;
+}
+.bxslider-cover{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #F8F8F8;
+	opacity: 0.8;
+	z-index: 99;
+}
+.bxslider-cover p{
+	text-align: center;
+	padding: 20px 0 0 0;
+	font-size: 20px;
+}
+
+
+/*** RTL Support ***/
+body.rtl table td.column-shortcode{
+	direction: ltr;
+	text-align: right;
+}
+body.rtl #message .ltr{
+	direction: ltr;
+	text-align: right;
+}

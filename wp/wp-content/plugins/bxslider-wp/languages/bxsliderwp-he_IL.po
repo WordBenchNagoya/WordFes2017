@@ -1,0 +1,726 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BxSlider WP\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-10 16:03+0800\n"
+"PO-Revision-Date: 2017-06-10 16:03+0800\n"
+"Last-Translator: \n"
+"Language-Team: kosinix <kosinix@codefleet.net>\n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.11\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../src/BxSliderWp/Admin.php:82
+msgid "Select an image"
+msgstr "בחר תמונה"
+
+#: ../src/BxSliderWp/Admin.php:83
+msgid "Select Images By Ctrl + Clicking Them"
+msgstr "בחר תמונות לפי Ctrl + לחיצה עליהם"
+
+#: ../src/BxSliderWp/Admin.php:84
+msgid "Add to Slide"
+msgstr "הוסף לשקופית"
+
+#: ../src/BxSliderWp/Admin.php:85 ../views/slides.php:8
+msgid "Add Images as Slides"
+msgstr "הוסף תמונות כשקופיות"
+
+#: ../src/BxSliderWp/Admin.php:105
+#, fuzzy
+msgid "BxSlider WP"
+msgstr "BxSlider"
+
+#: ../src/BxSliderWp/Admin.php:106
+msgid "Slider"
+msgstr "מחוון"
+
+#: ../src/BxSliderWp/Admin.php:107
+msgid "Add Slider"
+msgstr "הוסף Slider"
+
+#: ../src/BxSliderWp/Admin.php:108
+msgid "Add New Slider"
+msgstr "הוסף מחוון חדש"
+
+#: ../src/BxSliderWp/Admin.php:109
+msgid "Edit Slider"
+msgstr "לערוך את המחוון"
+
+#: ../src/BxSliderWp/Admin.php:110
+msgid "New Slider"
+msgstr "מחוון חדש"
+
+#: ../src/BxSliderWp/Admin.php:111
+msgid "View Slider"
+msgstr "צפה במחוון"
+
+#: ../src/BxSliderWp/Admin.php:112
+msgid "Search Sliders"
+msgstr "גולשים בחיפוש"
+
+#: ../src/BxSliderWp/Admin.php:113
+msgid "No sliders found"
+msgstr "לא מצאו מחוונים"
+
+#: ../src/BxSliderWp/Admin.php:114
+msgid "No sliders found in Trash"
+msgstr "אין מחוונים מצאו באשפה"
+
+#: ../src/BxSliderWp/Admin.php:156
+msgid "Slides"
+msgstr "Slides"
+
+#: ../src/BxSliderWp/Admin.php:164
+#, fuzzy
+msgid "Get Slider Codes"
+msgstr "מחוון חדש"
+
+#: ../src/BxSliderWp/Admin.php:172
+msgid "General Options"
+msgstr "אפשרויות כלליות"
+
+#: ../src/BxSliderWp/Admin.php:180
+msgid "Pager Options"
+msgstr "אפשרויות זימונית"
+
+#: ../src/BxSliderWp/Admin.php:188
+msgid "Controls Options"
+msgstr "אפשרויות בקרה"
+
+#: ../src/BxSliderWp/Admin.php:196
+msgid "Auto Options"
+msgstr "אפשרויות אוטומטיות"
+
+#: ../src/BxSliderWp/Admin.php:204
+msgid "Carousel Options"
+msgstr "אפשרויות קרוסלה"
+
+#: ../src/BxSliderWp/Admin.php:230
+msgid "Slide"
+msgstr "Slide"
+
+#: ../src/BxSliderWp/Admin.php:462
+msgid "Slider Name"
+msgstr "שם מחוון"
+
+#: ../src/BxSliderWp/Admin.php:463
+msgid "Images"
+msgstr "תמונות"
+
+#: ../src/BxSliderWp/Admin.php:464
+msgid "Slider ID"
+msgstr "מחוון ID"
+
+#: ../src/BxSliderWp/Admin.php:465
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: ../src/BxSliderWp/Admin.php:495 ../src/BxSliderWp/Admin.php:498
+#: ../src/BxSliderWp/Admin.php:499 ../src/BxSliderWp/Admin.php:502
+#: ../src/BxSliderWp/Admin.php:503 ../src/BxSliderWp/Admin.php:504
+msgid "Slider updated."
+msgstr ""
+
+#: ../src/BxSliderWp/Admin.php:496
+msgid "Custom field updated."
+msgstr ""
+
+#: ../src/BxSliderWp/Admin.php:497
+msgid "Custom field deleted."
+msgstr ""
+
+#: ../src/BxSliderWp/Admin.php:500
+#, fuzzy
+msgid "Slider created."
+msgstr "שם מחוון"
+
+#: ../src/BxSliderWp/Admin.php:501
+msgid "Slider saved."
+msgstr ""
+
+#: ../src/BxSliderWp/Admin.php:522
+msgid "Slide *"
+msgstr ""
+
+#: ../src/BxSliderWp/Data.php:80 ../src/BxSliderWp/Frontend.php:141
+#, php-format
+msgid "[Slider \"%s\" not found]"
+msgstr ""
+
+#: ../src/BxSliderWp/Servicer.php:38
+#, php-format
+msgid "Service %s does not exist."
+msgstr ""
+
+#: ../src/BxSliderWp/SettingsPage.php:76
+msgid "Default options restored."
+msgstr ""
+
+#: ../src/BxSliderWp/WidgetSlider.php:13
+#, fuzzy
+msgid "BxSlider Widget"
+msgstr "BxSlider"
+
+#: ../src/BxSliderWp/WidgetSlider.php:14
+msgid "Widget for displaying sliders."
+msgstr ""
+
+#: ../src/BxSliderWp/WidgetSlider.php:52
+#, fuzzy
+msgid "Select a slider:"
+msgstr "בחר תמונה"
+
+#: ../src/BxSliderWp/WidgetSlider.php:63
+#, fuzzy
+msgid "No sliders found."
+msgstr "לא מצאו מחוונים"
+
+#: ../src/plugin.php:50
+msgid "No BxSliderWP instance."
+msgstr ""
+
+#: ../views/auto-options.php:2 ../views/carousel-options.php:2
+#: ../views/controls-options.php:2 ../views/pager-options.php:2
+#, php-format
+msgid "Available in %s version."
+msgstr ""
+
+#: ../views/auto-options.php:4
+msgid "Auto:"
+msgstr ""
+
+#: ../views/auto-options.php:7
+msgid "If checked, slides will automatically transition."
+msgstr ""
+
+#: ../views/auto-options.php:11
+msgid "Pause:"
+msgstr ""
+
+#: ../views/auto-options.php:13
+msgid "The amount of time (in ms) between each auto transition."
+msgstr ""
+
+#: ../views/auto-options.php:17
+msgid "Auto Start:"
+msgstr ""
+
+#: ../views/auto-options.php:20
+msgid ""
+"Auto show starts playing on load. If unchecked, slideshow will start when "
+"the \"Start\" control is clicked."
+msgstr ""
+
+#: ../views/auto-options.php:24
+msgid "Auto Direction:"
+msgstr ""
+
+#: ../views/auto-options.php:30
+msgid "The direction of auto show slide transitions."
+msgstr ""
+
+#: ../views/auto-options.php:34
+msgid "Auto Hover:"
+msgstr ""
+
+#: ../views/auto-options.php:37
+msgid "Auto show will pause when mouse hovers over slider."
+msgstr ""
+
+#: ../views/auto-options.php:41
+msgid "Auto Delay:"
+msgstr ""
+
+#: ../views/auto-options.php:43
+msgid "Time (in ms) auto show should wait before starting."
+msgstr ""
+
+#: ../views/carousel-options.php:4
+msgid "Min Slides:"
+msgstr ""
+
+#: ../views/carousel-options.php:6
+msgid ""
+"The minimum number of slides to be shown. Slides will be sized down if "
+"carousel becomes smaller than the original size."
+msgstr ""
+
+#: ../views/carousel-options.php:10
+msgid "Max Slides:"
+msgstr ""
+
+#: ../views/carousel-options.php:12
+msgid ""
+"The maximum number of slides to be shown. Slides will be sized up if "
+"carousel becomes larger than the original size."
+msgstr ""
+
+#: ../views/carousel-options.php:16
+msgid "Move Slides:"
+msgstr ""
+
+#: ../views/carousel-options.php:18
+msgid ""
+"The number of slides to move on transition. This value must be \">= minSlides"
+"\", and \"<= maxSlides\". If zero (default), the number of fully-visible "
+"slides will be used."
+msgstr ""
+
+#: ../views/carousel-options.php:22
+msgid "Slide Width:"
+msgstr ""
+
+#: ../views/carousel-options.php:24
+msgid ""
+"The width of each slide. This setting is required for all horizontal "
+"carousels!"
+msgstr ""
+
+#: ../views/controls-options.php:4
+msgid "Controls:"
+msgstr ""
+
+#: ../views/controls-options.php:7
+msgid "If checked, \"Next\" / \"Prev\" controls will be added."
+msgstr ""
+
+#: ../views/controls-options.php:11
+msgid "Next Text:"
+msgstr ""
+
+#: ../views/controls-options.php:13
+msgid "Text to be used for the \"Next\" control."
+msgstr ""
+
+#: ../views/controls-options.php:17
+msgid "Prev Text:"
+msgstr ""
+
+#: ../views/controls-options.php:19
+msgid "Text to be used for the \"Prev\" control."
+msgstr ""
+
+#: ../views/controls-options.php:23
+msgid "Next Selector:"
+msgstr ""
+
+#: ../views/controls-options.php:25
+msgid "Element used to populate the \"Next\" control."
+msgstr ""
+
+#: ../views/controls-options.php:29
+msgid "Prev Selector:"
+msgstr ""
+
+#: ../views/controls-options.php:31
+msgid "Element used to populate the \"Prev\" control."
+msgstr ""
+
+#: ../views/controls-options.php:35
+msgid "Auto Controls:"
+msgstr ""
+
+#: ../views/controls-options.php:38
+msgid "If checked, \"Start\" / \"Stop\" controls will be added."
+msgstr ""
+
+#: ../views/controls-options.php:42
+msgid "Start Text:"
+msgstr ""
+
+#: ../views/controls-options.php:44
+msgid "Text to be used for the \"Start\" control."
+msgstr ""
+
+#: ../views/controls-options.php:48
+msgid "Stop Text:"
+msgstr ""
+
+#: ../views/controls-options.php:50
+msgid "Text to be used for the \"Stop\" control."
+msgstr ""
+
+#: ../views/controls-options.php:54
+msgid "Auto Controls Combine:"
+msgstr ""
+
+#: ../views/controls-options.php:57
+msgid ""
+"When slideshow is playing only \"Stop\" control is displayed and vice-versa."
+msgstr ""
+
+#: ../views/controls-options.php:61
+msgid "Auto Controls Selector:"
+msgstr ""
+
+#: ../views/controls-options.php:63
+msgid "Element used to populate the auto controls."
+msgstr ""
+
+#: ../views/general-options.php:6
+msgid "Mode:"
+msgstr "סִגְנוֹן"
+
+#: ../views/general-options.php:12
+msgid "Type of transition between slides."
+msgstr ""
+
+#: ../views/general-options.php:16
+msgid "Speed:"
+msgstr "מהירות"
+
+#: ../views/general-options.php:18
+msgid "Slide transition duration (in ms)."
+msgstr ""
+
+#: ../views/general-options.php:23
+msgid "Random Start:"
+msgstr ""
+
+#: ../views/general-options.php:26
+msgid "Start slider on a random slide."
+msgstr ""
+
+#: ../views/general-options.php:31
+msgid "Infinite Loop:"
+msgstr ""
+
+#: ../views/general-options.php:34
+msgid ""
+"If checked, clicking \"Next\" while on the last slide will transition to the "
+"first slide and vice-versa."
+msgstr ""
+
+#: ../views/general-options.php:38
+msgid "Hide Control On End:"
+msgstr ""
+
+#: ../views/general-options.php:41
+msgid ""
+"If checked, \"Next\" control will be hidden on last slide and vice-versa. "
+"Note: Only used when Infinite Loop is unchecked."
+msgstr ""
+
+#: ../views/general-options.php:45
+msgid "Captions:"
+msgstr ""
+
+#: ../views/general-options.php:48
+msgid "Include image captions."
+msgstr ""
+
+#: ../views/general-options.php:52
+msgid "Ticker:"
+msgstr ""
+
+#: ../views/general-options.php:55
+msgid "Use slider in ticker mode (similar to a news ticker)."
+msgstr ""
+
+#: ../views/general-options.php:59
+msgid "Ticker Hover:"
+msgstr ""
+
+#: ../views/general-options.php:62
+msgid ""
+"Ticker will pause when mouse hovers over slider. Note: this functionality "
+"does NOT work if using CSS transitions!"
+msgstr ""
+
+#: ../views/general-options.php:66
+msgid "Adaptive Height:"
+msgstr ""
+
+#: ../views/general-options.php:69
+msgid "Dynamically adjust slider height based on each slide's height."
+msgstr ""
+
+#: ../views/general-options.php:73
+msgid "Adaptive Height Speed:"
+msgstr ""
+
+#: ../views/general-options.php:75
+msgid ""
+"Slide height transition duration (in ms). Note: only used if Adaptive Height "
+"is checked."
+msgstr ""
+
+#: ../views/general-options.php:79
+msgid "Video:"
+msgstr ""
+
+#: ../views/general-options.php:82
+msgid "Check this if any slides contain a video."
+msgstr ""
+
+#: ../views/general-options.php:86
+msgid "Responsive:"
+msgstr ""
+
+#: ../views/general-options.php:89
+msgid ""
+"Enable or disable auto resize of the slider. Useful if you need to use fixed "
+"width sliders."
+msgstr ""
+
+#: ../views/general-options.php:93
+msgid "Use CSS:"
+msgstr ""
+
+#: ../views/general-options.php:96
+msgid ""
+"If checked, CSS transitions will be used for horizontal and vertical slide "
+"animations (this uses native hardware acceleration). If unchecked, jQuery "
+"animate() will be used."
+msgstr ""
+
+#: ../views/general-options.php:100
+msgid "Easing:"
+msgstr ""
+
+#: ../views/general-options.php:104
+msgid "The type of \"easing\" to use during transitions."
+msgstr ""
+
+#: ../views/general-options.php:108
+msgid "Preload Images:"
+msgstr ""
+
+#: ../views/general-options.php:114
+msgid ""
+"If \"all\", preloads all images before starting the slider. If \"visible\", "
+"preloads only images in the initially visible slides before starting the "
+"slider (tip: use \"visible\" if all slides are identical dimensions)."
+msgstr ""
+
+#: ../views/general-options.php:118
+msgid "Touch Enabled:"
+msgstr ""
+
+#: ../views/general-options.php:121
+msgid "If checked, slider will allow touch swipe transitions."
+msgstr ""
+
+#: ../views/general-options.php:125
+msgid "Swipe Threshold:"
+msgstr ""
+
+#: ../views/general-options.php:127
+msgid ""
+"Amount of pixels a touch swipe needs to exceed in order to execute a slide "
+"transition. Note: Only used if Touch Enabled is checked."
+msgstr ""
+
+#: ../views/general-options.php:131
+msgid "One To One Touch:"
+msgstr ""
+
+#: ../views/general-options.php:134
+msgid "If checked, non-fade slides follow the finger as it swipes."
+msgstr ""
+
+#: ../views/general-options.php:138
+msgid "Prevent Default Swipe X:"
+msgstr ""
+
+#: ../views/general-options.php:141
+msgid ""
+"If checked, touch screen will not move along the x-axis as the finger swipes."
+msgstr ""
+
+#: ../views/general-options.php:145
+msgid "Prevent Default Swipe Y:"
+msgstr ""
+
+#: ../views/general-options.php:148
+msgid ""
+"If checked, touch screen will not move along the y-axis as the finger swipes."
+msgstr ""
+
+#: ../views/general-options.php:152
+msgid "Slide Margin:"
+msgstr ""
+
+#: ../views/general-options.php:154
+msgid "Margin between each slide."
+msgstr ""
+
+#: ../views/general-options.php:158
+msgid "Slide Selector:"
+msgstr ""
+
+#: ../views/general-options.php:160
+msgid ""
+"Element to use as slides (ex. 'div.slide'). Note: by default, bxSlider will "
+"use all immediate children of the slider element."
+msgstr ""
+
+#: ../views/general-options.php:164
+msgid "Start Slide:"
+msgstr ""
+
+#: ../views/general-options.php:166
+msgid "Starting slide index (zero-based)."
+msgstr ""
+
+#: ../views/pager-options.php:4
+msgid "Pager:"
+msgstr ""
+
+#: ../views/pager-options.php:7
+msgid "If checked, a pager will be added."
+msgstr ""
+
+#: ../views/pager-options.php:11
+msgid "Pager Type:"
+msgstr ""
+
+#: ../views/pager-options.php:17
+msgid ""
+"If \"full\", a pager link will be generated for each slide. If \"short\", a "
+"x / y pager will be used (ex. 1 / 5)."
+msgstr ""
+
+#: ../views/pager-options.php:21
+msgid "Pager Short Separator:"
+msgstr ""
+
+#: ../views/pager-options.php:23
+msgid "If \"short\", pager will use this value as the separating character."
+msgstr ""
+
+#: ../views/pager-options.php:27
+msgid "Pager Selector:"
+msgstr "Pager Selector"
+
+#: ../views/pager-options.php:29
+msgid ""
+"Element used to populate the pager. By default, the pager is appended to the "
+"bx-viewport. Note: Use jQuery selectors."
+msgstr "אלמנט jQuery משמש לאכלוס הביפר."
+
+#: ../views/settings-page.php:17
+msgid "License:"
+msgstr ""
+
+#: ../views/settings-page.php:23
+msgid "Secret Key:"
+msgstr ""
+
+#: ../views/settings-page.php:27
+#, php-format
+msgid ""
+"Your license and secret key can be found in the %s page under each order."
+msgstr ""
+
+#: ../views/settings-page.php:32
+#, fuzzy
+msgid "Save Options"
+msgstr "אפשרויות זימונית"
+
+#: ../views/settings-page.php:33
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../views/slide-edit.php:18
+msgid "Drag"
+msgstr "לגרור"
+
+#: ../views/slide-edit.php:19
+msgid "Toggle"
+msgstr "למתג"
+
+#: ../views/slide-edit.php:20
+msgid "Delete"
+msgstr "למחוק"
+
+#: ../views/slide-edit.php:27
+msgid "Image"
+msgstr "תמונה"
+
+#: ../views/slide-edit.php:28
+msgid "Custom"
+msgstr "יְחִידָאִי"
+
+#: ../views/slide-edit.php:40
+msgid "Get Image"
+msgstr "קבל תמונה"
+
+#: ../views/slide-edit.php:43
+msgid "Slide Properties:"
+msgstr "מאפייני שקופיות"
+
+#: ../views/slide-edit.php:45
+msgid "Link"
+msgstr "קֶשֶׁר"
+
+#: ../views/slide-edit.php:48
+msgid "Enable Link:"
+msgstr "לאפשר קישור"
+
+#: ../views/slide-edit.php:53
+msgid "Link URL:"
+msgstr "כתובת אתר של קישור"
+
+#: ../views/slide-edit.php:57
+msgid "Open Link in:"
+msgstr "פתח בקישור"
+
+#: ../views/slide-edit.php:59
+msgid "Same Window"
+msgstr "אותו החלון"
+
+#: ../views/slide-edit.php:60
+msgid "New Tab or Window"
+msgstr "לשונית חדשה או בחלון"
+
+#: ../views/slide-edit.php:66
+msgid "Caption"
+msgstr "רֹאשׁ עַמוּד"
+
+#: ../views/slide-edit.php:78
+msgid "Custom HTML"
+msgstr "המותאם אישית HTML"
+
+#: ../views/slider-codes.php:4
+#, fuzzy
+msgid "Your Shortcode:"
+msgstr "Shortcode"
+
+#: ../views/slider-codes.php:6
+msgid ""
+"Copy and paste this shortcode into your Post, Page or Custom Post editor."
+msgstr ""
+
+#: ../views/slider-codes.php:10
+msgid "Your PHP Code:"
+msgstr ""
+
+#: ../views/slider-codes.php:12
+msgid ""
+"Copy and paste this code when you need to display the slider in template "
+"files (header.php, front-page.php, etc.)."
+msgstr ""
+
+#: ../views/slides.php:7
+msgid "Add Slide"
+msgstr "הוסף Slide"
+
+#, fuzzy
+#~ msgid "BxSlider WP Settings"
+#~ msgstr "BxSlider"
+
+#~ msgid "Slider updated. Shortcode is: %s"
+#~ msgstr "Slider עודכ. Shortcode: %s"
+
+#~ msgid "Slider created. Shortcode is: %s"
+#~ msgstr "Slider נוצר. Shortcode: %s"
