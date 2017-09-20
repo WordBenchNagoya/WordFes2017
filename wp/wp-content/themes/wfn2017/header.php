@@ -114,7 +114,7 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
 スライダーサンプル
-<?php echo do_shortcode('[bxslider id="slider-1"]'); ?>
+[bxslider id="slider-1"]
 
 <?php endif ; ?>
 		
