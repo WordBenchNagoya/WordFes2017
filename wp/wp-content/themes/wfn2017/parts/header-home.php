@@ -68,7 +68,7 @@
 			endif;
 			?>
 		</div><!-- .main-image -->
-		
+<!-- 			
 		<script type="text/javascript">
 		jQuery(function($){
 			
@@ -83,3 +83,4 @@
 			
 		});
 		</script>
+ -->
