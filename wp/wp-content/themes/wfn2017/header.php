@@ -113,7 +113,44 @@ if ( is_front_page() ) {
 			</div>
 		</nav><!-- #site-navigation -->
 
-		
+<?php if ( is_user_logged_in() ) : ?>
+スライダーサンプル
+
+<script type=”text/javascript”>
+jQuery(document).ready(function($){
+$('.bxslider').bxSlider({
+	auto: true,
+	slideWidth: 486,
+	slideHeight: 323,
+	minSlides: 2,
+	mode: horizontal,
+	infiniteLoop: true,
+	speed: 1000,
+	startSlide: 0,
+	randomStart: true,
+	slideMargin: 0,
+	ticker: true,
+	captions: true,
+	pager: true,
+`	controls: false,
+	auto: true,
+	moveSlides: 2,
+	touchEnabled: true,
+	oneToOneTouch: true,
+	preventDefaultSwipeX: true
+});
+})(jQuery);
+</script>
+
+<ul class="bxslider">
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" width="486" height="323" title="キャプション01"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" width="486" height="323" title="キャプション02"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" width="486" height="323" title="キャプション03"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" width="486" height="323" title="キャプション04"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" width="486" height="323" title="キャプション05"></li>
+</ul>
+
+<?php endif ; ?>		
 	</header><!-- #masthead -->
 	
 
