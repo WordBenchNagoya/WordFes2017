@@ -116,10 +116,9 @@ if ( is_front_page() ) {
 <?php if ( is_user_logged_in() ) : ?>
 スライダーサンプル
 
-<script type=”text/javascript”>
+<script type="text/javascript">
 jQuery(document).ready(function($){
 $('.bxslider').bxSlider({
-	auto: true,
 	slideWidth: 486,
 	slideHeight: 323,
 	minSlides: 2,
