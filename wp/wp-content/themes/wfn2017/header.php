@@ -52,7 +52,7 @@ if ( is_front_page() ) {
 
 <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Winn3RhO6lE%3D" charset="utf-8"></script>
 
-<?php require_once( get_template_directory_uri() . '/parts/ga-code.php' ); ?>
+<?php require_once( 'parts/ga-code.php' ); ?>
 
 </head>
 
