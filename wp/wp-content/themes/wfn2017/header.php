@@ -114,28 +114,7 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 <?php if ( is_user_logged_in() ) : ?>
 スライダーサンプル
-
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/jquery.bxslider.css">
-
-<script>
-$(function(){
-$('.bxslider').bxSlider({
-	auto: true,
-	slideWidth: 486,
-	slideHeight: 323,
-	minSlides: 2
-	mode: horizontal	
-});
-</script>
-
-<div class="bxslider">
-<div><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" width="486" height="323"></div>
-<div><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" width="486" height="323"></div>
-<div><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" width="486" height="323"></div>
-<div><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" width="486" height="323"></div>
-<div><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" width="486" height="323"></div>
-</div>
+<?php echo do_shortcode('[bxslider id="slider-1"]'); ?>
 
 <?php endif ; ?>
 		
