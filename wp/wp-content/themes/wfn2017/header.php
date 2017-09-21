@@ -115,30 +115,29 @@ if ( is_front_page() ) {
 
 <?php if ( is_user_logged_in() ) : ?>
 スライダーサンプル
+<script type="text/javascript">
+<!--
+dd = new Date();
+document.write(dd.toLocaleString());
+// -->
+</script>
+
 
 <script type="text/javascript">
-jQuery(document).ready(function($){
-$('.bxslider').bxSlider({
+jQuery(document).ready(function(){
+jQuery('.bxslider').bxSlider({
+  	auto: true,
 	slideWidth: 486,
 	slideHeight: 323,
 	minSlides: 2,
-	mode: horizontal,
+	maxSliders:2,
 	infiniteLoop: true,
 	speed: 1000,
-	startSlide: 0,
-	randomStart: true,
-	slideMargin: 0,
-	ticker: true,
+	moveSlides: 3,
 	captions: true,
-	pager: true,
-`	controls: false,
-	auto: true,
-	moveSlides: 2,
-	touchEnabled: true,
-	oneToOneTouch: true,
-	preventDefaultSwipeX: true
+
+  });
 });
-})(jQuery);
 </script>
 
 <ul class="bxslider">
