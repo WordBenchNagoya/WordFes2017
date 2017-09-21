@@ -135,6 +135,10 @@ jQuery('.bxslider').bxSlider({
 	speed: 1000,
 	moveSlides: 3,
 	captions: true,
+	speed: 300,
+	pause: 6000,
+	pager: false,
+	controls: false,
 
   });
 });
