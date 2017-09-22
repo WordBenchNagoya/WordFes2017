@@ -194,5 +194,41 @@ function wordfes2017_post_type_init() {
 	);
 
 	register_post_type( 'slider', $slider_args );
+	
+
+	/*
+	 * カスタム投稿タイプ「アンケート」を追加
+	 */
+	$enquete_labels = array(
+		'name' => 'アンケート',
+		'singular_name'      => 'アンケート',
+		'add_new'            => '新しいアンケート',
+		'add_new_item'       => '新しいアンケートを登録',
+		'edit_item'          => 'アンケートを編集',
+		'new_item'           => '新しいアンケートを登録',
+		'all_items'          => 'すべてのアンケート',
+		'view_item'          => 'アンケートを見る',
+		'search_items'       => 'アンケートを検索',
+		'not_found'          => 'アンケートは見つかりませんでした。',
+		'not_found_in_trash' => 'ゴミ箱の中にアンケートはありませんでした',
+		'parent_item_colon'  => '',
+		'menu_name'          => 'アンケート',
+	);
+
+	$enquete_args = array(
+		'labels'             => $enquete_labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'staff' ),
+		'capability_type'    => 'page',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'supports'           => array( 'title' ),
+	);
+
+	register_post_type( 'enquete', $enquete_args );
 }
 
