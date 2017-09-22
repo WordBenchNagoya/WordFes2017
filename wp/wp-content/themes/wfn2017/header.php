@@ -123,34 +123,34 @@ document.write(dd.toLocaleString());
 </script>
 
 
+<ul class="bxslider">
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" title="キャプション01"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" title="キャプション02"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" title="キャプション03"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" title="キャプション04"></li>
+<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" title="キャプション05"></li>
+</ul>
+
 <script type="text/javascript">
 jQuery(document).ready(function(){
-jQuery('.bxslider').bxSlider({
-  	auto: true,
-	slideWidth: 486,
-	slideHeight: 323,
-	minSlides: 2,
-	maxSliders:2,
-	infiniteLoop: true,
-	speed: 1000,
-	moveSlides: 3,
-	captions: true,
-	speed: 300,
-	pause: 6000,
-	pager: false,
-	controls: false,
-
-  });
+	jQuery('.bxslider').bxSlider({
+		auto: true,
+		slideWidth: 486,
+		//slideHeight: 323,
+		minSlides: 1,
+		maxSlides: 2,
+		infiniteLoop: true,
+		speed: 1000,
+		moveSlides: 1,
+		captions: true,
+		speed: 300,
+		pause: 6000,
+		pager: false,
+		controls: false,
+		autoControls: false,
+	});
 });
 </script>
-
-<ul class="bxslider">
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" width="486" height="323" title="キャプション01"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" width="486" height="323" title="キャプション02"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" width="486" height="323" title="キャプション03"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" width="486" height="323" title="キャプション04"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" width="486" height="323" title="キャプション05"></li>
-</ul>
 
 <?php endif ; ?>		
 	</header><!-- #masthead -->
