@@ -151,7 +151,14 @@ jQuery(document).ready(function(){
 		pause: 6000,
 		pager: false,
 		controls: false,
+		//pager: true,
+		//controls: true,
 		autoControls: false,
+		autoHover: true, // マウスオーバー時に自動遷移を停止する
+		
+		// スライドさせる要素の大きさ（幅）を指定する
+		// デフォルトでは100%になり、スライドエリアと同じサイズになる
+		//slideWidth: 0, 		
 	});
 });
 </script>
