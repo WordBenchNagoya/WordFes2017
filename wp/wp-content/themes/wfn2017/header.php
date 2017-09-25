@@ -141,7 +141,7 @@ jQuery(document).ready(function(){
 		maxSlides: 2,
 		infiniteLoop: true,
 		speed: 1000,
-		moveSlides: 2,
+		moveSlides: 1,
 		captions: true,
 		speed: 300,
 		pause: 6000,
