@@ -132,7 +132,7 @@ document.write(dd.toLocaleString());
 </ul>
 <style type="text/css">
 
-a.bx-pager-link active { color: #ea5514; }
+a.bx-pager-link :active { color: #ea5514; }
 
 </style>
 <script type="text/javascript">
