@@ -147,6 +147,7 @@ jQuery(document).ready(function(){
 	jQuery('.bxslider').bxSlider({
 		auto: true,
 		slideWidth: 486,
+		slideMargin: 50,
 		//slideHeight: 323,
 		minSlides: 1,
 		maxSlides: 2,
