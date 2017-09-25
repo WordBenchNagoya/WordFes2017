@@ -37,12 +37,22 @@ jQuery(document).ready(function(){
 		document.fonts.ready.then(function(fontFaceSet) {
 			jQuery('.schedule-inner').matchHeight();
 			jQuery('.column-row .sup-01').matchHeight();
+			jQuery('.column-row .sup-02').matchHeight();
+			jQuery('.column-row .sup-03').matchHeight();
+			jQuery('.column-row .sup-opt01').matchHeight();
+			jQuery('.column-row .sup-opt02').matchHeight();
+			jQuery('.column-row .sup-opt03').matchHeight();
 		});
 	} else {
 		// IEでウェブフォントのロードイベントを取得できない場合の苦肉の策
 		jQuery('.schedule-inner').delay(3000).queue(function(){
 			jQuery('.schedule-inner').matchHeight();
 			jQuery('.column-row .sup-01').matchHeight();
+			jQuery('.column-row .sup-02').matchHeight();
+			jQuery('.column-row .sup-03').matchHeight();
+			jQuery('.column-row .sup-opt01').matchHeight();
+			jQuery('.column-row .sup-opt02').matchHeight();
+			jQuery('.column-row .sup-opt03').matchHeight();
 		});
 	}
 
