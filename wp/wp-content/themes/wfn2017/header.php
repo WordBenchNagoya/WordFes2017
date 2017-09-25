@@ -153,7 +153,7 @@ jQuery(document).ready(function(){
 		infiniteLoop: true,
 		speed: 1000,
 		moveSlides: 1,
-		captions: true,
+		//captions: true,
 		speed: 300,
 		pause: 6000,
 		pager: false,
