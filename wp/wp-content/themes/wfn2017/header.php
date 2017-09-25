@@ -141,6 +141,7 @@ document.write(dd.toLocaleString());
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #DCDDDD;
 }
+.bx-wrapper{ margin: 0 auto !important;}
 </style>
 <script type="text/javascript">
 jQuery(document).ready(function(){
