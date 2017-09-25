@@ -141,13 +141,21 @@ jQuery(document).ready(function(){
 		maxSlides: 2,
 		infiniteLoop: true,
 		speed: 1000,
-		moveSlides: 1,
+		moveSlides: 2,
 		captions: true,
 		speed: 300,
 		pause: 6000,
-		pager: false,
-		controls: false,
+		//pager: false,
+		//controls: false,
+		pager: true,
+		controls: true,
 		autoControls: false,
+		autoHover: false, // マウスオーバー時に自動遷移を停止する
+		
+		// スライドさせる要素の大きさ（幅）を指定する
+		// デフォルトでは100%になり、スライドエリアと同じサイズになる
+		slideWidth: 0, // 0
+		
 	});
 });
 </script>
