@@ -71,7 +71,7 @@
             endforeach;
             
             // Get Sponsor Kind
-            $supporter_temrs = get_terms( 'supporter_type', array( 'hide_empty' => false, 'orderby' => 'order', 'order' => 'ASC') );
+            $supporter_temrs = get_terms( 'supporter_type', array( 'hide_empty' => false, 'orderby' => 'slug', 'order' => 'ASC') );
             
             foreach ( $supporter_temrs as $key => $supporter_term ):
             
