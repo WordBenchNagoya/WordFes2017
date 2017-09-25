@@ -130,7 +130,11 @@ document.write(dd.toLocaleString());
 <li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" title="キャプション04"></li>
 <li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" title="キャプション05"></li>
 </ul>
+<style type="text/css">
 
+a.bx-pager-link active { color: #ea5514; }
+
+</style>
 <script type="text/javascript">
 jQuery(document).ready(function(){
 	jQuery('.bxslider').bxSlider({
