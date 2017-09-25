@@ -138,7 +138,9 @@ document.write(dd.toLocaleString());
 .bx-wrapper .bx-pager.bx-default-pager a.active {
 	background: #ea5514;
 }
-
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #DCDDDD;
+}
 </style>
 <script type="text/javascript">
 jQuery(document).ready(function(){
