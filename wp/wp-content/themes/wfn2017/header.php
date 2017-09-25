@@ -146,6 +146,7 @@ document.write(dd.toLocaleString());
 jQuery(document).ready(function(){
 	jQuery('.bxslider').bxSlider({
 		auto: true,
+		margin: 0 auto;
 		slideWidth: 486,
 		slideMargin: 30,
 		//slideHeight: 323,
