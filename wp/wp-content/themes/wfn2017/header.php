@@ -145,12 +145,12 @@ jQuery(document).ready(function(){
 		captions: true,
 		speed: 300,
 		pause: 6000,
-		//pager: false,
-		//controls: false,
-		pager: true,
-		controls: true,
+		pager: false,
+		controls: false,
+		//pager: true,
+		//controls: true,
 		autoControls: false,
-		autoHover: false, // マウスオーバー時に自動遷移を停止する
+		autoHover: true, // マウスオーバー時に自動遷移を停止する
 		
 		// スライドさせる要素の大きさ（幅）を指定する
 		// デフォルトでは100%になり、スライドエリアと同じサイズになる
