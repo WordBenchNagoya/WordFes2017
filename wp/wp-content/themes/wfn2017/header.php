@@ -154,8 +154,7 @@ jQuery(document).ready(function(){
 		
 		// スライドさせる要素の大きさ（幅）を指定する
 		// デフォルトでは100%になり、スライドエリアと同じサイズになる
-		slideWidth: 0, // 0
-		
+		//slideWidth: 0, 		
 	});
 });
 </script>
