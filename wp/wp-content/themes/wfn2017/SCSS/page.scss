@@ -387,6 +387,10 @@
 	}
 } // #main
 
+
+/*
+// セッションページ
+*/
 #sessions {
 	
 	#main {
@@ -400,6 +404,10 @@
 	}
 } // #sessions
 
+
+/*
+// エントリーページ
+*/
 #entry {
 	
 	#main {
@@ -409,6 +417,61 @@
 		}
 	}
 }
+
+
+/*
+// エントリーページ
+*/
+#lunch-enquete {
+	
+	#main {
+		
+		.page-title {
+			margin-bottom: 30px;
+		}
+		
+		.detail {
+			line-height: 1.8;
+			font-size: $fs-16;
+		}
+		
+		.enquete,
+		.enquete-result {
+			margin: 60px auto 90px;
+		}
+		
+		.enquete-item {
+			margin: 30px auto;
+			padding: 15px 30px;
+			border-radius: 10px;
+			border: 5px solid lighten( $primaryColor, 30% );
+			
+			.question {
+				font-family: "じゅん 34", "Jun 34";
+				color: $primaryColor;
+			}
+		}
+		
+		.form-check {
+			margin: .5em 0;
+			text-align: left;
+			font-size: $fs-16;
+		}
+		
+		.enquete-result {
+			font-size: $fs-16;
+			
+			.success {
+				
+			}
+			
+			.failed {
+				color: $primaryColor;
+			}
+		}
+	}
+}
+
 
 @media screen and ( max-width: 767px ) {
     

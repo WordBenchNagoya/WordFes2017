@@ -229,6 +229,7 @@ function wordfes2017_post_type_init() {
 		'supports'           => array( 'title' ),
 	);
 
+
 	register_post_type( 'enquete', $enquete_args );
 }
 
