@@ -23,7 +23,7 @@ header #signboard .bx-wrapper .bx-viewport { background: transparent; border: no
 
 header .bxslider { margin: 0; padding: 0; }
 
-header .bxslider li img { width: 100%; margin: 0; padding: 0; }
+header .bxslider li img { margin: 0; padding: 0; }
 
 #sec-about { color: white; }
 
