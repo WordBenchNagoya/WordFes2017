@@ -242,7 +242,21 @@ function manage_posts_columns($columns) {
 	
 	global $post;
 	
-	if ( 'supporter' == $post->post_type ) { // ポストタイプを指定
+	if ( 'post' == $post->post_type ) { // ポストタイプを指定
+	
+		$date_escape   = $columns['date']; // 日付を避難
+		$author_escape = $columns['author']; // 投稿者を退避
+		
+		unset($columns['date']); // 消す
+		unset($columns['author']); // 消す
+		
+		$columns['charge']  = '担当日';
+		$columns['last']    = '残り日数';
+		
+		$columns['author']  = '投稿者'; // ここで投稿者を戻す
+		$columns['date']    = $date_escape; // ここで日付を戻す
+		
+	} elseif ( 'supporter' == $post->post_type ) { // ポストタイプを指定
 	
 		$date_escape   = $columns['date']; // 日付を避難
 		$author_escape = $columns['author']; // 投稿者を退避
@@ -293,7 +307,19 @@ add_filter( 'manage_posts_columns', 'manage_posts_columns' );
 function inside_district_column( $column_name ) {
 	global $post;
 	
-	if ( 'supporter' == $post->post_type && 'display' == $column_name ) {
+	if ( 'post' == $post->post_type && 'charge' == $column_name ) {
+        
+		echo date_i18n( 'n月d日', strtotime( get_field( 'wfn-charge-date', $post->ID ) ) );
+		
+	} elseif ( 'post' == $post->post_type && 'last' == $column_name ) {
+    	
+    	$target   = new DateTime('2017-10-28');
+    	$date     = new DateTime( get_field( 'wfn-charge-date', $post->ID ) );
+    	$interval = $date->diff( $target );
+    	
+    	echo $interval->format('%a日');
+
+	} elseif ( 'supporter' == $post->post_type && 'display' == $column_name ) {
 
 		$anonym = get_post_meta( $post->ID, 'pdc-supporter-anonym', true );
 		
@@ -458,6 +484,25 @@ function pdc_get_excerpt( $text, $max, $after = '', $allow = '' ) {
 	return $excerpt;
 	
 }
+
+
+//--------------------------------------------------------
+// ダッシュボードにウィジェット追加
+//--------------------------------------------------------
+function wfn_dashboard_widget_function() {
+    
+echo <<<Eof
+<canvas id="mycanvas"></canvas>
+Eof;
+
+}
+
+function wfn_dashboard_widgets() {
+    
+	wp_add_dashboard_widget('wfn_dashboard_widget', 'テスト', 'wfn_dashboard_widget_function');
+	
+}
+add_action('wp_dashboard_setup', 'wfn_dashboard_widgets' );
 
 
 
