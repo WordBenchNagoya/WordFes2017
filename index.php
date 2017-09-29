@@ -13,5 +13,11 @@
  */
 define('WP_USE_THEMES', true);
 
+// CloudFlare HTTPS support
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+    $_SERVER['HTTPS'] = 'on';
+    $_ENV['HTTPS'] = 'on';
+}
+
 /** Loads the WordPress Environment and Template */
 require( './wp/wp-blog-header.php' );
