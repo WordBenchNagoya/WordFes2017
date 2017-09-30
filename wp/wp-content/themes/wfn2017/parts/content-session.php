@@ -157,12 +157,12 @@ $wordpressorg =get_field('session_wordpress_org');
 							<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" class="twitter-icon">Twitter</a>
 						<?php
 						endif;
-						if ( $website ) : ?>
-							<a href="<?php echo esc_url( $website ); ?>" target="_blank" class="website-icon">Website or Blog</a>
-						<?php
-						endif;
 						if ( $wordpressorg ) : ?>
 							<a href="https://profiles.wordpress.org/<?php echo  $wordpressorg; ?>" target="_blank" class="wordpressorg-icon">WordPress.org</a>
+						<?php
+						endif;
+						if ( $website ) : ?>
+							<a href="<?php echo esc_url( $website ); ?>" target="_blank" class="website-icon">Website or Blog</a>
 						<?php
 						endif; ?>
 					</div><!-- .social-icon -->
