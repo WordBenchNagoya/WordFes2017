@@ -162,7 +162,7 @@ $wordpressorg =get_field('session_wordpress_org');
 						<?php
 						endif;
 						if ( $wordpressorg ) : ?>
-							<a href="<?php echo esc_url( $wordpressorg ); ?>" target="_blank" class="website-icon">WordPress.org</a>
+							<a href="<?php echo esc_url( $wordpressorg ); ?>" target="_blank" class="wordpressorg-icon">WordPress.org</a>
 						<?php
 						endif; ?>
 					</div><!-- .social-icon -->
