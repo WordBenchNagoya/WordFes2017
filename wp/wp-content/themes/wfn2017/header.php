@@ -114,24 +114,52 @@ if ( is_front_page() ) {
 		</nav><!-- #site-navigation -->
 
 <?php if ( is_user_logged_in() ) : ?>
-スライダーサンプル
+<!-- スライダーサンプル -->
 <script type="text/javascript">
 <!--
-dd = new Date();
-document.write(dd.toLocaleString());
+//dd = new Date();
+//document.write(dd.toLocaleString());
 // -->
 </script>
 
+<div class="slider-container" style="padding: 20px 0;">
+    <ul class="bxslider">
+<?php
+$args   = array(
+    'post_type'      => 'slider',
+    'posts_per_page' => -1,
+);
+$slides = new WP_Query( $args );
+while ( $slides->have_posts() ):
 
-<ul class="bxslider">
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-01.png" alt="" title="キャプション01"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-02.png" alt="" title="キャプション02"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-03.png" alt="" title="キャプション03"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-04.png" alt="" title="キャプション04"></li>
-<li><img src="https://2017.wordfes.org/wp/wp-content/themes/wfn2017/images/slider/sample-05.png" alt="" title="キャプション05"></li>
-</ul>
-<style type="text/css">
+    $slides->the_post();
+    
+    $url = get_field('wfn-slider-url');
+    $img = wp_get_attachment_image_src( get_field('wfn-slider-image'), 'full' );
+    
+    if ( $url ):
+?>
+        <li>
+            <a href="">
+                <img src="<?php echo esc_url( $img[0] ); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
+            </a>
+        </li>
+<?php
+    else:
+?>
+        <li>
+            <img src="<?php echo esc_url( $img[0] ); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
+        </li>
+<?php
+    endif;
+    
+endwhile;
+wp_reset_postdata();
+?>
+    </ul>
+</div>
 
+<style>
 /* a.bx-pager-link :active { color: #ea5514; } */
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
@@ -141,7 +169,17 @@ document.write(dd.toLocaleString());
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #DCDDDD;
 }
-.bx-wrapper{ margin: 0 auto !important;}
+.bx-wrapper{ margin: 20px auto !important;}
+.bx-viewport {
+    left: 0 !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.bx-pager {
+    display: none !important;
+}
+
 </style>
 <script type="text/javascript">
 jQuery(document).ready(function(){
@@ -150,7 +188,7 @@ jQuery(document).ready(function(){
 		//margin: 0 auto 60px;
 		slideWidth: 486,
 		slideMargin: 30,
-		//slideHeight: 323,
+		slideHeight: 333,
 		minSlides: 1,
 		maxSlides: 2,
 		infiniteLoop: true,
