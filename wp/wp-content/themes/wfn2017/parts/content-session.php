@@ -17,6 +17,7 @@ $contents     = get_field( 'session_contents' );
 $speaker_name = get_field( 'session_speaker_name' );
 $belong_link  = get_field( 'session_speaker_belong_link' );
 $slide_data   = get_field( 'session_slide' );
+$wordpressorg =get_field('session_wordpress_org');
 ?>
 
 	<div class="section clearfix">
@@ -158,6 +159,10 @@ $slide_data   = get_field( 'session_slide' );
 						endif;
 						if ( $website ) : ?>
 							<a href="<?php echo esc_url( $website ); ?>" target="_blank" class="website-icon">Website or Blog</a>
+						<?php
+						endif;
+						if ( $wordpressorg ) : ?>
+							<a href="<?php echo esc_url( $website ); ?>" target="_blank" class="website-icon">WordPress.org</a>
 						<?php
 						endif; ?>
 					</div><!-- .social-icon -->
