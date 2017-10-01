@@ -113,7 +113,7 @@ if ( is_front_page() ) {
 			</div>
 		</nav><!-- #site-navigation -->
 
-<?php if ( is_user_logged_in() ) : ?>
+<?php if ( is_front_page() ) : ?>
 <!-- スライダーサンプル -->
 <script type="text/javascript">
 <!--
@@ -128,6 +128,7 @@ if ( is_front_page() ) {
 $args   = array(
     'post_type'      => 'slider',
     'posts_per_page' => -1,
+    'orderby'        => 'rand',
 );
 $slides = new WP_Query( $args );
 while ( $slides->have_posts() ):
@@ -140,7 +141,7 @@ while ( $slides->have_posts() ):
     if ( $url ):
 ?>
         <li>
-            <a href="">
+            <a href="<?php echo esc_url( $url ); ?>">
                 <img src="<?php echo esc_url( $img[0] ); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
             </a>
         </li>
@@ -211,7 +212,8 @@ jQuery(document).ready(function(){
 });
 </script>
 
-<?php endif ; ?>		
+<?php endif ; ?>
+
 	</header><!-- #masthead -->
 	
 
