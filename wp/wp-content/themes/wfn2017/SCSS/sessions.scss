@@ -73,7 +73,7 @@ dd {
 			font-weight: bold;
 			border-radius: 3px;
 			
-			&.level_alluser {
+			&.level_all-user {
 				background: #00A7EA;
 				color: #fff;
 			}
@@ -83,7 +83,7 @@ dd {
 				color: #fff;
 			}
 			
-			&.level_frontend {
+			&.level_designer {
 				background: #915DA3;
 				color: #fff;
 			}
@@ -93,13 +93,23 @@ dd {
 				color: #fff;
 			}
 			
-			&.level_webtan {
+			&.level_business {
 				background: #187FC4;
 				color: #fff;
 			}
 			
-			&.level_webdesign {
+			&.level_web-design {
+				background: #c535e8;
+				color: #fff;
+			}
+			
+			&.level_developer {
 				background: #E73656;
+				color: #fff;
+			}
+			
+			&.level_director {
+				background: #60bc56;
 				color: #fff;
 			}
 		}
