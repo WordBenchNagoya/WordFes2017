@@ -243,16 +243,22 @@ function manage_posts_columns($columns) {
 	global $post;
 	
 	if ( 'post' == $post->post_type ) { // ポストタイプを指定
-	
-		$date_escape   = $columns['date']; // 日付を避難
-		$author_escape = $columns['author']; // 投稿者を退避
+	    
+	    $title_escape  = $columns['title'];     // タイトルを退避
+		$date_escape   = $columns['date'];      // 日付を避難
+		$author_escape = $columns['author'];    // 投稿者を退避
+		$cat_escape    = $columns['categories'];// カテゴリーを退避
 		
+		unset($columns['title']); // 消す
 		unset($columns['date']); // 消す
 		unset($columns['author']); // 消す
+		unset($columns['categories']); // 消す
 		
+		$columns['thumb']   = 'サムネール';
+		$columns['title']   = $title_escape;
 		$columns['charge']  = '担当日';
 		$columns['last']    = '残り日数';
-		
+		$columns['categories'] = $cat_escape;
 		$columns['author']  = '投稿者'; // ここで投稿者を戻す
 		$columns['date']    = $date_escape; // ここで日付を戻す
 		
@@ -307,7 +313,14 @@ add_filter( 'manage_posts_columns', 'manage_posts_columns' );
 function inside_district_column( $column_name ) {
 	global $post;
 	
-	if ( 'post' == $post->post_type && 'charge' == $column_name ) {
+	if ( 'post' == $post->post_type && 'thumb' == $column_name ) {
+        
+        $dummy   = get_template_directory_uri() . '/images/common/no-image.png';
+        $thumb   = pdc_get_post_thumbnail( get_the_ID(), $dummy );
+
+        echo "<img src=\"{$thumb[0]}\" alt=\"サムネール\" style=\"max-width: 100%;\">";
+		
+	} elseif ( 'post' == $post->post_type && 'charge' == $column_name ) {
         
 		echo date_i18n( 'n月d日', strtotime( get_field( 'wfn-charge-date', $post->ID ) ) );
 		
