@@ -146,7 +146,7 @@ $wordpressorg =get_field('session_wordpress_org');
 					} ?>
 				</div>
 				<div class="col-sm-9 col-xs-12 text-left">
-					<h4 style="margin-top: 0px";><?php echo esc_html( $speaker_name )  ?></h4>
+					<h4 style="margin-top: 0px";><?php echo wp_kses_post( $speaker_name )  ?></h4>
 					<div class="social-icon clearfix">
 						<?php
 						if ( $facebook ) : ?>
