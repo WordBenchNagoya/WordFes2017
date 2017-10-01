@@ -122,7 +122,7 @@ if ( is_front_page() ) {
 // -->
 </script>
 
-<div class="slider-container" style="padding: 20px 0;">
+<div class="slider-container">
     <ul class="bxslider">
 <?php
 $args   = array(
@@ -162,6 +162,11 @@ wp_reset_postdata();
 
 <style>
 /* a.bx-pager-link :active { color: #ea5514; } */
+
+.slider-container {
+    padding: 20px 0;
+    background: #fff;
+}
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
