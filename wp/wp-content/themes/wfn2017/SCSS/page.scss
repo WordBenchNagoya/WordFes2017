@@ -515,6 +515,13 @@
 	#main {
 		
 		&.archive {
+    		
+    		.page-title {
+        		
+        		.title {
+            		padding: 0;
+        		}
+    		}
 			
 			.text-box {
 				padding: 5px 0;

@@ -186,6 +186,7 @@
   .site-header .page-title { margin: 0; font-size: 1.5rem; }
   .site-header .page-title span { font-size: 0.86rem; }
   #primary { width: 100%; }
+  #main.archive .page-title .title { padding: 0; }
   #main.archive .text-box { padding: 5px 0; }
   #main.archive .text-box h2 { background-position: left center; }
   #main.archive .text-box h2 .date, #main.archive .text-box h2 .title { display: block; float: none; width: 100%; }
