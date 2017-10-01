@@ -170,10 +170,10 @@ wp_reset_postdata();
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #DCDDDD;
 }
-.bx-wrapper{ margin: 20px auto !important;}
+.bx-wrapper{ margin: 0 auto !important;}
 .bx-viewport {
     left: 0 !important;
-    height: auto !important;
+    /*height: auto !important;*/
     border: none !important;
     box-shadow: none !important;
 }
