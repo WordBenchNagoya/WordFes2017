@@ -25,6 +25,7 @@
 	
 	.facebook-icon,
 	.twitter-icon,
+	.wordpressorg-icon
 	.website-icon {
 		float: none;
 		width: auto;
@@ -39,6 +40,11 @@
 	
 	.twitter-icon {
 		background: url(../images/common/icon-twitter) left center no-repeat;
+		background-size: 20px auto;
+	}
+	
+	.wordpressorg-icon {
+		background: url(../images/common/wordpressorg-icon) left center no-repeat;
 		background-size: 20px auto;
 	}
 	
