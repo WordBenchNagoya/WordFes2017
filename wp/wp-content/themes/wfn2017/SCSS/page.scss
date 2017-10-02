@@ -199,6 +199,9 @@
 		table.time-table th {
 			color: #fff;
 		}
+		table.time-table .text-center {
+			text-align: center !important;
+		}
 		.bt {
 			font-size: $fs-20;
 			font-weight: bold;

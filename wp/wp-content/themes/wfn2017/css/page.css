@@ -58,6 +58,7 @@
 #main .section-inner table th, #main .section-inner table td { font-weight: bold; text-align: left; color: #ea5514; border: 2px solid #ea5514; padding: 10px; }
 #main .section-inner table th { background: #F7F8F8; min-width: 100px; }
 #main .section-inner table.time-table th { color: #fff; }
+#main .section-inner table.time-table .text-center { text-align: center !important; }
 #main .section-inner .bt { font-size: 1.43rem; font-weight: bold; margin: 20px 0; color: #fff; background: #ea5514; padding: 20px; display: inline-block; text-align: center; min-width: 250px; border-radius: 5px; text-decoration: none; }
 #main .section-inner .bt:hover { background: rgba(234, 85, 20, 0.8); text-decoration: none; }
 #main.archive .page-title { margin-top: 35px; margin-bottom: 50px; padding: 0; background: url(../images/common/bg-article-title.png) left center no-repeat; text-align: left; font-size: 2rem; font-weight: 700; }
