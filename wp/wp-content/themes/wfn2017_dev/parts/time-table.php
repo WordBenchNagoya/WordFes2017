@@ -61,13 +61,13 @@
 			<th>
 			</th>
 			<td class="stage1">
-			<a href="http://www.ustream.tv/channel/WordBench-Nagoya" target="_blank">Ustream (ネット中継)</a>
+			YouTube 配信 (ネット中継)
 			</td>
 			<td class="stage2">
-			<a href="http://www.ustream.tv/channel/WordFes" target="_blank">Ustream (ネット中継)</a>
+			YouTube 配信 (ネット中継)
 			</td>
 			<td class="stage3">
-			<a href="http://www.ustream.tv/channel/WordFes2" target="_blank">Ustream (ネット中継)</a>
+			YouTube 配信 (ネット中継)
 			</td>
 			<td>&nbsp;</td>
 		</tr>
@@ -75,7 +75,7 @@
 			<th>
 			</th>
 			<td colspan="3">
- 			<small>※ Ustream 放送や YouTube の詳細は<a href="/topics/1267/">こちらをご覧ください</a>。</small>
+ 			<small>※ YouTube 配信の詳細は<a href="/broadcast/">こちらをご覧ください</a>。</small>
 			</td>
 			<td>
 			</td>
