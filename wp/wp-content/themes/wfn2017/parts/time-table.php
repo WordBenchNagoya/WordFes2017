@@ -62,7 +62,7 @@
 			</th>
 			<td class="stage1 text-center" colspan="3">
 			ネット配信<br>
-			<small>※ ネット配信 の詳細は<a href="/broadcast/">こちらをご覧ください</a>。</small>
+			<small>※ ネット配信 の詳細は<a href="/livecast/">こちらをご覧ください</a>。</small>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
