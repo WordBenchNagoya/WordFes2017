@@ -60,19 +60,11 @@
 		<tr class="hidden-sm hidden-xs">
 			<th>
 			</th>
-			<td class="stage1" colspan="3">
-			ネット配信
+			<td class="stage1 text-center" colspan="3">
+			ネット配信<br>
+			<small>※ ネット配信 の詳細は<a href="/broadcast/">こちらをご覧ください</a>。</small>
 			</td>
 			<td>&nbsp;</td>
-		</tr>
-		<tr class="hidden-sm hidden-xs">
-			<th>
-			</th>
-			<td colspan="3">
- 			<small>※ Ustream 放送や YouTube の詳細は<a href="/topics/1267/">こちらをご覧ください</a>。</small>
-			</td>
-			<td>
-			</td>
 		</tr>
 		<tr>
 			<th>10:00〜</th>
