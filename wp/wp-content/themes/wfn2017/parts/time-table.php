@@ -60,14 +60,8 @@
 		<tr class="hidden-sm hidden-xs">
 			<th>
 			</th>
-			<td class="stage1">
-			<a href="http://www.ustream.tv/channel/WordBench-Nagoya" target="_blank">Ustream (ネット中継)</a>
-			</td>
-			<td class="stage2">
-			<a href="http://www.ustream.tv/channel/WordFes" target="_blank">Ustream (ネット中継)</a>
-			</td>
-			<td class="stage3">
-			<a href="http://www.ustream.tv/channel/WordFes2" target="_blank">Ustream (ネット中継)</a>
+			<td class="stage1" colspan="3">
+			ネット配信
 			</td>
 			<td>&nbsp;</td>
 		</tr>
