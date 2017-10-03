@@ -18,8 +18,8 @@
       color: #2d2d2d; }
   .social-icon .facebook-icon,
   .social-icon .twitter-icon,
-  .social-icon .wordpressorg-icon
-  .website-icon {
+  .social-icon .wordpressorg-icon,
+  .social-icon .website-icon {
     float: none;
     width: auto;
     padding: 3px 10px 3px 23px; }
