@@ -72,13 +72,23 @@ $wordpressorg =get_field('session_wordpress_org');
 							<th>時間</th>
 							<td>
 							<?php
-							$timezone   = array_shift( get_the_terms( $post->ID, 'timezone' ) );
-							$tz_id      = $timezone->term_id;
+                            $timezones  = get_the_terms( $post->ID, 'timezone' );
+                            
+                            if ( 1 < count( $timezones ) ) {
+                                
+                                $tz1_id = ( array_shift( $timezones ) )->term_id;
+                                $tz2_id = ( array_pop( $timezones ) )->term_id;
+                                
+                            } else {
+                                
+							    $tz1_id = $tz2_id = ( array_shift( $timezones ) )->term_id;
+							    
+                            }
 							
 							//var_dump( $tz_id )
 							
-							$start_time = get_field( 'pdc-timezone-start', 'timezone_' . $tz_id );
-							$end_time   = get_field( 'pdc-timezone-end', 'timezone_' . $tz_id );
+							$start_time = get_field( 'pdc-timezone-start', 'timezone_' . $tz1_id );
+							$end_time   = get_field( 'pdc-timezone-end', 'timezone_' . $tz2_id );
 							
 							echo esc_html( $start_time . ' 〜 ' . $end_time );
 							?>
