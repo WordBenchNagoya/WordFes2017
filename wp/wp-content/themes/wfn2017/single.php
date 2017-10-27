@@ -38,6 +38,8 @@ get_header(); ?>
 						
 					</div>
 					
+					<?php get_template_part( 'parts/content', 'listbutton' ); ?>
+															
 				<?php endwhile; // End of the loop. ?>
 
 				</div><!-- .section-inner -->

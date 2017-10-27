@@ -196,6 +196,12 @@
 			background: #F7F8F8;
 			min-width: 100px;
 		}
+		table.time-table th {
+			color: #fff;
+		}
+		table.time-table .text-center {
+			text-align: center !important;
+		}
 		.bt {
 			font-size: $fs-20;
 			font-weight: bold;
@@ -515,6 +521,13 @@
 	#main {
 		
 		&.archive {
+    		
+    		.page-title {
+        		
+        		.title {
+            		padding: 0;
+        		}
+    		}
 			
 			.text-box {
 				padding: 5px 0;

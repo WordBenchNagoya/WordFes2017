@@ -17,6 +17,7 @@ $contents     = get_field( 'session_contents' );
 $speaker_name = get_field( 'session_speaker_name' );
 $belong_link  = get_field( 'session_speaker_belong_link' );
 $slide_data   = get_field( 'session_slide' );
+$wordpressorg =get_field('session_wordpress_org');
 ?>
 
 	<div class="section clearfix">
@@ -71,13 +72,23 @@ $slide_data   = get_field( 'session_slide' );
 							<th>時間</th>
 							<td>
 							<?php
-							$timezone   = array_shift( get_the_terms( $post->ID, 'timezone' ) );
-							$tz_id      = $timezone->term_id;
+                            $timezones  = get_the_terms( $post->ID, 'timezone' );
+                            
+                            if ( 1 < count( $timezones ) ) {
+                                
+                                $tz1_id = ( array_shift( $timezones ) )->term_id;
+                                $tz2_id = ( array_pop( $timezones ) )->term_id;
+                                
+                            } else {
+                                
+							    $tz1_id = $tz2_id = ( array_shift( $timezones ) )->term_id;
+							    
+                            }
 							
 							//var_dump( $tz_id )
 							
-							$start_time = get_field( 'pdc-timezone-start', 'timezone_' . $tz_id );
-							$end_time   = get_field( 'pdc-timezone-end', 'timezone_' . $tz_id );
+							$start_time = get_field( 'pdc-timezone-start', 'timezone_' . $tz1_id );
+							$end_time   = get_field( 'pdc-timezone-end', 'timezone_' . $tz2_id );
 							
 							echo esc_html( $start_time . ' 〜 ' . $end_time );
 							?>
@@ -145,7 +156,7 @@ $slide_data   = get_field( 'session_slide' );
 					} ?>
 				</div>
 				<div class="col-sm-9 col-xs-12 text-left">
-					<h4 style="margin-top: 0px";><?php echo esc_html( $speaker_name )  ?></h4>
+					<h4 style="margin-top: 0px";><?php echo wp_kses_post( $speaker_name )  ?></h4>
 					<div class="social-icon clearfix">
 						<?php
 						if ( $facebook ) : ?>
@@ -154,6 +165,10 @@ $slide_data   = get_field( 'session_slide' );
 						endif;
 						if ( $twitter ) : ?>
 							<a href="<?php echo esc_url( $twitter ); ?>" target="_blank" class="twitter-icon">Twitter</a>
+						<?php
+						endif;
+						if ( $wordpressorg ) : ?>
+							<a href="https://profiles.wordpress.org/<?php echo  $wordpressorg; ?>" target="_blank" class="wordpressorg-icon">WordPress.org</a>
 						<?php
 						endif;
 						if ( $website ) : ?>

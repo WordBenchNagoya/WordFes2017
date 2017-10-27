@@ -60,25 +60,11 @@
 		<tr class="hidden-sm hidden-xs">
 			<th>
 			</th>
-			<td class="stage1">
-			<a href="http://www.ustream.tv/channel/WordBench-Nagoya" target="_blank">Ustream (ネット中継)</a>
-			</td>
-			<td class="stage2">
-			<a href="http://www.ustream.tv/channel/WordFes" target="_blank">Ustream (ネット中継)</a>
-			</td>
-			<td class="stage3">
-			<a href="http://www.ustream.tv/channel/WordFes2" target="_blank">Ustream (ネット中継)</a>
+			<td class="stage1 text-center" colspan="3">
+			ネット配信<br>
+			<small>※ ネット配信 の詳細は<a href="/livecast/">こちらをご覧ください</a>。</small>
 			</td>
 			<td>&nbsp;</td>
-		</tr>
-		<tr class="hidden-sm hidden-xs">
-			<th>
-			</th>
-			<td colspan="3">
- 			<small>※ Ustream 放送や YouTube の詳細は<a href="/topics/1267/">こちらをご覧ください</a>。</small>
-			</td>
-			<td>
-			</td>
 		</tr>
 		<tr>
 			<th>10:00〜</th>
@@ -104,7 +90,7 @@
 
 		<tr>
 			<th>11:45〜13:00</th>
-			<td class="rest">昼食休憩（75分）<br /><a href="/wanted/lunch/">Lunch MeetUp!</a><br class="visible-xs"><span class="visible-xs">5214教室</span></td>
+			<td class="rest">昼食休憩（75分）<!-- <br /><a href="/wanted/lunch/">Lunch MeetUp!</a> --><br class="visible-xs"><span class="visible-xs">5214教室</span></td>
 			<td class="rest hidden-xs">昼食休憩（75分）</td>
 			<td class="rest hidden-xs">昼食休憩（75分）<!-- <a href="http://2017.wordfes.org/sessions/lunch-workshop/">ランチタイムハンズオン</a> --></td>
 			<td class="rest hidden-xs">昼食休憩（75分）</td>
@@ -278,7 +264,7 @@ function wordfes2017_timetable_meta( $timezone, $stage ){
 				<dd>
 				<?php if ( $speaker = get_field( 'session_speaker_name', $session->ID ) ): ?>
 				
-					<i class="glyphicon glyphicon-user"></i> <?php echo esc_html( $speaker ) ?><br>
+					<i class="glyphicon glyphicon-user"></i> <?php echo wp_kses_post( $speaker ) ?><br>
 					
 				<?php endif; ?>
 					<span class="visible-xs visible-sm"><?php echo esc_html( $stage->name ); ?></span>
