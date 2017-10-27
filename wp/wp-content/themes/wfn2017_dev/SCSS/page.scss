@@ -345,10 +345,13 @@
 		margin: 25px 0;
 		line-height: 1.8;
 		
-		img,
-		iframe {
+		img {
 			max-width: 100%;
 			height: auto;
+		}
+
+		iframe {
+			max-width: 100%;
 		}
 		
 		p {
