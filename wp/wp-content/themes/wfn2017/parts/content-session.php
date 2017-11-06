@@ -31,22 +31,6 @@ $wordpressorg =get_field('session_wordpress_org');
 					</p>
 				
 				<?php if( get_field('session_youtube') ){ ?>
-				<style>
-				.VideoWrapper {
- 			   	position: relative;
-   				 padding-bottom: 56.25%; /* 16:9 */
-   				 padding-top: 25px;
-   				 height: 0;
-				}
- 
-				.VideoWrapper iframe {
-   				 position: absolute;
-    			top: 0;
-   				 left: 0;
-    			width: 100%;
-   				 height: 100%;
-				}
-				
 				<div class="VideoWrapper">
    				 <?php echo $embed_code = wp_oembed_get( get_field('session_youtube') ); ?>
 				</div>
