@@ -32,7 +32,7 @@ $wordpressorg =get_field('session_wordpress_org');
 				
 				<?php if( get_field('session_youtube') ){ ?>
 				<div class="VideoWrapper">
-   				 <?php echo $embed_code = wp_oembed_get( get_field('session_youtube') ); ?>
+   				 <?php echo $embed_code = wp_oembed_get( get_field('session_youtube'), array( 'max-width' => '100%', 'height' => 'auto' ) ); ?>
 				</div>
 				<?php } ?>
 
