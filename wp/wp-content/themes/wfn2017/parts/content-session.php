@@ -31,7 +31,7 @@ $wordpressorg =get_field('session_wordpress_org');
 					</p>
 				<?php if( get_field('session_slide_oembed') ){ ?>
 				<div class="VideoWrapper">
-   				 <?php echo $embed_code = wp_oembed_get( get_field('session_slide_oembed''), array( 'max-width' => '100%', 'height' => 'auto' ) ); ?>
+   				 <?php echo $embed_code = wp_oembed_get( get_field('session_slide_oembed'), array( 'max-width' => '100%', 'height' => 'auto' ) ); ?>
 				</div>
 				<?php } ?>
 				<br>
