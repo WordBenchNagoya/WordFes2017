@@ -29,6 +29,13 @@ $wordpressorg =get_field('session_wordpress_org');
 					<p class="content">
 						<?php echo wp_kses_post( pdc_get_ret2br_text( $contents ) ); ?>
 					</p>
+				
+				<?php if( get_field('session_youtube') ){ ?>
+				<div class="VideoWrapper">
+   				 <?php echo $embed_code = wp_oembed_get( get_field('session_youtube') ); ?>
+				</div>
+				<?php } ?>
+
 				<?php
 				if ( $slide_data ):
 				?>
