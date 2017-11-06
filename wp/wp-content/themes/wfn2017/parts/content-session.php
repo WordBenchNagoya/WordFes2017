@@ -40,13 +40,6 @@ $wordpressorg =get_field('session_wordpress_org');
    				 height: 0;
 				}
  
-				.VideoWrapper iframe {
-   				 position: absolute;
-    			top: 0;
-   				 left: 0;
-    			width: 100%;
-   				 height: 100%;
-				}
    				 <?php echo $embed_code = wp_oembed_get( get_field('session_youtube') ); ?>
 				</div>
 				<?php } ?>
